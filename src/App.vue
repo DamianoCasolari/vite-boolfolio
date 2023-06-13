@@ -1,12 +1,10 @@
 <script>
 import axios from 'axios';
-
+import SiteHeader from './components/SiteHeader.vue';
 
 
 export default {
-    components: {
 
-    },
     data() {
         return {
             base_URL: 'http://127.0.0.1:8000/',
@@ -16,6 +14,9 @@ export default {
             error: null
         }
 
+    },
+    components: {
+        SiteHeader
     },
     methods: {
         getProjects(url) {
@@ -38,11 +39,12 @@ export default {
 </script>
 
 <template>
+    <SiteHeader />
     <section class="vue-home">
         <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-                <div class="col" v-for="project in projects">
-                    <div class="card" style="width:18rem;">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-4">
+                <div class="col mt-4" v-for="project in projects">
+                    <div class="card h-100 ">
 
                         <!-- <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
                         class="card-img-top" alt="..."> -->
@@ -60,4 +62,6 @@ export default {
     </section>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+@use'./styles/general.scss'
+</style>
