@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import SiteHeader from './components/SiteHeader.vue';
+import SiteMain from './components/SiteMain.vue';
 
 
 export default {
@@ -16,7 +17,9 @@ export default {
 
     },
     components: {
-        SiteHeader
+        SiteHeader,
+        SiteMain,
+
     },
     methods: {
         getProjects(url) {
@@ -40,28 +43,7 @@ export default {
 
 <template>
     <SiteHeader />
-    <section class="vue-home">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-4">
-                <div class="col mt-4" v-for="project in projects">
-                    <div class="card h-100 ">
-
-                        <!-- <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                        class="card-img-top" alt="..."> -->
-                        <div class="card-body">
-                            <h5 class="card-title">{{ project.title }}</h5>
-                            <a href="{{ project.link }}">
-                                <h6 class="card-subtitle mb-2 text-muted ">{{ project.link }}</h6>
-                            </a>
-                            <p class="card-text">{{ project.functionality }}.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <SiteMain />
 </template>
 
-<style lang="scss">
-@use'./styles/general.scss'
-</style>
+<style lang="scss"></style>
