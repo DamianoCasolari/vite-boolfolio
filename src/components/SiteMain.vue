@@ -43,7 +43,7 @@ export default {
     <section class="vue-home">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-4">
-                <div class="col mt-4" v-for="project in projects">
+                <div class="col mt-4" v-for="project in projects.data">
                     <div class="card h-100 ">
 
                         <img :src="getImagePath(project.logo)" class="card-img-top" :alt="project.title + ' image'">
@@ -54,13 +54,43 @@ export default {
                             </a>
                             <p class="card-text">{{ project.functionality }}.</p>
                         </div>
+                        <div class="card-footer">
+                            {{ project.type.name }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example ">
+            <ul class="pagination pagination-sm">
+                <li class="page-item" v-if="projects.prev_page_url">
+                    <button class="page-link border border-0" aria-label="Previous"
+                        @click="getProjects(projects.prev_page_url)">
+                        <span aria-hidden="true" class="fs-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                            </svg> Prev</span>
+                    </button>
+                </li>
+                <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+
+                <li class="page-item" v-if="projects.next_page_url">
+                    <button class="page-link border border-0" @click="getProjects(projects.next_page_url)"
+                        aria-label="Next">
+                        <span aria-hidden="true" class="fs-4">Other projects <svg xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg></span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </template>
 
-<style lang="scss">
-@use'../styles/general.scss'
-</style>
+<style lang="scss"></style>
