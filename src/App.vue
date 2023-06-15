@@ -1,7 +1,6 @@
 <script>
-import axios from 'axios';
-import SiteHeader from './components/SiteHeader.vue';
-import SiteMain from './components/views/SiteMain.vue';
+
+import HomeView from './views/HomeView.vue';
 
 
 export default {
@@ -13,8 +12,8 @@ export default {
 
     },
     components: {
-        SiteHeader,
-        SiteMain,
+        HomeView,
+
 
     },
     methods: {
@@ -27,8 +26,7 @@ export default {
 </script>
 
 <template>
-    <SiteHeader />
-    <SiteMain />
+    <HomeView />
 </template>
 
 <style lang="scss"></style>

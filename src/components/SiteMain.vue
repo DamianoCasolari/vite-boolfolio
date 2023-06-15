@@ -1,5 +1,5 @@
 <script>
-import PaginationController from '../PaginationController.vue';
+import PaginationController from './PaginationController.vue';
 import axios from 'axios';
 
 export default {
@@ -47,7 +47,7 @@ export default {
     <div class="jumbotron p-5 bg-light rounded-3 vh_100 d-flex align-items-center justify-content-center bg_color">
         <div class="container py-5 d-flex flex-wrap align-items-center justify-content-center">
             <div class=" text-end pe-3 ghost col-sm-6">
-                <img src="../../assets/img/photo.jpg" alt="DC Logo" height="300" class="rounded-4 shadow">
+                <img src="../assets/img/photo.jpg" alt="DC Logo" height="300" class="rounded-4 shadow">
             </div>
 
             <div class="info_contaienr p-2 col-sm-6 text-center text-sm-start">
