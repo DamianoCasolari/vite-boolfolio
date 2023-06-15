@@ -2,10 +2,6 @@
     filter: invert(1);
 }
 
-.disappear:hover {
-    opacity: 0;
-}
-
 .open_img:hover {
 
     transform: scale(0.93);
@@ -23,4 +19,36 @@
 
 .opacity_hover:hover {
     opacity: 1 !important;
+}
+
+
+
+//HeadLine
+
+.underline-on-hover {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.underline-on-hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1.5px;
+    background-color: #000;
+    transition: width 0.3s ease-in-out;
+}
+
+.underline-on-hover:hover::after {
+    width: 100%;
+}
+
+
+//main 
+
+.scale_hover:hover {
+    transform: scale(1.1);
 }

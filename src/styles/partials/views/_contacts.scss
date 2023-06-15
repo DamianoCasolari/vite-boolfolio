@@ -1,9 +1,16 @@
-.contacts,
-.about_me {
+.contacts {
     min-height: 100vh;
+
+    .business_card {
+        background-color: rgb(234, 234, 234);
+        border-radius: 35px;
+
+    }
 
     .info_container {
         position: relative;
         top: 66px;
+
+
     }
 }

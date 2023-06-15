@@ -39,25 +39,25 @@ export default {
 </script >
 <template>
     <header>
-        <nav class="navbar navbar-expand-md bg_color shadow-sm position-fixed w-100 top-0 z_index header_shadow disappear"
+        <nav class="navbar navbar-expand-md shadow-sm position-fixed w-100 top-0 z_index header_shadow bg_color"
             :class="headerScroll ? 'header_on' : 'header_off'">
-            <div class="container d-flex justify-content-between bg-transparent">
+            <div class="container d-flex justify-content-between">
                 <div class="logo_container">
                     <a class="navbar-brand d-flex align-items-center justify-content-start mx-1" href="#">
                         <img class="" src="../assets/img/dc_trsp.png " alt="DC Logo" height="40">
-                        <a class="font_w500 text-dark mx-2 text-decoration-none" href="#projects">Projects</a>
+                        <a class="font_w500 text-dark mx-2 underline-on-hover" href="#projects">Projects</a>
                     </a>
                 </div>
                 <nav class="d-flex">
                     <router-link :to="{ 'name': 'home' }" class="nav-link">
-                        <span class="font_w500 text-dark mx-2">Home</span>
+                        <span class="font_w500 text-dark mx-2 underline-on-hover">Home</span>
                     </router-link>
                     <router-link :to="{ 'name': 'about' }" class="nav-link">
-                        <span class=" font_w500 text-dark mx-2">About
+                        <span class=" font_w500 text-dark mx-2 underline-on-hover">About
                             me</span>
                     </router-link>
                     <router-link :to="{ 'name': 'contacts' }" class="nav-link">
-                        <span class="font_w500 text-dark mx-2">Contacs</span>
+                        <span class="font_w500 text-dark mx-2 underline-on-hover">Contacs</span>
                     </router-link>
                 </nav>
 

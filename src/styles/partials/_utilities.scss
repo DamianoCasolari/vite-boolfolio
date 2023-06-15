@@ -19,6 +19,14 @@
     filter: drop-shadow(2px 5px 5px rgba(42, 42, 42, 0.844))
 }
 
+.vh_100 {
+    height: 100vh;
+}
+
+.rotate_180 {
+    transform: rotate(180deg);
+}
+
 
 
 //TEXT SELECTOR
@@ -45,16 +53,9 @@
 }
 
 
-.vh_100 {
-    height: 100vh;
-}
 
+//COLOR
 
-.nav_link {
-    text-decoration: none;
-    padding: 10px 0 10px 30px;
-    display: block;
-    color: #212529;
-    transition-duration: 0.4s;
-
+.bg_snow {
+    background-color: rgb(244, 244, 244);
 }

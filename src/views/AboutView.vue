@@ -4,7 +4,7 @@ export default {
 }
 </script>
 <template>
-    <div class="bg-light about_me">
+    <div class=" container about_me">
         <div class="info_container">
             about me
         </div>

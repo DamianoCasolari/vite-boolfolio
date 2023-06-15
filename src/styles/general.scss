@@ -8,3 +8,8 @@
 @use "./partials/main.scss" as *;
 @import "/node_modules/bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Comforter&family=Fasthand&family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+}

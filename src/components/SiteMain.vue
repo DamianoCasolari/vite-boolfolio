@@ -41,13 +41,13 @@ export default {
 </script>
 
 <template>
-    <div class="jumbotron p-5 bg-light rounded-3 vh_100 d-flex align-items-center justify-content-center bg_color">
-        <div class="container py-5 d-flex flex-wrap align-items-center justify-content-center">
+    <div id="top" class="jumbotron p-5 bg_snow rounded-3 vh_100 d-flex align-items-center justify-content-center">
+        <div class="container py-4 d-flex flex-wrap align-items-center justify-content-center">
             <div class=" text-end pe-3 ghost col-sm-6">
                 <img src="../assets/img/photo.jpg" alt="DC Logo" height="300" class="rounded-4 shadow">
             </div>
 
-            <div class="info_contaienr p-2 col-sm-6 text-center text-sm-start">
+            <div class="info_contaienr px-2 py-3 col-sm-6 text-center text-sm-start">
                 <h1 id="myText">
                     <span class="fade_in position-relative fs-1 text_shadow">Hi, I'm Damiano</span>
 
@@ -59,7 +59,13 @@ export default {
             </div>
         </div>
     </div>
-    <section class=" m_main main_container bg-light">
+    <svg class="wave-1hkxOo w-100 rotate_180" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"
+        preserveAspectRatio="none">
+        <path class="wavePath-haxJK1 animationPaused-2hZ4IO"
+            d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z"
+            fill="rgb(244, 244, 244)"></path>
+    </svg>
+    <section class=" m_main main_container bg-white">
         <div class="container ">
             <h1 class="text-center" id="projects">Projects </h1>
 
@@ -81,13 +87,6 @@ export default {
                             </div>
 
                         </div>
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <!-- <h4 class="card-title text-center p-2 fw-bold">{{ project.title }}</h4> -->
-                            <!-- <a :href="project.link" class="text-center text-decoration-none blu_hover">
-                                <h6 class=" mb-2 font_s11 p-2 fw-bold text_blue_night underline_hover">{{ project.link }}
-                                </h6>
-                            </a> -->
-                        </div>
                     </div>
                 </div>
             </div>
@@ -95,34 +94,19 @@ export default {
     </section>
     <PaginationController @prev="getProjects(projects.prev_page_url)" @next="getProjects(projects.next_page_url)"
         :prev_condition="projects.prev_page_url" :next_condition="projects.next_page_url" />
+    <div class="arrow position-fixed bottom-0 end-0 p-3">
 
-    <!-- <div class="d-flex justify-content-center">
-        <nav aria-label="Page navigation example ">
-            <ul class="pagination pagination-sm">
-                <li class="page-item" v-if="projects.prev_page_url">
-                    <button class="page-link border border-0" aria-label="Previous"
-                        @click="getProjects(projects.prev_page_url)">
-                        <span aria-hidden="true" class="fs-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                            </svg> Prev</span>
-                    </button>
-                </li>
+        <a href="#top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                class="bi bi-arrow-up-square scale_hover" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"
+                    fill="rgb(100,100,100)" />
+            </svg>
+        </a>
 
-                <li class="page-item" v-if="projects.next_page_url">
-                    <button class="page-link border border-0" @click="getProjects(projects.next_page_url)"
-                        aria-label="Next">
-                        <span aria-hidden="true" class="fs-4">Other projects <svg xmlns="http://www.w3.org/2000/svg"
-                                width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                            </svg></span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    </div> -->
+
+    </div>
 </template>
 
 <style lang="scss"></style>
