@@ -1,4 +1,5 @@
 <script>
+import PaginationController from '../PaginationController.vue';
 import axios from 'axios';
 
 export default {
@@ -14,6 +15,7 @@ export default {
 
     },
     components: {
+        PaginationController
     },
     methods: {
         getProjects(url) {
@@ -40,29 +42,44 @@ export default {
 
 <template>
     <SiteHeader />
-    <section class="vue-home">
-        <div class="container">
+    <!-- <img class="fake_background"
+        src="../../assets/img/Default_minimal_brush_strokes_with_very_bright_colorsadss_on_to_ba_0.jpg" alt="background"> -->
+    <section class=" m_main main_container bg-light">
+        <div class="container ">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-4">
                 <div class="col mt-4" v-for="project in projects.data">
-                    <div class="card h-100 ">
+                    <div class="card h-100 rounded-5 border-0 my_card open_img bg-transparent">
+                        <div class=" text-center bg-transparent position-relative">
+                            <div
+                                class="d-flex justify-content-center align-items-center bg_dark_trnsp rounded-5 opacity_hover pointer p-2">
+                                <h4 class="card-title text-white p-2 fw-bold text_shadow2">
+                                    {{ project.title }}</h4>
 
-                        <img :src="getImagePath(project.logo)" class="card-img-top" :alt="project.title + ' image'">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ project.title }}</h5>
-                            <a href="{{ project.link }}">
-                                <h6 class="card-subtitle mb-2 text-muted ">{{ project.link }}</h6>
-                            </a>
-                            <p class="card-text">{{ project.functionality }}.</p>
+                            </div>
+                            <img :src="getImagePath(project.logo)" class="card-img-top pointer card_shadow"
+                                :alt="project.title + ' image'">
+                            <div class="p-3 fw-bold text_shadow2 text-white position-absolute top-0 end-0"> {{
+                                project.type.name
+                            }}
+                            </div>
+
                         </div>
-                        <div class="card-footer">
-                            {{ project.type.name }}
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <!-- <h4 class="card-title text-center p-2 fw-bold">{{ project.title }}</h4> -->
+                            <!-- <a :href="project.link" class="text-center text-decoration-none blu_hover">
+                                <h6 class=" mb-2 font_s11 p-2 fw-bold text_blue_night underline_hover">{{ project.link }}
+                                </h6>
+                            </a> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <div class="d-flex justify-content-center">
+    <PaginationController @prev="getProjects(projects.prev_page_url)" @next="getProjects(projects.next_page_url)"
+        :prev_condition="projects.prev_page_url" :next_condition="projects.next_page_url" />
+
+    <!-- <div class="d-flex justify-content-center">
         <nav aria-label="Page navigation example ">
             <ul class="pagination pagination-sm">
                 <li class="page-item" v-if="projects.prev_page_url">
@@ -75,8 +92,6 @@ export default {
                             </svg> Prev</span>
                     </button>
                 </li>
-                <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li> -->
 
                 <li class="page-item" v-if="projects.next_page_url">
                     <button class="page-link border border-0" @click="getProjects(projects.next_page_url)"
@@ -90,7 +105,7 @@ export default {
                 </li>
             </ul>
         </nav>
-    </div>
+    </div> -->
 </template>
 
 <style lang="scss"></style>

@@ -1,0 +1,26 @@
+.invert:hover {
+    filter: invert(1);
+}
+
+.disappear:hover {
+    opacity: 0;
+}
+
+.open_img:hover {
+
+    transform: scale(0.93);
+    border: 1 solid black;
+}
+
+.underline_hover:hover {
+    text-decoration: underline;
+}
+
+.border_hover:hover {
+    border-bottom: 1px solid black !important;
+    // border-radius: 15px;
+}
+
+.opacity_hover:hover {
+    opacity: 1 !important;
+}
