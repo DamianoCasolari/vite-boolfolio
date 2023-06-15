@@ -27,7 +27,7 @@ export default {
 </script>
 
 <template>
-    <SiteHeader />
+    <!-- <SiteHeader /> -->
     <SiteMain />
 </template>
 

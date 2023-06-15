@@ -38,22 +38,33 @@ export default {
 
 </script >
 <template>
-    <nav class="navbar navbar-expand-md bg_color shadow-sm position-fixed w-100 top-0 z_index header_shadow disappear"
-        :class="headerScroll ? 'header_on' : 'header_off'">
-        <div class="container d-flex justify-content-between bg-transparent">
-            <div class="logo_container">
-                <a class="navbar-brand d-flex align-items-center justify-content-start mx-1" href="#">
-                    <img class="" src="../assets/img/dc_trsp.png " alt="DC Logo" height="40">
-                </a>
+    <header>
+        <nav class="navbar navbar-expand-md bg_color shadow-sm position-fixed w-100 top-0 z_index header_shadow disappear"
+            :class="headerScroll ? 'header_on' : 'header_off'">
+            <div class="container d-flex justify-content-between bg-transparent">
+                <div class="logo_container">
+                    <a class="navbar-brand d-flex align-items-center justify-content-start mx-1" href="#">
+                        <img class="" src="../assets/img/dc_trsp.png " alt="DC Logo" height="40">
+                        <a class="font_w500 text-dark mx-2 text-decoration-none" href="#projects">Projects</a>
+                    </a>
+                </div>
+                <nav class="d-flex">
+                    <router-link :to="{ 'name': 'home' }" class="nav-link">
+                        <span class="font_w500 text-dark mx-2">Home</span>
+                    </router-link>
+                    <router-link :to="{ 'name': 'about' }" class="nav-link">
+                        <span class=" font_w500 text-dark mx-2">About
+                            me</span>
+                    </router-link>
+                    <router-link :to="{ 'name': 'contacts' }" class="nav-link">
+                        <span class="font_w500 text-dark mx-2">Contacs</span>
+                    </router-link>
+                </nav>
+
+
             </div>
-            <nav>
-                <span class="font_w500 text-dark mx-2">Projects</span>
-                <span class="font_w500 text-dark mx-2">Contacts</span>
-            </nav>
-
-
-        </div>
-    </nav>
+        </nav>
+    </header>
 </template>
 
 <style lang="scss" scoped>

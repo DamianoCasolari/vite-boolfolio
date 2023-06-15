@@ -1,4 +1,6 @@
 // Import all of Bootstrap's CSS
+@use "./partials/views/about" as *;
+@use "./partials/views/contacts" as *;
 @use "./partials/utilities.scss" as *;
 @use "./partials/hover.scss" as *;
 @use "./partials/animation.scss" as *;

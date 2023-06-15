@@ -41,9 +41,6 @@ export default {
 </script>
 
 <template>
-    <SiteHeader />
-    <!-- <img class="fake_background"
-        src="../../assets/img/Default_minimal_brush_strokes_with_very_bright_colorsadss_on_to_ba_0.jpg" alt="background"> -->
     <div class="jumbotron p-5 bg-light rounded-3 vh_100 d-flex align-items-center justify-content-center bg_color">
         <div class="container py-5 d-flex flex-wrap align-items-center justify-content-center">
             <div class=" text-end pe-3 ghost col-sm-6">
@@ -64,7 +61,7 @@ export default {
     </div>
     <section class=" m_main main_container bg-light">
         <div class="container ">
-            <h1 class="text-center">Projects </h1>
+            <h1 class="text-center" id="projects">Projects </h1>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-4">
                 <div class="col mt-4" v-for="project in projects.data">

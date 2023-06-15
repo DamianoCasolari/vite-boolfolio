@@ -1,6 +1,8 @@
 <script>
 
-import HomeView from './views/HomeView.vue';
+// import HomeView from './views/HomeView.vue';
+import SiteHeader from './components/SiteHeader.vue';
+
 
 
 export default {
@@ -12,9 +14,7 @@ export default {
 
     },
     components: {
-        HomeView,
-
-
+        SiteHeader
     },
     methods: {
 
@@ -26,7 +26,8 @@ export default {
 </script>
 
 <template>
-    <HomeView />
+    <SiteHeader />
+    <router-view></router-view>
 </template>
 
 <style lang="scss"></style>
