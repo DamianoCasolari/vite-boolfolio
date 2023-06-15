@@ -80,12 +80,63 @@
 }
 
 .fade_right {
-    animation: fade_right 1s ease-out 1s both;
+    animation: fade_right 1s ease-out 0.5s both;
 }
 
 @keyframes fade_right {
     from {
         right: -30px;
+        opacity: 0;
+    }
+
+
+    to {
+        right: 0px;
+        opacity: 1;
+    }
+}
+
+.fade_right2 {
+    animation: fade_right2 1s ease-out 1s both;
+}
+
+@keyframes fade_right2 {
+    from {
+        right: -60px;
+        opacity: 0;
+    }
+
+
+    to {
+        right: 0px;
+        opacity: 1;
+    }
+}
+
+.fade_right3 {
+    animation: fade_right3 1s ease-out 1.4s both;
+}
+
+@keyframes fade_right3 {
+    from {
+        right: -60px;
+        opacity: 0;
+    }
+
+
+    to {
+        right: 0px;
+        opacity: 1;
+    }
+}
+
+.fade_right4 {
+    animation: fade_right4 1s ease-out 1.8s both;
+}
+
+@keyframes fade_right4 {
+    from {
+        right: -60px;
         opacity: 0;
     }
 
