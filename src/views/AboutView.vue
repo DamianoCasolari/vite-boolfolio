@@ -12,7 +12,7 @@ export default {
                         <img src="../../public/irish.jpg" alt="Profile Picture" class="profile-image">
                     </div>
                     <div class="col-md-6">
-                        <div class="about-content">
+                        <div class="about-content pt-4">
                             <h1 class="fade_right position-relative">About me</h1>
                             <p class="fade_right2 position-relative">I'm Damiano Casolari, a passionate web developer with a
                                 keen interest in

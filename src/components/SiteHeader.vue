@@ -45,19 +45,22 @@ export default {
                 <div class="logo_container">
                     <a class="navbar-brand d-flex align-items-center justify-content-start mx-1" href="#">
                         <img class="" src="../assets/img/dc_trsp.png " alt="DC Logo" height="40">
-                        <a class="font_w500 text-dark mx-2 underline-on-hover" href="#projects">Projects</a>
+                        <a class="font_w500 text-dark mx-2 underline-on-hover text_shadow" href="#projects">Projects</a>
+                        <!-- <router-link :to="{ 'name': 'projects' }" class="nav-link">
+                            <span class="font_w500 text-dark mx-2 underline-on-hover">Projects</span>
+                        </router-link> -->
                     </a>
                 </div>
                 <nav class="d-flex">
                     <router-link :to="{ 'name': 'home' }" class="nav-link">
-                        <span class="font_w500 text-dark mx-2 underline-on-hover">Home</span>
+                        <span class="font_w500 text-dark mx-2 underline-on-hover text_shadow">Home</span>
                     </router-link>
-                    <router-link :to="{ 'name': 'about' }" class="nav-link">
+                    <router-link :to="{ 'name': 'about' }" class="nav-link text_shadow">
                         <span class=" font_w500 text-dark mx-2 underline-on-hover">About
                             me</span>
                     </router-link>
-                    <router-link :to="{ 'name': 'contacts' }" class="nav-link">
-                        <span class="font_w500 text-dark mx-2 underline-on-hover">Contacs</span>
+                    <router-link :to="{ 'name': 'contacts' }" class="nav-link text_shadow">
+                        <span class="font_w500 text-dark mx-2 underline-on-hover">Contacts</span>
                     </router-link>
                 </nav>
 

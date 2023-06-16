@@ -22,6 +22,11 @@ const router = createRouter({
         'name': 'contacts',
         'component': ContactsView
     },
+    {
+        'path': '/#projects',
+        'name': 'projects',
+        'component': HomeView
+    },
 
     ]
 })

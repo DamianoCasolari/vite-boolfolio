@@ -31,10 +31,29 @@ export default {
         },
         getImagePath(path) {
             return this.base_URL + 'storage/' + path
+        },
+        cascadeTitle() {
+            const heading = document.getElementById('cascading-effect-heading');
+            const letters = heading.textContent.split('');
+
+            heading.textContent = '';
+
+            letters.forEach((letter, index) => {
+                const span = document.createElement('span');
+                span.textContent = letter;
+
+                setTimeout(() => {
+                    span.style.opacity = '1';
+                    span.style.top = '0';
+                }, 1000 + index * 100);
+
+                heading.appendChild(span);
+            })
         }
     },
     mounted() {
         this.getProjects(this.base_URL + this.projects_API)
+        this.cascadeTitle()
     }
 
 }
@@ -49,7 +68,8 @@ export default {
 
             <div class="info_contaienr px-2 py-3 col-sm-6 text-center text-sm-start">
                 <h1 id="myText">
-                    <span class="fade_in position-relative fs-1 text_shadow">Hi, I'm Damiano</span>
+                    <!-- <span class="fade_in position-relative fs-1 text_shadow">Hi, I'm Damiano</span> -->
+                    <h1 id="cascading-effect-heading" class="fs-1 text_shadow">Hi, I'm Damiano</h1>
 
                 </h1>
 
