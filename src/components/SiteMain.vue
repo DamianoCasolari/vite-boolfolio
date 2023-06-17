@@ -1,5 +1,7 @@
 <script>
 import PaginationController from './PaginationController.vue';
+import { appearWithScroll, arrowAppearWithScroll } from '../assets/js/utility_functions.js';
+
 import axios from 'axios';
 
 export default {
@@ -10,7 +12,8 @@ export default {
             projects_API: 'api/projects',
             loading: true,
             projects: [],
-            error: null
+            error: null,
+            project_button: true
         }
 
     },
@@ -32,6 +35,9 @@ export default {
         getImagePath(path) {
             return this.base_URL + 'storage/' + path
         },
+        handleClick() {
+            this.project_button = false
+        },
         cascadeTitle() {
             const heading = document.getElementById('cascading-effect-heading');
             const letters = heading.textContent.split('');
@@ -49,19 +55,33 @@ export default {
 
                 heading.appendChild(span);
             })
-        }
+        },
+        scrollFunction() {
+            const section = document.querySelector(".main_container")
+            appearWithScroll(section)
+        },
+        arrowAppearWithScroll() {
+            const section = document.querySelector(".main_container")
+            const arrow = document.querySelector(".arrow")
+            arrowAppearWithScroll(section, arrow)
+        },
+
     },
     mounted() {
         this.getProjects(this.base_URL + this.projects_API)
         this.cascadeTitle()
+        this.scrollFunction()
+        this.arrowAppearWithScroll()
     }
 
 }
 </script>
 
 <template>
-    <div id="top" class="jumbotron p-5 bg_snow rounded-3 vh_100 d-flex align-items-center justify-content-center">
-        <div class="container py-4 d-flex flex-wrap align-items-center justify-content-center">
+    <div id="top"
+        class="jumbotron p-5 bg_snow rounded-3 vh_100 d-flex flex-column align-items-center justify-content-center">
+
+        <div class="container py-4 mt-0 mt-md-4 mb-2 d-flex flex-wrap align-items-center justify-content-center">
             <div class=" text-end pe-3 ghost col-sm-6">
                 <img src="../assets/img/photo.jpg" alt="DC Logo" height="300" class="rounded-4 shadow">
             </div>
@@ -78,6 +98,9 @@ export default {
                     </i></p>
             </div>
         </div>
+
+        <a class="text-dark mx-2 mt-sm-5 underline-on-hover z_index50 text_shadow position-relative ghost2 t_duration"
+            :class="{ 'opacity-0': !project_button }" href="#projects" @click="handleClick">Projects</a>
     </div>
     <svg class="wave-1hkxOo w-100 rotate_180" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"
         preserveAspectRatio="none">
@@ -87,10 +110,10 @@ export default {
     </svg>
     <section class=" m_main main_container bg-white">
         <div class="container ">
-            <h1 class="text-center" id="projects">Projects </h1>
+            <h1 class="text-center " :class="!project_button ? 'opacity-1' : 'opacity-0'" id="projects">Projects </h1>
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-4">
-                <div class="col mt-4" v-for="project in projects.data">
+            <div class="scroll_element row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-4">
+                <div class="col mt-4" v-for=" project  in  projects.data ">
                     <div class="card h-100 rounded-5 border-0 my_card open_img bg-transparent">
                         <div class=" text-center bg-transparent position-relative">
                             <div
@@ -114,14 +137,13 @@ export default {
     </section>
     <PaginationController @prev="getProjects(projects.prev_page_url)" @next="getProjects(projects.next_page_url)"
         :prev_condition="projects.prev_page_url" :next_condition="projects.next_page_url" />
-    <div class="arrow position-fixed bottom-0 end-0 p-3">
+    <div class="arrow position-fixed bottom-0 light_shadow m-2 ">
 
-        <a href="#top">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                class="bi bi-arrow-up-square scale_hover" viewBox="0 0 16 16">
+        <a href="#top" class="cl_light_street">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="gray" class="bi bi-arrow-up-short"
+                viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
-                    d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"
-                    fill="rgb(100,100,100)" />
+                    d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />
             </svg>
         </a>
 

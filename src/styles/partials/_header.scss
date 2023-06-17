@@ -1,5 +1,9 @@
 header {
     font-family: 'Poppins', sans-serif;
+    z-index: 10000;
+    height: 66px;
+
+
 }
 
 
@@ -10,4 +14,8 @@ header {
     color: #212529;
     transition-duration: 0.4s;
 
+}
+
+.logo_filter {
+    opacity: 0.8;
 }

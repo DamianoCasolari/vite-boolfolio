@@ -15,6 +15,10 @@
 }
 
 
+
+
+// VALIDATE Element 
+
 .flash {
     animation: flash 2s ease-in infinite;
 }
@@ -32,10 +36,6 @@
         opacity: 1;
     }
 }
-
-
-// VALIDATE Element 
-
 
 .fa-hand-pointer {
     position: absolute;
@@ -60,6 +60,8 @@
         top: 1px;
     }
 }
+
+//WELCOME SECTION ANIMATION
 
 
 .fade_in {
@@ -163,6 +165,41 @@
     }
 }
 
+.ghost2 {
+    animation: ghost2 0.5s ease-out 3s both;
+}
+
+@keyframes ghost2 {
+    from {
+        opacity: 0;
+    }
+
+
+    to {
+        opacity: 1;
+    }
+}
+
+.cascade_project {
+    animation: cascade_project 3s ease-out both;
+}
+
+@keyframes cascade_project {
+    from {
+        top: 0;
+        font-size: 1rem;
+    }
+
+
+    to {
+        top: 20vh;
+        font-size: 35px;
+    }
+}
+
+
+
+
 //CASCADE EFFECT
 
 #cascading-effect-heading span {
@@ -207,6 +244,8 @@
     top: 100px;
     left: 100px;
     z-index: 50;
+    // background-color: rgb(163, 118, 241) !important;
+
 }
 
 .ball-3 {
@@ -215,6 +254,8 @@
     top: 150px;
     left: 150px;
     z-index: 50;
+
+
 }
 
 .ball-4 {
@@ -230,6 +271,8 @@
     top: 250px;
     left: 250px;
     z-index: 50;
+
+
 }
 
 .ball-6 {
@@ -238,6 +281,8 @@
     top: 250px;
     left: 250px;
     z-index: 50;
+
+
 }
 
 .ball-7 {

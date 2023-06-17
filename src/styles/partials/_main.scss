@@ -1,6 +1,11 @@
 .main_container {
 
+    transition-duration: 1s;
+    padding-top: 40px;
 
+    h1 {
+        transition-duration: 2s;
+    }
 
 
     .my_card {
@@ -32,18 +37,21 @@
 
 
     }
-
-
 }
 
-.bi-arrow-up-square {
+.jumbotron>a {
+    transition-duration: 1s;
+    opacity: 1;
+}
+
+
+//anchor arrow back to top
+
+.arrow {
+    // opacity: 0;
+    right: -100px;
     transition-duration: 0.4s;
-}
-
-.fake_background {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
+    background-color: rgba(240, 248, 255, 0.863);
+    border-radius: 50%;
 
 }

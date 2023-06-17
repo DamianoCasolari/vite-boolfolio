@@ -4,34 +4,28 @@
 
     .info_container {
         position: relative;
-        top: 66px;
+        background-color: #f7f7f7;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-}
 
 
+    .profile_image {
+        max-width: 100%;
+        border-radius: 35px;
+        margin-top: 30px;
+    }
 
 
+    .about_content h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
 
-.about-section {
-    background-color: #f7f7f7;
-    padding: 100px 0;
-}
-
-.profile-image {
-    max-width: 100%;
-    border-radius: 35px;
-}
-
-.about-content {
-    padding-left: 40px;
-}
-
-.about-content h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.about-content p {
-    font-size: 18px;
-    line-height: 1.5;
+    .about-content p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
 }

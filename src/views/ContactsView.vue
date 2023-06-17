@@ -45,13 +45,13 @@ export default {
         <div class="ball ball-6"></div>
         <div class="ball ball-7"></div>
         <div class="ball ball-8"></div>
-        <div class="business_card p-5">
+        <div class="business_card p-4 p-md-5">
             <h4 class=" text-center"> Contacts</h4>
             <ul class="list-unstyled">
-                <li><span class="fw_500">Phone number : </span> 3477952189</li>
-                <li><span class="fw_500">Email : </span> damianocasolari@gmail.com</li>
-                <li><span class="fw_500">GitHub : </span><a
-                        href="https://github.com/DamianoCasolari">https://github.com/DamianoCasolari</a></li>
+                <li class="w-100"><span class="fw_500">Phone number : </span> <span>3477952189</span></li>
+                <li class="w-100"><span class="fw_500">Email : </span> <span>damianocasolari@gmail.com</span> </li>
+                <li class="w-100"><span class="fw_500 ">GitHub : </span><a href="https://github.com/DamianoCasolari">
+                        <span class=" break_letter">https://github.com/DamianoCasolari</span></a></li>
 
             </ul>
         </div>

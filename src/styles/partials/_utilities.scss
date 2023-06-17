@@ -1,5 +1,12 @@
+@use "./variables" as *;
+
+
 .z_index {
     z-index: 100;
+}
+
+.z_index50 {
+    z-index: 50;
 }
 
 .no_outline {
@@ -7,12 +14,12 @@
 }
 
 
-.m_main {
-    padding-top: 80px;
-}
-
 .pointer {
     cursor: pointer;
+}
+
+.light_shadow {
+    filter: drop-shadow(1px 1px 2px rgba(60, 60, 60, 0.819));
 }
 
 .card_shadow {
@@ -20,7 +27,11 @@
 }
 
 .vh_100 {
-    height: 100vh;
+    min-height: 100vh;
+}
+
+.vh_80 {
+    min-height: 80vh;
 }
 
 .rotate_180 {
@@ -57,8 +68,27 @@
 }
 
 
+.break-letter {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
 //COLOR
 
 .bg_snow {
-    background-color: rgb(244, 244, 244);
+    background-color: $clr_snow;
+}
+
+.cl_light_street {
+    // color: rgba(158, 158, 158, 0.688);
+    color: $clr_street;
+}
+
+
+//FOR ANIMATION
+
+
+.t_duration {
+    transition-duration: 0.4s;
 }
