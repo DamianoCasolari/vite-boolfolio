@@ -7,7 +7,7 @@ export default {
     data() {
         return {
             base_URL: 'http://127.0.0.1:8000/',
-            projects_API: 'api/projects',
+            projects_API: 'api/projects/',
             loading: true,
             project: [],
             error: null
@@ -16,8 +16,25 @@ export default {
 
     },
     methods: {
-        // const url = this.base_URL + projects_API + this.$route.params.slug;
-        // console.log(url);
+        getProjects(url) {
+            axios.get(url).then(response => {
+
+                if (response.data.success) {
+                    this.project = response.data.result
+                    // console.log(this.project);
+                    this.loading = false
+
+                } else {
+                    this.error = response.data.result
+                    console.log(this.error);
+                }
+
+            }).catch(error => {
+                console.log(error)
+                this.error = error.message
+            }
+            )
+        },
     },
 
 
@@ -25,12 +42,29 @@ export default {
 
     },
     mounted() {
+        const url = this.base_URL + this.projects_API + this.$route.params.slug;
+        this.getProjects(url)
     }
 }
 
 
 </script>
 
-<template></template>
+<template>
+    <div class="single_project">
+        <div v-if="project">
+            <div>{{ project.title }}</div>
+
+        </div>
+        <div v-else>
+            {{ error }}
+
+        </div>
+        <!-- <div>{{ $route.fullPath }}</div>
+        <div>{{ $route.hash }}</div>
+        <div>{{ $route.path }}</div>
+        <div>{{ $route.name }}</div> -->
+    </div>
+</template>
 
 <style lang="scss"></style>

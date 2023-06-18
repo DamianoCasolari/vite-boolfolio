@@ -1,11 +1,10 @@
 .about_me {
-    min-height: 100vh;
 
 
     .info_container {
+        min-height: calc(100vh - 66px);
         position: relative;
         background-color: #f7f7f7;
-        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;

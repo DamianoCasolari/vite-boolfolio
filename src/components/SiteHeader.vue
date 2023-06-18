@@ -7,7 +7,6 @@ export default {
         return {
             headerScroll: true,
             lastPosition: 0,
-            shadow_on: false,
         }
     },
     components: {
@@ -17,10 +16,8 @@ export default {
 
     methods: {
         scrollFunction() {
-            this.shadow_on = false
-            const currentPosition = window.pageYOffset;
+            const currentPosition = window.scrollY;
             if (currentPosition > 66) {
-                this.shadow_on = true
                 if (currentPosition > this.lastPosition) {
                     this.headerScroll = false;
                 } else {
@@ -28,6 +25,15 @@ export default {
                 }
                 this.lastPosition = currentPosition;
             }
+        },
+        resetHeader() {
+            this.headerScroll = true;
+
+        }
+    },
+    watch: {
+        $route(to, from) {
+            this.resetHeader();
         }
     },
 
@@ -45,10 +51,6 @@ export default {
                 <div class="logo_container">
                     <a class="navbar-brand d-flex align-items-center justify-content-start mx-1 logo_filter" href="#">
                         <img class="" src="../assets/img/logocd_gray.png " alt="DC Logo" height="60">
-
-                        <!-- <router-link :to="{ name: 'home', hash: '#projects' }" class="nav-link">
-                            <span class="font_w500 text-dark mx-2 underline-on-hover text_shadow">project</span>
-                        </router-link> -->
 
                     </a>
                 </div>

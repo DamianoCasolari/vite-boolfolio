@@ -39,9 +39,27 @@
     }
 }
 
-.jumbotron>a {
-    transition-duration: 1s;
-    opacity: 1;
+.jumbotron {
+
+    .anchor a {
+        transition-duration: 2s;
+        opacity: 1;
+
+        &.disapper {
+            animation: disapper 0.4s linear both;
+        }
+    }
+
+}
+
+@keyframes disapper {
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
 }
 
 

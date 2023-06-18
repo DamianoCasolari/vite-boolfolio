@@ -13,7 +13,8 @@ export default {
             loading: true,
             projects: [],
             error: null,
-            project_button: true
+            project_button: true,
+            ghost: true,
         }
 
     },
@@ -65,19 +66,38 @@ export default {
             const arrow = document.querySelector(".arrow")
             arrowAppearWithScroll(section, arrow)
         },
+        handleScroll() {
+            var viewportHeight = window.innerHeight / 10 * 8.5;
+            var div2Position = document.querySelector(".main_container").getBoundingClientRect().top;
+
+            if (div2Position < viewportHeight) {
+                this.project_button = false;
+                this.ghost = false;
+            } else {
+                this.project_button = true;
+            }
+        },
+        toggleAppearWithScroll() {
+            window.addEventListener('scroll', this.handleScroll);
+        }
 
     },
     mounted() {
         this.getProjects(this.base_URL + this.projects_API)
+        this.toggleAppearWithScroll()
         this.cascadeTitle()
         this.scrollFunction()
         this.arrowAppearWithScroll()
+    },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.handleScroll);
     }
-
 }
 </script>
 
 <template>
+    <!-- PRESENTATION SIDE  -->
+
     <div id="top"
         class="jumbotron p-5 bg_snow rounded-3 vh_100 d-flex flex-column align-items-center justify-content-center">
 
@@ -98,9 +118,10 @@ export default {
                     </i></p>
             </div>
         </div>
-
-        <a class="text-dark mx-2 mt-sm-5 underline-on-hover z_index50 text_shadow position-relative ghost2 t_duration"
-            :class="{ 'opacity-0': !project_button }" href="#projects" @click="handleClick">Projects</a>
+        <div class="anchor up_down position-relative">
+            <a class=" anchor text-dark mx-2 mt-sm-5 underline-on-hover z_index50 text_shadow position-relative "
+                :class="{ 'disapper': !project_button, 'ghost2': ghost }" href="#projects">Projects</a>
+        </div>
     </div>
     <svg class="wave-1hkxOo w-100 rotate_180" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"
         preserveAspectRatio="none">
@@ -108,35 +129,50 @@ export default {
             d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z"
             fill="rgb(244, 244, 244)"></path>
     </svg>
+
+    <!-- PROJECTS SIDE  -->
+
     <section class=" m_main main_container bg-white">
-        <div class="container ">
+        <div class="container">
             <h1 class="text-center " :class="!project_button ? 'opacity-1' : 'opacity-0'" id="projects">Projects </h1>
 
             <div class="scroll_element row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-4">
-                <div class="col mt-4" v-for=" project  in  projects.data ">
-                    <div class="card h-100 rounded-5 border-0 my_card open_img bg-transparent">
-                        <div class=" text-center bg-transparent position-relative">
-                            <div
-                                class="d-flex justify-content-center align-items-center bg_dark_trnsp rounded-5 opacity_hover pointer p-2">
-                                <h4 class="card-title text-white p-2 fw-bold text_shadow2">
-                                    {{ project.title }}</h4>
+                <div class="col mt-4" v-for=" project in projects.data">
+
+                    <!-- Define a single project in its own specific route-link  -->
+
+                    <router-link :to="{ name: 'single-project', params: { 'slug': project.slug } }">
+                        <div class="card h-100 rounded-5 border-0 my_card open_img bg-transparent">
+                            <div class=" text-center bg-transparent position-relative">
+                                <div
+                                    class="d-flex justify-content-center align-items-center bg_dark_trnsp rounded-5 opacity_hover pointer p-2">
+                                    <h4 class="card-title text-white p-2 fw-bold text_shadow2">
+                                        {{ project.title }}</h4>
+
+                                </div>
+                                <img :src="getImagePath(project.logo)" class="card-img-top pointer card_shadow"
+                                    :alt="project.title + ' image'">
+                                <div class="p-3 fw-bold text_shadow2 text-white position-absolute top-0 end-0"> {{
+                                    project.type.name
+                                }}
+                                </div>
 
                             </div>
-                            <img :src="getImagePath(project.logo)" class="card-img-top pointer card_shadow"
-                                :alt="project.title + ' image'">
-                            <div class="p-3 fw-bold text_shadow2 text-white position-absolute top-0 end-0"> {{
-                                project.type.name
-                            }}
-                            </div>
-
                         </div>
-                    </div>
+                    </router-link>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- PAGINATION SIDE  -->
+
     <PaginationController @prev="getProjects(projects.prev_page_url)" @next="getProjects(projects.next_page_url)"
         :prev_condition="projects.prev_page_url" :next_condition="projects.next_page_url" />
+
+
+    <!-- ARROW TO GO BACK  -->
+
     <div class="arrow position-fixed bottom-0 light_shadow m-2 ">
 
         <a href="#top" class="cl_light_street">

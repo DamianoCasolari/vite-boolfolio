@@ -36,7 +36,7 @@ export default {
 
 </script>
 <template>
-    <div id="container" class="bg-light contacts vh_100 d-flex flex-wrap align-items-center justify-content-center">
+    <div id="container" class="bg-light contacts d-flex flex-wrap align-items-center justify-content-center">
         <div class="ball ball-1"></div>
         <div class="ball ball-2"></div>
         <div class="ball ball-3"></div>

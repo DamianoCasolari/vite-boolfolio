@@ -24,8 +24,8 @@ const router = createRouter({
         'component': ContactsView
     },
     {
-        'path': '/progects',
-        'name': 'project',
+        'path': '/progects/:slug',
+        'name': 'single-project',
         'component': SingleProject
     },
     ]
