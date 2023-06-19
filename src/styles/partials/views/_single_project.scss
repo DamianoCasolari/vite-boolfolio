@@ -1,5 +1,51 @@
-.single_project {
-    min-height: calc(100vh - 66px);
-    padding-top: 100px;
+@use "../variables" as *;
 
+.single_project {
+    min-height: 100vh;
+    padding-top: 86px;
+
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 3%, rgba(255, 255, 255, 1) 5%, rgba(228, 228, 228, 1) 100%);
+
+    .type_project {
+        background-color: rgb(255, 255, 255);
+    }
+
+    img {
+        object-fit: cover;
+
+
+    }
+
+    .description {
+
+        overflow-y: auto;
+
+
+    }
+
+    .element1 {
+        height: 30px;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .element2 {
+        height: 55px;
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+}
+
+.error_404 {
+    background-image: url('/DreamShaper_v5_A_lone_astronaut_finds_themselves_in_their_cham_0.jpg');
+    background-position: center;
+    background-size: cover;
+    // background-color: aqua;
 }

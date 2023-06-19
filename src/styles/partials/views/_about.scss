@@ -2,7 +2,8 @@
 
 
     .info_container {
-        min-height: calc(100vh - 66px);
+        min-height: 100vh;
+        padding-top: 86px;
         position: relative;
         background-color: #f7f7f7;
         display: flex;

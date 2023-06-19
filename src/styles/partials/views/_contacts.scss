@@ -1,5 +1,6 @@
 .contacts {
-    height: calc(100vh - 66px);
+    min-height: 100vh;
+    padding-top: 86px;
 
     .business_card {
         background-color: rgb(234, 234, 234);

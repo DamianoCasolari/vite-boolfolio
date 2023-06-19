@@ -3,6 +3,7 @@ import HomeView from './views/HomeView.vue'
 import AboutView from './views/AboutView.vue'
 import ContactsView from './views/ContactsView.vue'
 import SingleProject from './views/SingleProject.vue'
+import PageNotFound from './views/PageNotFound.vue'
 
 
 
@@ -28,6 +29,8 @@ const router = createRouter({
         'name': 'single-project',
         'component': SingleProject
     },
+    { path: '/:pathMatch(.*)*', name: 'PageNotFound', component: PageNotFound }
+
     ]
 })
 

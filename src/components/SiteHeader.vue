@@ -56,14 +56,17 @@ export default {
                 </div>
                 <nav class="d-flex">
                     <router-link :to="{ 'name': 'home' }" class="nav-link">
-                        <span class="font_w500 text-dark mx-2 underline-on-hover text_shadow">Home</span>
+                        <span class="font_w500 text-dark mx-2 underline-on-hover text_shadow "
+                            :class="{ 'selected_link': $route.name === 'home' }">Home</span>
                     </router-link>
                     <router-link :to="{ 'name': 'about' }" class="nav-link text_shadow">
-                        <span class=" font_w500 text-dark mx-2 underline-on-hover">About
+                        <span class=" font_w500 text-dark mx-2 underline-on-hover"
+                            :class="{ 'selected_link': $route.name === 'about' }">About
                             me</span>
                     </router-link>
                     <router-link :to="{ 'name': 'contacts' }" class="nav-link text_shadow">
-                        <span class="font_w500 text-dark mx-2 underline-on-hover">Contacts</span>
+                        <span class="font_w500 text-dark mx-2 underline-on-hover"
+                            :class="{ 'selected_link': $route.name === 'contacts' }">Contacts</span>
                     </router-link>
                 </nav>
 

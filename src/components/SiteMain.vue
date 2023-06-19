@@ -99,7 +99,7 @@ export default {
     <!-- PRESENTATION SIDE  -->
 
     <div id="top"
-        class="jumbotron p-5 bg_snow rounded-3 vh_100 d-flex flex-column align-items-center justify-content-center">
+        class="jumbotron p-md-5 bg_snow rounded-3 vh_100 d-flex flex-column align-items-center justify-content-center">
 
         <div class="container py-4 mt-0 mt-md-4 mb-2 d-flex flex-wrap align-items-center justify-content-center">
             <div class=" text-end pe-3 ghost col-sm-6">
@@ -119,8 +119,13 @@ export default {
             </div>
         </div>
         <div class="anchor up_down position-relative">
-            <a class=" anchor text-dark mx-2 mt-sm-5 underline-on-hover z_index50 text_shadow position-relative "
-                :class="{ 'disapper': !project_button, 'ghost2': ghost }" href="#projects">Projects</a>
+            <a class=" anchor text-dark mx-2 mt-sm-5 underline-on-hover z_index50 text_shadow position-relative text-center"
+                :class="{ 'disapper': !project_button, 'ghost2': ghost }" href="#projects">Projects <svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                </svg></a>
         </div>
     </div>
     <svg class="wave-1hkxOo w-100 rotate_180" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"

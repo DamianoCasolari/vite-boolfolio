@@ -20,13 +20,12 @@ export default {
             axios.get(url).then(response => {
 
                 if (response.data.success) {
+                    console.log(response.data.success);
                     this.project = response.data.result
-                    // console.log(this.project);
                     this.loading = false
 
                 } else {
-                    this.error = response.data.result
-                    console.log(this.error);
+                    this.$router.push({ name: 'PageNotFound' })
                 }
 
             }).catch(error => {
@@ -35,6 +34,16 @@ export default {
             }
             )
         },
+        getImageFromPath(path) {
+            return this.base_URL + 'storage/' + path
+        },
+        ImgAndInfoSameHeight() {
+            const longerDiv = document.querySelector('.info_container');
+            const shorterDiv = document.querySelector('.cover_container');
+            const shorterDivHeight = shorterDiv.offsetHeight;
+
+            longerDiv.style.height = shorterDivHeight + 'px';
+        }
     },
 
 
@@ -44,6 +53,8 @@ export default {
     mounted() {
         const url = this.base_URL + this.projects_API + this.$route.params.slug;
         this.getProjects(url)
+        console.log(this.project);
+        // this.ImgAndInfoSameHeight()
     }
 }
 
@@ -51,15 +62,63 @@ export default {
 </script>
 
 <template>
-    <div class="single_project">
-        <div v-if="project">
-            <div>{{ project.title }}</div>
+    <div class="single_project d-flex justify-content-center align-items-center " v-if="project.length != 0">
+
+        <div class="container position-relative">
+            <div class="main_info d-flex justify-content-between flex-wrap align-items-center">
+                <div class="wrap">
+                    <router-link :to="{ name: 'home' }"
+                        class="text-decoration-none pt-3 d-inline-block underline-on-hover text-dark fw-bold appear_with_scale"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-house scale_0 " viewBox="0 0 16 16">
+                            <path
+                                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                        </svg> <span>Back to home</span></router-link>
+                    <h2 class="pt-3 fw-bold text_shadow">{{ project.title }}</h2>
+                    <div class="py-1 fw-bold"><a :href="project.link" target="_blank">{{ project.link }}</a></div>
+                </div>
+                <div
+                    class="end-0 top-0 p-3 type_project text-dark fw-bold my-2 shadow d-flex justify-content-between align-items-center">
+                    {{ project.type?.name
+
+                    }}
+                </div>
+            </div>
+            <div class="row ">
+
+                <div class="cover_container col-12 col-md-4 py-3 px-3 h-100">
+                    <img class=" rounded-5 border-0 w-100 card_shadow" :src="getImageFromPath(project.logo)"
+                        :alt="project.title + image" @load="ImgAndInfoSameHeight()">
+                </div>
+                <div class="info_container col-12 col-md-8 py-3 px-3 ">
+                    <div class="card  border border-0 rounded-5 w-100 h-100 overflow-hidden">
+                        <div class="card-body h-100">
+                            <h5 class="card-title text-center">
+                                <div v-for="tecnology in project.tags "
+                                    class="text-center badge text-bg-dark me-2 mb-2 p-2">{{
+                                        tecnology.name
+                                    }}</div>
+                            </h5>
+                            <p class="description card-text h-100 position-relative">
+                            <div class="element1"></div>
+                            {{
+                                project.functionality
+                            }}
+                            <div class="element2"></div>
+                            </p>
+                            <div class="element2"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
 
         </div>
-        <div v-else>
+        <!-- <div v-else>
             {{ error }}
 
-        </div>
+        </div> -->
         <!-- <div>{{ $route.fullPath }}</div>
         <div>{{ $route.hash }}</div>
         <div>{{ $route.path }}</div>
