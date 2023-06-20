@@ -30,8 +30,7 @@ export default {
             }).catch(error => {
                 console.log(error)
                 this.error = error.message
-            }
-            )
+            })
         },
         getImagePath(path) {
             return this.base_URL + 'storage/' + path
@@ -66,19 +65,22 @@ export default {
             const arrow = document.querySelector(".arrow")
             arrowAppearWithScroll(section, arrow)
         },
-        handleScroll() {
-            var viewportHeight = window.innerHeight / 10 * 8.5;
-            var div2Position = document.querySelector(".main_container").getBoundingClientRect().top;
-
-            if (div2Position < viewportHeight) {
-                this.project_button = false;
-                this.ghost = false;
-            } else {
-                this.project_button = true;
-            }
-        },
         toggleAppearWithScroll() {
-            window.addEventListener('scroll', this.handleScroll);
+            window.addEventListener('scroll', () => {
+
+                if (document.querySelector(".main_container")) {
+
+                    const viewportHeight = window.innerHeight / 10 * 8.5;
+                    let div2Position = document.querySelector(".main_container").getBoundingClientRect().top;
+
+                    if (div2Position < viewportHeight) {
+                        this.project_button = false;
+                        this.ghost = false;
+                    } else {
+                        this.project_button = true;
+                    }
+                }
+            });
         }
 
     },
@@ -88,9 +90,6 @@ export default {
         this.cascadeTitle()
         this.scrollFunction()
         this.arrowAppearWithScroll()
-    },
-    beforeDestroy() {
-        window.removeEventListener('scroll', this.handleScroll);
     }
 }
 </script>
@@ -161,7 +160,6 @@ export default {
                                     project.type.name
                                 }}
                                 </div>
-
                             </div>
                         </div>
                     </router-link>
