@@ -2,6 +2,14 @@
     filter: invert(1);
 }
 
+.lighter {
+    transition: 0.4s;
+    color: #f1b504 !important;
+    filter: drop-shadow(1px 2px 3px black);
+
+}
+
+
 .open_img:hover {
 
     transform: scale(0.93);
@@ -53,8 +61,12 @@
     transform: scale(1.1);
 }
 
+.scale_hover_less:hover {
+    transform: scale(0.95);
+}
 
-//combo scale
+
+//combo scale - back to home - single page
 
 .scale_0 {
     transform: scale(0);

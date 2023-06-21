@@ -13,6 +13,10 @@
     z-index: 49;
 }
 
+.z_index_under2 {
+    z-index: 2;
+}
+
 .no_outline {
     outline: none !important;
 }
@@ -32,6 +36,10 @@
 
 .vh_100 {
     min-height: 100vh;
+}
+
+.vh100 {
+    height: 100vh;
 }
 
 .vh_80 {

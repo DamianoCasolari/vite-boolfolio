@@ -1,11 +1,18 @@
-.main_container {
+h1 {
+    transition-duration: 2s;
+}
 
+.main_photo {
+    height: 300px;
+}
+
+
+.main_container {
     transition-duration: 1s;
     padding-top: 40px;
 
-    h1 {
-        transition-duration: 2s;
-    }
+
+
 
 
     .my_card {
@@ -43,6 +50,10 @@
 
     padding-top: 86px;
 
+    .job {
+        color: #f1b504;
+    }
+
     .anchor a {
         transition-duration: 2s;
         opacity: 1;
@@ -50,6 +61,8 @@
         &.disapper {
             animation: disapper 0.4s linear both;
         }
+
+
     }
 
 }
@@ -74,4 +87,15 @@
     background-color: rgba(240, 248, 255, 0.863);
     border-radius: 50%;
 
+}
+
+
+
+//media query
+
+
+@media screen and (min-width:576px) {
+    .main_photo {
+        height: 500px;
+    }
 }

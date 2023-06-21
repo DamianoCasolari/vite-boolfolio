@@ -106,18 +106,18 @@ export default {
         class="jumbotron p-md-5 bg_snow rounded-3 vh_100 d-flex flex-column align-items-center justify-content-center">
         <div class="container py-4 mt-0 mt-md-4 mb-2 d-flex flex-wrap align-items-center justify-content-center">
             <div class=" text-end pe-3 ghost col-sm-6 z_inde49">
-                <img src="../assets/img/photo.jpg" alt="DC Logo" height="300" class="rounded-4 shadow z_inde49">
+                <img src="../assets/img/photo.jpg" alt="DC Logo" class="rounded-4 z_inde49 main_photo">
             </div>
 
             <div class="info_contaienr px-2 py-3 col-sm-6 text-center text-sm-start z_index50">
                 <div id="myText">
-                    <h1 id="cascading-effect-heading" class="fs-1 text_shadow">Hi, I'm Damiano</h1>
+                    <h1 id="cascading-effect-heading" class="display-3 text_shadow fw-bold">Hi, I'm Damiano</h1>
 
                 </div>
 
-                <p class="fade_right position-relative text_shadow z_index50"><i>
-                        My job is to create <b>tailor-made sites</b> for <span class="text-primary">you</span>,
-                    </i></p>
+                <p class="fade_right position-relative text_shadow z_index50 fs-3">
+                    <span class="job">Web</span> Developer
+                </p>
             </div>
         </div>
         <div class="anchor up_down position-relative">
@@ -179,7 +179,7 @@ export default {
 
     <!-- ARROW TO GO BACK  -->
 
-    <div class="arrow position-fixed bottom-0 light_shadow m-2 ">
+    <div class="arrow position-fixed bottom-0 light_shadow m-2 scale_hover_less">
 
         <a href="#top" class="cl_light_street">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="gray" class="bi bi-arrow-up-short"
