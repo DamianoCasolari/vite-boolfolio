@@ -29,3 +29,5 @@ export function arrowAppearWithScroll(element, arrow) {
         }
     })
 };
+
+

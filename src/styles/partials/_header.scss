@@ -1,3 +1,14 @@
+.shadow_line {
+    height: 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: 80%;
+    background: rgba(193, 193, 193, 0.603);
+    background: linear-gradient(180deg, rgba(245, 244, 244, 0.579) -20%, rgba(255, 255, 255, 0) 100%);
+    z-index: 999;
+}
+
 header {
     font-family: 'Poppins', sans-serif;
     z-index: 10000;

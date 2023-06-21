@@ -1,3 +1,5 @@
+@use "./variables" as *;
+
 h1 {
     transition-duration: 2s;
 }
@@ -49,6 +51,51 @@ h1 {
 .jumbotron {
 
     padding-top: 86px;
+
+    //EFFECT TYPING WEB DEVELOPER
+
+    .wrapper {
+        vertical-align: middle;
+        white-space: nowrap;
+        animation: appear 0s both 3s;
+        opacity: 0;
+
+    }
+
+    .typing-demo {
+        width: 16ch;
+        animation: typing 2s steps(16) 3s, blink .5s step-end infinite alternate;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid;
+        color: $hay;
+        // font-family: monospace;
+
+    }
+
+    @keyframes typing {
+        from {
+            width: 0
+        }
+    }
+
+    @keyframes blink {
+        50% {
+            border-color: transparent
+        }
+    }
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+
 
     .job {
         color: #f1b504;

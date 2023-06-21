@@ -29,3 +29,34 @@
         line-height: 1.5;
     }
 }
+
+// .typing-animation {
+//     position: relative;
+// }
+
+// .typing-text {
+//     overflow: hidden;
+//     white-space: nowrap;
+//     animation: typing 3s steps(40, end) infinite;
+// }
+
+// .cursor {
+//     display: inline-block;
+//     vertical-align: middle;
+//     width: 2px;
+//     height: 20px;
+//     background-color: #000;
+//     animation: blink 0.7s infinite;
+// }
+
+// @keyframes typing {
+//     from {
+//         width: 0;
+//     }
+// }
+
+// @keyframes blink {
+//     50% {
+//         opacity: 0;
+//     }
+// }

@@ -36,8 +36,8 @@ export default {
 
 </script>
 <template>
-    <div id="container" class="bg-light contacts d-flex flex-wrap align-items-center justify-content-center">
-        <div class="ball ball-1"></div>
+    <div class="bg-light contacts d-flex flex-wrap align-items-center justify-content-center">
+        <!-- <div class="ball ball-1"></div>
         <div class="ball ball-2"></div>
         <div class="ball ball-3"></div>
         <div class="ball ball-4"></div>
@@ -45,16 +45,39 @@ export default {
         <div class="ball ball-6"></div>
         <div class="ball ball-7"></div>
         <div class="ball ball-8"></div>
-        <div class="business_card p-4 p-md-5">
-            <h4 class=" text-center"> Contacts</h4>
-            <ul class="list-unstyled">
-                <li class="w-100"><span class="fw_500">Phone number : </span> <span>3477952189</span></li>
-                <li class="w-100"><span class="fw_500">Email : </span> <span>damianocasolari@gmail.com</span> </li>
-                <li class="w-100"><span class="fw_500 ">GitHub : </span><a href="https://github.com/DamianoCasolari">
-                        <span class=" break_letter">https://github.com/DamianoCasolari</span></a></li>
+        <div class="ball ball-9"></div>
+        <div class="ball ball-10"></div>
+        <div class="ball ball-11"></div> -->
+        <!-- CARD CONTACTS  -->
+        <div class="context d-flex flex-wrap align-items-center justify-content-center z_index50">
+            <div class="business_card p-4 p-md-5">
+                <h4 class=" text-center fw-bold mb-3"> Contacts</h4>
+                <ul class="list-unstyled">
+                    <li class="w-100"><span class="fw_500">Phone number : </span> <span>3477952189</span></li>
+                    <li class="w-100"><span class="fw_500">Email : </span> <span>damianocasolari@gmail.com</span> </li>
+                    <li class="w-100"><span class="fw_500 ">GitHub : </span><a href="https://github.com/DamianoCasolari">
+                            <span class=" break_letter">https://github.com/DamianoCasolari</span></a></li>
 
+                </ul>
+            </div>
+        </div>
+
+        <!-- BACKGROUND ANIMATION -->
+        <div class="area">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
         </div>
+
     </div>
 </template>
 

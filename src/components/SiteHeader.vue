@@ -39,11 +39,19 @@ export default {
 
     mounted() {
         window.addEventListener('scroll', this.scrollFunction);
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var opacity = 0.8 - (scrollTop / 1000); // Regola il valore 1000 per determinare la velocità di dissolvenza
+
+            var shadowLine = document.querySelector('.shadow_line');
+            shadowLine.style.opacity = opacity;
+        });
     }
 }
 
 </script >
 <template>
+    <div class="shadow_line"></div>
     <header>
         <nav class="navbar navbar-expand-md shadow-sm position-fixed w-100 top-0 z_index header_shadow bg_color"
             :class="headerScroll ? 'header_on' : 'header_off'">
@@ -70,8 +78,8 @@ export default {
                     </a>
                 </div> -->
                 <div class="logo_container d-flex">
-                    <a class="navbar-brand d-flex align-items-center justify-content-start mx-1 logo_filter lighter scale_hover_less"
-                        href="https://www.linkedin.com/in/damiano-casolari/">
+                    <a class="navbar-brand d-flex align-items-center justify-content-start mx-2 logo_filter lighter scale_hover_less"
+                        href="https://www.linkedin.com/in/damiano-casolari/" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="60" fill="currentColor"
                             class="bi bi-linkedin lighter" viewBox="0 0 16 16">
                             <path
@@ -79,8 +87,8 @@ export default {
                         </svg>
 
                     </a>
-                    <a class="navbar-brand d-flex align-items-center justify-content-start mx-1 logo_filter lighter scale_hover_less"
-                        href="https://github.com/DamianoCasolari?tab=repositories">
+                    <a class="navbar-brand d-flex align-items-center justify-content-start mx-2 logo_filter lighter scale_hover_less"
+                        href="https://github.com/DamianoCasolari?tab=repositories" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="60" fill="currentColor"
                             class="bi bi-github lighter" viewBox="0 0 16 16">
                             <path

@@ -81,7 +81,7 @@ export default {
                     <!-- TOP SIDE -->
 
                     <h2 class="pt-3 fw-bold text_shadow">{{ project.title }}</h2>
-                    <div class="py-1 fw-bold"><a :href="project.link" target="_blank">{{ project.link }}</a></div>
+                    <!-- <div class="py-1 fw-bold"><a :href="project.link" target="_blank">{{ project.link }}</a></div> -->
                 </div>
                 <div
                     class="end-0 top-0 p-3 type_project text-dark fw-bold my-2 shadow d-flex justify-content-between align-items-center">
@@ -92,9 +92,21 @@ export default {
             </div>
             <div class="row ">
                 <!-- IMG SIDE -->
-                <div class="cover_container col-12 col-md-4 py-3 px-3 h-100">
-                    <img class=" rounded-5 border-0 w-100 card_shadow" :src="getImageFromPath(project.logo)"
-                        :alt="project.title + image" @load="ImgAndInfoSameHeight()">
+                <div class="cover_container col-12 col-md-4 py-3 px-3 h-100 position-relative">
+                    <a :href="project.link" target="_blank" class="h-100 d-inline-block w-100 position-relative">
+                        <div
+                            class=" overlay text-light opacity_hover z_index50 position-absolute w-100 h-100 rounded-5 border-0 d-flex justify-content-center align-items-center t_duration">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                                class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                <path
+                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                            </svg>
+                        </div>
+
+                        <img class=" rounded-5 border-0 w-100 card_shadow" :src="getImageFromPath(project.logo)"
+                            :alt="project.title + image" @load="ImgAndInfoSameHeight()">
+                    </a>
                 </div>
                 <!-- INFO SIDE -->
                 <div class="info_container col-12 col-md-8 py-3 px-3 ">

@@ -81,6 +81,9 @@ export default {
                     }
                 }
             });
+        },
+        coolText() {
+
         }
 
     },
@@ -90,6 +93,7 @@ export default {
         this.cascadeTitle()
         this.scrollFunction()
         this.arrowAppearWithScroll()
+
     }
 }
 </script>
@@ -110,14 +114,30 @@ export default {
             </div>
 
             <div class="info_contaienr px-2 py-3 col-sm-6 text-center text-sm-start z_index50">
+
+                <!-- <div class="container_title ghost">
+                    <div class="upper">Hi, I'm Damiano</div>
+                    <div class="lower">Hi, I'm Damiano</div>
+                    <div class="inside_title job">&lt;Web Developer/&gt;</div>
+                </div> -->
                 <div id="myText">
                     <h1 id="cascading-effect-heading" class="display-3 text_shadow fw-bold">Hi, I'm Damiano</h1>
 
                 </div>
+                <!-- 
+                <div class="ghost position-relative text_shadow z_index50 fs-3">
+                    &lt;<span class="content_stretch"><span class="job">Web</span> Developer</span>/&gt;
+                </div> -->
+                <div class="ghost position-relative text_shadow2 z_index50 fs-3">
+                    <span class="wrapper d-inline-block">
+                        <span class="typing-demo d-inline-block">
+                            &lt;Web Developer/&gt;
+                        </span>
+                    </span>
+                </div>
 
-                <p class="fade_right position-relative text_shadow z_index50 fs-3">
-                    <span class="job">Web</span> Developer
-                </p>
+
+
             </div>
         </div>
         <div class="anchor up_down position-relative">
