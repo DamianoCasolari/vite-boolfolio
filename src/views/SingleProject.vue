@@ -124,6 +124,7 @@ export default {
                                 project.functionality
                             }}
                             <div class="element2"></div>
+                            <div class="element2"></div>
                             </p>
                             <div class="element2"></div>
                         </div>
