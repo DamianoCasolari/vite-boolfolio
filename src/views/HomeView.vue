@@ -27,7 +27,9 @@ export default {
 </script>
 
 <template>
+    <!-- <div class="container position-relative"> -->
     <SiteMain />
+    <!-- </div> -->
 </template>
 
 <style lang="scss"></style>

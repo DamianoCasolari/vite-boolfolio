@@ -42,6 +42,11 @@
     height: 100vh;
 }
 
+.vh100_max800 {
+    height: 100vh;
+    max-height: 800px;
+}
+
 .vh_80 {
     min-height: 80vh;
 }
@@ -79,6 +84,10 @@
     font-weight: 500;
 }
 
+.title_size {
+    font-size: calc(18px + 1.5vw);
+}
+
 
 .break-letter {
     word-wrap: break-word;
@@ -107,4 +116,26 @@
 
 .t_duration2 {
     transition-duration: 2s;
+}
+
+
+
+//MEDIA QUERY
+
+
+@media screen and (min-width : 2100px) {
+    .title_size {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width : 359px) {
+    .media_none {
+        display: none !important;
+
+    }
+
+    .main_photo {
+        height: 300px !important;
+    }
 }

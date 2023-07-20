@@ -8,12 +8,15 @@
 @use "./partials/animation.scss" as *;
 @use "./partials/header.scss" as *;
 @use "./partials/main.scss" as *;
+@use "./partials/carousel.scss" as *;
 @import "/node_modules/bootstrap/scss/bootstrap";
+@import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100,500,800';
 @import url('https://fonts.googleapis.com/css2?family=Comforter&family=Fasthand&family=Poppins:wght@300;400;500;600;700;900&display=swap');
 
 
 body {
     font-family: 'Poppins', sans-serif;
+    // background: linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);
 }
 
 

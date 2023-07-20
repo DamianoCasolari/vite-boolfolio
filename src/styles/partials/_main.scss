@@ -1,56 +1,9 @@
 @use "./variables" as *;
 
-h1 {
-    transition-duration: 2s;
-}
-
-.main_photo {
-    height: 300px;
-}
-
-
-.main_container {
-    transition-duration: 1s;
-    padding-top: 40px;
-
-
-
-
-
-    .my_card {
-
-        transition-duration: 0.4s;
-        // border: 1px solid black !important;
-
-        .bg_dark_trnsp {
-            background-color: rgba(0, 0, 0, 0.63);
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            z-index: 99;
-            opacity: 0;
-            transition-duration: 0.4s;
-        }
-
-        img {
-            height: 300px;
-            object-fit: cover;
-            object-position: top;
-            border-radius: 2rem 2rem 2rem 2rem;
-
-        }
-
-        h6 {
-            transition-duration: 0.5s;
-        }
-
-
-    }
-}
-
 .jumbotron {
 
     padding-top: 86px;
+
 
     //EFFECT TYPING WEB DEVELOPER
 
@@ -69,7 +22,6 @@ h1 {
         overflow: hidden;
         border-right: 3px solid;
         color: $hay;
-        // font-family: monospace;
 
     }
 
@@ -96,11 +48,13 @@ h1 {
     }
 
 
-
+    //TEXT WEB DEVELOPER
     .job {
         color: #f1b504;
     }
 
+
+    //INITIAL BUTTON PROJECTS
     .anchor a {
         transition-duration: 2s;
         opacity: 1;
@@ -114,6 +68,63 @@ h1 {
 
 }
 
+//PROJECTS ZONE
+
+h1 {
+    transition-duration: 2s;
+}
+
+.main_photo {
+    height: 350px;
+}
+
+
+.main_container {
+    transition-duration: 1s;
+    padding-top: 40px;
+
+
+
+    .my_card {
+
+        transition-duration: 0.4s;
+        height: 300px;
+
+        .bg_dark_trnsp {
+            background-color: rgba(0, 0, 0, 0.63);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 99;
+            opacity: 0;
+            transition-duration: 0.4s;
+        }
+
+        img {
+            // height: 300px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 2rem 2rem 2rem 2rem;
+
+
+            &.moving_image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: transform 0.2s ease;
+            }
+
+        }
+
+
+        h6 {
+            transition-duration: 0.5s;
+        }
+
+
+    }
+}
+
 @keyframes disapper {
     from {
         opacity: 1
@@ -125,10 +136,9 @@ h1 {
 }
 
 
-//anchor arrow back to top
+//ANCHOR ARROW BUTTON FOR BACK TO THE TOP
 
 .arrow {
-    // opacity: 0;
     right: -100px;
     transition-duration: 0.4s;
     background-color: rgba(240, 248, 255, 0.863);
@@ -138,8 +148,7 @@ h1 {
 
 
 
-//media query
-
+//MEDIA QUERY
 
 @media screen and (min-width:576px) {
     .main_photo {
