@@ -123,13 +123,19 @@
 //MEDIA QUERY
 
 
-@media screen and (min-width : 2100px) {
+@media screen and (min-width : 1200px) {
     .title_size {
         font-size: 50px;
     }
 }
 
-@media screen and (max-width : 359px) {
+@media screen and (min-width : 1700px) {
+    .jumbotron {
+        height: 1000px;
+    }
+}
+
+@media screen and (max-width : 366px) {
     .media_none {
         display: none !important;
 
@@ -137,5 +143,12 @@
 
     .main_photo {
         height: 300px !important;
+    }
+}
+
+
+@media screen and (max-height : 700px) and (min-width:576px) {
+    .jumbotron {
+        height: 850px;
     }
 }

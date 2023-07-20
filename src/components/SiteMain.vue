@@ -104,7 +104,7 @@ export default {
     <div class="bg_snow ">
 
         <div id="top"
-            class="jumbotron container p-md-5rounded-3 vh100_max800 d-flex flex-column align-items-center justify-content-center position-relative">
+            class="jumbotron container rounded-3 vh100 d-flex flex-column align-items-center justify-content-center position-relative">
             <div class="shape_container position-absolute position1">
                 <div class="shape "></div>
             </div>
@@ -113,11 +113,11 @@ export default {
             </div>
             <div
                 class="container py-4 mt-0 mt-md-4 mb-2 d-flex flex-wrap  flex-column flex-md-row align-items-center justify-content-center">
-                <div class=" ghost3 col-md-6 z_inde49">
-                    <img src="../assets/img/photo.jpg" alt="DC Logo" class="rounded-4 z_inde49 main_photo">
+                <div class=" ghost3 col-lg-6 z_inde49">
+                    <img src="../assets/img/photo.jpg" alt="DC Logo" class="rounded-4 z_inde49 main_photo shadow">
                 </div>
 
-                <div class="info_contaienr px-2 pt-3 col-md-6 text-center text-sm-start z_index50">
+                <div class="info_contaienr px-2 pt-3 col-lg-6 text-center text-sm-start z_index50">
 
 
                     <!-- NEW TITLE -->
@@ -129,8 +129,10 @@ export default {
                             </div>
                         </div>
                         <div class="text-bottom">
-                            <div class="title_size d-flex no-wrap"><span style="color: #acacac;">Full stack </span>&nbsp;
-                                <span style="color: #acacac;"> web developer</span>
+                            <div class="title_size d-flex no-wrap"><span class="d-block"
+                                    style="color: #acacac;white-space: nowrap;">Full stack
+                                </span>&nbsp;
+                                <span style="color: #acacac;white-space: nowrap;"> web developer</span>
                             </div>
                         </div>
                     </div>
@@ -160,14 +162,13 @@ export default {
 
         <!-- PROJECTS SIDE  -->
 
-        <section class=" m_main main_container bg-snow">
+        <section class=" m_main main_container bg-snow" :class="{ 'opacity-0': ghost }">
             <div class="container">
-                <h1 class="text-center position-relative z-3" :class="!project_button ? 'opacity-1' : 'opacity-0'"
-                    id="projects">Projects
+                <h1 class="text-center position-relative z-3 " id="projects">Projects
                 </h1>
 
                 <div class="scroll_element row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-4">
-                    <div class="col mt-4" v-for=" project in projects.data">
+                    <div class="col mt-4" v-for="   project   in   projects.data  ">
 
                         <!-- Define a single project in its own specific route-link  -->
 
