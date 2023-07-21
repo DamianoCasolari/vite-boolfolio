@@ -42,6 +42,10 @@
     height: 100vh;
 }
 
+.vh100_100px {
+    height: calc(100vh - 100px);
+}
+
 .vh100_max800 {
     height: 100vh;
     max-height: 800px;

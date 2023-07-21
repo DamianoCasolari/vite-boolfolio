@@ -16,6 +16,7 @@ export default {
             error: null,
             project_button: true,
             ghost: true,
+            index: 1
         }
 
     },
@@ -82,32 +83,36 @@ export default {
                     }
                 }
             });
+
+
         },
-        // applyStylesToCards() {
-        //     this.$nextTick(() => {
-        //         const cards = this.$el.querySelectorAll('.my_card');
+        rollWord() {
+            setInterval(() => {
+                const word1 = document.querySelector(".word" + this.index);
+                console.log(word1);
+                const word2 = document.querySelector(".word" + ((this.index % 3) + 1));
+                console.log(word2);
 
-        //         cards.forEach((card, index) => {
-        //             card.style.top = `${index + 1}rem`;
-        //             card.style.transform = `rotate(${index + 1}deg)`;
-        //         });
-        //     });
-        // }
+                word1.classList.add("d-none")
+                word1.classList.remove("drop_animation")
+                word2.classList.add("drop_animation");
+                word2.classList.remove("d-none")
+                this.index = (this.index % 3) + 1
 
+            }, 3000)
 
+        }
 
     },
     mounted() {
 
         this.getProjects(this.base_URL + this.projects_API)
         this.toggleAppearWithScroll()
-        // this.cascadeTitle()
         this.scrollFunction()
         this.arrowAppearWithScroll()
-        // this.applyStylesToCards()
-
-
-
+        setTimeout(() => {
+            this.rollWord()
+        }, 500);
 
     }
 }
@@ -142,36 +147,29 @@ export default {
                             </div>
                         </div>
                         <div class="text-bottom">
-                            <div class="title_size d-flex no-wrap"><span class="d-block fw-semibold"
-                                    style="color: #acacac;white-space: nowrap;">Full stack
-                                </span>&nbsp;
-                                <span class="fw-semibold" style="color: #acacac;white-space: nowrap;"> web developer</span>
+                            <div class="title_size d-flex no-wrap">
+                                <div class="d-flex grow-1 fw-semibold text overflow-hidden"
+                                    style="white-space: nowrap; height: 2em;">
+                                    <span class="word1 grow-1 wisteria position-relative"
+                                        style="color: #acacac;">Fullstack</span>
+                                    <span class="word2 grow-1 d-none wisteria position-relative"
+                                        style="color: #959595;">Backend</span>
+                                    <span class="word3 grow-1 d-none wisteria position-relative"
+                                        style="color: #959595;">Frontend</span>
+                                </div>
+                                &nbsp;
+                                <div class="fw-semibold shrink-1" style="color: #acacac;white-space: nowrap;"> web developer
+                                </div>
                             </div>
                         </div>
                     </div>
 
-
-
-
-
                 </div>
+
             </div>
-            <!-- <div class="anchor up_down position-relative">
-                <a class=" anchor text-dark mx-2 mt-sm-5 underline-on-hover z_index50 text_shadow position-relative text-center"
-                    :class="{ 'disapper': !project_button, 'ghost2': ghost }" href="#projects">Projects <svg
-                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-chevron-down" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                    </svg></a>
-            </div> -->
+
         </div>
-        <!-- <svg class="wave-1hkxOo w-100 rotate_180" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"
-            preserveAspectRatio="none">
-            <path class="wavePath-haxJK1 animationPaused-2hZ4IO"
-                d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z"
-                fill="rgb(244, 244, 244)"></path>
-        </svg> -->
+
 
         <!-- PROJECTS SIDE  -->
 
@@ -213,10 +211,7 @@ export default {
                                     </div>
                                 </div>
                             </router-link>
-                            <!-- <div class="col-7 fs-1 ms-5 d-flex justify-content-center align-items-center"
-                                style="top: 0px; position: relative;">
-                                {{ project.title }}
-                            </div> -->
+
                         </div>
                     </div>
                     <div class="right_main_side col-7 d-none d-md-flex flex-column justify-content-center align-items-center px-4 py-5"
@@ -246,6 +241,9 @@ export default {
                                 deliver an exceptional user
                                 experience.</p>
 
+                            <div class="shape_container position-absolute position3">
+                                <div class="shape "></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -259,17 +257,20 @@ export default {
 
         <!-- CAROUSEL  -->
 
-        <div class="carousel bg-dark">
+        <div class="carousel bg-dark d-flex">
+            <div class="img_container">
+                <img :src="getImagePath()" alt="">
+            </div>
 
         </div>
 
 
         <!-- ARROW TO GO BACK  -->
 
-        <div class="arrow position-fixed bottom-0 light_shadow m-2 scale_hover_less">
+        <div class="arrow position-fixed bottom-0 light_shadow m-2 scale_hover_less z-3">
 
             <a href="#top" class="cl_light_street">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="gray" class="bi bi-arrow-up-short"
+                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="gray" class="bi bi-arrow-up-short"
                     viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                         d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z" />

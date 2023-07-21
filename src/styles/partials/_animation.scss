@@ -425,6 +425,24 @@
     }
 }
 
+.position3 {
+    right: 7px;
+    top: 154px;
+    z-index: -1;
+
+    .shape {
+        background: linear-gradient(#ededed 25%, #ddd 55%);
+        animation: morph 8s ease-in-out infinite;
+        border-radius: 20% 40% 30% 70% / 20% 30% 70% 40%;
+        height: 150px;
+        transition: all 1s ease-in-out;
+        width: 150px;
+        background-color: aliceblue;
+        z-index: -1;
+        // filter: drop-shadow(2px 2px 5px rgb(51, 51, 51))
+    }
+}
+
 
 
 @keyframes morph {
@@ -443,7 +461,6 @@
 
 //LATEST TITLE EFFECT
 
-// @import url('https://fonts.googleapis.com/css?family=Roboto:700');
 
 @keyframes showTopText {
     0% {
@@ -471,16 +488,10 @@
 }
 
 .animated-title {
-    // color: #222;
-    // font-family: Roboto, Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    // position: absolute;
-    // left: 60%;
-    // top: 50%;
-    // transform: translate(-50%, -50%);
     width: 100%;
 }
 
@@ -529,102 +540,41 @@
 }
 
 
-//TITLE EFFECT 
+//TITLE EFFECT ROLL 3 WORDS
+@keyframes dropAnimation {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
 
 
+    50% {
+        transform: translate3d(0, 15%, 0);
+    }
 
-// .container_title {
-//     width: 9.25em;
-//     height: 1.15em;
-//     font-size: 4rem;
-//     position: relative;
-// }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
 
-// .container_title div {
-//     position: absolute;
-//     left: 0;
-//     text-transform: uppercase;
-//     width: 100%;
-//     display: block;
-//     text-align: center;
-// }
-
-// .upper {
-//     top: 0;
-//     height: 52.5%;
-//     color: #121212;
-//     overflow: hidden;
-//     z-index: 3;
-//     animation: moveUp 1s ease-in-out 1 1.5s both;
-//     background-color: #f4f4f4;
-
-// }
-
-// .lower {
-//     bottom: 0;
-//     color: #121212;
-//     height: 100%;
-//     background: linear-gradient(180deg, #f4f4f4 52.5%, #121212 52.5%);
-//     color: transparent;
-//     background-clip: text;
-//     -webkit-background-clip: text;
-//     z-index: 1;
-//     animation: moveDown 1s ease-in-out 1 2.5s both;
-// }
-
-// .inside_title {
-//     position: absolute;
-//     top: 40%;
-//     font-weight: 500;
-//     transform: translateY(-40%);
-//     text-align: center;
-//     z-index: 2;
-//     font-size: 1rem;
-//     color: #121212;
-// }
-
-// @keyframes moveUp {
-
-//     0% {
-//         top: 0;
-//     }
+.drop_animation {
+    animation: dropAnimation 0.5s ease-in-out forwards;
+}
 
 
-//     100% {
-//         top: -45px;
-//     }
-// }
+//ROTATE EYE SINGLE PAGE
 
-// @keyframes moveDown {
+.overlay:hover .rotate_animation {
 
-//     0% {
-//         top: 0;
-//     }
+    animation: rotate_eye 0.5s ease-out forwards;
+}
 
+@keyframes rotate_eye {
+    0% {
+        transform: rotate(-50deg);
+    }
 
-//     100% {
-//         top: 30px;
-//     }
-// }
+    100% {
+        transform: rotate(0deg);
 
-// @media (max-width: 424px) {
-//     .container_title {
-//         font-size: 2.5rem;
-
-//     }
-
-//     .inside_titl {
-//         font-size: 0.75rem;
-//     }
-// }
-
-// @media (max-width: 320px) {
-//     .container_title {
-//         font-size: 2rem;
-
-//     }
-
-//     .inside_title {
-//         font-size: 0.5rem;
-//     }
-// }
+    }
+}

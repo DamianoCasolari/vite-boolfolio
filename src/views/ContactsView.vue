@@ -36,7 +36,8 @@ export default {
 
 </script>
 <template>
-    <div class="bg-light contacts d-flex flex-wrap align-items-center justify-content-center">
+    <div class="bg-light contacts d-flex flex-wrap align-items-center justify-content-center"
+        style="height: calc(100vh - 100px)">
         <!-- <div class="ball ball-1"></div>
         <div class="ball ball-2"></div>
         <div class="ball ball-3"></div>
@@ -55,8 +56,7 @@ export default {
                 <ul class="list-unstyled">
                     <li class="w-100"><span class="fw_500">Phone number : </span> <span>3477952189</span></li>
                     <li class="w-100"><span class="fw_500">Email : </span> <span>damianocasolari@gmail.com</span> </li>
-                    <li class="w-100"><span class="fw_500 ">GitHub : </span><a href="https://github.com/DamianoCasolari">
-                            <span class=" break_letter">https://github.com/DamianoCasolari</span></a></li>
+                    <li class="w-100"></li>
 
                 </ul>
             </div>
@@ -65,6 +65,20 @@ export default {
         <!-- BACKGROUND ANIMATION -->
         <div class="area">
             <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="circles2">
                 <li></li>
                 <li></li>
                 <li></li>

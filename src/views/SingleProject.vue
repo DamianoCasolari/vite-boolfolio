@@ -92,12 +92,12 @@ export default {
             </div>
             <div class="row ">
                 <!-- IMG SIDE -->
-                <div class="cover_container col-12 col-md-4 py-3 px-3 h-100 position-relative">
+                <div class="cover_container col-12 col-md-5 py-3 px-3 h-100 position-relative">
                     <a :href="project.link" target="_blank" class="h-100 d-inline-block w-100 position-relative">
                         <div
                             class=" overlay text-light opacity_hover z_index50 position-absolute w-100 h-100 rounded-5 border-0 d-flex justify-content-center align-items-center t_duration">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                class="bi bi-eye-fill rotate_animation position-relative" viewBox="0 0 16 16">
                                 <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
                                 <path
                                     d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
@@ -109,7 +109,7 @@ export default {
                     </a>
                 </div>
                 <!-- INFO SIDE -->
-                <div class="info_container col-12 col-md-8 py-3 px-3 ">
+                <div class="info_container col-12 col-md-7 py-3 px-3 ">
                     <div class="card  border border-0 rounded-5 w-100 h-100 overflow-hidden">
                         <div class="card-body h-100">
                             <h5 class="card-title text-center">
