@@ -71,7 +71,7 @@ export default {
                 <!-- ROUTER TO HOME PAGE -->
                 <div class="wrap">
                     <router-link :to="{ name: 'home' }"
-                        class="text-decoration-none pt-3 d-inline-block underline-on-hover text-dark fw-bold appear_with_scale"><svg
+                        class="text-decoration-none pt-3 d-inline-block underline-on-hover text-dark fw-semibold appear_with_scale"><svg
                             xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-house scale_0 " viewBox="0 0 16 16">
                             <path
@@ -80,11 +80,11 @@ export default {
 
                     <!-- TOP SIDE -->
 
-                    <h2 class="pt-3 fw-bold text_shadow">{{ project.title }}</h2>
-                    <!-- <div class="py-1 fw-bold"><a :href="project.link" target="_blank">{{ project.link }}</a></div> -->
+                    <h2 class="pt-3 fw-semibold text_shadow">{{ project.title }}</h2>
+                    <!-- <div class="py-1 fw-semibold"><a :href="project.link" target="_blank">{{ project.link }}</a></div> -->
                 </div>
                 <div
-                    class="end-0 top-0 p-3 type_project text-dark fw-bold my-2 shadow d-flex justify-content-between align-items-center">
+                    class="end-0 top-0 p-3 type_project text-dark fw-semibold my-2 shadow d-flex justify-content-between align-items-center">
                     {{ project.type?.name
 
                     }}

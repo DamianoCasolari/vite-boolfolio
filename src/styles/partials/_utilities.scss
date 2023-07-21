@@ -55,6 +55,9 @@
     transform: rotate(180deg);
 }
 
+.p_bottom_30 {
+    padding-bottom: 30px;
+}
 
 
 //TEXT SELECTOR
@@ -85,7 +88,7 @@
 }
 
 .title_size {
-    font-size: calc(18px + 1.5vw);
+    font-size: calc(18px + 1.4vw);
 }
 
 
@@ -99,6 +102,10 @@
 
 .bg_snow {
     background-color: $clr_snow;
+}
+
+.bg_carbon {
+    background-color: $clr_carbon;
 }
 
 .cl_light_street {
@@ -122,10 +129,21 @@
 
 //MEDIA QUERY
 
+//JUMBOTRON AND MAIN
 
 @media screen and (min-width : 1200px) {
-    .title_size {
-        font-size: 50px;
+
+    .title_size,
+    .right_main_side h1 {
+        font-size: 42px !important;
+    }
+}
+
+@media screen and (min-width : 1400px) {
+
+    .title_size,
+    .right_main_side h1 {
+        font-size: 47px !important;
     }
 }
 
@@ -150,5 +168,29 @@
 @media screen and (max-height : 700px) and (min-width:576px) {
     .jumbotron {
         height: 850px;
+    }
+}
+
+
+//cards effects
+
+
+@media screen and (min-width : 768px) {
+    .move_up {
+        transition-duration: 0.5s;
+    }
+
+    .move_up:hover {
+        transform: translatex(30px);
+
+    }
+}
+
+
+//HEADER
+
+@media screen and (min-width : 768px) {
+    .about_me_link {
+        display: none !important;
     }
 }

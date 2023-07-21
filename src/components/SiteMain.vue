@@ -3,6 +3,7 @@ import PaginationController from './PaginationController.vue';
 import { appearWithScroll, arrowAppearWithScroll } from '../assets/js/utility_functions.js';
 
 import axios from 'axios';
+import { nextTick } from 'vue';
 
 export default {
 
@@ -82,6 +83,17 @@ export default {
                 }
             });
         },
+        // applyStylesToCards() {
+        //     this.$nextTick(() => {
+        //         const cards = this.$el.querySelectorAll('.my_card');
+
+        //         cards.forEach((card, index) => {
+        //             card.style.top = `${index + 1}rem`;
+        //             card.style.transform = `rotate(${index + 1}deg)`;
+        //         });
+        //     });
+        // }
+
 
 
     },
@@ -92,6 +104,7 @@ export default {
         // this.cascadeTitle()
         this.scrollFunction()
         this.arrowAppearWithScroll()
+        // this.applyStylesToCards()
 
 
 
@@ -124,15 +137,15 @@ export default {
                     <div class="animated-title">
                         <div class="text-top ghost3">
                             <div>
-                                <span class="title_size" style="color: #393939;">Hi,</span>
-                                <span class="title_size" style="color: #656565;">I'm Damiano</span>
+                                <span class="title_size fw-semibold" style="color: #393939;">Hi,</span>
+                                <span class="title_size fw-semibold" style="color: #656565;">I'm Damiano</span>
                             </div>
                         </div>
                         <div class="text-bottom">
-                            <div class="title_size d-flex no-wrap"><span class="d-block"
+                            <div class="title_size d-flex no-wrap"><span class="d-block fw-semibold"
                                     style="color: #acacac;white-space: nowrap;">Full stack
                                 </span>&nbsp;
-                                <span style="color: #acacac;white-space: nowrap;"> web developer</span>
+                                <span class="fw-semibold" style="color: #acacac;white-space: nowrap;"> web developer</span>
                             </div>
                         </div>
                     </div>
@@ -163,34 +176,77 @@ export default {
         <!-- PROJECTS SIDE  -->
 
         <section class=" m_main main_container bg-snow" :class="{ 'opacity-0': ghost }">
-            <div class="container">
-                <h1 class="text-center position-relative z-3 " id="projects">Projects
+            <div class="container p_bottom_30" style="position: sticky;top: 86px;">
+                <h1 class="text-center d-block d-md-none fw-semibold" style="position: sticky;top: 20px;color:  #393939;"
+                    id="projects">
+                    Porfolio
                 </h1>
 
-                <div class="scroll_element row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-4">
-                    <div class="col mt-4" v-for="   project   in   projects.data  ">
 
-                        <!-- Define a single project in its own specific route-link  -->
+                <div class="scroll_element mb-4 d-flex" style="position: sticky;top: 86px;">
+                    <div class="col">
+                        <div class=" d-flex justify-content-center mt-4" style="position: sticky;"
+                            v-for=" (project, index)   in   projects.data  "
+                            :style="{ top: `calc(86px + ${index + 1}rem)` }">
+                            <!-- :style="{ top: `calc(86px + ${index + 1}rem)`, transform: `rotate(${index * 0.6}deg)` }"> -->
 
-                        <router-link :to="{ name: 'single-project', params: { 'slug': project.slug } }">
-                            <div class="card rounded-5 border-0 my_card open_img bg-transparent">
-                                <div class="scroll_effect_image text-center bg-transparent position-relative h-100">
-                                    <div
-                                        class="d-flex justify-content-center align-items-center bg_dark_trnsp rounded-5 opacity_hover pointer p-2 h-100">
-                                        <h4 class="card-title text-white p-2 fw-bold text_shadow2">
-                                            {{ project.title }}</h4>
+                            <!-- Define a single project in its own specific route-link  -->
 
-                                    </div>
-                                    <img :src="getImagePath(project.logo)"
-                                        class="card-img-top moving_image pointer card_shadow h-100"
-                                        :alt="project.title + ' image'">
-                                    <div class="p-3 fw-bold text_shadow2 text-white position-absolute top-0 end-0"> {{
-                                        project.type.name
-                                    }}
+                            <router-link :to="{ name: 'single-project', params: { 'slug': project.slug } }"
+                                class="w-100 d-flex move_up">
+                                <div class="card col-md-5 rounded-5 border-0 my_card open_img bg-transparent w-100">
+                                    <div class="scroll_effect_image text-center bg-transparent position-relative h-100">
+                                        <div
+                                            class="d-flex justify-content-center align-items-center bg_dark_trnsp rounded-5 opacity_hover pointer p-2 h-100">
+                                            <h4 class="card-title text-white p-2 fw-semibold text_shadow2">
+                                                {{ project.title }}</h4>
+
+                                        </div>
+                                        <img :src="getImagePath(project.logo)"
+                                            class="card-img-top moving_image pointer card_shadow h-100"
+                                            :alt="project.title + ' image'">
+                                        <div class="p-3 fw-semibold text_shadow2 text-white position-absolute top-0 end-0">
+                                            {{
+                                                project.type.name
+                                            }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </router-link>
+                            </router-link>
+                            <!-- <div class="col-7 fs-1 ms-5 d-flex justify-content-center align-items-center"
+                                style="top: 0px; position: relative;">
+                                {{ project.title }}
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="right_main_side col-7 d-none d-md-flex flex-column justify-content-center align-items-center px-4 py-5"
+                        :class="{ 'd-none': ghost }" style="position: sticky;top: 250px;">
+                        <div class="right_main_side d-md-flex flex-column justify-content-center align-items-start p-3  "
+                            style="position: sticky;top: 250px;">
+
+                            <h1 class="fw-semibold fade_right position-relative text-center" style="color: #393939;">About
+                                me</h1>
+
+                            <p class="fw-semibold  fade_right2 position-relative" style="color:  #393939;">I'm a passionate
+                                web developer with a keen
+                                interest in
+                                modern web
+                                technologies.</p>
+
+                            <p class=" fw-semibold fade_right3 position-relative" style="color: #393939;">I am a
+                                full-stack
+                                developer, proficient in
+                                both
+                                front-end and backend programming, dedicated to crafting websites from conception to
+                                implementation, ensuring a comprehensive and seamless user experience.</p>
+
+                            <p class="fw-semibold  fade_right4 position-relative" style="color: #393939;">My goal is to
+                                combine aesthetics with
+                                functionality to
+                                deliver an exceptional user
+                                experience.</p>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -198,8 +254,8 @@ export default {
 
         <!-- PAGINATION SIDE  -->
 
-        <PaginationController @prev="getProjects(projects.prev_page_url)" @next="getProjects(projects.next_page_url)"
-            :prev_condition="projects.prev_page_url" :next_condition="projects.next_page_url" />
+        <!-- <PaginationController @prev="getProjects(projects.prev_page_url)" @next="getProjects(projects.next_page_url)"
+            :prev_condition="projects.prev_page_url" :next_condition="projects.next_page_url" /> -->
 
         <!-- CAROUSEL  -->
 

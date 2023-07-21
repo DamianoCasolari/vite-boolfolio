@@ -51,7 +51,7 @@ export default {
         <!-- CARD CONTACTS  -->
         <div class="context d-flex flex-wrap align-items-center justify-content-center z_index50">
             <div class="business_card p-4 p-md-5">
-                <h4 class=" text-center fw-bold mb-3"> Contacts</h4>
+                <h4 class=" text-center fw-semibold mb-3"> Contacts</h4>
                 <ul class="list-unstyled">
                     <li class="w-100"><span class="fw_500">Phone number : </span> <span>3477952189</span></li>
                     <li class="w-100"><span class="fw_500">Email : </span> <span>damianocasolari@gmail.com</span> </li>

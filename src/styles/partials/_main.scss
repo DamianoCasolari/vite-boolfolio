@@ -66,6 +66,7 @@
 
     }
 
+
 }
 
 //PROJECTS ZONE
@@ -84,48 +85,76 @@ h1 {
 .main_container {
     transition-duration: 1s;
     padding-top: 40px;
-
+    // overflow-x: hidden;
 
 
     .my_card {
 
         transition-duration: 0.4s;
         height: 300px;
-
-        .bg_dark_trnsp {
-            background-color: rgba(0, 0, 0, 0.63);
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            z-index: 99;
-            opacity: 0;
-            transition-duration: 0.4s;
-        }
-
-        img {
-            // height: 300px;
-            object-fit: cover;
-            object-position: top;
-            border-radius: 2rem 2rem 2rem 2rem;
-
-
-            &.moving_image {
-                position: absolute;
-                top: 0;
-                left: 0;
-                transition: transform 0.2s ease;
-            }
-
-        }
-
-
-        h6 {
-            transition-duration: 0.5s;
-        }
+        position: sticky;
+        top: 0;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 4px;
 
 
     }
+
+    .bg_dark_trnsp {
+        background-color: rgba(0, 0, 0, 0.63);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: 99;
+        opacity: 0;
+        transition-duration: 0.4s;
+    }
+
+    img {
+        // height: 300px;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 2rem 2rem 2rem 2rem;
+
+
+        &.moving_image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.2s ease;
+        }
+
+    }
+
+
+    h6 {
+        transition-duration: 0.5s;
+    }
+
+
 }
+
+
+//RIGHT MAIN SIDE
+
+.right_main_side {
+    padding-top: 1.5rem;
+    height: 50vh;
+    // max-height: 50%;
+
+    h1 {
+
+        font-size: calc(18px + 1.4vw);
+    }
+
+    p {
+        text-align: left;
+        font-size: calc(15px + 0.1vh);
+
+    }
+}
+
 
 @keyframes disapper {
     from {
@@ -148,8 +177,6 @@ h1 {
 
 }
 
-
-
 //MEDIA QUERY
 
 @media screen and (min-width:576px) {
@@ -157,3 +184,6 @@ h1 {
         height: 500px;
     }
 }
+
+
+//EFFECT CARD
