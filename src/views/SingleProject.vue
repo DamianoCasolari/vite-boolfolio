@@ -43,9 +43,20 @@ export default {
             const shorterDivHeight = shorterDiv.offsetHeight;
 
             longerDiv.style.height = shorterDivHeight + 'px';
+        },
+        zoom_appearance_badge() {
+
+            const badges = document.querySelectorAll(".badge");
+            console.log(badges);
+            for (let i = 0; i < badges.length; i++) {
+                const badge = badges[i];
+                // Aggiungi la classe "zoom_appearance" con un ritardo di 0.2 secondi * l'indice corrente
+                setTimeout(() => {
+                    badge.classList.add("zoom_appearance");
+                }, 100 * i);
+            }
         }
     },
-
 
     components: {
 
@@ -54,7 +65,13 @@ export default {
         const url = this.base_URL + this.projects_API + this.$route.params.slug;
         this.getProjects(url)
         console.log(this.project);
-        // this.ImgAndInfoSameHeight()
+        setTimeout(() => {
+
+            this.zoom_appearance_badge()
+        }, 500)
+
+
+
     }
 }
 
@@ -70,21 +87,30 @@ export default {
 
                 <!-- ROUTER TO HOME PAGE -->
                 <div class="wrap">
-                    <router-link :to="{ name: 'home' }"
-                        class="text-decoration-none pt-3 d-inline-block underline-on-hover text-dark fw-semibold appear_with_scale"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-house scale_0 " viewBox="0 0 16 16">
-                            <path
-                                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
-                        </svg> <span>Back to home</span></router-link>
 
                     <!-- TOP SIDE -->
 
-                    <h2 class="pt-3 fw-semibold text_shadow">{{ project.title }}</h2>
+                    <h2 class="project_title pt-3 fw-semibold text_shadow">
+                        <router-link :to="{ name: 'home' }" class="back_to_home text-decoration-none position-relative"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#393939"
+                                class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                            </svg>
+                        </router-link>
+                        {{ project.title }}
+                    </h2>
+                    <h5 style="left: -10px;position: relative;">
+
+                        <div v-for="tecnology in project.tags " class=" badge lng_badge mb-2 text_shadow3 fs-6 rounded-4">
+                            {{
+                                tecnology.name
+                            }}</div>
+                    </h5>
                     <!-- <div class="py-1 fw-semibold"><a :href="project.link" target="_blank">{{ project.link }}</a></div> -->
                 </div>
                 <div
-                    class="end-0 top-0 p-3 type_project text-dark fw-semibold my-2 shadow d-flex justify-content-between align-items-center">
+                    class="end-0 top-0 px-3 py-2 rounded-5 type_project text-dark fw-semibold my-2 d-none d-sm-flex justify-content-between align-items-center t_duration">
                     {{ project.type?.name
 
                     }}
@@ -93,10 +119,10 @@ export default {
             <div class="row ">
                 <!-- IMG SIDE -->
                 <div class="cover_container col-12 col-md-5 py-3 px-3 h-100 position-relative">
-                    <a :href="project.link" target="_blank" class="h-100 d-inline-block w-100 position-relative">
+                    <a :href="project.link" target="_blank" class="h-100 d-inline-block w-100 position-relative slide_up">
                         <div
                             class=" overlay text-light opacity_hover z_index50 position-absolute w-100 h-100 rounded-5 border-0 d-flex justify-content-center align-items-center t_duration">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
                                 class="bi bi-eye-fill rotate_animation position-relative" viewBox="0 0 16 16">
                                 <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
                                 <path
@@ -109,24 +135,20 @@ export default {
                     </a>
                 </div>
                 <!-- INFO SIDE -->
-                <div class="info_container col-12 col-md-7 py-3 px-3 ">
-                    <div class="card  border border-0 rounded-5 w-100 h-100 overflow-hidden">
+                <div class="info_container col-12 col-md-7 py-3 px-3 slide_down position-relative">
+                    <div class="card border border-0 rounded-5 w-100 h-100 overflow-hidden">
+
                         <div class="card-body h-100">
-                            <h5 class="card-title text-center">
-                                <div v-for="tecnology in project.tags "
-                                    class="text-center badge text-bg-dark me-2 mb-2 p-2 card_shadow">{{
-                                        tecnology.name
-                                    }}</div>
-                            </h5>
-                            <p class="description card-text h-100 position-relative">
-                            <div class="element1"></div>
-                            {{
-                                project.functionality
-                            }}
-                            <div class="element2"></div>
-                            <div class="element2"></div>
-                            </p>
-                            <div class="element2"></div>
+                            <div class="h-100 overflow-auto">
+                                <p class="description text_carbon h-100 position-relative fs-5 p-4">
+                                <div class="element1 "></div>
+                                {{
+                                    project.functionality
+                                }}
+                                <div class="element2"></div>
+                                </p>
+                                <!-- <div class="element2"></div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -135,15 +157,32 @@ export default {
             </div>
 
         </div>
-        <!-- <div v-else>
-            {{ error }}
 
-        </div> -->
-        <!-- <div>{{ $route.fullPath }}</div>
-        <div>{{ $route.hash }}</div>
-        <div>{{ $route.path }}</div>
-        <div>{{ $route.name }}</div> -->
     </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.back_to_home {
+    color: #393939;
+
+    svg {
+
+        transition-duration: 0.5s;
+    }
+
+
+    &:hover svg {
+        transform: translateX(-10px)
+    }
+}
+
+.project_title {
+    color: #393939;
+}
+
+
+.lng_badge {
+    opacity: 0;
+    // color: #393939;
+}
+</style>

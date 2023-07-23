@@ -1,6 +1,7 @@
 <script>
 import PaginationController from './PaginationController.vue';
 import { appearWithScroll, arrowAppearWithScroll } from '../assets/js/utility_functions.js';
+import $ from 'jquery';
 
 import axios from 'axios';
 import { nextTick } from 'vue';
@@ -16,7 +17,8 @@ export default {
             error: null,
             project_button: true,
             ghost: true,
-            index: 1
+            index: 1,
+            intervalFunction: null,
         }
 
     },
@@ -40,24 +42,6 @@ export default {
         handleClick() {
             this.project_button = false
         },
-        // cascadeTitle() {
-        //     const heading = document.getElementById('cascading-effect-heading');
-        //     const letters = heading.textContent.split('');
-
-        //     heading.textContent = '';
-
-        //     letters.forEach((letter, index) => {
-        //         const span = document.createElement('span');
-        //         span.textContent = letter;
-
-        //         setTimeout(() => {
-        //             span.style.opacity = '1';
-        //             span.style.top = '0';
-        //         }, 1000 + index * 100);
-
-        //         heading.appendChild(span);
-        //     })
-        // },
         scrollFunction() {
             const section = document.querySelector(".main_container")
             appearWithScroll(section)
@@ -87,12 +71,12 @@ export default {
 
         },
         rollWord() {
-            setInterval(() => {
+
+            this.intervalFunction = setInterval(() => {
                 const word1 = document.querySelector(".word" + this.index);
                 console.log(word1);
                 const word2 = document.querySelector(".word" + ((this.index % 3) + 1));
                 console.log(word2);
-
                 word1.classList.add("d-none")
                 word1.classList.remove("drop_animation")
                 word2.classList.add("drop_animation");
@@ -101,8 +85,10 @@ export default {
 
             }, 3000)
 
+        },
+        stopIntervalFunction() {
+            clearInterval(this.intervalFunction)
         }
-
     },
     mounted() {
 
@@ -114,7 +100,34 @@ export default {
             this.rollWord()
         }, 500);
 
+
+        $(document).ready(function () {
+            // Impostiamo un'animazione per far scorrere le immagini
+            function startCarousel() {
+                $(".carousel").animate(
+                    {
+                        marginLeft: "-150px", // Sposta il contenitore delle immagini verso sinistra
+                    },
+                    2000, // Durata dell'animazione (in millisecondi)
+                    "linear",
+                    function () {
+                        // Quando l'animazione è completata, spostiamo la prima immagine alla fine
+                        $(this).css("margin-left", "0");
+                        $(this).append($(this).children().first());
+                    }
+                );
+            }
+
+            // Avviamo il carosello con un intervallo di 3 secondi (puoi modificare l'intervallo a tuo piacimento)
+            setInterval(startCarousel, 2000);
+        });
+
+
+
+    }, unmounted() {
+        clearInterval(this.stopIntervalFunction())
     }
+
 }
 </script>
 
@@ -135,7 +148,7 @@ export default {
                     <img src="../assets/img/photo.jpg" alt="DC Logo" class="rounded-4 z_inde49 main_photo shadow">
                 </div>
 
-                <div class="info_contaienr px-2 pt-3 col-lg-6 text-center text-sm-start z_index50">
+                <div class="info_contaienr px-2 pt-3 text-center text-sm-start z_index50">
 
 
                     <!-- NEW TITLE -->
@@ -146,19 +159,19 @@ export default {
                                 <span class="title_size fw-semibold" style="color: #656565;">I'm Damiano</span>
                             </div>
                         </div>
-                        <div class="text-bottom">
+                        <div class="text-bottom t_duration">
                             <div class="title_size d-flex no-wrap">
-                                <div class="d-flex grow-1 fw-semibold text overflow-hidden"
+                                <div class="wordContainer d-flex roll_container fw-semibold text overflow-hidden"
                                     style="white-space: nowrap; height: 2em;">
-                                    <span class="word1 grow-1 wisteria position-relative"
-                                        style="color: #acacac;">Fullstack</span>
-                                    <span class="word2 grow-1 d-none wisteria position-relative"
+                                    <span class="word1 wisteria position-relative" style="color: #acacac;">Fullstack</span>
+                                    <span class="word2 d-none wisteria position-relative"
                                         style="color: #959595;">Backend</span>
-                                    <span class="word3 grow-1 d-none wisteria position-relative"
+                                    <span class="word3 d-none wisteria position-relative"
                                         style="color: #959595;">Frontend</span>
                                 </div>
                                 &nbsp;
-                                <div class="fw-semibold shrink-1" style="color: #acacac;white-space: nowrap;"> web developer
+                                <div class="fw-semibold shrink-1" style="color: #acacac;white-space: nowrap;">
+                                    web developer
                                 </div>
                             </div>
                         </div>
@@ -256,18 +269,61 @@ export default {
             :prev_condition="projects.prev_page_url" :next_condition="projects.next_page_url" /> -->
 
         <!-- CAROUSEL  -->
+        <div class="carousel_container ">
+            <div class="container h-100 overflow-hidden d-flex position-relative">
+                <div class="shadow_element position-absolute h-100 left-0 bg_snow"></div>
+                <div class="shadow_element2 position-absolute h-100 left-0 bg_snow"></div>
+                <div class="carousel position-relative">
+                    <div class="img_container ">
+                        <img src="../assets/img/javascript-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/getbootstrap-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/laravel-ar21.svg " alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/git-scm-ar21.svg " alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/mysql-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/nodejs-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/npmjs-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/php-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/sass-lang-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/phpmyadmin-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/vuejs-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container">
+                        <img src="../assets/img/w3_css-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container ">
+                        <img src="../assets/img/w3_html5-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container ">
+                        <img src="../assets/img/github-ar21.svg" alt="">
+                    </div>
 
-        <div class="carousel bg-dark d-flex">
-            <div class="img_container">
-                <img :src="getImagePath()" alt="">
+                </div>
             </div>
-
         </div>
-
 
         <!-- ARROW TO GO BACK  -->
 
-        <div class="arrow position-fixed bottom-0 light_shadow m-2 scale_hover_less z-3">
+        <div class="arrow position-fixed bottom-0 light_shadow mx-3 scale_hover_less z-3" style="margin-bottom: 31px;">
 
             <a href="#top" class="cl_light_street">
                 <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="gray" class="bi bi-arrow-up-short"

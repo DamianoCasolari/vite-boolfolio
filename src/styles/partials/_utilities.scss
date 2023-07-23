@@ -74,6 +74,17 @@
     text-shadow: 1px 2px 3px black;
 }
 
+.text_shadow3 {
+    text-shadow: 3px 3px 7px rgb(13, 13, 13);
+    // border: 1px solid;
+
+    // filter: drop-shadow(-1px -1px 3px rgb(10, 10, 10));
+}
+
+.text_shadow4 {
+    text-shadow: 0px 0px 10px rgb(10, 10, 10);
+}
+
 .text_blue_night {
     color: rgb(4, 4, 148);
 
@@ -100,6 +111,10 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 100%;
+}
+
+.text_carbon {
+    color: $clr_carbon;
 }
 
 //COLOR
@@ -130,71 +145,9 @@
 }
 
 
+//CONTAINER
 
-//MEDIA QUERY
-
-//JUMBOTRON AND MAIN
-
-@media screen and (min-width : 1200px) {
-
-    .title_size,
-    .right_main_side h1 {
-        font-size: 42px !important;
-    }
-}
-
-@media screen and (min-width : 1400px) {
-
-    .title_size,
-    .right_main_side h1 {
-        font-size: 47px !important;
-    }
-}
-
-@media screen and (min-width : 1700px) {
-    .jumbotron {
-        height: 1000px;
-    }
-}
-
-@media screen and (max-width : 366px) {
-    .media_none {
-        display: none !important;
-
-    }
-
-    .main_photo {
-        height: 300px !important;
-    }
-}
-
-
-@media screen and (max-height : 700px) and (min-width:576px) {
-    .jumbotron {
-        height: 850px;
-    }
-}
-
-
-//cards effects
-
-
-@media screen and (min-width : 768px) {
-    .move_up {
-        transition-duration: 0.5s;
-    }
-
-    .move_up:hover {
-        transform: translatex(30px);
-
-    }
-}
-
-
-//HEADER
-
-@media screen and (min-width : 768px) {
-    .about_me_link {
-        display: none !important;
-    }
+//title_side
+.wordContainer {
+    width: 7ch;
 }

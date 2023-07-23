@@ -543,16 +543,22 @@
 //TITLE EFFECT ROLL 3 WORDS
 @keyframes dropAnimation {
     0% {
-        transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -130%, 0);
+        opacity: 0;
     }
 
 
     50% {
         transform: translate3d(0, 15%, 0);
+        opacity: 1;
     }
 
     100% {
         transform: translate3d(0, 0, 0);
+        opacity: 1;
+
+
+
     }
 }
 
@@ -565,16 +571,84 @@
 
 .overlay:hover .rotate_animation {
 
-    animation: rotate_eye 0.5s ease-out forwards;
+    animation: rotate_eye 0.4s ease-out forwards;
 }
 
 @keyframes rotate_eye {
     0% {
-        transform: rotate(-50deg);
+        transform: scaley(1);
+    }
+
+
+    80% {
+        transform: scaley(1);
+    }
+
+    90% {
+        transform: scaley(0);
     }
 
     100% {
-        transform: rotate(0deg);
+        transform: scaley(1);
+    }
+}
 
+
+//SINGLE PAGE
+
+
+.slide_up {
+    animation: slide_up 1s ease-out;
+}
+
+@keyframes slide_up {
+    0% {
+        top: 60px;
+        opacity: 0;
+
+    }
+
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.slide_down {
+    animation: slide_down 1s ease-out;
+}
+
+@keyframes slide_down {
+    0% {
+        top: -60px;
+        opacity: 0;
+
+    }
+
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.zoom_appearance {
+    animation: zoom_appearance 1s ease-out both;
+}
+
+@keyframes zoom_appearance {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+
+    }
+
+    80% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
     }
 }

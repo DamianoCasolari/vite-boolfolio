@@ -1,7 +1,7 @@
 @use "../variables" as *;
 
 .single_project {
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
     padding-top: 86px;
 
     background: rgb(255, 255, 255);
@@ -23,15 +23,7 @@
 
     }
 
-    .description {
-
-        overflow-y: auto;
-
-
-    }
-
     .element1 {
-        height: 30px;
         position: sticky;
         top: 0;
         width: 100%;
@@ -40,7 +32,7 @@
     }
 
     .element2 {
-        height: 55px;
+        height: 30px;
         position: sticky;
         bottom: 0;
         width: 100%;

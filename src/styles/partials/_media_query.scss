@@ -1,0 +1,68 @@
+//MEDIA QUERY
+
+//JUMBOTRON AND MAIN
+
+
+@media screen and (min-width : 576px) {}
+
+//cards effects
+
+
+@media screen and (min-width : 768px) {
+    .move_up {
+        transition-duration: 0.5s;
+    }
+
+    .move_up:hover {
+        transform: translatex(30px);
+
+    }
+
+    .about_me_link {
+        display: none !important;
+    }
+
+}
+
+
+@media screen and (min-width : 992px) {}
+
+@media screen and (min-width : 1200px) {
+
+    .title_size,
+    .right_main_side h1 {
+        font-size: 42px !important;
+    }
+}
+
+@media screen and (min-width : 1400px) {
+
+    .title_size,
+    .right_main_side h1 {
+        font-size: 47px !important;
+    }
+}
+
+@media screen and (min-width : 1700px) {
+    .jumbotron {
+        height: 1000px;
+    }
+}
+
+@media screen and (max-width : 366px) {
+    .media_none {
+        display: none !important;
+
+    }
+
+    .main_photo {
+        height: 300px !important;
+    }
+}
+
+
+@media screen and (max-height : 700px) and (min-width:576px) {
+    .jumbotron {
+        height: 850px;
+    }
+}

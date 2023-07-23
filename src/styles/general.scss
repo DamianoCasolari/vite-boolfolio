@@ -5,6 +5,7 @@
 @use "./partials/views/single_project.scss" as *;
 @use "./partials/utilities.scss" as *;
 @use "./partials/hover.scss" as *;
+@use "./partials/media_query.scss" as *;
 @use "./partials/animation.scss" as *;
 @use "./partials/header.scss" as *;
 @use "./partials/main.scss" as *;
@@ -16,7 +17,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    // overflow-x: hidden;
+    overflow-x: hidden;
     // background: linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);
 }
 

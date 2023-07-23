@@ -22,7 +22,8 @@ export default {
         </div>
         <h1 class="text-white card_shadow h1">404</h1>
         <h2 class="text-white card_shadow h2">Page not found </h2>
-        <router-link :to="{ name: 'home' }" class="text-decoration-none btn btn-dark m-4 position-relaztive z-3 shadow">Back
+        <router-link :to="{ name: 'home' }"
+            class="text-decoration-none btn btn-outline-light m-4 position-relaztive z-3 card_shadow">Back
             to
             home</router-link>
         <div>
