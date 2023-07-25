@@ -43,18 +43,6 @@ export default {
             const shorterDivHeight = shorterDiv.offsetHeight;
 
             longerDiv.style.height = shorterDivHeight + 'px';
-        },
-        zoom_appearance_badge() {
-
-            const badges = document.querySelectorAll(".badge");
-            console.log(badges);
-            for (let i = 0; i < badges.length; i++) {
-                const badge = badges[i];
-                // Aggiungi la classe "zoom_appearance" con un ritardo di 0.2 secondi * l'indice corrente
-                setTimeout(() => {
-                    badge.classList.add("zoom_appearance");
-                }, 100 * i);
-            }
         }
     },
 
@@ -64,14 +52,6 @@ export default {
     mounted() {
         const url = this.base_URL + this.projects_API + this.$route.params.slug;
         this.getProjects(url)
-        console.log(this.project);
-        setTimeout(() => {
-
-            this.zoom_appearance_badge()
-        }, 500)
-
-
-
     }
 }
 
@@ -102,7 +82,9 @@ export default {
                     </h2>
                     <h5 style="left: -10px;position: relative;">
 
-                        <div v-for="tecnology in project.tags " class=" badge lng_badge mb-2 text_shadow3 fs-6 rounded-4">
+                        <div v-for="(tecnology, index) in project.tags "
+                            class=" badge lng_badge mb-2 text_shadow3 fs-6 rounded-4"
+                            :class="{ 'zoom_appearance': index >= 0 }" :style="{ 'animation-delay': index * 0.1 + 's' }">
                             {{
                                 tecnology.name
                             }}</div>

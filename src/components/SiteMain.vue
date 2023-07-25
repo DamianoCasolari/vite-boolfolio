@@ -74,9 +74,9 @@ export default {
 
             this.intervalFunction = setInterval(() => {
                 const word1 = document.querySelector(".word" + this.index);
-                console.log(word1);
+                // console.log(word1);
                 const word2 = document.querySelector(".word" + ((this.index % 3) + 1));
-                console.log(word2);
+                // console.log(word2);
                 word1.classList.add("d-none")
                 word1.classList.remove("drop_animation")
                 word2.classList.add("drop_animation");
@@ -88,40 +88,38 @@ export default {
         },
         stopIntervalFunction() {
             clearInterval(this.intervalFunction)
+        },
+        carousel_roll() {
+            $(document).ready(function () {
+                function startCarousel() {
+                    $(".carousel").animate(
+                        {
+                            marginLeft: "-150px",
+                        },
+                        2000,
+                        "linear",
+                        function () {
+                            $(this).css("margin-left", "0");
+                            $(this).append($(this).children().first());
+                        }
+                    );
+                }
+                setInterval(startCarousel, 2000);
+            });
         }
     },
     mounted() {
 
         this.getProjects(this.base_URL + this.projects_API)
-        this.toggleAppearWithScroll()
         this.scrollFunction()
-        this.arrowAppearWithScroll()
+        this.$nextTick(() => {
+            this.arrowAppearWithScroll()
+            this.toggleAppearWithScroll()
+        })
         setTimeout(() => {
             this.rollWord()
         }, 500);
-
-
-        $(document).ready(function () {
-            // Impostiamo un'animazione per far scorrere le immagini
-            function startCarousel() {
-                $(".carousel").animate(
-                    {
-                        marginLeft: "-150px", // Sposta il contenitore delle immagini verso sinistra
-                    },
-                    2000, // Durata dell'animazione (in millisecondi)
-                    "linear",
-                    function () {
-                        // Quando l'animazione è completata, spostiamo la prima immagine alla fine
-                        $(this).css("margin-left", "0");
-                        $(this).append($(this).children().first());
-                    }
-                );
-            }
-
-            // Avviamo il carosello con un intervallo di 3 secondi (puoi modificare l'intervallo a tuo piacimento)
-            setInterval(startCarousel, 2000);
-        });
-
+        this.carousel_roll();
 
 
     }, unmounted() {
@@ -132,7 +130,13 @@ export default {
 </script>
 
 <template>
-    <div class="bg_snow ">
+    <div v-if="loading" class="bg_snow vh100 d-flex flex-column align-items-center justify-content-center ">
+        <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
+    </div>
+    <div class="bg_snow" v-show="!loading">
 
         <div id="top"
             class="jumbotron container rounded-3 vh100 d-flex flex-column align-items-center justify-content-center position-relative">
