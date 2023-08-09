@@ -203,7 +203,6 @@ export default {
                         <div class=" d-flex justify-content-center mt-4" style="position: sticky;"
                             v-for=" (project, index)   in   projects.data  "
                             :style="{ top: `calc(86px + ${index + 1}rem)` }">
-                            <!-- :style="{ top: `calc(86px + ${index + 1}rem)`, transform: `rotate(${index * 0.6}deg)` }"> -->
 
                             <!-- Define a single project in its own specific route-link  -->
 

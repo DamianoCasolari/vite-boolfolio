@@ -1,5 +1,6 @@
 .contacts {
-    height: calc(100vh);
+    height: calc(100vh - 100px);
+    min-height: 562px;
     padding-top: 86px;
 
     .business_card {
@@ -10,6 +11,43 @@
         max-width: 497px;
 
     }
+
+    .input_text {
+
+        transition-duration: 0.4s;
+
+        &:focus {
+
+            outline: none !important;
+            border: none !important;
+            box-shadow: 0 0 0 2px rgba(85, 85, 85, 0.589) !important;
+        }
+    }
+
+
+    //button 
+
+    .submit_button {
+        background-color: rgba(51, 48, 48, 0.715);
+        color: rgb(234, 234, 234);
+        overflow: hidden;
+        transition-duration: 0.7s;
+
+        &:hover {
+
+            background-color: transparent;
+            border: 0 !important;
+            color: rgba(51, 48, 48, 0.715);
+            letter-spacing: 3px;
+            font-weight: bold;
+            font-size: 18x;
+            border-top: 1px solid rgba(51, 48, 48, 0.715) !important;
+            border-bottom: 1px solid rgba(51, 48, 48, 0.715) !important;
+            border-radius: 0 !important;
+        }
+
+    }
+
 
     .info_container {
         position: relative;
@@ -22,14 +60,7 @@
 
     @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
-    * {
-        margin: 0px;
-        padding: 0px;
-    }
 
-    body {
-        font-family: 'Exo', sans-serif;
-    }
 
 
     .context {
@@ -41,7 +72,6 @@
 
     .context h1 {
         text-align: center;
-        color: #fff;
         font-size: 50px;
     }
 
@@ -50,10 +80,9 @@
         background: #f4f4f4;
         background: -webkit-linear-gradient(to left, #f4f4f4, #bebebe);
         width: 100%;
-        height: calc(100vh - 86px);
-        height: 100%;
-
-
+        height: calc(100vh - 100px);
+        min-height: 562px;
+        // height: 100%;
 
     }
 
@@ -63,6 +92,7 @@
         left: 0;
         width: 100%;
         height: calc(100vh - 100px);
+        min-height: 562px;
         overflow: hidden;
     }
 

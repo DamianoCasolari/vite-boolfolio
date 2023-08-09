@@ -20,12 +20,13 @@ export default {
                     d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
             </svg>
         </div>
-        <h1 class="text-white card_shadow h1">404</h1>
-        <h2 class="text-white card_shadow h2">Page not found </h2>
-        <router-link :to="{ name: 'home' }"
-            class="text-decoration-none btn btn-outline-light m-4 position-relaztive z-3 card_shadow">Back
-            to
-            home</router-link>
+        <h2 class="text-white z-3 postion-relative h2">404</h2>
+        <h2 class="text-white z-3 postion-relative h2">Page not found </h2>
+        <router-link :to="{ name: 'home' }" class="text-decoration-none">
+            <div class="px-4 py-2 border border-0 back_button rounded-4 fs-6 mt-4">Back
+                to
+                home</div>
+        </router-link>
         <div>
             <ul class="circles">
                 <li></li>
@@ -58,4 +59,30 @@ export default {
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.back_button {
+    background-color: rgba(255, 255, 255, 0.671);
+    color: rgba(51, 48, 48, 0.715);
+    ;
+    transition-duration: 0.7s;
+    z-index: 100;
+    position: relative;
+
+
+}
+
+
+.back_button:hover {
+
+    background-color: transparent;
+    color: rgb(250, 250, 250);
+
+    border: 0 !important;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 18x;
+    border-top: 1px solid rgb(250, 250, 250) !important;
+    border-bottom: 1px solid rgb(250, 250, 250) !important;
+    border-radius: 0 !important;
+}
+</style>
