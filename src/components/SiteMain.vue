@@ -194,7 +194,7 @@ export default {
             <div class="container p_bottom_30" style="position: sticky;top: 86px;">
                 <h1 class="text-center d-block d-md-none fw-semibold" style="position: sticky;top: 20px;color:  #393939;"
                     id="projects">
-                    Porfolio
+                    Portfolio
                 </h1>
 
 
