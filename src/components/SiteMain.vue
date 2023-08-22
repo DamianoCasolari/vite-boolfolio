@@ -10,7 +10,7 @@ export default {
 
     data() {
         return {
-            base_URL: 'http://127.0.0.1:8000/',
+            base_URL: 'http://back.damianocasolari.com',
             projects_API: 'api/projects',
             loading: true,
             projects: [],
