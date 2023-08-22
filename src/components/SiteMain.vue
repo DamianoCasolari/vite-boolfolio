@@ -10,7 +10,7 @@ export default {
 
     data() {
         return {
-            base_URL: 'http://back.damianocasolari.com',
+            base_URL: 'http://back.damianocasolari.com/',
             projects_API: 'api/projects',
             loading: true,
             projects: [],
