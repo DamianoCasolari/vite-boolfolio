@@ -81,6 +81,10 @@
     // filter: drop-shadow(-1px -1px 3px rgb(10, 10, 10));
 }
 
+.font_s14 {
+    font-size: calc(14px + 0.1vw) !important;
+}
+
 .text_shadow4 {
     text-shadow: 0px 0px 10px rgb(10, 10, 10);
 }
