@@ -28,11 +28,11 @@ export default {
     methods: {
         getProjects(url) {
             axios.get(url).then(response => {
-                console.log(response);
+                // console.log(response);
                 this.projects = response.data.projects
                 this.loading = false
             }).catch(error => {
-                console.log(error)
+                // console.log(error)
                 this.error = error.message
             })
         },
