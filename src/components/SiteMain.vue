@@ -248,7 +248,7 @@ export default {
                                 full-stack
                                 developer, proficient in
                                 both
-                                front-end and backend programming, dedicated to crafting websites from conception to
+                                front-end and back-end programming, dedicated to crafting websites from conception to
                                 implementation, ensuring a comprehensive and seamless user experience.</p>
 
                             <p class="fw-semibold  fade_right4 position-relative" style="color: #393939;">My goal is to

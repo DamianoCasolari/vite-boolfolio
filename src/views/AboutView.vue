@@ -19,7 +19,7 @@ export default {
                                 modern web
                                 technologies.</p>
                             <p class="fade_right3 position-relative">I am a full-stack developer, proficient in both
-                                front-end and backend programming, dedicated to crafting websites from conception to
+                                front-end and back-end programming, dedicated to crafting websites from conception to
                                 implementation, ensuring a comprehensive and seamless user experience.</p>
                             <p class="fade_right4 position-relative">My goal is to combine aesthetics with functionality to
                                 deliver an
