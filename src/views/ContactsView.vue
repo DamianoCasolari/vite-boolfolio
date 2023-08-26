@@ -47,8 +47,7 @@ export default {
                 message: this.message,
             }
             this.errors = {}
-            axios.post('http://127.0.0.1:8000/api/contacts', data).then(response => {
-                console.log(response);
+            axios.post('https://damianocasolari.com/api/contacts', data).then(response => {
                 if (!response.data.success) {
                     this.errors = response.data.errors
                 } else {
