@@ -218,7 +218,7 @@ export default {
                                         </div>
                                         <img :src="getImagePath(project.logo)"
                                             class="card-img-top moving_image pointer card_shadow h-100"
-                                            :alt="project.title + ' image'">
+                                            :alt="project.title + ' image'" loading="lazy">
                                         <div class="p-3 fw-semibold text_shadow2 text-white position-absolute top-0 end-0">
                                             {{
                                                 project.type.name
