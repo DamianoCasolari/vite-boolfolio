@@ -319,6 +319,21 @@ export default {
                     <div class="img_container ">
                         <img src="../assets/img/github-ar21.svg" alt="">
                     </div>
+                    <div class="img_container ">
+                        <img src="../assets/img/docker-icon.svg" alt="">
+                    </div>
+                    <div class="img_container ">
+                        <img src="../assets/img/expressjs-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container ">
+                        <img src="../assets/img/kubernetes-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container ">
+                        <img src="../assets/img/reactjs-ar21.svg" alt="">
+                    </div>
+                    <div class="img_container ">
+                        <img src="../assets/img/tailwindcss-icon.svg" alt="">
+                    </div>
 
                 </div>
             </div>
