@@ -29,8 +29,11 @@ const router = createRouter({
         'name': 'single-project',
         'component': SingleProject
     },
-    { path: '/:pathMatch(.*)*', name: 'PageNotFound', component: PageNotFound }
-
+    {
+        'path': '/:pathMatch(.*)*',
+        'name': 'PageNotFound',
+        'component': PageNotFound
+    }
     ]
 })
 
