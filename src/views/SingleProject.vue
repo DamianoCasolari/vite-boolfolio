@@ -154,7 +154,7 @@ export default {
 
 
     &:hover svg {
-        transform: translateX(-5px)
+           width: 28px;
     }
 }
 

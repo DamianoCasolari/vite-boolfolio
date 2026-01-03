@@ -1,73 +1,75 @@
 <script>
 
-import axios from 'axios';
-export default {
-    data() {
-        return {
-            name: '',
-            email: '',
-            message: '',
-            errors: {},
-            loading: false,
-            success: false
-        }
-    },
-
-
-
-    methods: {
-        magicBalls() {
-            const balls = document.querySelectorAll('.ball');
-
-            function moveBalls() {
-                balls.forEach(ball => {
-                    const size = ball.offsetWidth;
-                    const maxX = window.innerWidth - size;
-                    const maxY = window.innerHeight - size;
-
-                    const x = Math.random() * maxX;
-                    const y = Math.random() * maxY;
-
-                    ball.style.left = `${x}px`;
-                    ball.style.top = `${y}px`;
-                });
-
-                setTimeout(moveBalls, 3500);
+    import axios from 'axios';
+    import { languageState } from "../assets/js/language.js";
+    export default {
+        data() {
+            return {
+                name: '',
+                email: '',
+                message: '',
+                errors: {},
+                loading: false,
+                success: false,
+                languageState
             }
-
-
-            moveBalls();
-
         },
-        submitForm() {
-            this.loading = true;
-            const data = {
-                name: this.name,
-                email: this.email,
-                message: this.message,
-            }
-            this.errors = {}
-            axios.post('https://back.damianocasolari.com/api/contacts', data).then(response => {
-                if (!response.data.success) {
-                    this.errors = response.data.errors
-                } else {
-                    this.name = ''
-                    this.email = ''
-                    this.message = ''
-                    this.success = true
 
+
+
+        methods: {
+            magicBalls() {
+                const balls = document.querySelectorAll('.ball');
+
+                function moveBalls() {
+                    balls.forEach(ball => {
+                        const size = ball.offsetWidth;
+                        const maxX = window.innerWidth - size;
+                        const maxY = window.innerHeight - size;
+
+                        const x = Math.random() * maxX;
+                        const y = Math.random() * maxY;
+
+                        ball.style.left = `${x}px`;
+                        ball.style.top = `${y}px`;
+                    });
+
+                    setTimeout(moveBalls, 3500);
                 }
-                this.loading = false;
 
-            }).catch(err => {
-                console.log(err);
-            })
+
+                moveBalls();
+
+            },
+            submitForm() {
+                this.loading = true;
+                const data = {
+                    name: this.name,
+                    email: this.email,
+                    message: this.message,
+                }
+                this.errors = {}
+                axios.post('https://back.damianocasolari.com/api/contacts', data).then(response => {
+                    if (!response.data.success) {
+                        this.errors = response.data.errors
+                    } else {
+                        this.name = ''
+                        this.email = ''
+                        this.message = ''
+                        this.success = true
+
+                    }
+                    this.loading = false;
+
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
+        },
+        mounted() {
+            this.magicBalls()
         }
-    },
-    mounted() {
-        this.magicBalls()
     }
-}
 
 </script>
 <template>
@@ -86,11 +88,11 @@ export default {
         <!-- CARD CONTACTS  -->
         <div class="context d-flex flex-wrap align-items-center justify-content-center z_index50 ghost">
             <div class=" p-2 container">
-                <h4 class=" text-center fw-semibold mb-3" v-if="!success && !loading"> Contact me</h4>
+                <h4 class=" text-center fw-semibold mb-3" v-if="!success && !loading"> {{languageState.eng_lan ? 'Contact me' : 'Contattami'}}</h4>
 
                 <form @submit.prevent="submitForm()" action="POST" class="d-flex flex-column justify-content-center"
                     v-if="!success && !loading">
-                    <label for="guest_name" class="form-label fw-semibold fs-6">Name</label>
+                    <label for="guest_name" class="form-label fw-semibold fs-6">{{languageState.eng_lan ? 'Name' : 'Nome'}}</label>
                     <input type="text" name="guest_email" placeholder="Jack Smith" class="form-control input_text"
                         v-model="name" required>
                     <small v-for="error in errors.name" :key="error" class="text-danger">{{ error }}</small>
@@ -102,18 +104,19 @@ export default {
                     <small v-for="error in errors.email" :key="error" class="text-danger">{{ error }}</small>
 
 
-                    <label for="guest_meassage" class="form-label fw-semibold fs-6 mt-4">Message</label>
-                    <textarea name="guest_meassage" id="message" cols="30" rows="5" placeholder="Write your message... "
+                    <label for="guest_meassage" class="form-label fw-semibold fs-6 mt-4">{{languageState.eng_lan ? 'Message' : 'Messaggio'}}</label>
+                    <textarea name="guest_meassage" id="message" cols="30" rows="5" :placeholder="languageState.eng_lan ? 'Ask for information or quotes...' : 'Richiedi informazioni o preventivi...'"
                         class="form-control input_text" v-model="message" required></textarea>
                     <small v-for="error in errors.message" :key="error" class="text-danger">{{ error }}</small>
 
 
                     <div class="d-flex justify-content-center mt-4">
-                        <input type="submit" class="px-4 py-2 border border-0 submit_button rounded-4 fs-6" value="Submit"
-                            style="width: 150px;">
+                        <input type="submit" class="px-4 py-2 border border-0 submit_button rounded-4 fs-6"
+                            :value="languageState.eng_lan ? 'Submit' : 'Invia'" style="width: 150px;">
                     </div>
                 </form>
-                <div v-if="!success && loading" class="d-flex flex-column  align-items-center justify-content-center ghost">
+                <div v-if="!success && loading"
+                    class="d-flex flex-column  align-items-center justify-content-center ghost">
                     <div>Wait a few seconds</div>
                     <h4>We are sending your request</h4>
                 </div>

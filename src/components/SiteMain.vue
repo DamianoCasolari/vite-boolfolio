@@ -1,132 +1,133 @@
 <script>
-import PaginationController from './PaginationController.vue';
-import { appearWithScroll, arrowAppearWithScroll } from '../assets/js/utility_functions.js';
-import $ from 'jquery';
+    import PaginationController from './PaginationController.vue';
+    import { appearWithScroll, arrowAppearWithScroll } from '../assets/js/utility_functions.js';
+    import $ from 'jquery';
+    import { languageState } from "../assets/js/language.js";
+    import axios from 'axios';
+    import { nextTick } from 'vue';
 
-import axios from 'axios';
-import { nextTick } from 'vue';
+    export default {
 
-export default {
-
-    data() {
-        return {
-            base_URL: 'https://back.damianocasolari.com/',
-            projects_API: 'api/projects',
-            loading: true,
-            projects: [],
-            error: null,
-            project_button: true,
-            ghost: true,
-            index: 1,
-            intervalFunction: null,
-        }
-
-    },
-    components: {
-        PaginationController
-    },
-    methods: {
-        getProjects(url) {
-            axios.get(url).then(response => {
-                // console.log(response);
-                this.projects = response.data.projects
-                this.loading = false
-            }).catch(error => {
-                // console.log(error)
-                this.error = error.message
-            })
-        },
-        getImagePath(path) {
-            return this.base_URL + 'storage/' + path
-        },
-        handleClick() {
-            this.project_button = false
-        },
-        scrollFunction() {
-            const section = document.querySelector(".main_container")
-            appearWithScroll(section)
-        },
-        arrowAppearWithScroll() {
-            const section = document.querySelector(".main_container")
-            const arrow = document.querySelector(".arrow")
-            arrowAppearWithScroll(section, arrow)
-        },
-        toggleAppearWithScroll() {
-            window.addEventListener('scroll', () => {
-
-                if (document.querySelector(".main_container")) {
-
-                    const viewportHeight = window.innerHeight / 10 * 8.5;
-                    let div2Position = document.querySelector(".main_container").getBoundingClientRect().top;
-
-                    if (div2Position < viewportHeight) {
-                        this.project_button = false;
-                        this.ghost = false;
-                    } else {
-                        this.project_button = true;
-                    }
-                }
-            });
-
+        data() {
+            return {
+                base_URL: 'https://back.damianocasolari.com/',
+                projects_API: 'api/projects',
+                loading: true,
+                projects: [],
+                error: null,
+                project_button: true,
+                ghost: true,
+                index: 1,
+                intervalFunction: null,
+                languageState
+            }
 
         },
-        rollWord() {
-
-            this.intervalFunction = setInterval(() => {
-                const word1 = document.querySelector(".word" + this.index);
-                // console.log(word1);
-                const word2 = document.querySelector(".word" + ((this.index % 3) + 1));
-                // console.log(word2);
-                word1.classList.add("d-none")
-                word1.classList.remove("drop_animation")
-                word2.classList.add("drop_animation");
-                word2.classList.remove("d-none")
-                this.index = (this.index % 3) + 1
-
-            }, 3000)
-
+        components: {
+            PaginationController
         },
-        stopIntervalFunction() {
-            clearInterval(this.intervalFunction)
-        },
-        carousel_roll() {
-            $(document).ready(function () {
-                function startCarousel() {
-                    $(".carousel").animate(
-                        {
-                            marginLeft: "-150px",
-                        },
-                        2000,
-                        "linear",
-                        function () {
-                            $(this).css("margin-left", "0");
-                            $(this).append($(this).children().first());
+        methods: {
+            getProjects(url) {
+                axios.get(url).then(response => {
+                    // console.log(response);
+                    this.projects = response.data.projects
+                    this.loading = false
+                }).catch(error => {
+                    // console.log(error)
+                    this.error = error.message
+                })
+            },
+            getImagePath(path) {
+                return this.base_URL + 'storage/' + path
+            },
+            handleClick() {
+                this.project_button = false
+            },
+            scrollFunction() {
+                const section = document.querySelector(".main_container")
+                appearWithScroll(section)
+            },
+            arrowAppearWithScroll() {
+                const section = document.querySelector(".main_container")
+                const arrow = document.querySelector(".arrow")
+                arrowAppearWithScroll(section, arrow)
+            },
+            toggleAppearWithScroll() {
+                window.addEventListener('scroll', () => {
+
+                    if (document.querySelector(".main_container")) {
+
+                        const viewportHeight = window.innerHeight / 10 * 8.5;
+                        let div2Position = document.querySelector(".main_container").getBoundingClientRect().top;
+
+                        if (div2Position < viewportHeight) {
+                            this.project_button = false;
+                            this.ghost = false;
+                        } else {
+                            this.project_button = true;
                         }
-                    );
-                }
-                setInterval(startCarousel, 2000);
-            });
+                    }
+                });
+
+
+            },
+            rollWord() {
+
+                this.intervalFunction = setInterval(() => {
+                    const word1 = document.querySelector(".word" + this.index);
+                    // console.log(word1);
+                    const word2 = document.querySelector(".word" + ((this.index % 3) + 1));
+                    // console.log(word2);
+                    word1.classList.add("d-none")
+                    word1.classList.remove("drop_animation")
+                    word2.classList.add("drop_animation");
+                    word2.classList.remove("d-none")
+                    this.index = (this.index % 3) + 1
+
+                }, 3000)
+
+            },
+            stopIntervalFunction() {
+                clearInterval(this.intervalFunction)
+            },
+            carousel_roll() {
+                $(document).ready(function () {
+                    function startCarousel() {
+                        $(".carousel").animate(
+                            {
+                                marginLeft: "-150px",
+                            },
+                            2000,
+                            "linear",
+                            function () {
+                                $(this).css("margin-left", "0");
+                                $(this).append($(this).children().first());
+                            }
+                        );
+                    }
+                    setInterval(startCarousel, 2000);
+                });
+            }
+        },
+        mounted() {
+
+            this.getProjects(this.base_URL + this.projects_API)
+            this.scrollFunction()
+            this.$nextTick(() => {
+                this.arrowAppearWithScroll()
+                this.toggleAppearWithScroll()
+            })
+            setTimeout(() => {
+                this.rollWord()
+            }, 500);
+            this.carousel_roll();
+
+
+        }, unmounted() {
+            clearInterval(this.stopIntervalFunction())
         }
-    },
-    mounted() {
 
-        this.getProjects(this.base_URL + this.projects_API)
-        this.scrollFunction()
-        this.$nextTick(() => {
-            this.arrowAppearWithScroll()
-            this.toggleAppearWithScroll()
-        })
-        setTimeout(() => {
-            this.rollWord()
-        }, 500);
-        this.carousel_roll();
-
-
-    }, unmounted() {
-        clearInterval(this.stopIntervalFunction())
     }
-
-}
 </script>
 
 <template>
@@ -158,16 +159,21 @@ export default {
                     <!-- NEW TITLE -->
                     <div class="animated-title">
                         <div class="text-top ghost3">
-                            <div>
+                            <div v-if="languageState.eng_lan">
                                 <span class="title_size fw-semibold" style="color: #393939;">Hi,</span>
                                 <span class="title_size fw-semibold" style="color: #656565;">I'm Damiano</span>
+                            </div>
+                            <div v-else>
+                                <span class="title_size fw-semibold" style="color: #393939;">Ciao,</span>
+                                <span class="title_size fw-semibold" style="color: #656565;">Sono Damiano</span>
                             </div>
                         </div>
                         <div class="text-bottom t_duration">
                             <div class="title_size d-flex no-wrap">
                                 <div class="wordContainer d-flex roll_container fw-semibold text overflow-hidden"
                                     style="white-space: nowrap; height: 2em;">
-                                    <span class="word1 wisteria position-relative" style="color: #acacac;">Fullstack</span>
+                                    <span class="word1 wisteria position-relative"
+                                        style="color: #acacac;">Fullstack</span>
                                     <span class="word2 d-none wisteria position-relative"
                                         style="color: #959595;">Backend</span>
                                     <span class="word3 d-none wisteria position-relative"
@@ -192,8 +198,8 @@ export default {
 
         <section class=" m_main main_container bg-snow" :class="{ 'opacity-0': ghost }">
             <div class="container p_bottom_30" style="position: sticky;top: 86px;">
-                <h1 class="text-center d-block d-md-none fw-semibold" style="position: sticky;top: 20px;color:  #393939;"
-                    id="projects">
+                <h1 class="text-center d-block d-md-none fw-semibold"
+                    style="position: sticky;top: 20px;color:  #393939;" id="projects">
                     Portfolio
                 </h1>
 
@@ -201,7 +207,7 @@ export default {
                 <div class="scroll_element mb-4 d-flex" style="position: sticky;top: 86px;">
                     <div class="col">
                         <div class=" d-flex justify-content-center mt-4" style="position: sticky;"
-                            v-for=" (project, index)   in   projects.data  "
+                            v-for="(project, index) in projects.data"
                             :style="{ top: `calc(86px + ${index + 1}rem)` }">
 
                             <!-- Define a single project in its own specific route-link  -->
@@ -219,7 +225,8 @@ export default {
                                         <img :src="getImagePath(project.logo)"
                                             class="card-img-top moving_image pointer card_shadow h-100"
                                             :alt="project.title + ' image'" loading="lazy">
-                                        <div class="p-3 fw-semibold text_shadow2 text-white position-absolute top-0 end-0">
+                                        <div
+                                            class="p-3 fw-semibold text_shadow2 text-white position-absolute top-0 end-0">
                                             {{
                                                 project.type.name
                                             }}
@@ -235,27 +242,14 @@ export default {
                         <div class="right_main_side d-md-flex flex-column justify-content-center align-items-start p-3  "
                             style="position: sticky;top: 250px;">
 
-                            <h1 class="fw-semibold fade_right position-relative text-center" style="color: #393939;">About
-                                me</h1>
+                            <h1 class="fw-semibold fade_right position-relative text-center" style="color: #393939;">
+                                {{ languageState.eng_lan ? 'About me' : 'Chi sono' }}</h1>
 
-                            <p class="fw-semibold  fade_right2 position-relative" style="color:  #393939;">I'm a passionate
-                                web developer with a keen
-                                interest in
-                                modern web
-                                technologies.</p>
+                            <p class="fw-semibold  fade_right2 position-relative" style="color:  #393939;">{{languageState.eng_lan ? 'I am a web developer with several years of experience in the industry and a strong passion for modern web technologies.' : 'Sono uno sviluppatore web con anni di esperienza nel settore e una forte passione per le tecnologie web moderne.'}}</p>
 
-                            <p class=" fw-semibold fade_right3 position-relative" style="color: #393939;">I am a
-                                full-stack
-                                developer, proficient in
-                                both
-                                front-end and back-end programming, dedicated to crafting websites from conception to
-                                implementation, ensuring a comprehensive and seamless user experience.</p>
+                            <p class=" fw-semibold fade_right3 position-relative" style="color: #393939;"> {{ languageState.eng_lan ? 'I handle the entire website creation process: from idea analysis and client requirements, to design, front-end and back-end development, all the way to deployment and final optimization.' : 'Mi occupo dell’intero processo di realizzazione dei siti web: dall’analisi dell’idea e delle esigenze del cliente, alla progettazione, allo sviluppo front-end e back-end, fino alla messa online e all’ottimizzazione finale.' }}</p>
 
-                            <p class="fw-semibold  fade_right4 position-relative" style="color: #393939;">My goal is to
-                                combine aesthetics with
-                                functionality to
-                                deliver an exceptional user
-                                experience.</p>
+                            <p class="fw-semibold  fade_right4 position-relative" style="color: #393939;">{{ languageState.eng_lan ? 'I build complete, well-designed and high-performing websites, focused on clarity, speed and real business results.' : 'Creo siti completi, funzionali e curati nel design, pensati per essere chiari, veloci e orientati ai risultati' }}</p>
 
                             <div class="shape_container position-absolute position3">
                                 <div class="shape "></div>
