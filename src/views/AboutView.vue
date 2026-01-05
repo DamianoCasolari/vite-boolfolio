@@ -13,7 +13,7 @@ export default {
         <div class="info_container ">
             <div class="container">
                 <div class="row justify-content-center align-items-center ">
-                    <div class="col-md-6 fade_in position-relative mt-5 mt-lg-0">
+                    <div class="col-md-6 fade_in position-relative mt-lg-0">
                         <img src="../../public/irish.jpg" alt="Profile Picture" class="profile_image">
                     </div>
                     <div class="col-md-6">

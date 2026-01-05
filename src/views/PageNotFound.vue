@@ -1,14 +1,15 @@
 <script>
-export default {
-    name: 'PageNotFound',
-    setup() {
+    import { languageState } from "../assets/js/language";
+    export default {
+        name: 'PageNotFound',
+        setup() {
 
 
-        return {}
+            return { languageState }
+        }
     }
-}
 </script>
-        
+
 <template>
     <div class="contacts vh100_100px d-flex justify-content-center align-items-center flex-column ">
         <div class="h-100 w-100 position-absolute bg-dark" style="opacity: 0.5;"></div>
@@ -22,11 +23,9 @@ export default {
             </svg>
         </div>
         <h2 class="text-white z-3 postion-relative h2">404</h2>
-        <h2 class="text-white z-3 postion-relative h2">Page not found </h2>
+        <h2 class="text-white z-3 postion-relative h2">{{ languageState.eng_lan ? 'Page not found' : 'Pagina nontrovata' }}</h2>
         <router-link :to="{ name: 'home' }" class="text-decoration-none">
-            <div class="px-4 py-2 border border-0 back_button rounded-4 fs-6 mt-4">Back
-                to
-                home</div>
+            <div class="px-4 py-2 border border-0 back_button rounded-4 fs-6 mt-4">{{ languageState.eng_lan ? 'Back to home' : 'Torna alla home' }}</div>
         </router-link>
         <div>
             <ul class="circles">
@@ -61,29 +60,29 @@ export default {
 
 
 <style lang="scss" scoped>
-.back_button {
-    background-color: rgba(255, 255, 255, 0.671);
-    color: rgba(51, 48, 48, 0.715);
-    ;
-    transition-duration: 0.7s;
-    z-index: 100;
-    position: relative;
+    .back_button {
+        background-color: rgba(255, 255, 255, 0.671);
+        color: rgba(51, 48, 48, 0.715);
+        ;
+        transition-duration: 0.7s;
+        z-index: 100;
+        position: relative;
 
 
-}
+    }
 
 
-.back_button:hover {
+    .back_button:hover {
 
-    background-color: transparent;
-    color: rgb(250, 250, 250);
+        background-color: transparent;
+        color: rgb(250, 250, 250);
 
-    border: 0 !important;
-    letter-spacing: 3px;
-    font-weight: bold;
-    font-size: 18x;
-    border-top: 1px solid rgb(250, 250, 250) !important;
-    border-bottom: 1px solid rgb(250, 250, 250) !important;
-    border-radius: 0 !important;
-}
+        border: 0 !important;
+        letter-spacing: 3px;
+        font-weight: bold;
+        font-size: 18x;
+        border-top: 1px solid rgb(250, 250, 250) !important;
+        border-bottom: 1px solid rgb(250, 250, 250) !important;
+        border-radius: 0 !important;
+    }
 </style>
