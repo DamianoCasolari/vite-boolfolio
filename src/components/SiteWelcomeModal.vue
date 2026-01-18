@@ -28,7 +28,7 @@
                         s1: "What’s included",
                         s2: "Monthly management (€15/month)",
                         s3: "Need more than one page?",
-                        contacts: "Go to contacts",
+                        contacts: "Send me an email",
                         whatsapp: "Write on WhatsApp",
                         inc: [
                             { parts: [{ t: "Modern design", b: true }, { t: ", mobile and tablet friendly" }] },
@@ -80,7 +80,7 @@
                     s1: "Cosa include",
                     s2: "Gestione mensile (15€/mese)",
                     s3: "Vuoi più di una pagina?",
-                    contacts: "Vai ai contatti",
+                    contacts: "Inviami una email",
                     whatsapp: "Scrivimi su WhatsApp",
                     inc: [
                         { parts: [{ t: "Design moderno", b: true }, { t: ", ottimizzato per smartphone e tablet" }] },
