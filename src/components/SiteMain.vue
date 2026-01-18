@@ -1,4 +1,5 @@
 <script>
+    import * as bootstrap from "bootstrap";
     import PaginationController from './PaginationController.vue';
     import { appearWithScroll, arrowAppearWithScroll } from '../assets/js/utility_functions.js';
     import $ from 'jquery';
@@ -27,6 +28,15 @@
             PaginationController
         },
         methods: {
+            openWelcomeModal() {
+                nextTick(() => {
+                    const el = document.getElementById("welcomeModal");
+                    if (!el) return;
+
+                    const instance = bootstrap.Modal.getInstance(el) || new bootstrap.Modal(el);
+                    instance.show();
+                });
+            },
             getProjects(url) {
                 axios.get(url).then(response => {
                     // console.log(response);
@@ -207,8 +217,7 @@
                 <div class="scroll_element mb-4 d-flex" style="position: sticky;top: 86px;">
                     <div class="col">
                         <div class=" d-flex justify-content-center mt-4" style="position: sticky;"
-                            v-for="(project, index) in projects.data"
-                            :style="{ top: `calc(86px + ${index + 1}rem)` }">
+                            v-for="(project, index) in projects.data" :style="{ top: `calc(86px + ${index + 1}rem)` }">
 
                             <!-- Define a single project in its own specific route-link  -->
 
@@ -241,15 +250,98 @@
                         :class="{ 'd-none': ghost }" style="position: sticky;top: 250px;">
                         <div class="right_main_side d-md-flex flex-column justify-content-center align-items-start p-3  "
                             style="position: sticky;top: 250px;">
+                            <h1 class="position-relative fw-semibold">
+                                {{ languageState.eng_lan ? `Services` : `Servizi` }}
+                            </h1>
 
-                            <h1 class="fw-semibold fade_right position-relative text-center" style="color: #393939;">
-                                {{ languageState.eng_lan ? 'About me' : 'Chi sono' }}</h1>
+                            <p class="position-relative">
+                                <span v-if="languageState.eng_lan">
+                                    I design and develop <b>custom-made websites</b>, tailored to your <b>business
+                                        goals</b> and <b>real needs</b>.
+                                </span>
+                                <span v-else>
+                                    Progetto e realizzo <b>siti web su misura</b>, costruiti attorno agli
+                                    <b>obiettivi</b> e alle <b>reali esigenze</b> del tuo business.
+                                </span>
+                            </p>
 
-                            <p class="fw-semibold  fade_right2 position-relative" style="color:  #393939;">{{languageState.eng_lan ? 'I am a web developer with several years of experience in the industry and a strong passion for modern web technologies.' : 'Sono uno sviluppatore web con anni di esperienza nel settore e una forte passione per le tecnologie web moderne.'}}</p>
+                            <p class="position-relative">
+                                <span v-if="languageState.eng_lan">
+                                    Each project is <b>unique</b>: no templates, no <b>pre-packaged solutions</b>. From
+                                    the <b>initial idea</b> to the <b>final online release</b>, everything is designed
+                                    specifically for you.
+                                </span>
+                                <span v-else>
+                                    Ogni progetto e' <b>unico</b>: niente <b>template preconfezionati</b>, niente
+                                    <b>soluzioni standard</b>. Dall'<b>idea iniziale</b> fino alla <b>pubblicazione
+                                        online</b>, tutto e' pensato appositamente per te.
+                                </span>
+                            </p>
 
-                            <p class=" fw-semibold fade_right3 position-relative" style="color: #393939;"> {{ languageState.eng_lan ? 'I handle the entire website creation process: from idea analysis and client requirements, to design, front-end and back-end development, all the way to deployment and final optimization.' : 'Mi occupo dell’intero processo di realizzazione dei siti web: dall’analisi dell’idea e delle esigenze del cliente, alla progettazione, allo sviluppo front-end e back-end, fino alla messa online e all’ottimizzazione finale.' }}</p>
+                            <p class="position-relative">
+                                <span v-if="languageState.eng_lan">
+                                    I focus on <b>performance</b>, <b>clarity</b>, <b>responsive design</b> and <b>clean
+                                        code</b>, to deliver <b>fast</b>, <b>effective</b> and <b>scalable websites</b>.
+                                </span>
+                                <span v-else>
+                                    Lavoro su <b>performance</b>, <b>chiarezza</b>, <b>design responsive</b> e <b>codice
+                                        pulito</b>, per offrire <b>siti veloci</b>, <b>efficaci</b> e <b>pronti a
+                                        crescere</b> nel tempo.
+                                </span>
+                            </p>
 
-                            <p class="fw-semibold  fade_right4 position-relative" style="color: #393939;">{{ languageState.eng_lan ? 'I build complete, well-designed and high-performing websites, focused on clarity, speed and real business results.' : 'Creo siti completi, funzionali e curati nel design, pensati per essere chiari, veloci e orientati ai risultati' }}</p>
+                            <!-- COME LAVORO -->
+                            <div class="mt-4">
+                                <h4 class="position-relative fw-semibold">
+                                    {{ languageState.eng_lan ? `How I work` : `Come lavoro` }}
+                                </h4>
+
+                                <ul class="work_steps mt-3">
+                                    <li class="position-relative">
+                                        <strong>1.</strong>
+                                        <span v-if="languageState.eng_lan">
+                                            <b>Analysis</b> of goals and requirements
+                                        </span>
+                                        <span v-else>
+                                            <b>Analisi</b> degli obiettivi e delle esigenze
+                                        </span>
+                                    </li>
+
+                                    <li class="position-relative">
+                                        <strong>2.</strong>
+                                        <span v-if="languageState.eng_lan">
+                                            <b>Design</b> of structure and <b>user experience</b>
+                                        </span>
+                                        <span v-else>
+                                            <b>Progettazione</b> della struttura e dell'<b>esperienza utente</b>
+                                        </span>
+                                    </li>
+
+                                    <li class="position-relative">
+                                        <strong>3.</strong>
+                                        <span v-if="languageState.eng_lan">
+                                            <b>Front-end</b> and <b>back-end development</b>
+                                        </span>
+                                        <span v-else>
+                                            <b>Sviluppo front-end</b> e <b>back-end</b>
+                                        </span>
+                                    </li>
+
+                                    <li class="position-relative">
+                                        <strong>4.</strong>
+                                        <span v-if="languageState.eng_lan">
+                                            <b>Testing</b>, <b>optimization</b> and <b>online release</b>
+                                        </span>
+                                        <span v-else>
+                                            <b>Test</b>, <b>ottimizzazione</b> e <b>messa online</b>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <button type="button" class="badge rounded-pill fs-6 text-bg-dark border-0 offer-badge"
+                                    style="cursor:pointer" @click="openWelcomeModal">
+                                    {{ languageState.eng_lan ? "2026 Special Offer" : "Offerta 2026" }}
+                                </button>
+                            </div>
 
                             <div class="shape_container position-absolute position3">
                                 <div class="shape "></div>
@@ -262,8 +354,6 @@
 
         <!-- PAGINATION SIDE  -->
 
-        <!-- <PaginationController @prev="getProjects(projects.prev_page_url)" @next="getProjects(projects.next_page_url)"
-            :prev_condition="projects.prev_page_url" :next_condition="projects.next_page_url" /> -->
 
         <!-- CAROUSEL  -->
         <div class="carousel_container ">
@@ -350,4 +440,41 @@
     </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+    .offer-badge {
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+        transition: box-shadow 0.3s ease;
+    }
+
+    @keyframes thrilled {
+        0% {
+            transform: translateX(0) translateY(-1);
+        }
+
+        20% {
+            transform: translateX(-1px) ;
+        }
+
+        40% {
+            transform: translateX(1px) ;
+        }
+
+        60% {
+            transform: translateX(-1px) ;
+        }
+
+        80% {
+            transform: translateX(1px) ;
+        }
+
+        100% {
+            transform: translateX(-1px);
+        }
+    }
+
+    .offer-badge:hover {
+        animation: thrilled 0.45s ;
+        // box-shadow: 0 5px 14px rgba(0, 0, 0, 0.3);
+    }
+</style>
