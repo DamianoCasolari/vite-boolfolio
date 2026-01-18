@@ -15,7 +15,7 @@
                 const msg = this.languageState.eng_lan
                     ? "Hi! I'm interested in the 300€ website offer. Can you tell me what's included?"
                     : "Ciao! Mi interessa l’offerta sito a 300€. Mi dici cosa include?";
-                return "https://wa.me/3517280143?text=" + encodeURIComponent(msg);
+                return "https://wa.me/3477952189?text=" + encodeURIComponent(msg);
             },
             t() {
                 if (this.languageState.eng_lan) {

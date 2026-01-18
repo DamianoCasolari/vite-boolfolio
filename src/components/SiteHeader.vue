@@ -80,7 +80,7 @@
 
                 <div class="logo_container d-flex">
                     <a class="navbar-brand align-items-center justify-content-start mx-0 logo_filter lighter scale_hover"
-                        href="https://wa.me/3517280143?text=MESSAGGIO" target="_blank">
+                        href="https://wa.me/3477952189?text=MESSAGGIO" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="60" fill="#212529"
                             viewBox="0 0 640 640">
                             <path
