@@ -218,7 +218,7 @@
                                 @click="openWelcomeModal">
                                 {{ languageState.eng_lan ? "2026 Special Offer" : "Offerta 2026" }}
                             </button>
-                            <div>
+                            <div class="offer-wrap">
                                 <img src="/public/fancyArrow.png" class="fancy_arrow2" alt="">
                             </div>
                         </div>
