@@ -213,7 +213,7 @@
                     </h1>
 
                     <div class="d-flex justify-content-center mt-4 position-relative">
-                        <div class="position-relative">
+                        <div class="position-relative offer-wrap">
                             <button type="button" class="badge rounded-pill fs-6 text-bg-dark border-0"
                                 @click="openWelcomeModal">
                                 {{ languageState.eng_lan ? "2026 Special Offer" : "Offerta 2026" }}
@@ -518,9 +518,13 @@
         width: 100px;
         overflow: visible;
         opacity: 0.7;
-        rotate: 90deg;
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
         right: -122px;
         top: -75px;
+    }
+    .offer-wrap {
+        overflow: visible;
     }
 
     // Per la lista finale di step lavoro su certi schermi lo togliamo
