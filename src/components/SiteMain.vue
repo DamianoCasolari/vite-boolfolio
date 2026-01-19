@@ -316,7 +316,7 @@
                             </p>
 
                             <!-- COME LAVORO -->
-                            <div class="mt-4">
+                            <div class="mt-4 hide-on-ultrawide">
                                 <h4 class="position-relative fw-semibold">
                                     {{ languageState.eng_lan ? `How I work` : `Come lavoro` }}
                                 </h4>
@@ -521,5 +521,12 @@
         rotate: 90deg;
         right: -122px;
         top: -75px;
+    }
+
+    // Per la lista finale di step lavoro su certi schermi lo togliamo
+    @media (min-aspect-ratio: 2 / 1) {
+        .hide-on-ultrawide {
+            display: none !important;
+        }
     }
 </style>
