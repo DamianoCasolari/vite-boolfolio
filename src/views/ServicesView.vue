@@ -134,13 +134,6 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="button"
-                                class="badge rounded-pill fs-6 text-bg-dark border-0 offer-badge right-0 position-relative mb-3"
-                                style="cursor:pointer" @click="openWelcomeModal">
-                                 {{ languageState.eng_lan ? "2026 Special Offer" : "Offerta 2026" }}
-                            </button>
-                        </div>
                     </div>
 
 

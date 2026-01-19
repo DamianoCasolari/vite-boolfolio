@@ -198,7 +198,6 @@
                     </div>
 
                 </div>
-
             </div>
 
         </div>
@@ -208,11 +207,23 @@
 
         <section class=" m_main main_container bg-snow" :class="{ 'opacity-0': ghost }">
             <div class="container p_bottom_30" style="position: sticky;top: 86px;">
-                <h1 class="text-center d-block d-md-none fw-semibold"
-                    style="position: sticky;top: 20px;color:  #393939;" id="projects">
-                    Portfolio
-                </h1>
+                <div class="position-sticky d-block d-lg-none" style="top:20px; z-index:10">
+                    <h1 class="text-center fw-semibold" style="color:#393939" id="projects">
+                        Portfolio
+                    </h1>
 
+                    <div class="d-flex justify-content-center mt-4 position-relative">
+                        <div class="position-relative">
+                            <button type="button" class="badge rounded-pill fs-6 text-bg-dark border-0"
+                                @click="openWelcomeModal">
+                                {{ languageState.eng_lan ? "2026 Special Offer" : "Offerta 2026" }}
+                            </button>
+                            <div>
+                                <img src="/public/fancyArrow.png" class="fancy_arrow2" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="scroll_element mb-4 d-flex" style="position: sticky;top: 86px;">
                     <div class="col">
@@ -246,13 +257,27 @@
 
                         </div>
                     </div>
-                    <div class="right_main_side col-7 d-none d-md-flex flex-column justify-content-center align-items-center px-4 py-5"
+                    <div class="right_main_side col-7 d-none d-lg-flex flex-column justify-content-center align-items-center px-4 py-5"
                         :class="{ 'd-none': ghost }" style="position: sticky;top: 250px;">
                         <div class="right_main_side d-md-flex flex-column justify-content-center align-items-start p-3  "
                             style="position: sticky;top: 250px;">
-                            <h1 class="position-relative fw-semibold">
-                                {{ languageState.eng_lan ? `Services` : `Servizi` }}
-                            </h1>
+                            <div class="d-flex justify-content-between align-items-center w-100 mb-2">
+
+                                <h1 class="position-relative fw-semibold mb-0">
+                                    {{ languageState.eng_lan ? `Services` : `Servizi` }}
+                                </h1>
+                                <div
+                                    class="d-flex justify-content-center align-items-center pointer position-relative ">
+                                    <div>
+                                        <img src="/public/fancyArrow.png" class="fancy_arrow" alt="">
+                                    </div>
+                                    <button type="button"
+                                        class="badge rounded-pill offer-badge fs-6 text-bg-dark border-0 d-none d-md-block"
+                                        style="cursor:pointer" @click="openWelcomeModal">
+                                        {{ languageState.eng_lan ? "2026 Special Offer" : "Offerta 2026" }}
+                                    </button>
+                                </div>
+                            </div>
 
                             <p class="position-relative">
                                 <span v-if="languageState.eng_lan">
@@ -337,10 +362,6 @@
                                         </span>
                                     </li>
                                 </ul>
-                                <button type="button" class="badge rounded-pill fs-6 text-bg-dark border-0 offer-badge"
-                                    style="cursor:pointer" @click="openWelcomeModal">
-                                    {{ languageState.eng_lan ? "2026 Special Offer" : "Offerta 2026" }}
-                                </button>
                             </div>
 
                             <div class="shape_container position-absolute position3">
@@ -442,6 +463,10 @@
 
 <style lang="scss">
 
+    .pointer {
+        cursor: pointer;
+    }
+
     .offer-badge {
         box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
         transition: box-shadow 0.3s ease;
@@ -453,19 +478,19 @@
         }
 
         20% {
-            transform: translateX(-1px) ;
+            transform: translateX(-1px);
         }
 
         40% {
-            transform: translateX(1px) ;
+            transform: translateX(1px);
         }
 
         60% {
-            transform: translateX(-1px) ;
+            transform: translateX(-1px);
         }
 
         80% {
-            transform: translateX(1px) ;
+            transform: translateX(1px);
         }
 
         100% {
@@ -473,8 +498,28 @@
         }
     }
 
+
     .offer-badge:hover {
-        animation: thrilled 0.45s ;
+        animation: thrilled 0.45s;
         // box-shadow: 0 5px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .fancy_arrow {
+        position: absolute;
+        width: 100px;
+        top: -127px;
+        right: 53px;
+        overflow: visible;
+        opacity: 0.7;
+    }
+
+    .fancy_arrow2 {
+        position: absolute;
+        width: 100px;
+        overflow: visible;
+        opacity: 0.7;
+        rotate: 90deg;
+        right: -122px;
+        top: -75px;
     }
 </style>
