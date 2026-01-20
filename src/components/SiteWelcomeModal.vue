@@ -28,7 +28,7 @@
                         s1: "What’s included",
                         s2: "Monthly management (€15/month)",
                         s3: "Need more than one page?",
-                        contacts: "Send me an email",
+                        contacts: "Email",
                         whatsapp: "Write on WhatsApp",
                         inc: [
                             { parts: [{ t: "Modern design", b: true }, { t: ", mobile and tablet friendly" }] },
@@ -80,13 +80,13 @@
                     s1: "Cosa include",
                     s2: "Gestione mensile (15€/mese)",
                     s3: "Vuoi più di una pagina?",
-                    contacts: "Inviami una email",
+                    contacts: "Email",
                     whatsapp: "Scrivimi su WhatsApp",
                     inc: [
                         { parts: [{ t: "Design moderno", b: true }, { t: ", ottimizzato per smartphone e tablet" }] },
                         { parts: [{ t: "Struttura chiara", b: true }, { t: " e " }, { t: "facile da navigare", b: true }] },
                         { parts: [{ t: "Ottimizzazione di base", b: true }, { t: " per Google" }] },
-                        { parts: [{ t: "Contatti rapidi", b: true }, { t: " (WhatsApp, email o modulo)" }] },
+                        { parts: [{ t: "Contatti rapidi", b: true }, { t: " (WhatsApp, email o modulo personalizzato)" }] },
                         { parts: [{ t: "Pubblicazione", b: true }, { t: " e " }, { t: "configurazione completa", b: true }, { t: " del sito" }] },
                     ],
                     mng: [
@@ -168,9 +168,9 @@
                                 <span class="badge rounded-pill text-bg-light border">
                                     {{ t.step }} {{ step }}/3
                                 </span>
+                                <span class="badge rounded-pill text-bg-dark">Offerta 2026</span>
                             </div>
                             <!-- <div class="text-muted small mt-1">{{ t.subtitle }}</div> -->
-                            <span class="badge rounded-pill text-bg-dark">Offerta 2026</span>
                         </div>
 
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -193,7 +193,7 @@
                     </div>
 
                     <!-- Steps -->
-                    <div class="step-tabs mb-3">
+                    <div class="step-tabs d-none d-lg-flex mb-3">
                         <button type="button" class="step-tab" :class="{ active: step === 1 }" @click="setStep(1)">
                             1 · {{ t.s1 }}
                         </button>
@@ -209,7 +209,7 @@
                         <template v-if="step === 1">
                             <div class="fw-semibold mb-2">{{ t.s1 }}</div>
                             <ul class="mb-0 small">
-                               <li v-for="(row, i) in t.inc" :key="i">
+                                <li v-for="(row, i) in t.inc" :key="i">
                                     <template v-for="(p, j) in row.parts" :key="j">
                                         <b v-if="p.b">{{ p.t }}</b>
                                         <span v-else>{{ p.t }}</span>
@@ -341,7 +341,6 @@
     }
 
     .step-tabs {
-        display: flex;
         gap: 8px;
         flex-wrap: wrap;
     }

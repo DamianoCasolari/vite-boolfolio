@@ -147,7 +147,7 @@
             <div class="cube2"></div>
         </div>
     </div>
-    <div class="bg_snow" v-show="!loading" >
+    <div class="bg_snow" v-show="!loading">
 
         <div id="top"
             class="jumbotron container rounded-3 vh100 d-flex flex-column align-items-center justify-content-center position-relative">
@@ -216,7 +216,7 @@
                         <div class="position-relative offer-wrap">
                             <button type="button" class="badge rounded-pill fs-6 text-bg-dark border-0"
                                 @click="openWelcomeModal">
-                                {{ languageState.eng_lan ? "2026 Special Offer" : "Offerta 2026" }}
+                                {{ languageState.eng_lan ? "Explore the 2026 Offer" : "Scopri l'offerta 2026" }}
                             </button>
                             <div>
                                 <div class="fancy_arrow2" aria-hidden="true"></div>
@@ -515,10 +515,10 @@
 
     .fancy_arrow2 {
         position: absolute;
-        width: 100px;
-        height: 100px; 
-        right: -122px;
-        top: -75px;
+        width: 58px;
+        height: 100px;
+        right: -66px;
+        top: -64px;
 
         background-image: url('/fancyArrow.png');
         background-repeat: no-repeat;
@@ -530,6 +530,7 @@
         -webkit-transform: rotate(90deg);
         pointer-events: none; // evita click strani
     }
+
     .offer-wrap {
         overflow: visible;
     }
