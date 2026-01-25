@@ -80,7 +80,7 @@
 
                 <div class="logo_container d-flex">
                    <a class="navbar-brand align-items-center justify-content-start mx-0 logo_filter lighter scale_hover"
-                        href="https://wa.me/3477952189?text=Ciao%20sono%20[Nome]%0AVorrei%20informazioni%20per%20la%20realizzazione%20del%20mio%20sito%20web.%0AAttivit%C3%A0:%20[tipo%20di%20attivit%C3%A0]"
+                        href="https://wa.me/3477952189?text=Buongiorno%2C%0Asono%20%5BNome%5D%20e%20vi%20contatto%20per%20avere%20informazioni%20sulla%20realizzazione%20di%20un%20sito%20web%20per%20la%20mia%20attivit%C3%A0.%0AResto%20in%20attesa%20di%20un%20vostro%20riscontro%2C%20grazie."
                         target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="60" fill="#212529"
                             viewBox="0 0 640 640">
