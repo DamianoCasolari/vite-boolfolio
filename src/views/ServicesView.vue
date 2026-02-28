@@ -67,7 +67,7 @@
                                     specifically for you.
                                 </span>
                                 <span v-else>
-                                    Ogni progetto e' <b>unico</b>: niente <b>template preconfezionati</b>, niente
+                                    Ogni progetto e' <b>unico</b>: niente <b>template preconfezionati</b>, né
                                     <b>soluzioni standard</b>. Dall'<b>idea iniziale</b> fino alla <b>pubblicazione
                                         online</b>, tutto e' pensato appositamente per te.
                                 </span>
@@ -162,8 +162,8 @@
                                         development</b>, all the way to <b>deployment</b> and <b>final optimization</b>.
                                 </span>
                                 <span v-else>
-                                    Mi occupo dell'<b>intero processo di realizzazione dei siti web</b>: dall'<b>analisi
-                                        dell'idea</b> e delle esigenze del cliente, alla <b>progettazione</b>, allo
+                                    Mi occupo di <b>tutte le fasi di realizzazione di un sito web</b>: dall'<b>analisi
+                                        delle esigenze del cliente</b>, alla <b>progettazione</b>, allo
                                     <b>sviluppo front-end</b> e <b>back-end</b>, fino alla <b>messa online</b> e
                                     all'<b>ottimizzazione finale</b>.
                                 </span>

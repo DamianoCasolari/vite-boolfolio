@@ -1,0 +1,463 @@
+{
+    "projects": [
+        {
+            "id": 140,
+            "slug": "i-law-legal-tech-platform",
+            "name": "I-law – Legal Tech Platform",
+            "name_it": "I-law – Piattaforma Legal Tech",
+            "description": "i-law is an enterprise web platform for the structured management of legal and procedural data. The project has been developed using a modular architecture and strict internal standards, following scalable patterns on both frontend and backend. Responsibilities: - Design and development of complex CRUD modules (Judicial Authorities, Correspondent Lawyers, Guarantors, Types, etc.) - Implementation of structured Redux patterns (slices, thunks, pagination, filters) - Management of relationships between entities (addresses, emails, phones, many-to-many associations) - Standardization of frontend architecture (hook order, slice structure, modal state, pagination pattern) - Alignment between backend/frontend contracts and handling of typed payloads",
+            "description_it": "i-law è una piattaforma web aziendale per la gestione strutturata di dati legali e procedurali. Il progetto è stato sviluppato con un’architettura modulare e standard interni rigorosi, seguendo pattern scalabili sia sul frontend che sul backend. Responsabilità: - Progettazione e sviluppo di moduli CRUD complessi (Autorità Giudiziarie, Avvocati Corrispondenti, Garanti, Tipologie, ecc.) - Implementazione di pattern Redux strutturati (slices, thunks, paginazione, filtri) - Gestione delle relazioni tra entità (indirizzi, email, telefoni, associazioni molti-a-molti) - Standardizzazione dell’architettura frontend (ordine dei hook, struttura delle slice, stato delle modali, pattern di paginazione) - Allineamento tra contratti backend/frontend e gestione dei payload tipizzati",
+            "image": "/immagini-progetti/ilaw.jpg",
+            "link": null,
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "React"
+                },
+                {
+                    "id": 2,
+                    "name": "Redux"
+                },
+                {
+                    "id": 3,
+                    "name": "Typescript"
+                },
+                {
+                    "id": 10,
+                    "name": "Node.js"
+                },
+                {
+                    "id": 13,
+                    "name": "Mysql"
+                }
+            ]
+        },
+        {
+            "id": 129,
+            "slug": "loro-piana-app",
+            "name": "Loro Piana App",
+            "name_it": "App Loro Piana",
+            "description": "Loro Piana’s in-store application is a global point-of-sale system used across boutiques worldwide to manage sales. It handles customer profiles and product catalogs, automatically applies each country’s tax rules, and provides advanced tools like transaction suspension, discount application, and more. In my role, I worked exclusively in support—modifying the existing application to fix bugs and integrate new feature requests.",
+            "description_it": "Applicazione in-store utilizzata nelle boutique Loro Piana di tutto il mondo per la gestione delle vendite. Il sistema gestisce profili cliente e cataloghi prodotto, applica automaticamente le regole fiscali di ogni paese e offre strumenti avanzati come la sospensione delle transazioni e l’applicazione di sconti. Il mio ruolo è stato focalizzato sul supporto, con interventi di bug fixing e integrazione di nuove funzionalità.",
+            "image": "/immagini-progetti/loropiana1.jpg",
+            "link": null,
+            "type": {
+                "id": 1,
+                "name": "FrontEnd"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 10,
+                    "name": "Node.js"
+                },
+                {
+                    "id": 13,
+                    "name": "typescript"
+                }
+            ]
+        },
+        {
+            "id": 128,
+            "slug": "bulgari-app",
+            "name": "Bulgari App",
+            "name_it": "App Bulgari",
+            "description": "Bulgari’s in-store application is a global point-of-sale system used across boutiques worldwide to manage sales...",
+            "description_it": "Applicazione in-store utilizzata nelle boutique Bulgari a livello globale per la gestione delle vendite. Consente la gestione dei clienti e dei cataloghi prodotto, applica automaticamente le regole fiscali locali e mette a disposizione funzionalità avanzate come sospensione delle transazioni e scontistiche. Il mio contributo è stato orientato al supporto tecnico e alla risoluzione di bug.",
+            "image": "/immagini-progetti/bulgari.jpg",
+            "link": null,
+            "type": {
+                "id": 1,
+                "name": "FrontEnd"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 10,
+                    "name": "Node.js"
+                },
+                {
+                    "id": 13,
+                    "name": "typescript"
+                }
+            ]
+        },
+        {
+            "id": 130,
+            "slug": "oikos-app",
+            "name": "Oikos App",
+            "name_it": "App Oikos",
+            "description": "The Oikos application is a cutting-edge digital tool for paint professionals and clients alike...",
+            "description_it": "Applicazione digitale innovativa dedicata ai professionisti del settore vernici e ai clienti Oikos. Permette di esplorare combinazioni di colori e finiture in tempo reale, migliorando l’esperienza di consulenza e valorizzando l’attenzione del brand verso l’innovazione e la qualità.",
+            "image": "/immagini-progetti/oikos.png",
+            "link": null,
+            "type": {
+                "id": 9,
+                "name": "Native"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 10,
+                    "name": "Node.js"
+                },
+                {
+                    "id": 13,
+                    "name": "typescript"
+                },
+                {
+                    "id": 16,
+                    "name": "React Native"
+                }
+            ]
+        },
+        {
+            "id": 131,
+            "slug": "andy-cards-inventory-management",
+            "name": "Andy Cards Inventory Management",
+            "name_it": "Gestione Inventario Andy Cards",
+            "description": "The platform is a centralized web solution that synchronizes and manages trading-card inventory...",
+            "description_it": "Piattaforma web centralizzata per la gestione dell’inventario di carte collezionabili, sincronizzata in tempo reale tra Amazon, eBay, Cardmarket e lo store Andy Cards. Il sistema aggiorna automaticamente le giacenze in base a vendite, resi e nuove inserzioni. Ho contribuito attraverso attività di bug fixing e miglioramento della stabilità generale.",
+            "image": "/immagini-progetti/andy.png",
+            "link": null,
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 7,
+                    "name": "css"
+                },
+                {
+                    "id": 10,
+                    "name": "Node.js"
+                },
+                {
+                    "id": 13,
+                    "name": "typescript"
+                },
+                {
+                    "id": 18,
+                    "name": "Angular"
+                }
+            ]
+        },
+        {
+            "id": 123,
+            "slug": "bnb-website",
+            "name": "BnB Website",
+            "description": "Simulation project of a site that offers the possibility to search for apartments throughout Italy, the whole back-end part allows users to register to upload their own structures, check visits for each apartment, be contacted by guests directly on the site via a message section, possibility to modify and delete each ad, sponsor ads so that they appear first in searches (paid service) and have a clear view of the location of the structure on the map, using the tomtom app , only cities or addresses suggested by the system will be accepted for search in order to obtain the results in a precise arc of 20 km from the indicated point.",
+            "description_it": "Progetto di simulazione di un sito che offre la possibilità di cercare appartamenti in tutta Italia. La parte back-end consente agli utenti di registrarsi per caricare le proprie strutture, controllare le visite per ogni appartamento, essere contattati direttamente sul sito tramite una sezione messaggi, modificare e cancellare ogni annuncio, sponsorizzare gli annunci per farli apparire primi nelle ricerche (servizio a pagamento) e avere una chiara visualizzazione della posizione della struttura sulla mappa, utilizzando l’app TomTom. Solo città o indirizzi suggeriti dal sistema saranno accettati per la ricerca al fine di ottenere risultati in un raggio preciso di 20 km dal punto indicato.",
+            "image": "/immagini-progetti/bnb.png",
+            "link": "https://github.com/DamianoCasolari/bnb",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 4,
+                    "name": "vue.js"
+                },
+                {
+                    "id": 5,
+                    "name": "php"
+                },
+                {
+                    "id": 6,
+                    "name": "laravel"
+                },
+                {
+                    "id": 7,
+                    "name": "css"
+                }
+            ]
+        },
+        {
+            "id": 127,
+            "slug": "scada-industry-40",
+            "name": "Scada industry 4.0",
+            "name_it": "SCADA Industria 4.0",
+            "description": "Il nostro software SCADA è stato sviluppato con Node.js...",
+            "description_it": "Software SCADA per impianti industriali sviluppato con Node.js e protocollo MQTT per la comunicazione con PLC. Il sistema consente il monitoraggio e il controllo in tempo reale dei macchinari, la gestione degli allarmi e l’analisi storica dei dati tramite database PostgreSQL. Include anche funzionalità di controllo remoto tramite interfaccia web.",
+            "image": "/immagini-progetti/silos.png",
+            "link": "https://gitea.pzetatouch.it/Itelyum",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                {
+                    "id": 4,
+                    "name": "vue.js"
+                },
+                {
+                    "id": 9,
+                    "name": "Mqtt"
+                },
+                {
+                    "id": 10,
+                    "name": "Node.js"
+                },
+                {
+                    "id": 11,
+                    "name": "postgreSQL"
+                },
+                {
+                    "id": 13,
+                    "name": "typescript"
+                }
+            ]
+        },
+        {
+            "id": 126,
+            "slug": "industry-40-system-created-with-electron",
+            "name": "industry 4.0 system created with electron",
+            "name_it": "Sistema Industria 4.0 con Electron",
+            "description": "Il software sviluppato da Pzeta Touch per DB Service Srl integra il controllo PLC...",
+            "description_it": "Sistema Industria 4.0 sviluppato con Electron che integra il controllo PLC con un database PostgreSQL. Consente la gestione degli ordini, delle ricette e l’analisi storica dei dati di produzione, offrendo un’interfaccia desktop intuitiva e affidabile per ambienti industriali.",
+            "image": "/immagini-progetti/ceramica.png",
+            "link": "https://gitea.pzetatouch.it/Max_Tech/db_service",
+            "type": {
+                "id": 9,
+                "name": "Native"
+            },
+            "tags": [
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 4,
+                    "name": "vue.js"
+                },
+                {
+                    "id": 8,
+                    "name": "electron"
+                },
+                {
+                    "id": 11,
+                    "name": "postgreSQL"
+                }
+            ]
+        },
+        {
+            "id": 118,
+            "slug": "netflix-facsimile",
+            "name": "Netflix facsimile",
+            "name_it": "Clone Netflix",
+            "description": "***Try searching for any movie or tv series in the search bar***...",
+            "description_it": "Replica dell’interfaccia Netflix basata sulle API di themoviedb.org. Il progetto permette la ricerca di film e serie TV, mostra i contenuti di tendenza della settimana e presenta poster interattivi con dettagli e cast. Realizzato con Vue 3, Vite e Sass, completamente responsive.",
+            "image": "/immagini-progetti/netflix.png",
+            "link": "https://damianocasolari.github.io/vite-boolflix/",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 4,
+                    "name": "vue.js"
+                }
+            ]
+        },
+        {
+            "id": 119,
+            "slug": "whatsapp-facsimile",
+            "name": "Whatsapp facsimile",
+            "description": "WhatsApp copy\r\nHTML, CSS and JavaScript in combination with Bootstrap and Vue.js frameworks. Finally we use a npmjs library to create the emoji selector\r\n\r\nFeatures included\r\nLogical features\r\n\r\nclicking on the message a drop-down menu appears allows you to delete the selected message\r\n\r\nwriting something to the input on the left, only the i are displayed contacts whose name contains the entered letters\r\n\r\nprevent the user from sending a message that is empty or composed only of spaces\r\n\r\nchange the icon in the lower right while the user is typing: by default the microphone icon is displayed, when the input is not empty the airplane icon is displayed. When the message has been sent and the input clears, the microphone returns to view. 2) Then send the message also by clicking on the airplane icon prepare a list of random phrases as the text of the reply message from the pc\r\nview the last sent/received message from each contact in the contact list\r\n\r\nput the correct time in your messages under the name of the contact in the upper right part, change the indication of the status: display the text \"is typing ...\" in the timeout in which the PC responds, then keep the writing \"online\" for a couple of seconds and finally display \"last accessed at xx:yy\" with the correct time\r\n\r\ngive the user the option of deleting all the messages of a contact or deleting the entire chat with all its data: by clicking on the icon with the three dots at the top right, a dropdown menu opens which contains the items \"Delete messages\" and \"Delete chat\";\r\n\r\ngive the user the possibility to add a new conversation, by entering the name and the link to the icon of the new contact in a popup\r\n\r\nauto scroll down to the most recent message when a new message is added\r\n\r\nadd emoticons\r\n\r\nIf you change chat without sending the message, you will find the draft of that message in the input text field once you return to that chat\r\n\r\nGraphic features\r\n\r\ndisplay a welcome message inviting the user to select a contact from the list to view their messages,\r\n\r\nsplash page visible for 1s when opening the app\r\n\r\nmake the app responsive and usable on mobile too\r\n\r\nan icon to make the font bigger or smaller:\r\n\r\nan icon to switch light/dark mode",
+            "description_it": "Replica di WhatsApp\r\nHTML, CSS e JavaScript in combinazione con i framework Bootstrap e Vue.js. Infine utilizziamo una libreria npmjs per creare il selettore di emoji\r\n\r\nFunzionalità incluse\r\nFunzionalità logiche\r\n\r\ncliccando sul messaggio appare un menu a tendina permette di eliminare il messaggio selezionato\r\n\r\nscrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite\r\n\r\nimpedire all’utente di inviare un messaggio che sia vuoto o composto solo da spazi\r\n\r\ncambiare l’icona in basso a destra mentre l’utente sta scrivendo: di default viene visualizzata l’icona del microfono, quando l’input non è vuoto viene visualizzata l’icona dell’aeroplanino. Quando il messaggio è stato inviato e l’input si svuota, torna in vista il microfono. 2) Invia poi il messaggio anche cliccando sull’icona dell’aeroplanino preparare una lista di frasi casuali come testo del messaggio di risposta da parte del pc\r\nvisualizzare l’ultimo messaggio inviato/ricevuto da ogni contatto nella lista dei contatti\r\n\r\nmettere l’orario corretto nei propri messaggi sotto al nome del contatto nella parte superiore destra, cambiare l’indicazione dello stato: visualizzare il testo \"sta scrivendo...\" nel timeout in cui il PC risponde, poi tenere la scritta \"online\" per un paio di secondi e infine visualizzare \"ultimo accesso alle xx:yy\" con l’orario corretto\r\n\r\ndare all’utente la possibilità di eliminare tutti i messaggi di un contatto o eliminare tutta la chat con tutti i suoi dati: cliccando sull’icona con i tre puntini in alto a destra, si apre un menu a tendina che contiene le voci \"Elimina messaggi\" ed \"Elimina chat\";\r\n\r\ndare all’utente la possibilità di aggiungere una nuova conversazione, inserendo il nome e il link all’icona del nuovo contatto in un popup\r\n\r\nauto scroll down alla conversazione più recente quando viene aggiunto un nuovo messaggio\r\n\r\naggiungere emoticon\r\n\r\nSe cambi chat senza inviare il messaggio, troverai la bozza di quel messaggio nel campo di testo dell’input una volta che torni a quella chat\r\n\r\nFunzionalità grafiche\r\n\r\nvisualizzare un messaggio di benvenuto invitando l’utente a selezionare un contatto dalla lista per visualizzare i suoi messaggi,\r\n\r\nsplash page visibile per 1s all’apertura dell’app\r\n\r\nrendere l’app responsive e utilizzabile anche su mobile\r\n\r\nun’icona per ingrandire o rimpicciolire il font:\r\n\r\nun’icona per switchare light/dark mode",
+            "image": "/immagini-progetti/whatsapp.png",
+            "link": "https://damianocasolari.github.io/vue-boolzapp/",
+            "type": {
+                "id": 1,
+                "name": "FrontEnd"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 4,
+                    "name": "vue.js"
+                }
+            ]
+        },
+        {
+            "id": 121,
+            "slug": "presentation-site-of-an-artist-coach",
+            "name": "Presentation site of an Artist Coach",
+            "description": "Creation of a showcase site at the request of an artist coach, above we have a timer linked to an specific event (so now you will see it passed without putting any stops), custom built slider (not downloaded from any library), fully responsive and all elements are interactive to make the user experience more immersive",
+            "description_it": "Realizzazione di un sito vetrina su richiesta di un artist coach, sopra abbiamo un timer legato ad un evento specifico (quindi ora lo vedrete passato senza mettere alcun stop), slider custom built (non scaricato da nessuna libreria), completamente responsive e tutti gli elementi sono interattivi per rendere più immersiva l’esperienza utente",
+            "image": "/immagini-progetti/artistcoach.png",
+            "link": "https://damianocasolari.github.io/proj-html-vuejs/",
+            "type": {
+                "id": 1,
+                "name": "FrontEnd"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 4,
+                    "name": "vue.js"
+                }
+            ]
+        },
+        {
+            "id": 125,
+            "slug": "used-car-dealers-website",
+            "name": "Used Car Dealer's Website",
+            "description": "A website for a future car resale company, featuring a back-end section for car management and a front-end section for the public to view available vehicles with all related information and to contact the company directly through a form or by phone. Modern design, horizontal scrolling of listings, ideal for tablets and smartphones.",
+            "description_it": "Sito web per una futura azienda di rivendita auto, con una sezione back-end per la gestione delle auto e una sezione front-end per il pubblico per visualizzare i veicoli disponibili con tutte le informazioni correlate e contattare direttamente l'azienda tramite un modulo o per telefono. Design moderno, scorrimento orizzontale degli elenchi, ideale per tablet e smartphone.",
+            "image": "/immagini-progetti/car.png",
+            "link": "https://github.com/DamianoCasolari/front-automotive-site",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 4,
+                    "name": "vue.js"
+                },
+                {
+                    "id": 6,
+                    "name": "laravel"
+                }
+            ]
+        },
+        {
+            "id": 120,
+            "slug": "dc-comics-facsimile-site",
+            "name": "Dc comics facsimile site",
+            "description": "Fullstack site with the admin section where you will be able to delete, add, modify and view the site's comics. While on the front side you will be able to see the individual comics by clicking on them and thus obtaining all the specifications and the possibility of buying it. All created with laravel from scratch",
+            "description_it": "Sito fullstack con sezione admin dove sarà possibile eliminare, aggiungere, modificare e visualizzare i fumetti del sito. Mentre nella parte front-end sarà possibile vedere i singoli fumetti cliccandoci sopra e ottenendo così tutte le specifiche e la possibilità di acquistarli. Tutto creato con Laravel da zero.",
+            "image": "/immagini-progetti/dc.png",
+            "link": "https://github.com/DamianoCasolari/laravel-dc-comics",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 5,
+                    "name": "php"
+                },
+                {
+                    "id": 6,
+                    "name": "laravel"
+                }
+            ]
+        }
+    ]
+}

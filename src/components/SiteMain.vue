@@ -1,143 +1,133 @@
 <script>
     import * as bootstrap from "bootstrap";
-    import PaginationController from './PaginationController.vue';
-    import { appearWithScroll, arrowAppearWithScroll } from '../assets/js/utility_functions.js';
-    import $ from 'jquery';
+    import projectsJson from "../assets/data/info_projects.json";
+    import { appearWithScroll, arrowAppearWithScroll } from "../assets/js/utility_functions.js";
     import { languageState } from "../assets/js/language.js";
-    import axios from 'axios';
-    import { nextTick } from 'vue';
+    import { nextTick } from "vue";
+
+    const techIcons = {
+        js: new URL("../assets/img/javascript-ar21.svg", import.meta.url).href,
+        bootstrap: new URL("../assets/img/getbootstrap-ar21.svg", import.meta.url).href,
+        laravel: new URL("../assets/img/laravel-ar21.svg", import.meta.url).href,
+        git: new URL("../assets/img/git-scm-ar21.svg", import.meta.url).href,
+        mysql: new URL("../assets/img/mysql-ar21.svg", import.meta.url).href,
+        node: new URL("../assets/img/nodejs-ar21.svg", import.meta.url).href,
+        npm: new URL("../assets/img/npmjs-ar21.svg", import.meta.url).href,
+        php: new URL("../assets/img/php-ar21.svg", import.meta.url).href,
+        sass: new URL("../assets/img/sass-lang-ar21.svg", import.meta.url).href,
+        pma: new URL("../assets/img/phpmyadmin-ar21.svg", import.meta.url).href,
+        vue: new URL("../assets/img/vuejs-ar21.svg", import.meta.url).href,
+        css: new URL("../assets/img/w3_css-ar21.svg", import.meta.url).href,
+        html: new URL("../assets/img/w3_html5-ar21.svg", import.meta.url).href,
+        github: new URL("../assets/img/github-ar21.svg", import.meta.url).href,
+        docker: new URL("../assets/img/docker-icon.svg", import.meta.url).href,
+        express: new URL("../assets/img/expressjs-ar21.svg", import.meta.url).href,
+        kubernetes: new URL("../assets/img/kubernetes-ar21.svg", import.meta.url).href,
+        react: new URL("../assets/img/reactjs-ar21.svg", import.meta.url).href,
+        tailwind: new URL("../assets/img/tailwindcss-icon.svg", import.meta.url).href,
+    };
 
     export default {
-
         data() {
             return {
-                base_URL: 'https://back.damianocasolari.com/',
-                projects_API: 'api/projects',
                 loading: true,
                 projects: [],
                 error: null,
+
                 project_button: true,
                 ghost: true,
-                index: 1,
-                intervalFunction: null,
-                languageState
-            }
 
+                index: 1,
+                intervalId: null,
+
+                onScrollHandler: null,
+
+                languageState,
+                techIcons,
+            };
         },
-        components: {
-            PaginationController
-        },
+
         methods: {
             openWelcomeModal() {
                 nextTick(() => {
                     const el = document.getElementById("welcomeModal");
                     if (!el) return;
-
                     const instance = bootstrap.Modal.getInstance(el) || new bootstrap.Modal(el);
                     instance.show();
                 });
             },
-            getProjects(url) {
-                axios.get(url).then(response => {
-                    // console.log(response);
-                    this.projects = response.data.projects
-                    this.loading = false
-                }).catch(error => {
-                    // console.log(error)
-                    this.error = error.message
-                })
-            },
-            getImagePath(path) {
-                return this.base_URL + 'storage/' + path
-            },
-            handleClick() {
-                this.project_button = false
-            },
-            scrollFunction() {
-                const section = document.querySelector(".main_container")
-                appearWithScroll(section)
-            },
-            arrowAppearWithScroll() {
-                const section = document.querySelector(".main_container")
-                const arrow = document.querySelector(".arrow")
-                arrowAppearWithScroll(section, arrow)
-            },
-            toggleAppearWithScroll() {
-                window.addEventListener('scroll', () => {
 
-                    if (document.querySelector(".main_container")) {
+            getProjects() {
+                try {
+                    this.projects = projectsJson.projects ?? [];
+                } catch (e) {
+                    this.error = e?.message ?? "Errore caricamento progetti";
+                } finally {
+                    this.loading = false;
+                }
+            },
 
-                        const viewportHeight = window.innerHeight / 10 * 8.5;
-                        let div2Position = document.querySelector(".main_container").getBoundingClientRect().top;
+            setupScrollEffects() {
+                const section = document.querySelector(".main_container");
+                if (section) appearWithScroll(section);
 
-                        if (div2Position < viewportHeight) {
-                            this.project_button = false;
-                            this.ghost = false;
-                        } else {
-                            this.project_button = true;
-                        }
-                    }
+                this.$nextTick(() => {
+                    const arrow = document.querySelector(".arrow");
+                    const sectionNow = document.querySelector(".main_container");
+                    if (sectionNow && arrow) arrowAppearWithScroll(sectionNow, arrow);
                 });
 
+                this.onScrollHandler = () => {
+                    const container = document.querySelector(".main_container");
+                    if (!container) return;
 
+                    const viewportHeight = (window.innerHeight / 10) * 8.5;
+                    const top = container.getBoundingClientRect().top;
+
+                    if (top < viewportHeight) {
+                        this.project_button = false;
+                        this.ghost = false;
+                    } else {
+                        this.project_button = true;
+                    }
+                };
+
+                window.addEventListener("scroll", this.onScrollHandler, { passive: true });
+                // trigger immediato
+                this.onScrollHandler();
             },
-            rollWord() {
 
-                this.intervalFunction = setInterval(() => {
+            startRollingWords() {
+                this.intervalId = window.setInterval(() => {
                     const word1 = document.querySelector(".word" + this.index);
-                    // console.log(word1);
                     const word2 = document.querySelector(".word" + ((this.index % 3) + 1));
-                    // console.log(word2);
-                    word1.classList.add("d-none")
-                    word1.classList.remove("drop_animation")
+                    if (!word1 || !word2) return;
+
+                    word1.classList.add("d-none");
+                    word1.classList.remove("drop_animation");
+
                     word2.classList.add("drop_animation");
-                    word2.classList.remove("d-none")
-                    this.index = (this.index % 3) + 1
+                    word2.classList.remove("d-none");
 
-                }, 3000)
-
+                    this.index = (this.index % 3) + 1;
+                }, 3000);
             },
-            stopIntervalFunction() {
-                clearInterval(this.intervalFunction)
-            },
-            carousel_roll() {
-                $(document).ready(function () {
-                    function startCarousel() {
-                        $(".carousel").animate(
-                            {
-                                marginLeft: "-150px",
-                            },
-                            2000,
-                            "linear",
-                            function () {
-                                $(this).css("margin-left", "0");
-                                $(this).append($(this).children().first());
-                            }
-                        );
-                    }
-                    setInterval(startCarousel, 2000);
-                });
-            }
         },
+
         mounted() {
+            this.getProjects();
+            this.setupScrollEffects();
+            setTimeout(() => this.startRollingWords(), 500);
 
-            this.getProjects(this.base_URL + this.projects_API)
-            this.scrollFunction()
-            this.$nextTick(() => {
-                this.arrowAppearWithScroll()
-                this.toggleAppearWithScroll()
-            })
-            setTimeout(() => {
-                this.rollWord()
-            }, 500);
-            this.carousel_roll();
+            // ❌ tolto carousel_roll (jQuery)
+            // se vuoi, ti propongo una versione CSS-only
+        },
 
-
-        }, unmounted() {
-            clearInterval(this.stopIntervalFunction())
-        }
-
-    }
+        unmounted() {
+            if (this.intervalId) clearInterval(this.intervalId);
+            if (this.onScrollHandler) window.removeEventListener("scroll", this.onScrollHandler);
+        },
+    };
 </script>
 
 <template>
@@ -228,7 +218,7 @@
                 <div class="scroll_element mb-4 d-flex" style="position: sticky;top: 86px;">
                     <div class="col">
                         <div class=" d-flex justify-content-center mt-4" style="position: sticky;"
-                            v-for="(project, index) in projects.data" :style="{ top: `calc(86px + ${index + 1}rem)` }">
+                            v-for="(project, index) in projects" :style="{ top: `calc(86px + ${index + 1}rem)` }">
 
                             <!-- Define a single project in its own specific route-link  -->
 
@@ -238,13 +228,13 @@
                                     <div class="scroll_effect_image text-center bg-transparent position-relative h-100">
                                         <div
                                             class="d-flex justify-content-center align-items-center bg_dark_trnsp rounded-5 opacity_hover pointer p-2 h-100">
-                                            <h4 class="card-title text-white p-2 fw-semibold text_shadow2">
-                                                {{ project.title }}</h4>
+                                            <h4 class="card-title position-absolute z-4 text-white p-2 fw-semibold text_shadow2">
+                                                {{ project.name }}</h4>
 
                                         </div>
-                                        <img :src="getImagePath(project.logo)"
+                                        <img :src="project.image"
                                             class="card-img-top moving_image pointer card_shadow h-100"
-                                            :alt="project.title + ' image'" loading="lazy">
+                                            :alt="project.name + ' image'" loading="lazy">
                                         <div
                                             class="p-3 fw-semibold text_shadow2 text-white position-absolute top-0 end-0">
                                             {{
@@ -375,71 +365,56 @@
 
         <!-- PAGINATION SIDE  -->
 
-
-        <!-- CAROUSEL  -->
-        <div class="carousel_container ">
-            <div class="container h-100 overflow-hidden d-flex position-relative">
+       <!-- CAROUSEL (CSS only) -->
+        <div class="carousel_container">
+            <div class="container h-100 position-relative carousel_mask">
                 <div class="shadow_element position-absolute h-100 left-0 bg_snow"></div>
                 <div class="shadow_element2 position-absolute h-100 left-0 bg_snow"></div>
-                <div class="carousel position-relative">
-                    <div class="img_container ">
-                        <img src="../assets/img/javascript-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/getbootstrap-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/laravel-ar21.svg " alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/git-scm-ar21.svg " alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/mysql-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/nodejs-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/npmjs-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/php-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/sass-lang-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/phpmyadmin-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/vuejs-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container">
-                        <img src="../assets/img/w3_css-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container ">
-                        <img src="../assets/img/w3_html5-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container ">
-                        <img src="../assets/img/github-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container ">
-                        <img src="../assets/img/docker-icon.svg" alt="">
-                    </div>
-                    <div class="img_container ">
-                        <img src="../assets/img/expressjs-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container ">
-                        <img src="../assets/img/kubernetes-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container ">
-                        <img src="../assets/img/reactjs-ar21.svg" alt="">
-                    </div>
-                    <div class="img_container ">
-                        <img src="../assets/img/tailwindcss-icon.svg" alt="">
-                    </div>
 
+                <div class="tech_marquee" aria-label="Tech stack carousel">
+                    <div class="tech_track">
+                        <!-- SET 1 -->
+                       <div class="tech_item"><img :src="techIcons.js" alt="JavaScript"></div>
+                        <div class="tech_item"><img :src="techIcons.bootstrap" alt="Bootstrap"></div>
+                        <div class="tech_item"><img :src="techIcons.laravel" alt="Laravel"></div>
+                        <div class="tech_item"><img :src="techIcons.git" alt="Git"></div>
+                        <div class="tech_item"><img :src="techIcons.mysql" alt="MySQL"></div>
+                        <div class="tech_item"><img :src="techIcons.node" alt="Node.js"></div>
+                        <div class="tech_item"><img :src="techIcons.npm" alt="npm"></div>
+                        <div class="tech_item"><img :src="techIcons.php" alt="PHP"></div>
+                        <div class="tech_item"><img :src="techIcons.sass" alt="Sass"></div>
+                        <div class="tech_item"><img :src="techIcons.pma" alt="phpMyAdmin"></div>
+                        <div class="tech_item"><img :src="techIcons.vue" alt="Vue"></div>
+                        <div class="tech_item"><img :src="techIcons.css" alt="CSS"></div>
+                        <div class="tech_item"><img :src="techIcons.html" alt="HTML5"></div>
+                        <div class="tech_item"><img :src="techIcons.github" alt="GitHub"></div>
+                        <div class="tech_item"><img :src="techIcons.docker" alt="Docker"></div>
+                        <div class="tech_item"><img :src="techIcons.express" alt="Express"></div>
+                        <div class="tech_item"><img :src="techIcons.kubernetes" alt="Kubernetes"></div>
+                        <div class="tech_item"><img :src="techIcons.react" alt="React"></div>
+                        <div class="tech_item"><img :src="techIcons.tailwind" alt="Tailwind CSS"></div>
+
+                        <!-- SET 2 (duplicato identico per loop infinito) -->
+                       <div class="tech_item" aria-hidden="true"><img :src="techIcons.js" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.bootstrap" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.laravel" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.git" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.mysql" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.node" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.npm" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.php" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.sass" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.pma" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.vue" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.css" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.html" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.github" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.docker" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.express" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.kubernetes" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.react" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.tailwind" alt=""></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -539,6 +514,73 @@
     @media (min-aspect-ratio: 2 / 1) {
         .hide-on-ultrawide {
             display: none !important;
+        }
+    }
+
+    .carousel_mask {
+        overflow: hidden;
+    }
+
+    /* contenitore */
+    .tech_marquee {
+        position: relative;
+        overflow: hidden;
+        height: 90px;
+        /* regola a gusto */
+        display: flex;
+        align-items: center;
+    }
+
+    /* track infinito */
+    .tech_track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        gap: 34px;
+        /* spazio tra loghi */
+        will-change: transform;
+        animation: techScroll 28s linear infinite;
+    }
+
+    /* singolo item */
+    .tech_item {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tech_item img {
+        height: 42px;
+        /* regola dimensione icone */
+        width: auto;
+        opacity: 0.9;
+        filter: grayscale(0.1);
+        transform: translateZ(0);
+    }
+
+    /* effetto hover (opzionale) */
+    .tech_item img:hover {
+        opacity: 1;
+        filter: grayscale(0);
+    }
+
+    /* animazione: spostiamo il track di metà lunghezza (perché è duplicato 2x) */
+    @keyframes techScroll {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    /* accessibilità: se l'utente preferisce ridurre le animazioni */
+    @media (prefers-reduced-motion: reduce) {
+        .tech_track {
+            animation: none;
+            transform: none;
         }
     }
 </style>

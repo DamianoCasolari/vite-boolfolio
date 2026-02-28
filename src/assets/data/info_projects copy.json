@@ -1,0 +1,268 @@
+{
+    "projects": [
+      
+        {
+            "id": 129,
+            "slug": "loro-piana-app",
+            "name": "Loro Piana App",
+            "description": "Loro Piana’s in-store application is a global point-of-sale system used across boutiques worldwide to manage sales. It handles customer profiles and product catalogs, automatically applies each country’s tax rules, and provides advanced tools like transaction suspension, discount application, and more. In my role, I worked exclusively in support—modifying the existing application to fix bugs and integrate new feature requests.",
+            "image": "/immagini-progetti/loropiana.jpg",
+            "link": null,
+            "type": {
+                "id": 1,
+                "name": "FrontEnd"
+            },
+            "tags": [
+                { "id": 1, "name": "html5" },
+                { "id": 2, "name": "scss" },
+                { "id": 3, "name": "js" },
+                { "id": 10, "name": "Node.js" },
+                { "id": 13, "name": "typescript" }
+            ]
+        },
+        {
+            "id": 128,
+            "slug": "bulgari-app",
+            "name": "Bulgari App",
+            "description": "Bulgari’s in-store application is a global point-of-sale system used across boutiques worldwide to manage sales. It handles customer profiles and product catalogs, automatically applies each country’s tax rules, and provides advanced tools like transaction suspension, discount application, and more. In my role, I worked exclusively in support—modifying the existing application to fix bugs and integrate new feature requests.",
+            "image": "/immagini-progetti/bulgari.jpg",
+            "link": null,
+            "type": {
+                "id": 1,
+                "name": "FrontEnd"
+            },
+            "tags": [
+                { "id": 1, "name": "html5" },
+                { "id": 2, "name": "scss" },
+                { "id": 3, "name": "js" },
+                { "id": 10, "name": "Node.js" },
+                { "id": 13, "name": "typescript" }
+            ]
+        },
+        {
+            "id": 130,
+            "slug": "oikos-app",
+            "name": "Oikos App",
+            "description": "The Oikos application is a cutting-edge digital tool for paint professionals and clients alike, showcasing every available color mix and surface texture in vivid detail. Designed to enhance customer consultations and highlight Oikos’s commitment to innovation, it allows users to explore, combine, and visualize finishes in real time. By putting the full range of Oikos products at your fingertips, the app elevates the buying experience and reinforces the brand’s reputation as a forward-thinking leader in decorative coatings.",
+            "image": "/immagini-progetti/oikos.png",
+            "link": null,
+            "type": {
+                "id": 9,
+                "name": "Native"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 10,
+                    "name": "Node.js"
+                },
+                {
+                    "id": 13,
+                    "name": "typescript"
+                },
+                {
+                    "id": 16,
+                    "name": "React Native"
+                }
+            ]
+        },
+        {
+            "id": 131,
+            "slug": "andy-cards-inventory-management",
+            "name": "Andy Cards Inventory Management",
+            "description": "The platform is a centralized web solution that synchronizes and manages trading-card inventory across Amazon, eBay, Cardmarket and the Andy Cards storefront in real time. It automatically updates stock levels based on sales, returns and new listings, ensuring consistent availability and pricing across all channels. In my role, I provided support by troubleshooting and fixing a variety of bugs in the existing system to restore full functionality and improve stability.",
+            "image": "/immagini-progetti/andy.png",
+            "link": null,
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 7,
+                    "name": "css"
+                },
+                {
+                    "id": 10,
+                    "name": "Node.js"
+                },
+                {
+                    "id": 13,
+                    "name": "typescript"
+                },
+                {
+                    "id": 18,
+                    "name": "Angular"
+                }
+            ]
+        },
+        {
+            "id": 127,
+            "slug": "scada-industry-40",
+            "name": "Scada industry 4.0",
+            "description": "Il nostro software SCADA è stato sviluppato con Node.js per la gestione del backend e l'elaborazione dei dati, sfruttando in particolare Worker Threads per ottimizzare le prestazioni in un ambiente multi-threaded. Utilizziamo il protocollo MQTT per la comunicazione tra il sistema SCADA e i dispositivi di campo, in questo caso i quattro PLC che controllano i macchinari nell'impianto di smaltimento rifiuti.\r\n\r\nAttraverso un'architettura modulare, il sistema è in grado di monitorare e controllare in tempo reale il funzionamento di ciascun macchinario, consentendo una gestione efficiente e precisa delle operazioni dell'impianto. I dati generati dalle macchine vengono archiviati in un database PostgreSQL per consentire analisi storiche e la creazione di report dettagliati.\r\n\r\nUna parte cruciale del nostro sistema è dedicata alla gestione degli allarmi, implementata come una sezione separata che consente agli operatori di monitorare gli eventi critici e di intervenire prontamente in caso di necessità. Gli allarmi possono essere visualizzati sia in tempo reale che attraverso uno storico completo, con la possibilità di eseguire azioni di reset o correzione.\r\n\r\nInoltre, il nostro software SCADA offre funzionalità avanzate per l'interazione remota con le macchine, consentendo agli utenti di monitorare e controllare l'impianto da qualsiasi luogo tramite un'interfaccia utente web sicura e intuitiva. Questo permette un controllo completo dell'impianto anche da remoto, aumentando l'efficienza operativa e riducendo al minimo i tempi di fermo macchina.\r\n\r\nIn sintesi, il nostro software SCADA rappresenta una soluzione completa e altamente performante per il monitoraggio e il controllo degli impianti di smaltimento rifiuti, offrendo un'elevata affidabilità, flessibilità e scalabilità per soddisfare le esigenze di gestione più complesse.",
+            "image": "/immagini-progetti/silos.png",
+            "link": "https://gitea.pzetatouch.it/Itelyum",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                { "id": 4, "name": "vue.js" },
+                { "id": 9, "name": "Mqtt" },
+                { "id": 10, "name": "Node.js" },
+                { "id": 11, "name": "postgreSQL" },
+                { "id": 13, "name": "typescript" }
+            ]
+        },
+        {
+            "id": 126,
+            "slug": "industry-40-system-created-with-electron",
+            "name": "industry 4.0 system created with electron",
+            "description": "Il software sviluppato da Pzeta Touch per DB Service Srl integra il controllo PLC con un database PostgreSQL, migliorando la gestione e il monitoraggio dei dati di produzione in tempo reale. Questo aumento dell'efficienza operativa è fondamentale per Industria 4.0, permettendo una reattività migliore nei processi produttivi.\r\n\r\nIl cuore del sistema è un meccanismo di polling che mantiene la lettura e la scrittura delle memorie PLC per una raccolta dati efficace. I dati sono salvati localmente e condivisi tramite API per mantenere un flusso affidabile e coerente.\r\n\r\nL'interfaccia utente, realizzata con Electron, è intuitiva, con una sidebar per la navigazione facile tra ordini, ricette e storico. Il footer mostra le informazioni essenziali come la versione del software e lo stato di connessione con il PLC, essenziali per monitorare l'affidabilità della comunicazione.\r\n\r\nLe pagine di gestione ordini e ricette offrono funzionalità avanzate per la visualizzazione, il filtraggio e la modifica, garantendo una gestione efficiente e la possibilità di interazione diretta con il PLC. Gli errori e i feedback sono gestiti in modo da informare immediatamente l'utente, migliorando l'esperienza complessiva e l'efficacia del software.\r\n\r\nLa pagina storico permette un'analisi dettagliata delle prestazioni produttive passate, con filtri avanzati per una ricerca mirata e un sistema di paginator per una gestione visiva ottimale. Queste funzionalità supportano un flusso di lavoro continuo e un'ottimizzazione dei processi produttivi, il tutto realizzato tramite la piattaforma Electron per un'integrazione efficace e moderna.\r\n\r\n------------------------------\r\n\r\nThe software developed by Pzeta Touch for DB Service Srl integrates PLC control with a PostgreSQL database, enhancing the management and monitoring of real-time production data. This increase in operational efficiency is crucial for Industry 4.0, allowing for better responsiveness in production processes.\r\n\r\nThe core of the system is a polling mechanism that maintains reading and writing to PLC memories for effective data collection. Data are saved locally and shared via APIs to maintain a reliable and consistent data flow.\r\n\r\nThe user interface, created with Electron, is intuitive, featuring a sidebar for easy navigation between orders, recipes, and history. The footer displays essential information such as the software version and the PLC connection status, crucial for monitoring the reliability of the communication.\r\n\r\nThe order and recipe management pages offer advanced functionalities for viewing, filtering, and editing, ensuring efficient management and the possibility of direct interaction with the PLC. Errors and feedback are managed to immediately inform the user, enhancing the overall experience and effectiveness of the software.\r\n\r\nThe history page allows for detailed analysis of past production performance, with advanced filters for targeted search and a paginator system for optimal visual management. These features support a continuous workflow and process optimization, all realized through the Electron platform for effective and modern integration.",
+            "image": "/immagini-progetti/ceramica.png",
+            "link": "https://gitea.pzetatouch.it/Max_Tech/db_service",
+            "type": {
+                "id": 9,
+                "name": "Native"
+            },
+            "tags": [
+                { "id": 3, "name": "js" },
+                { "id": 4, "name": "vue.js" },
+                { "id": 8, "name": "electron" },
+                { "id": 11, "name": "postgreSQL" }
+            ]
+        },
+        {
+            "id": 125,
+            "slug": "used-car-dealers-website",
+            "name": "Used Car Dealer's Website",
+            "description": "A website for a future car resale company, featuring a back-end section for car management and a front-end section for the public to view available vehicles with all related information and to contact the company directly through a form or by phone. Modern design, horizontal scrolling of listings, ideal for tablets and smartphones.",
+                "image": "/immagini-progetti/car.png",
+            "link": "https://github.com/DamianoCasolari/front-automotive-site",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                { "id": 1, "name": "html5" },
+                { "id": 2, "name": "scss" },
+                { "id": 3, "name": "js" },
+                { "id": 4, "name": "vue.js" },
+                { "id": 6, "name": "laravel" }
+            ]
+        },
+        {
+            "id": 123,
+            "slug": "bnb-website",
+            "name": "BnB Website",
+            "description": "Simulation project of a site that offers the possibility to search for apartments throughout Italy, the whole back-end part allows users to register to upload their own structures, check visits for each apartment, be contacted by guests directly on the site via a message section, possibility to modify and delete each ad, sponsor ads so that they appear first in searches (paid service) and have a clear view of the location of the structure on the map, using the tomtom app , only cities or addresses suggested by the system will be accepted for search in order to obtain the results in a precise arc of 20 km from the indicated point.",
+            "image": "/immagini-progetti/bnb.png",
+            "link": "https://github.com/DamianoCasolari/BoolBnB",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                { "id": 1, "name": "html5" },
+                { "id": 2, "name": "scss" },
+                { "id": 3, "name": "js" },
+                { "id": 4, "name": "vue.js" },
+                { "id": 5, "name": "php" },
+                { "id": 6, "name": "laravel" },
+                { "id": 7, "name": "css" }
+            ]
+        },
+        {
+            "id": 121,
+            "slug": "presentation-site-of-an-artist-coach",
+            "name": "Presentation site of an Artist Coach",
+            "description": "Creation of a showcase site at the request of an artist coach, above we have a timer linked to an specific event (so now you will see it passed without putting any stops), custom built slider (not downloaded from any library), fully responsive and all elements are interactive to make the user experience more immersive",
+            "image": "/immagini-progetti/artistcoach.png",
+            "link": "https://damianocasolari.github.io/proj-html-vuejs/",
+            "type": {
+                "id": 1,
+                "name": "FrontEnd"
+            },
+            "tags": [
+                { "id": 1, "name": "html5" },
+                { "id": 2, "name": "scss" },
+                { "id": 3, "name": "js" },
+                { "id": 4, "name": "vue.js" }
+            ]
+        },
+        {
+            "id": 120,
+            "slug": "dc-comics-facsimile-site",
+            "name": "Dc comics facsimile site",
+            "description": "Fullstack site with the admin section where you will be able to delete, add, modify and view the site's comics. While on the front side you will be able to see the individual comics by clicking on them and thus obtaining all the specifications and the possibility of buying it. All created with laravel from scratch",
+            "image": "/immagini-progetti/dc.png",
+            "link": "https://github.com/DamianoCasolari/laravel-dc-comics",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                { "id": 1, "name": "html5" },
+                { "id": 2, "name": "scss" },
+                { "id": 5, "name": "php" },
+                { "id": 6, "name": "laravel" }
+            ]
+        },
+        {
+            "id": 119,
+            "slug": "whatsapp-facsimile",
+            "name": "Whatsapp facsimile",
+            "description": "WhatsApp copy\r\nHTML, CSS and JavaScript in combination with Bootstrap and Vue.js frameworks. Finally we use a npmjs library to create the emoji selector\r\n\r\nFeatures included\r\nLogical features\r\n\r\nclicking on the message a drop-down menu appears allows you to delete the selected message\r\n\r\nwriting something to the input on the left, only the i are displayed contacts whose name contains the entered letters\r\n\r\nprevent the user from sending a message that is empty or composed only of spaces\r\n\r\nchange the icon in the lower right while the user is typing: by default the microphone icon is displayed, when the input is not empty the airplane icon is displayed. When the message has been sent and the input clears, the microphone returns to view. 2) Then send the message also by clicking on the airplane icon prepare a list of random phrases as the text of the reply message from the pc\r\nview the last sent/received message from each contact in the contact list\r\n\r\nput the correct time in your messages under the name of the contact in the upper right part, change the indication of the status: display the text \"is typing ...\" in the timeout in which the PC responds, then keep the writing \"online\" for a couple of seconds and finally display \"last accessed at xx:yy\" with the correct time\r\n\r\ngive the user the option of deleting all the messages of a contact or deleting the entire chat with all its data: by clicking on the icon with the three dots at the top right, a dropdown menu opens which contains the items \"Delete messages\" and \"Delete chat\";\r\n\r\ngive the user the possibility to add a new conversation, by entering the name and the link to the icon of the new contact in a popup\r\n\r\nauto scroll down to the most recent message when a new message is added\r\n\r\nadd emoticons\r\n\r\nIf you change chat without sending the message, you will find the draft of that message in the input text field once you return to that chat\r\n\r\nGraphic features\r\n\r\ndisplay a welcome message inviting the user to select a contact from the list to view their messages,\r\n\r\nsplash page visible for 1s when opening the app\r\n\r\nmake the app responsive and usable on mobile too\r\n\r\nan icon to make the font bigger or smaller:\r\n\r\nan icon to switch light/dark mode",
+            "image": "/immagini-progetti/whatsapp.png",
+            "link": "https://damianocasolari.github.io/vue-boolzapp/",
+            "type": {
+                "id": 1,
+                "name": "FrontEnd"
+            },
+            "tags": [
+                { "id": 1, "name": "html5" },
+                { "id": 2, "name": "scss" },
+                { "id": 3, "name": "js" },
+                { "id": 4, "name": "vue.js" }
+            ]
+        },
+        {
+            "id": 110,
+            "slug": "to-do-list-application",
+            "name": "To do list Application",
+            "description": "To do list application where you can save your daily tasks and mark those you have finished integrating a timer that shows you the time left at the end of the day",
+            "image": "/immagini-progetti/todo.png",
+            "link": "https://damianocasolari.github.io/vue-todolist/",
+            "type": {
+                "id": 8,
+                "name": "Backend"
+            },
+            "tags": [
+                { "id": 1, "name": "html5" },
+                { "id": 3, "name": "js" },
+                { "id": 4, "name": "vue.js" },
+                { "id": 7, "name": "css" }
+            ]
+        }
+    ]
+}
