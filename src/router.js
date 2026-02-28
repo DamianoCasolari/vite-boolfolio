@@ -34,15 +34,18 @@ const router = createRouter({
     { path: "/:pathMatch(.*)*", name: "PageNotFound", component: () => import("./views/PageNotFound.vue"), },
   ],
   scrollBehavior(to, from, savedPosition) {
-    // se usi back/forward del browser, ripristina la posizione precedente
     if (savedPosition) return savedPosition;
-
-    // se hai ancore tipo /#section
     if (to.hash) return { el: to.hash, behavior: "smooth" };
 
-    // default: vai in cima
-    return { top: 0, left: 0 };
-  },
+    // Safari-friendly: aspetta che il DOM sia pronto
+    return new Promise((resolve) => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          resolve({ left: 0, top: 0 });
+        });
+      });
+    });
+  }
 });
 
 export { router };
