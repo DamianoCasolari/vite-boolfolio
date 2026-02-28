@@ -27,7 +27,7 @@ const router = createRouter({
       component: () => import("./views/PrivacyPolicy.vue"),
     },
     {
-      path: "/progects/:slug",
+      path: "/projects/:slug",
       name: "single-project",
       component: () => import("./views/SingleProject.vue"),
     },
