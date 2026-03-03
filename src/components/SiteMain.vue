@@ -2,7 +2,7 @@
     import * as bootstrap from "bootstrap";
     import projectsJson from "../assets/data/info_projects.json";
     import { appearWithScroll, arrowAppearWithScroll } from "../assets/js/utility_functions.js";
-    import { languageState } from "../assets/js/language.js";
+    import { firstLoading, languageState } from "../assets/js/language.js";
     import { nextTick } from "vue";
 
     const techIcons = {
@@ -30,7 +30,7 @@
     export default {
         data() {
             return {
-                loading: true,
+                loading: false,
                 projects: [],
                 error: null,
 
@@ -58,13 +58,25 @@
             },
 
             getProjects() {
-                try {
-                    this.projects = projectsJson.projects ?? [];
-                } catch (e) {
-                    this.error = e?.message ?? "Errore caricamento progetti";
-                } finally {
-                    this.loading = false;
+                this.loading = true;
+
+                const run = () => {
+                    try {
+                        this.projects = projectsJson.projects ?? [];
+                    } catch (e) {
+                        this.error = e?.message ?? "Errore caricamento progetti";
+                    } finally {
+                        this.loading = false;
+                    }
+                };
+
+                if (firstLoading.value) {
+                    firstLoading.value = false;
+                    setTimeout(run, 1000);
+                    return;
                 }
+
+                run();
             },
 
             setupScrollEffects() {
@@ -118,9 +130,6 @@
             this.getProjects();
             this.setupScrollEffects();
             setTimeout(() => this.startRollingWords(), 500);
-
-            // ❌ tolto carousel_roll (jQuery)
-            // se vuoi, ti propongo una versione CSS-only
         },
 
         unmounted() {
@@ -137,7 +146,7 @@
             <div class="cube2"></div>
         </div>
     </div>
-    <div class="bg_snow" v-show="!loading">
+    <div class="bg_snow" v-else>
 
         <div id="top"
             class="jumbotron container rounded-3 vh100 d-flex flex-column align-items-center justify-content-center position-relative">
