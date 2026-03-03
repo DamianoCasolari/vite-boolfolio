@@ -150,7 +150,8 @@
             <div
                 class="container py-4 mt-0 mt-md-4 mb-2 d-flex flex-wrap  flex-column flex-md-row align-items-center justify-content-center">
                 <div class=" ghost3 col-lg-6 z_inde49">
-                    <img src="../assets/img/photo.jpg" alt="DC Logo" class="rounded-4 z_inde49 main_photo shadow">
+                    <img src="../assets/img/photo.jpg" alt="DC Logo" class="rounded-4 z_inde49 main_photo shadow"
+                        loading="eager" decoding="sync" fetchpriority="high">
                 </div>
 
                 <div class="info_contaienr px-2 pt-3 text-center text-sm-start z_index50">
@@ -228,7 +229,8 @@
                                     <div class="scroll_effect_image text-center bg-transparent position-relative h-100">
                                         <div
                                             class="d-flex justify-content-center align-items-center bg_dark_trnsp rounded-5 opacity_hover pointer p-2 h-100">
-                                            <h4 class="card-title position-absolute z-4 text-white p-2 fw-semibold text_shadow2">
+                                            <h4
+                                                class="card-title position-absolute z-4 text-white p-2 fw-semibold text_shadow2">
                                                 {{ project.name }}</h4>
 
                                         </div>
@@ -365,7 +367,7 @@
 
         <!-- PAGINATION SIDE  -->
 
-       <!-- CAROUSEL (CSS only) -->
+        <!-- CAROUSEL (CSS only) -->
         <div class="carousel_container">
             <div class="container h-100 position-relative carousel_mask">
                 <div class="shadow_element position-absolute h-100 left-0 bg_snow"></div>
@@ -374,7 +376,7 @@
                 <div class="tech_marquee" aria-label="Tech stack carousel">
                     <div class="tech_track">
                         <!-- SET 1 -->
-                       <div class="tech_item"><img :src="techIcons.js" alt="JavaScript"></div>
+                        <div class="tech_item"><img :src="techIcons.js" alt="JavaScript"></div>
                         <div class="tech_item"><img :src="techIcons.bootstrap" alt="Bootstrap"></div>
                         <div class="tech_item"><img :src="techIcons.laravel" alt="Laravel"></div>
                         <div class="tech_item"><img :src="techIcons.git" alt="Git"></div>
@@ -395,7 +397,7 @@
                         <div class="tech_item"><img :src="techIcons.tailwind" alt="Tailwind CSS"></div>
 
                         <!-- SET 2 (duplicato identico per loop infinito) -->
-                       <div class="tech_item" aria-hidden="true"><img :src="techIcons.js" alt=""></div>
+                        <div class="tech_item" aria-hidden="true"><img :src="techIcons.js" alt=""></div>
                         <div class="tech_item" aria-hidden="true"><img :src="techIcons.bootstrap" alt=""></div>
                         <div class="tech_item" aria-hidden="true"><img :src="techIcons.laravel" alt=""></div>
                         <div class="tech_item" aria-hidden="true"><img :src="techIcons.git" alt=""></div>
