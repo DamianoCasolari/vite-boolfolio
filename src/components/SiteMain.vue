@@ -214,7 +214,7 @@
 
                     <div class="d-flex justify-content-center mt-4 position-relative">
                         <div class="position-relative offer-wrap">
-                            <button type="button" class="badge rounded-pill fs-6 text-bg-dark border-0"
+                            <button type="button" class="badge rounded-pill fs-6 special_offert_bg border-0"
                                 @click="openWelcomeModal">
                                 {{ languageState.eng_lan ? "Explore the 2026 Offer" : "Scopri l'offerta 2026" }}
                             </button>
@@ -273,7 +273,7 @@
                                         <img src="/public/fancyArrow.png" class="fancy_arrow" alt="">
                                     </div>
                                     <button type="button"
-                                        class="badge rounded-pill offer-badge fs-6 text-bg-dark border-0 d-none d-md-block"
+                                        class="badge rounded-pill offer-badge fs-6 special_offert_bg border-0 d-none d-md-block"
                                         style="cursor:pointer" @click="openWelcomeModal">
                                         {{ languageState.eng_lan ? "2026 Special Offer" : "Offerta 2026" }}
                                     </button>
@@ -574,6 +574,11 @@
     .tech_item img:hover {
         opacity: 1;
         filter: grayscale(0);
+    }
+
+    .special_offert_bg {
+        background: rgba(30, 30, 30, 0.85);
+        backdrop-filter: blur(14px);
     }
 
     /* animazione: spostiamo il track di metà lunghezza (perché è duplicato 2x) */

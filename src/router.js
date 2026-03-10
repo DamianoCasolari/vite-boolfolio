@@ -26,6 +26,7 @@ const router = createRouter({
       name: "privacyPolicy",
       component: () => import("./views/PrivacyPolicy.vue"),
     },
+      {path: "/cookie-policy", name: "cookiePolicy", component: () => import("./views/CookiePolicy.vue"), },
     {
       path: "/projects/:slug",
       name: "single-project",
