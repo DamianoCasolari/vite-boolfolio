@@ -23,11 +23,11 @@ export default {
            </div> 
            <div>
                <router-link :to="{ name: 'cookiePolicy' }" class="text-decoration-none">
-                   <span class="text-white font_s11">Cookie Policy</span>
+                   <span class="text-white font_s11">Cookie Policy  </span>
                 </router-link>
-                <span> - </span>
+                <span class="font_s11"> · </span>
                 <router-link :to="{ name: 'privacyPolicy' }" class="text-decoration-none">
-                    <span class="text-white font_s11">Privacy Policy</span>
+                    <span class="text-white font_s11"> Privacy Policy</span>
                 </router-link>
             </div>
         </nav>
