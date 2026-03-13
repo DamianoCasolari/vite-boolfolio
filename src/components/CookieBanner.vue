@@ -2,12 +2,12 @@
     <transition name="cookie-slide">
         <div v-if="showBanner" class="cookie-banner">
 
-            <div class="cookie-content">
+            <div class="cookie-content  ">
 
-                <div class="cookie-text">
+                <div class="cookie-text ">
                     <h4 class="text-white">Cookie</h4>
                     <p class="text-white">
-                       {{languageState.eng_lan ?  `Questo sito utilizza cookie analytics per migliorare l’esperienza utente.
+                       {{!languageState.eng_lan ?  `Questo sito utilizza cookie analytics per migliorare l’esperienza utente.
                         Per maggiori informazioni, consulta la nostra` : `This website uses analytics cookies to enhance the user experience. For more information, please refer to our`}}
                         <router-link :to="{ name: 'cookiePolicy' }" class="text-decoration-none">
                             <span class="text-white fw-bold">Cookie Policy</span>
@@ -69,12 +69,12 @@
     }
 
     .cookie-content {
-        max-width: 900px;
+        max-width: 1320px;
         width: 100%;
         background: rgba(30, 30, 30, 0.85);
         backdrop-filter: blur(14px);
         border-radius: 16px;
-        padding: 22px 22px;
+        padding: 15px 15px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -108,6 +108,7 @@
         padding: 8px 16px;
         border-radius: 8px;
         transition: 0.2s;
+        font-size: 13px;
     }
 
     .btn-reject:hover {
@@ -121,6 +122,7 @@
         border-radius: 8px;
         font-weight: 500;
         transition: 0.2s;
+        font-size: 13px;
     }
 
     .btn-accept:hover {
