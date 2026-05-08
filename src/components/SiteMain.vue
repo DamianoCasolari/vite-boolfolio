@@ -243,7 +243,7 @@
                                                 {{ project.name }}</h4>
 
                                         </div>
-                                        <img :src="project.image"
+                                        <img :src="project.logo ?? project.image"
                                             class="card-img-top moving_image pointer card_shadow h-100"
                                             :alt="project.name + ' image'" loading="lazy">
                                         <div
