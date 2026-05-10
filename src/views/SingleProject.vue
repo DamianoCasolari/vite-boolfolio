@@ -18,15 +18,15 @@
             title() {
                 if (!this.project) return "";
                 return this.languageState.eng_lan
-                    ? (this.project.name ?? "")
-                    : (this.project.name_it ?? this.project.name ?? "");
+                    ? this.project.name ?? ""
+                    : this.project.name_it ?? this.project.name ?? "";
             },
 
             descriptionText() {
                 if (!this.project) return "";
                 return this.languageState.eng_lan
-                    ? (this.project.description ?? "")
-                    : (this.project.description_it ?? this.project.description ?? "");
+                    ? this.project.description ?? ""
+                    : this.project.description_it ?? this.project.description ?? "";
             },
 
             imageSrc() {
@@ -48,25 +48,34 @@
                     }
 
                     this.project = found;
+                    this.preloadProjectImage(found.image);
                 } catch (e) {
                     this.error = e?.message ?? "Errore caricamento progetto";
-                } finally {
                     this.loading = false;
                 }
             },
 
-            ImgAndInfoSameHeight() {
-                const longerDiv = document.querySelector(".info_container");
-                const shorterDiv = document.querySelector(".cover_container");
-                if (!longerDiv || !shorterDiv) return;
+            preloadProjectImage(src) {
+                if (!src) {
+                    this.loading = false;
+                    return;
+                }
 
-                const h = shorterDiv.offsetHeight;
-                longerDiv.style.height = h + "px";
+                const img = new Image();
+
+                img.onload = () => {
+                    this.loading = false;
+                };
+
+                img.onerror = () => {
+                    this.loading = false;
+                };
+
+                img.src = src;
             },
         },
 
         watch: {
-            // se navighi tra progetti senza ricreare il componente
             "$route.params.slug": {
                 immediate: true,
                 handler() {
@@ -81,16 +90,18 @@
 </script>
 
 <template>
-    <!-- puoi anche mettere uno skeleton/loader qui -->
-    <div v-if="loading" class="d-flex justify-content-center align-items-center py-5">
-        Loading...
+    <div v-if="loading" class="bg_snow vh100 d-flex flex-column align-items-center justify-content-center">
+        <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
     </div>
 
     <div v-else-if="error" class="text-center py-5">
         {{ error }}
     </div>
 
-    <div v-else class="single_project d-flex justify-content-center align-items-center" v-if="project">
+    <div v-else-if="project" class="single_project d-flex justify-content-center align-items-center">
         <div class="container position-relative">
             <div class="main_info d-flex justify-content-between flex-wrap align-items-center">
                 <div class="wrap">
@@ -116,8 +127,6 @@
                             {{ technology.name }}
                         </div>
                     </h5>
-
-                  
                 </div>
 
                 <div
@@ -128,7 +137,7 @@
 
             <div class="row">
                 <!-- IMG SIDE -->
-                <div class="cover_container col-12 col-md-5 py-3 px-3 h-100 position-relative ">
+                <div class="cover_container col-12 col-md-5 py-3 px-3 h-100 position-relative">
                     <component :is="project.link ? 'a' : 'div'" :href="project.link || undefined" target="_blank"
                         rel="noopener" class="h-100 d-inline-block w-100 position-relative slide_up">
                         <div v-if="project.link"
@@ -141,8 +150,8 @@
                             </svg>
                         </div>
 
-                        <img class="rounded-5 border-0 w-100 card_shadow max-height-60vh img-contain" :src="imageSrc" :alt="`${title} cover`"
-                            loading="lazy" @load="ImgAndInfoSameHeight" />
+                        <img class="rounded-5 border-0 w-100 card_shadow max-height-60vh img-contain" :src="imageSrc"
+                            :alt="`${title} cover`" loading="eager" fetchpriority="high" />
                     </component>
                 </div>
 
@@ -161,7 +170,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
