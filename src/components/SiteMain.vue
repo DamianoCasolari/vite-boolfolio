@@ -180,18 +180,18 @@
                         </div>
                         <div class="text-bottom t_duration">
                             <div class="title_size d-flex no-wrap">
-                                <div class="wordContainer d-flex roll_container fw-semibold text overflow-hidden"
+                                <div class="wordContainer d-flex roll_container fw-semibold text"
                                     style="white-space: nowrap; height: 2em;">
                                     <span class="word1 wisteria position-relative"
-                                        style="color: #acacac;">Fullstack</span>
+                                        style="color: #acacac;">Software</span>
                                     <span class="word2 d-none wisteria position-relative"
-                                        style="color: #959595;">Backend</span>
+                                        style="color: #959595;">Fullstack</span>
                                     <span class="word3 d-none wisteria position-relative"
-                                        style="color: #959595;">Frontend</span>
+                                        style="color: #959595;">Web app</span>
                                 </div>
                                 &nbsp;
-                                <div class="fw-semibold shrink-1" style="color: #acacac;white-space: nowrap;">
-                                    web developer
+                                <div class="fw-normal shrink-1" style="color: #acacac;white-space: nowrap;">
+                                     developer
                                 </div>
                             </div>
                         </div>
@@ -236,22 +236,22 @@
                                 class="w-100 d-flex move_up">
                                 <div class="card col-md-5 rounded-5 border-0 my_card open_img bg-transparent w-100">
                                     <div class="scroll_effect_image text-center bg-transparent position-relative h-100">
-                                        <div
+                                        <!-- <div
                                             class="d-flex justify-content-center align-items-center bg_dark_trnsp rounded-5 opacity_hover pointer p-2 h-100">
                                             <h4
                                                 class="card-title position-absolute z-4 text-white p-2 fw-semibold text_shadow2">
                                                 {{ project.name }}</h4>
 
-                                        </div>
+                                        </div> -->
                                         <img :src="project.logo ?? project.image"
                                             class="card-img-top moving_image pointer card_shadow h-100"
                                             :alt="project.name + ' image'" loading="lazy">
-                                        <div
+                                        <!-- <div
                                             class="p-3 fw-semibold text_shadow2 text-white position-absolute top-0 end-0">
                                             {{
                                                 project.type.name
                                             }}
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </router-link>

@@ -104,8 +104,8 @@
     <div v-else-if="project" class="single_project d-flex justify-content-center align-items-center">
         <div class="container position-relative">
             <div class="main_info d-flex justify-content-between flex-wrap align-items-center">
-                <div class="wrap">
-                    <h2 class="project_title pt-3 fw-semibold text_shadow">
+                <div class="wrap ">
+                    <h3 class="project_title pt-4 pb-2 fw-semibold text_shadow d-flex align-items-center gap-3">
                         <button type="button" class="back_to_home text-decoration-none position-relative"
                             @click="$router.back()" aria-label="Back"
                             style="background: transparent; border: 0; padding: 0;">
@@ -115,22 +115,24 @@
                                     d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
                             </svg>
                         </button>
-
-                        {{ title }}
-                    </h2>
-
-                    <h5 style="left: -10px; position: relative;">
-                        <div v-for="(technology, index) in project.tags"
-                            :key="technology.id ?? technology.name ?? index"
-                            class="badge lng_badge mb-2 text_shadow3 fs-6 rounded-4"
-                            :class="{ zoom_appearance: index >= 0 }" :style="{ animationDelay: index * 0.1 + 's' }">
-                            {{ technology.name }}
+                        <div>
+                            {{ title }}
                         </div>
-                    </h5>
+                    </h3>
+
+                    <div class="tags_row">
+                        <span v-for="(technology, index) in project.tags"
+                            :key="technology.id ?? technology.name ?? index"
+                            class="tag_item zoom_appearance fw-semibold"
+                            :style="{ animationDelay: index * 0.08 + 's' }">
+                            <span class="tag_dot" aria-hidden="true"></span>
+                            {{ technology.name }}
+                        </span>
+                    </div>
                 </div>
 
                 <div
-                    class="end-0 top-0 px-3 py-2 rounded-5 type_project text-dark fw-semibold my-2 d-none d-sm-flex justify-content-between align-items-center t_duration">
+                    class="end-0 top-0 px-3 py-2 rounded-5 type_project text-dark fw-semibold my-2 d-none d-md-flex justify-content-between align-items-center t_duration">
                     {{ project.type?.name }}
                 </div>
             </div>
@@ -179,11 +181,13 @@
         color: #393939;
 
         svg {
-            transition-duration: 0.5s;
+            display: block;
+            transition: transform 0.35s ease-out, opacity 0.35s ease-out;
         }
 
         &:hover svg {
-            width: 28px;
+            transform: translateX(-5px);
+            opacity: 0.55;
         }
     }
 
@@ -191,8 +195,29 @@
         color: #393939;
     }
 
-    .lng_badge {
-        opacity: 0;
+    .tags_row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 18px;
+        margin-top: 10px;
+    }
+
+    .tag_item {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: #555;
+        letter-spacing: 0.01em;
+    }
+
+    .tag_dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #b0b0b0;
+        flex-shrink: 0;
     }
 
     .max-height-60vh {

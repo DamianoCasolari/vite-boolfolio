@@ -13,8 +13,8 @@
         computed: {
             waLink() {
                 const msg = this.languageState.eng_lan
-                    ? "Hi! I'm interested in the 300€ website offer. Can you tell me what's included?"
-                    : "Ciao! Mi interessa l’offerta sito a 300€. Mi dici cosa include?";
+                    ? "Hi! I'm interested in the 490€ website offer. Can you tell me what's included?"
+                    : "Ciao! Mi interessa l’offerta sito a 490€. Mi dici cosa include?";
                 return "https://wa.me/3477952189?text=" + encodeURIComponent(msg);
             },
             t() {
@@ -186,7 +186,7 @@
                                 <div class="text-muted small">Design · sviluppo · messa online</div>
                             </div>
                             <div class="text-end">
-                                <div class="price"><span class="currency">€</span>300</div>
+                                <div class="price"><span class="currency">€</span>490</div>
                                 <div class="text-muted small">{{ t.priceNote }}</div>
                             </div>
                         </div>
