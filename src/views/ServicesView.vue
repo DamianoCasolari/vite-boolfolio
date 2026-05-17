@@ -51,37 +51,28 @@
 
                             <p class="position-relative">
                                 <span v-if="languageState.eng_lan">
-                                    I design and develop <b>custom-made websites</b>, tailored to your <b>business
-                                        goals</b> and <b>real needs</b>.
+                                    I design and develop <strong>custom websites</strong> and <strong>digital services</strong>, tailored to your <strong>business goals</strong> and <strong>real needs</strong>.
                                 </span>
                                 <span v-else>
-                                    Progetto e realizzo <b>siti web su misura</b>, costruiti attorno agli
-                                    <b>obiettivi</b> e alle <b>reali esigenze</b> del tuo business.
+                                    Progetto e realizzo <strong>siti web</strong> e <strong>servizi digitali su misura</strong>, costruiti attorno agli <strong>obiettivi</strong> e alle <strong>reali esigenze</strong> del tuo business.
                                 </span>
                             </p>
 
                             <p class="position-relative">
                                 <span v-if="languageState.eng_lan">
-                                    Each project is <b>unique</b>: no templates, no <b>pre-packaged solutions</b>. From
-                                    the <b>initial idea</b> to the <b>final online release</b>, everything is designed
-                                    specifically for you.
+                                    Each project is <strong>unique</strong>: no templates, no <strong>pre-packaged solutions</strong>. From the <strong>initial idea</strong> to the <strong>final online release</strong>, everything is designed specifically for you.
                                 </span>
                                 <span v-else>
-                                    Ogni progetto e' <b>unico</b>: niente <b>template preconfezionati</b>, né
-                                    <b>soluzioni standard</b>. Dall'<b>idea iniziale</b> fino alla <b>pubblicazione
-                                        online</b>, tutto e' pensato appositamente per te.
+                                    Ogni progetto è <strong>unico</strong>: niente <strong>template preconfezionati</strong>, né <strong>soluzioni standard</strong>. Dall'<strong>idea iniziale</strong> fino alla <strong>pubblicazione online</strong>, tutto è pensato appositamente per te.
                                 </span>
                             </p>
 
                             <p class="position-relative">
                                 <span v-if="languageState.eng_lan">
-                                    I focus on <b>performance</b>, <b>clarity</b>, <b>responsive design</b> and <b>clean
-                                        code</b>, to deliver <b>fast</b>, <b>effective</b> and <b>scalable websites</b>.
+                                    I also build <strong>custom automations</strong> and <strong>AI integrations</strong>: chatbots, smart assistants and automated workflows between apps, to <strong>eliminate repetitive tasks</strong> and let you focus on what truly matters.
                                 </span>
                                 <span v-else>
-                                    Lavoro su <b>performance</b>, <b>chiarezza</b>, <b>design responsive</b> e <b>codice
-                                        pulito</b>, per offrire <b>siti veloci</b>, <b>efficaci</b> e <b>pronti a
-                                        crescere</b> nel tempo.
+                                    Realizzo anche <strong>automazioni su misura</strong> e <strong>integrazioni AI</strong>: chatbot, assistenti intelligenti e flussi automatici tra applicazioni, per <strong>eliminare i processi ripetitivi</strong> e concentrarti su ciò che crea valore.
                                 </span>
                             </p>
 
@@ -95,40 +86,40 @@
                                     <li class="position-relative">
                                         <strong>1.</strong>
                                         <span v-if="languageState.eng_lan">
-                                            <b>Analysis</b> of goals and requirements
+                                            <strong>Analysis</strong> of goals and requirements
                                         </span>
                                         <span v-else>
-                                            <b>Analisi</b> degli obiettivi e delle esigenze
+                                            <strong>Analisi</strong> degli obiettivi e delle esigenze
                                         </span>
                                     </li>
 
                                     <li class="position-relative">
                                         <strong>2.</strong>
                                         <span v-if="languageState.eng_lan">
-                                            <b>Design</b> of structure and <b>user experience</b>
+                                            <strong>Design</strong> of structure and <strong>user experience</strong>
                                         </span>
                                         <span v-else>
-                                            <b>Progettazione</b> della struttura e dell'<b>esperienza utente</b>
+                                            <strong>Progettazione</strong> della struttura e dell'<strong>esperienza utente</strong>
                                         </span>
                                     </li>
 
                                     <li class="position-relative">
                                         <strong>3.</strong>
                                         <span v-if="languageState.eng_lan">
-                                            <b>Front-end</b> and <b>back-end development</b>
+                                            <strong>Front-end</strong> and <strong>back-end development</strong>
                                         </span>
                                         <span v-else>
-                                            <b>Sviluppo front-end</b> e <b>back-end</b>
+                                            <strong>Sviluppo front-end</strong> e <strong>back-end</strong>
                                         </span>
                                     </li>
 
                                     <li class="position-relative">
                                         <strong>4.</strong>
                                         <span v-if="languageState.eng_lan">
-                                            <b>Testing</b>, <b>optimization</b> and <b>online release</b>
+                                            <strong>Testing</strong>, <strong>optimization</strong> and <strong>online release</strong>
                                         </span>
                                         <span v-else>
-                                            <b>Test</b>, <b>ottimizzazione</b> e <b>messa online</b>
+                                            <strong>Test</strong>, <strong>ottimizzazione</strong> e <strong>messa online</strong>
                                         </span>
                                     </li>
                                 </ul>
@@ -146,37 +137,28 @@
 
                             <p class="position-relative">
                                 <span v-if="languageState.eng_lan">
-                                    I am a <b>web developer</b> with <b>several years of experience</b> and a strong
-                                    passion for <b>modern web technologies</b>.
+                                    I'm <strong>Damiano Casolari</strong>, a <strong>freelance fullstack web developer</strong> based in <strong>Cervia</strong> (Ravenna, Italy). I specialize in <strong>web development</strong>, <strong>automations</strong> and <strong>AI integrations</strong> for businesses and professionals.
                                 </span>
                                 <span v-else>
-                                    Sono uno <b>sviluppatore web</b> con <b>anni di esperienza</b> e una forte passione
-                                    per le <b>tecnologie web moderne</b>.
+                                    Sono <strong>Damiano Casolari</strong>, <strong>sviluppatore web fullstack freelance</strong> di <strong>Cervia</strong> (Ravenna). Mi occupo di <strong>sviluppo web</strong>, <strong>automazioni</strong> e <strong>integrazioni con l'intelligenza artificiale</strong> per aziende e professionisti.
                                 </span>
                             </p>
 
                             <p class="position-relative">
                                 <span v-if="languageState.eng_lan">
-                                    I handle the <b>entire website creation process</b>: from <b>idea analysis</b> and
-                                    client requirements, to <b>design</b>, <b>front-end</b> and <b>back-end
-                                        development</b>, all the way to <b>deployment</b> and <b>final optimization</b>.
+                                    I handle the <strong>entire development process</strong>: from <strong>requirements analysis</strong> and <strong>design</strong>, to <strong>front-end and back-end development</strong>, all the way to <strong>deployment</strong> and <strong>optimization</strong>. I also work with <strong>external APIs</strong>, <strong>automated workflows</strong> and <strong>AI tools</strong>.
                                 </span>
                                 <span v-else>
-                                    Mi occupo di <b>tutte le fasi di realizzazione di un sito web</b>: dall'<b>analisi
-                                        delle esigenze del cliente</b>, alla <b>progettazione</b>, allo
-                                    <b>sviluppo front-end</b> e <b>back-end</b>, fino alla <b>messa online</b> e
-                                    all'<b>ottimizzazione finale</b>.
+                                    Seguo l'<strong>intero processo di realizzazione</strong>: dall'<strong>analisi delle esigenze</strong> e dalla <strong>progettazione</strong>, allo <strong>sviluppo front-end e back-end</strong>, fino alla <strong>messa online</strong> e all'<strong>ottimizzazione</strong>. Lavoro anche con <strong>API esterne</strong>, <strong>flussi automatizzati</strong> e strumenti di <strong>intelligenza artificiale</strong>.
                                 </span>
                             </p>
 
                             <p class="position-relative">
                                 <span v-if="languageState.eng_lan">
-                                    I build <b>complete</b>, <b>well-designed</b> and <b>high-performing websites</b>,
-                                    focused on <b>clarity</b>, <b>speed</b> and <b>real business results</b>.
+                                    Looking for a <strong>web developer in Cervia</strong> or the <strong>Ravenna</strong> area? I'm available for both <strong>local</strong> and <strong>remote projects</strong> across Italy.
                                 </span>
                                 <span v-else>
-                                    Creo <b>siti completi</b>, <b>funzionali</b> e <b>curati nel design</b>, pensati per
-                                    essere <b>chiari</b>, <b>veloci</b> e <b>orientati ai risultati</b>.
+                                    Cerchi uno <strong>sviluppatore web a Cervia</strong>, a <strong>Ravenna</strong> o in <strong>Romagna</strong>? Sono disponibile per progetti <strong>in presenza</strong> e <strong>da remoto</strong> in tutta Italia.
                                 </span>
                             </p>
                         </div>

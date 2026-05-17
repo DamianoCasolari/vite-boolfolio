@@ -282,37 +282,34 @@
 
                             <p class="position-relative">
                                 <span v-if="languageState.eng_lan">
-                                    I design and develop <b>custom-made websites</b>, tailored to your <b>business
-                                        goals</b> and <b>real needs</b>.
+                                    I design and develop <strong>custom-made websites and web services</strong>, tailored to your <strong>business
+                                        goals</strong> and <strong>real needs</strong>.
                                 </span>
                                 <span v-else>
-                                    Progetto e realizzo <b>siti web su misura</b>, costruiti attorno agli
-                                    <b>obiettivi</b> e alle <b>reali esigenze</b> del tuo business.
+                                    Progetto e realizzo <strong>siti e servizi web su misura</strong>, costruiti attorno agli
+                                    <strong>obiettivi</strong> e alle <strong>reali esigenze</strong> del tuo business.
                                 </span>
                             </p>
 
                             <p class="position-relative">
                                 <span v-if="languageState.eng_lan">
-                                    Each project is <b>unique</b>: no templates, no <b>pre-packaged solutions</b>. From
-                                    the <b>initial idea</b> to the <b>final online release</b>, everything is designed
+                                    Each project is <strong>unique</strong>: no templates, no <strong>pre-packaged solutions</strong>. From
+                                    the <strong>initial idea</strong> to the <strong>final online release</strong>, everything is designed
                                     specifically for you.
                                 </span>
                                 <span v-else>
-                                    Ogni progetto e' <b>unico</b>: niente <b>template preconfezionati</b>, niente
-                                    <b>soluzioni standard</b>. Dall'<b>idea iniziale</b> fino alla <b>pubblicazione
-                                        online</b>, tutto e' pensato appositamente per te.
+                                    Ogni progetto e' <strong>unico</strong>: niente <strong>template preconfezionati</strong>, niente
+                                    <strong>soluzioni standard</strong>. Dall'<strong>idea iniziale</strong> fino alla <strong>pubblicazione
+                                        online</strong>, tutto e' pensato appositamente per te.
                                 </span>
                             </p>
 
                             <p class="position-relative">
                                 <span v-if="languageState.eng_lan">
-                                    I focus on <b>performance</b>, <b>clarity</b>, <b>responsive design</b> and <b>clean
-                                        code</b>, to deliver <b>fast</b>, <b>effective</b> and <b>scalable websites</b>.
+                                    I also build <strong>custom automations</strong> and <strong>AI integrations</strong>: chatbots, smart assistants and automated workflows between apps, to <strong>eliminate repetitive tasks</strong> and let you focus on what truly matters.
                                 </span>
                                 <span v-else>
-                                    Lavoro su <b>performance</b>, <b>chiarezza</b>, <b>design responsive</b> e <b>codice
-                                        pulito</b>, per offrire <b>siti veloci</b>, <b>efficaci</b> e <b>pronti a
-                                        crescere</b> nel tempo.
+                                    Realizzo anche <strong>automazioni su misura</strong> e <strong>integrazioni AI</strong>: chatbot, assistenti intelligenti e flussi automatici tra applicazioni, per <strong>eliminare i processi ripetitivi</strong> e concentrarti su ciò che crea valore.
                                 </span>
                             </p>
 

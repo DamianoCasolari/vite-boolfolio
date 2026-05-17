@@ -20,14 +20,15 @@
         methods: {
             scrollFunction() {
                 const currentPosition = window.scrollY;
-                if (currentPosition > 66) {
-                    if (currentPosition > this.lastPosition) {
-                        this.headerScroll = false;
-                    } else {
-                        this.headerScroll = true;
-                    }
+
+                if (currentPosition <= 66) {
+                    this.headerScroll = true;
                     this.lastPosition = currentPosition;
+                    return;
                 }
+
+                this.headerScroll = currentPosition <= this.lastPosition;
+                this.lastPosition = currentPosition;
             },
             resetHeader() {
                 this.headerScroll = true;
