@@ -131,14 +131,15 @@
     }
 
     .header_shadow {
-        filter: drop-shadow(3px 3px 4px rgb(77, 77, 77));
+        filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.1));
         border-radius: 0 0 15px 15px;
     }
 
     .bg_color {
-        // background-image: url(../assets/img/Default_minimal_brush_strokes_with_very_bright_colorsadss_on_to_ba_0.jpg);
-        background: linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);
-        background-position: top;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.35);
     }
 
 

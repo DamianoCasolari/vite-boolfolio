@@ -373,15 +373,15 @@
 
         <!-- PAGINATION SIDE  -->
 
-        <!-- CAROUSEL (CSS only) -->
-        <div class="carousel_container">
+        <!-- CAROUSEL (CSS only) --> 
+        <!-- <div class="carousel_container">
             <div class="container h-100 position-relative carousel_mask">
                 <div class="shadow_element position-absolute h-100 left-0 bg_snow"></div>
                 <div class="shadow_element2 position-absolute h-100 left-0 bg_snow"></div>
 
                 <div class="tech_marquee" aria-label="Tech stack carousel">
                     <div class="tech_track">
-                        <!-- SET 1 -->
+                    
                         <div class="tech_item"><img :src="techIcons.js" alt="JavaScript"></div>
                         <div class="tech_item"><img :src="techIcons.bootstrap" alt="Bootstrap"></div>
                         <div class="tech_item"><img :src="techIcons.laravel" alt="Laravel"></div>
@@ -402,7 +402,6 @@
                         <div class="tech_item"><img :src="techIcons.react" alt="React"></div>
                         <div class="tech_item"><img :src="techIcons.tailwind" alt="Tailwind CSS"></div>
 
-                        <!-- SET 2 (duplicato identico per loop infinito) -->
                         <div class="tech_item" aria-hidden="true"><img :src="techIcons.js" alt=""></div>
                         <div class="tech_item" aria-hidden="true"><img :src="techIcons.bootstrap" alt=""></div>
                         <div class="tech_item" aria-hidden="true"><img :src="techIcons.laravel" alt=""></div>
@@ -425,7 +424,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- ARROW TO GO BACK  -->
 
