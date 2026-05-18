@@ -4,6 +4,8 @@
     import SiteHeader from './components/SiteHeader.vue';
     import SiteFooter from './components/SiteFooter.vue';
     import CookieBanner from './components/CookieBanner.vue';
+    import OfferToast from './components/OfferToast.vue';
+    import SiteWelcomeModal from './components/SiteWelcomeModal.vue';
 
 
 
@@ -18,7 +20,9 @@
         components: {
             SiteHeader,
             SiteFooter,
-            CookieBanner
+            CookieBanner,
+            OfferToast,
+            SiteWelcomeModal,
         },
         methods: {
 
@@ -36,6 +40,8 @@
     <router-view></router-view>
     <SiteFooter></SiteFooter>
     <CookieBanner />
+    <OfferToast />
+    <SiteWelcomeModal />
 </template>
 
 <style lang="scss"></style>

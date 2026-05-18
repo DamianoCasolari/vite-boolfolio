@@ -2,8 +2,6 @@
     import * as bootstrap from "bootstrap";
     import { nextTick } from "vue";
     import { languageState } from "../assets/js/language.js";
-    import SiteWelcomeModal from "../components/SiteWelcomeModal.vue";
-
     export default {
         name: "ServicesView",
         data() {
@@ -11,11 +9,7 @@
                 languageState,
             };
         },
-        components: {
-        
-            SiteWelcomeModal
-
-        },
+        components: {},
         methods: {
             openWelcomeModal() {
                 nextTick(() => {
@@ -173,7 +167,6 @@
                 </div>
             </div>
         </div>
-        <SiteWelcomeModal />
     </div>
 </template>
 
