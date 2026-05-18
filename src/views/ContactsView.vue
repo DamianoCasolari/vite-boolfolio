@@ -143,7 +143,7 @@
 </script>
 
 <template>
-    <div class="bg-light contacts d-flex flex-wrap align-items-center justify-content-center">
+    <div class="bg_snow contacts d-flex flex-wrap align-items-center justify-content-center position-relative">
         <!-- CARD CONTACTS  -->
         <div class="context d-flex flex-wrap align-items-center justify-content-center z_index50 ghost">
             <div class="p-2 container">
@@ -219,34 +219,11 @@
             </div>
         </div>
 
-        <!-- BACKGROUND ANIMATION -->
-        <div class="area">
-            <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+        <div class="shape_container position-absolute position3">
+            <div class="shape"></div>
         </div>
-        <div>
-            <ul class="circles2">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+        <div class="shape_container position-absolute position5">
+            <div class="shape"></div>
         </div>
     </div>
 </template>

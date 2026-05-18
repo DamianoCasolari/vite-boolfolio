@@ -537,6 +537,8 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
+    position: relative;
+    top: 39px;
 }
 
 .animated-title>div {
@@ -562,10 +564,13 @@
 }
 
 .animated-title>div.text-top div {
+    bottom: 0;
+}
+
+.animated-title.animate>div.text-top div {
     animation: showTopText 1s;
     animation-delay: 0.5s;
     animation-fill-mode: forwards;
-    bottom: 0;
     transform: translate(0, 100%);
 }
 
@@ -575,12 +580,14 @@
 }
 
 .animated-title>div.text-bottom div {
+    top: 0;
+}
+
+.animated-title.animate>div.text-bottom div {
     animation: showBottomText 0.5s;
     animation-delay: 1.75s;
     animation-fill-mode: forwards;
-    top: 0;
     transform: translate(0, -100%);
-
 }
 
 

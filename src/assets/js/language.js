@@ -8,3 +8,5 @@ export const languageState = reactive({
 });
 
 export const firstLoading = ref(true);
+
+export const heroSeen = ref(false);
