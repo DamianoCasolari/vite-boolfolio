@@ -164,7 +164,7 @@ export default {
   <div class="bg_snow" v-else>
     <div
       id="top"
-      class="jumbotron container rounded-3 vh100 d-flex flex-column align-items-center justify-content-center position-relative"
+      class="jumbotron container rounded-3 d-flex flex-column align-items-center justify-content-center position-relative"
     >
       <div class="shape_container position-absolute position1">
         <div class="shape"></div>
