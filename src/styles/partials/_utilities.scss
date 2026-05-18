@@ -31,7 +31,7 @@
 }
 
 .card_shadow {
-    filter: drop-shadow(2px 5px 5px rgba(42, 42, 42, 0.844))
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.10)) drop-shadow(0 8px 28px rgba(0, 0, 0, 0.08));
 }
 
 .vh_100 {
