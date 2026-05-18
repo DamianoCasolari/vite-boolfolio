@@ -33,7 +33,7 @@
 
 <script setup>
     import { ref, onMounted } from "vue";
-    import { languageState } from "../assets/js/language";
+    import { languageState, cookieBannerDismissed } from "../assets/js/language";
     import { acceptCookies, rejectCookies, getCookieChoice } from '../assets/js/analytics';
 
     const showBanner = ref(false);
@@ -41,16 +41,20 @@
     onMounted(() => {
         if (!getCookieChoice()) {
             showBanner.value = true;
+        } else {
+            cookieBannerDismissed.value = true;
         }
     });
 
     function onAccept() {
         acceptCookies();
+        cookieBannerDismissed.value = true;
         showBanner.value = false;
     }
 
     function onReject() {
         rejectCookies();
+        cookieBannerDismissed.value = true;
         showBanner.value = false;
     }
 </script>

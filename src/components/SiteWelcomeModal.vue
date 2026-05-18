@@ -186,7 +186,10 @@
                                 <div class="text-muted small">Design · sviluppo · messa online</div>
                             </div>
                             <div class="text-end">
-                                <div class="price"><span class="currency">€</span>490</div>
+                                <div class="price">
+                                    <span class="price-old">€990</span>
+                                    <span class="currency">€</span>490
+                                </div>
                                 <div class="text-muted small">{{ t.priceNote }}</div>
                             </div>
                         </div>
@@ -328,6 +331,15 @@
         font-size: 18px;
         vertical-align: super;
         margin-right: 2px;
+    }
+
+    .price-old {
+        font-size: 16px;
+        font-weight: 500;
+        color: #aaa;
+        text-decoration: line-through;
+        margin-right: 6px;
+        vertical-align: middle;
     }
 
     .info-card {
