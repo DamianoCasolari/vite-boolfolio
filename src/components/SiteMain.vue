@@ -679,6 +679,7 @@ export default {
 }
 
 .fancy_arrow {
+    display: none;
   position: absolute;
   width: 100px;
   top: -109px;
@@ -689,6 +690,7 @@ export default {
 }
 
 .fancy_arrow2 {
+    display: none;
   position: absolute;
   width: 58px;
   height: 100px;

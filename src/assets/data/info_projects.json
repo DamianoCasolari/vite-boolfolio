@@ -24,10 +24,6 @@
                     "name": "scss"
                 },
                 {
-                    "id": 8,
-                    "name": "quasar"
-                },
-                {
                     "id": 10,
                     "name": "Node.js"
                 },
@@ -52,17 +48,11 @@
                 "name": "FrontEnd"
             },
             "tags": [
-                {
-                    "id": 1,
-                    "name": "html5"
-                },
-                {
-                    "id": 2,
-                    "name": "scss"
-                },
+          
+               
                 {
                     "id": 3,
-                    "name": "js"
+                    "name": "Xcode"
                 },
                 {
                     "id": 10,
@@ -71,6 +61,10 @@
                 {
                     "id": 13,
                     "name": "typescript"
+                },
+ {
+                    "id": 2,
+                    "name": "scss"
                 }
             ]
         },
@@ -95,11 +89,7 @@
                 },
                 {
                     "id": 2,
-                    "name": "Redux"
-                },
-                {
-                    "id": 3,
-                    "name": "Typescript"
+                    "name": "Next"
                 },
                 {
                     "id": 10,
@@ -128,15 +118,11 @@
             "tags": [
                 {
                     "id": 1,
-                    "name": "html5"
+                    "name": "Xcode"
                 },
                 {
                     "id": 2,
                     "name": "scss"
-                },
-                {
-                    "id": 3,
-                    "name": "js"
                 },
                 {
                     "id": 10,
@@ -163,17 +149,10 @@
                 "name": "Native"
             },
             "tags": [
-                {
-                    "id": 1,
-                    "name": "html5"
-                },
+
                 {
                     "id": 2,
                     "name": "scss"
-                },
-                {
-                    "id": 3,
-                    "name": "js"
                 },
                 {
                     "id": 10,
@@ -219,10 +198,6 @@
                 {
                     "id": 11,
                     "name": "postgreSQL"
-                },
-                {
-                    "id": 13,
-                    "name": "typescript"
                 }
             ]
         },
@@ -274,17 +249,10 @@
                 "name": "fullStack"
             },
             "tags": [
-                {
-                    "id": 1,
-                    "name": "html5"
-                },
-                {
-                    "id": 3,
-                    "name": "js"
-                },
+   
                 {
                     "id": 7,
-                    "name": "css"
+                    "name": "Scss"
                 },
                 {
                     "id": 10,
