@@ -105,20 +105,20 @@
         <div class="container position-relative">
             <div class="main_info d-flex justify-content-between flex-wrap align-items-center">
                 <div class="wrap ">
-                    <h3 class="project_title pt-4 pb-2 fw-semibold text_shadow d-flex align-items-center gap-3">
+                    <div class="project_title pt-4 pb-2 fw-semibold text_shadow d-flex align-items-center gap-3">
                         <button type="button" class="back_to_home text-decoration-none position-relative"
                             @click="$router.back()" aria-label="Back"
                             style="background: transparent; border: 0; padding: 0;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#393939"
-                                class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="#393939" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M15 18l-6-6 6-6" />
                             </svg>
                         </button>
-                        <div>
+                        <div class="fs-5">
                             {{ title }}
                         </div>
-                    </h3>
+                    </div>
 
                     <div class="tags_row">
                         <span v-for="(technology, index) in project.tags"
@@ -162,7 +162,7 @@
                     <div class="card border border-0 rounded-5 w-100 h-100 overflow-hidden">
                         <div class="card-body h-100">
                             <div class="h-100 overflow-auto">
-                                <p class="description text_carbon h-100 position-relative fs-5 p-4">
+                                <p class="description text_carbon h-100 position-relative fs-6 p-4">
                                     <span class="element1"></span>
                                     {{ descriptionText }}
                                     <span class="element2"></span>
