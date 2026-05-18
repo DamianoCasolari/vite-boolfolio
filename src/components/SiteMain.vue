@@ -5,7 +5,11 @@ import {
   appearWithScroll,
   arrowAppearWithScroll,
 } from "../assets/js/utility_functions.js";
-import { firstLoading, languageState, heroSeen } from "../assets/js/language.js";
+import {
+  firstLoading,
+  languageState,
+  heroSeen,
+} from "../assets/js/language.js";
 import { nextTick } from "vue";
 
 const techIcons = {
@@ -238,12 +242,12 @@ export default {
                   <span
                     class="word1 wisteria position-relative"
                     style="color: #acacac"
-                    >Software</span
+                    >Fullstack</span
                   >
                   <span
                     class="word2 d-none wisteria position-relative"
                     style="color: #959595"
-                    >Fullstack</span
+                    >Software</span
                   >
                   <span
                     class="word3 d-none wisteria position-relative"
@@ -588,10 +592,66 @@ export default {
   cursor: pointer;
 }
 
+.offer-badge,
+.special_offert_bg {
+  position: relative;
+  isolation: isolate;
+
+  color: #1f2937;
+  background: linear-gradient(135deg, #ffffff 0%, #d9d9d9 100%);
+
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+  cursor: pointer;
+
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease,
+    letter-spacing 0.28s ease,
+    color 0.28s ease;
+}
+
+.offer-badge::before,
+.special_offert_bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.75) 45%,
+    transparent 70%
+  );
+
+  transform: translateX(-120%);
+  transition: transform 0.75s ease;
+  z-index: -1;
+}
+
+.offer-badge:hover,
+.special_offert_bg:hover {
+  color: #111827;
+  background: linear-gradient(135deg, #ffffff 0%, #eeeeee 45%, #cfcfcf 100%);
+}
+
+.offer-badge:hover::before,
+.special_offert_bg:hover::before {
+  transform: translateX(120%);
+}
+
+.offer-badge:active,
+.special_offert_bg:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
 .dc_sign {
   position: absolute;
   top: -60px;
-  left:-50px;
+  left: -50px;
   opacity: 0.8;
 
   @media (min-width: 992px) {
@@ -601,7 +661,6 @@ export default {
   @media (min-width: 1200px) {
     top: -138px;
   }
-
 }
 
 .sign_draw_anim {
@@ -619,49 +678,14 @@ export default {
   }
 }
 
-.offer-badge {
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.3s ease;
-}
-
-@keyframes thrilled {
-  0% {
-    transform: translateX(0) translateY(-1);
-  }
-
-  20% {
-    transform: translateX(-1px);
-  }
-
-  40% {
-    transform: translateX(1px);
-  }
-
-  60% {
-    transform: translateX(-1px);
-  }
-
-  80% {
-    transform: translateX(1px);
-  }
-
-  100% {
-    transform: translateX(-1px);
-  }
-}
-
-.offer-badge:hover {
-  animation: thrilled 0.45s;
-  // box-shadow: 0 5px 14px rgba(0, 0, 0, 0.3);
-}
-
 .fancy_arrow {
   position: absolute;
   width: 100px;
-  top: -127px;
-  right: 53px;
+  top: -109px;
+  right: -88px;
   overflow: visible;
   opacity: 0.7;
+  transform: rotate(65deg);
 }
 
 .fancy_arrow2 {
@@ -739,11 +763,6 @@ export default {
 .tech_item img:hover {
   opacity: 1;
   filter: grayscale(0);
-}
-
-.special_offert_bg {
-  background: rgba(30, 30, 30, 0.85);
-  backdrop-filter: blur(14px);
 }
 
 /* animazione: spostiamo il track di metà lunghezza (perché è duplicato 2x) */

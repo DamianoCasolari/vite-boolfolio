@@ -168,7 +168,7 @@
                     <label for="guest_message" class="form-label fw-semibold fs-6 mt-2">
                         {{ languageState.eng_lan ? "Message" : "Messaggio" }}
                     </label>
-                    <textarea id="guest_message" name="message" cols="30" rows="5" :placeholder="languageState.eng_lan
+                    <textarea id="guest_message" name="message" cols="30" rows="3" :placeholder="languageState.eng_lan
                             ? 'Speak about your project...'
                             : 'Parlami del tuo progetto...'
                         " class="form-control input_text" v-model="message"></textarea>
