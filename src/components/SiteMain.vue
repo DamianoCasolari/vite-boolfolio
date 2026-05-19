@@ -194,32 +194,14 @@ export default {
           class="info_contaienr px-2 pt-3 text-center text-sm-start z_index50 position-relative col-lg-6"
         >
           <div class="mb-3">
-            <div v-if="languageState.eng_lan">
-              <span
-                class="title_size fw-semibold dc_sign"
-                style="color: #393939"
-              >
-                <img
-                  src="/public/f2dc.svg"
-                  alt="sign of dc"
-                  style="width: 7.8em"
-                  :class="{ sign_draw_anim: isFirstLoad }"
-                />
-              </span>
-            </div>
-            <div v-else>
-              <span
-                class="title_size fw-semibold dc_sign"
-                style="color: #393939"
-              >
-                <img
-                  src="/public/f2dc.svg"
-                  alt="sign of dc"
-                  style="height: 7.8em"
-                  :class="{ sign_draw_anim: isFirstLoad }"
-                />
-              </span>
-            </div>
+            <span class="title_size fw-semibold dc_sign" style="color: #393939">
+              <img
+                src="/public/f2dc.svg"
+                alt="sign of dc"
+                style="height: 7.8em"
+                :class="{ sign_draw_anim: isFirstLoad }"
+              />
+            </span>
           </div>
           <!-- NEW TITLE -->
           <div :class="['animated-title', { animate: isFirstLoad }]">
