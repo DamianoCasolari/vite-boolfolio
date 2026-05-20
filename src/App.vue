@@ -6,6 +6,7 @@
     import CookieBanner from './components/CookieBanner.vue';
     import OfferToast from './components/OfferToast.vue';
     import SiteWelcomeModal from './components/SiteWelcomeModal.vue';
+    import { appReady } from './assets/js/language.js';
 
 
 
@@ -13,9 +14,14 @@
 
         data() {
             return {
-
+                appReady,
             }
 
+        },
+        computed: {
+            isReady() {
+                return this.appReady || this.$route.name !== 'home';
+            }
         },
         components: {
             SiteHeader,
@@ -36,9 +42,9 @@
 </script>
 
 <template>
-    <SiteHeader />
+    <SiteHeader v-if="isReady" />
     <router-view></router-view>
-    <SiteFooter></SiteFooter>
+    <SiteFooter v-if="isReady" />
     <CookieBanner />
     <OfferToast />
     <SiteWelcomeModal />

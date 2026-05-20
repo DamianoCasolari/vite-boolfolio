@@ -9,6 +9,7 @@ import {
   firstLoading,
   languageState,
   heroSeen,
+  appReady,
 } from "../assets/js/language.js";
 import { nextTick } from "vue";
 
@@ -79,6 +80,7 @@ export default {
           this.error = e?.message ?? "Errore caricamento progetti";
         } finally {
           this.loading = false;
+          appReady.value = true;
         }
       };
 
@@ -160,9 +162,18 @@ export default {
     v-if="loading"
     class="bg_snow vh100 d-flex flex-column align-items-center justify-content-center"
   >
-    <div class="spinner">
-      <div class="cube1"></div>
-      <div class="cube2"></div>
+    <div class="dc-loader" role="status" aria-label="Loading">
+      <div class="dc-loader__glow"></div>
+
+      <div class="dc-loader__logo-wrap">
+        <img src="/dc-loader2.png" alt="DC Logo" class="dc-loader__logo" />
+      </div>
+
+      <span class="dc-loader__pixel dc-loader__pixel--1"></span>
+      <span class="dc-loader__pixel dc-loader__pixel--2"></span>
+      <span class="dc-loader__pixel dc-loader__pixel--3"></span>
+      <span class="dc-loader__pixel dc-loader__pixel--4"></span>
+      <span class="dc-loader__pixel dc-loader__pixel--5"></span>
     </div>
   </div>
   <div class="bg_snow" v-else>
@@ -661,7 +672,7 @@ export default {
 }
 
 .fancy_arrow {
-    display: none;
+  display: none;
   position: absolute;
   width: 100px;
   top: -109px;
@@ -672,7 +683,7 @@ export default {
 }
 
 .fancy_arrow2 {
-    display: none;
+  display: none;
   position: absolute;
   width: 58px;
   height: 100px;

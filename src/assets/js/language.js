@@ -12,3 +12,5 @@ export const firstLoading = ref(true);
 export const heroSeen = ref(false);
 
 export const cookieBannerDismissed = ref(false);
+
+export const appReady = ref(false);
