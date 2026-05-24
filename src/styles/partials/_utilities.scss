@@ -39,15 +39,15 @@
 }
 
 .vh100 {
-    height: 100vh;
+    height: 100dvh;
 }
 
 .vh100_100px {
-    height: calc(100vh - 100px);
+    height: calc(100dvh - 100px);
 }
 
 .vh100_max800 {
-    height: 100vh;
+    height: 100dvh;
     max-height: 800px;
 }
 
