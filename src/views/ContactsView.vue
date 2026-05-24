@@ -483,7 +483,7 @@
     svg { flex-shrink: 0; }
 }
 
-@media (max-width: 767.98px) and (min-aspect-ratio: 1/2) {
+@media (max-width: 767.98px) and (min-aspect-ratio: 2/3) {
     .wa_fixed_cta { display: none; }
 }
 </style>
