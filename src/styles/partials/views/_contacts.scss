@@ -1,8 +1,9 @@
 .contacts {
-    height: calc(100vh - 80px);
-    min-height: 562px;
-    padding-top: 86px;
-    overflow: hidden;
+    margin-top: 80px;
+    height: calc(100dvh - 80px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
 
     .business_card {
         background-color: rgb(234, 234, 234);
@@ -28,26 +29,6 @@
 
     //button 
 
-    .submit_button {
-        background-color: rgba(51, 48, 48, 0.715);
-        color: rgb(234, 234, 234);
-        overflow: hidden;
-        transition-duration: 0.7s;
-
-        &:hover {
-
-            background-color: transparent;
-            border: 0 !important;
-            color: rgba(51, 48, 48, 0.715);
-            letter-spacing: 3px;
-            font-weight: bold;
-            font-size: 18x;
-            border-top: 1px solid rgba(51, 48, 48, 0.715) !important;
-            border-bottom: 1px solid rgba(51, 48, 48, 0.715) !important;
-            border-radius: 0 !important;
-        }
-
-    }
 
 
     .info_container {
@@ -66,9 +47,7 @@
 
     .context {
         width: 100%;
-        position: absolute;
-        // top: 50vh;
-
+        position: relative;
     }
 
     .context h1 {

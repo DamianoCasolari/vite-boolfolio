@@ -44,7 +44,7 @@
 <template>
     <SiteHeader v-if="isReady" />
     <router-view></router-view>
-    <SiteFooter v-if="isReady" />
+    <SiteFooter v-if="isReady && $route.name !== 'services' && $route.name !== 'contacts'" />
     <CookieBanner />
     <OfferToast />
     <SiteWelcomeModal />

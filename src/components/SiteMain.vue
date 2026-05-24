@@ -1,10 +1,7 @@
 <script>
 import * as bootstrap from "bootstrap";
 import projectsJson from "../assets/data/info_projects.json";
-import {
-  appearWithScroll,
-  arrowAppearWithScroll,
-} from "../assets/js/utility_functions.js";
+import { appearWithScroll } from "../assets/js/utility_functions.js";
 import {
   firstLoading,
   languageState,
@@ -51,6 +48,8 @@ export default {
       intervalId: null,
 
       onScrollHandler: null,
+      arrowScrollHandler: null,
+      showArrow: false,
 
       languageState,
       techIcons,
@@ -97,10 +96,13 @@ export default {
       const section = document.querySelector(".main_container");
       if (section) appearWithScroll(section);
 
-      this.$nextTick(() => {
-        const arrow = document.querySelector(".arrow");
-        const sectionNow = document.querySelector(".main_container");
-        if (sectionNow && arrow) arrowAppearWithScroll(sectionNow, arrow);
+      this.arrowScrollHandler = () => {
+        this.showArrow =
+          window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight - 120;
+      };
+      window.addEventListener("scroll", this.arrowScrollHandler, {
+        passive: true,
       });
 
       this.onScrollHandler = () => {
@@ -153,6 +155,8 @@ export default {
     if (this.intervalId) clearInterval(this.intervalId);
     if (this.onScrollHandler)
       window.removeEventListener("scroll", this.onScrollHandler);
+    if (this.arrowScrollHandler)
+      window.removeEventListener("scroll", this.arrowScrollHandler);
   },
 };
 </script>
@@ -268,10 +272,10 @@ export default {
       class="m_main main_container bg-snow"
       :class="{ 'opacity-0': ghost }"
     >
-      <div class="container p_bottom_30" style="position: sticky; top: 86px">
+      <div class="container p_bottom_30 pb-lg-5" style="position: sticky; top: 86px">
         <div
           class="position-sticky d-block d-lg-none"
-          style="top: 20px; z-index: 10"
+          style="top: 40px; z-index: 10"
         >
           <h1
             class="text-center fw-semibold"
@@ -281,7 +285,7 @@ export default {
             Portfolio
           </h1>
 
-          <div class="d-flex justify-content-center mt-4 position-relative">
+          <div v-if="false" class="d-flex justify-content-center mt-4 position-relative">
             <div class="position-relative offer-wrap">
               <button
                 type="button"
@@ -307,10 +311,10 @@ export default {
         >
           <div class="col">
             <div
-              class="d-flex justify-content-center mt-4"
+              class="d-flex justify-content-center mt-3 mt-lg-4"
               style="position: sticky"
               v-for="(project, index) in projects"
-              :style="{ top: `calc(86px + ${index + 1}rem)` }"
+              :style="{ top: `calc(82px + ${index + 1}rem)` }"
             >
               <!-- Define a single project in its own specific route-link  -->
 
@@ -354,14 +358,14 @@ export default {
             style="position: sticky; top: 250px"
           >
             <div
-              class="right_main_side d-md-flex flex-column justify-content-center align-items-start p-3"
+              class="right_main_side d-md-flex flex-column justify-content-center align-items-center text-center p-3"
               style="position: sticky; top: 250px"
             >
               <div
                 class="d-flex justify-content-between align-items-center w-100 mb-2"
               >
                 <h1 class="position-relative fw-semibold mb-0">
-                  {{ languageState.eng_lan ? `Services` : `Servizi` }}
+                  {{ languageState.eng_lan ? `About me` : `Chi sono` }}
                 </h1>
                 <div
                   class="d-flex justify-content-center align-items-center pointer position-relative"
@@ -373,7 +377,8 @@ export default {
                       alt=""
                     />
                   </div>
-                  <button
+                  <button 
+                  v-if="false"
                     type="button"
                     class="badge rounded-pill offer-badge fs-6 special_offert_bg border-0 d-none d-md-block"
                     style="cursor: pointer"
@@ -390,106 +395,51 @@ export default {
 
               <p class="position-relative">
                 <span v-if="languageState.eng_lan">
-                  I design and develop
-                  <strong>custom-made websites and web services</strong>,
-                  tailored to your <strong>business goals</strong> and
-                  <strong>real needs</strong>.
+                  I help <strong>businesses and professionals</strong> build
+                  their online presence — custom websites and web applications,
+                  <strong>fast, modern and built to convert</strong>, not just
+                  to look good.
                 </span>
                 <span v-else>
-                  Progetto e realizzo
-                  <strong>siti e servizi web su misura</strong>, costruiti
-                  attorno agli <strong>obiettivi</strong> e alle
-                  <strong>reali esigenze</strong> del tuo business.
+                  Aiuto <strong>aziende e professionisti</strong> a costruire la
+                  loro presenza online — siti web e applicazioni su misura,
+                  <strong>veloci, moderni e pensati per convertire</strong>, non
+                  solo per fare bella figura.
                 </span>
               </p>
 
               <p class="position-relative">
                 <span v-if="languageState.eng_lan">
-                  Each project is <strong>unique</strong>: no templates, no
-                  <strong>pre-packaged solutions</strong>. From the
-                  <strong>initial idea</strong> to the
-                  <strong>final online release</strong>, everything is designed
-                  specifically for you.
+                  I manage every project <strong>from brief to launch</strong>:
+                  design, code and performance — so you get a
+                  <strong>product that actually works</strong> and that you can
+                  run independently from day one.
                 </span>
                 <span v-else>
-                  Ogni progetto e' <strong>unico</strong>: niente
-                  <strong>template preconfezionati</strong>, niente
-                  <strong>soluzioni standard</strong>. Dall'<strong
-                    >idea iniziale</strong
-                  >
-                  fino alla <strong>pubblicazione online</strong>, tutto e'
-                  pensato appositamente per te.
+                  Seguo ogni progetto <strong>dal brief al lancio</strong>:
+                  design, codice e performance — così ottieni un
+                  <strong>prodotto che funziona davvero</strong> e che puoi
+                  gestire in autonomia dal primo giorno.
                 </span>
               </p>
 
               <p class="position-relative">
                 <span v-if="languageState.eng_lan">
-                  I also build <strong>custom automations</strong> and
-                  <strong>AI integrations</strong>: chatbots, smart assistants
-                  and automated workflows between apps, to
-                  <strong>eliminate repetitive tasks</strong> and let you focus
-                  on what truly matters.
+                  I also build <strong>AI integrations</strong> and
+                  <strong>custom automations</strong> — chatbots, smart
+                  assistants and automated workflows — to put technology to work
+                  for you and <strong>multiply your results</strong> without
+                  multiplying your workload.
                 </span>
                 <span v-else>
-                  Realizzo anche <strong>automazioni su misura</strong> e
-                  <strong>integrazioni AI</strong>: chatbot, assistenti
-                  intelligenti e flussi automatici tra applicazioni, per
-                  <strong>eliminare i processi ripetitivi</strong> e
-                  concentrarti su ciò che crea valore.
+                  Realizzo anche <strong>integrazioni AI</strong> e
+                  <strong>automazioni su misura</strong> — chatbot, assistenti
+                  intelligenti e flussi automatici — per far lavorare la
+                  tecnologia al posto tuo e
+                  <strong>moltiplicare i risultati</strong> senza moltiplicare
+                  il carico di lavoro.
                 </span>
               </p>
-
-              <!-- COME LAVORO -->
-              <div class="mt-4 hide-on-ultrawide">
-                <h4 class="position-relative fw-semibold">
-                  {{ languageState.eng_lan ? `How I work` : `Come lavoro` }}
-                </h4>
-
-                <ul class="work_steps mt-3">
-                  <li class="position-relative">
-                    <strong>1.</strong>
-                    <span v-if="languageState.eng_lan">
-                      <b>Analysis</b> of goals and requirements
-                    </span>
-                    <span v-else>
-                      <b>Analisi</b> degli obiettivi e delle esigenze
-                    </span>
-                  </li>
-
-                  <li class="position-relative">
-                    <strong>2.</strong>
-                    <span v-if="languageState.eng_lan">
-                      <b>Design</b> of structure and <b>user experience</b>
-                    </span>
-                    <span v-else>
-                      <b>Progettazione</b> della struttura e dell'<b
-                        >esperienza utente</b
-                      >
-                    </span>
-                  </li>
-
-                  <li class="position-relative">
-                    <strong>3.</strong>
-                    <span v-if="languageState.eng_lan">
-                      <b>Front-end</b> and <b>back-end development</b>
-                    </span>
-                    <span v-else>
-                      <b>Sviluppo front-end</b> e <b>back-end</b>
-                    </span>
-                  </li>
-
-                  <li class="position-relative">
-                    <strong>4.</strong>
-                    <span v-if="languageState.eng_lan">
-                      <b>Testing</b>, <b>optimization</b> and
-                      <b>online release</b>
-                    </span>
-                    <span v-else>
-                      <b>Test</b>, <b>ottimizzazione</b> e <b>messa online</b>
-                    </span>
-                  </li>
-                </ul>
-              </div>
 
               <div class="shape_container position-absolute position3">
                 <div class="shape"></div>
@@ -559,6 +509,10 @@ export default {
 
     <div
       class="arrow position-fixed bottom-0 light_shadow mx-3 scale_hover_less z-3"
+      :style="{
+        right: showArrow ? '0' : '-100px',
+        opacity: showArrow ? '1' : '0',
+      }"
       style="margin-bottom: 31px"
     >
       <a href="#top" class="cl_light_street">

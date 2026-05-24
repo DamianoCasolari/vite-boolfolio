@@ -15,11 +15,10 @@ export default {
         startTimer() {
             this._timerId = setTimeout(() => {
                 this.visible = true;
-            }, 5000);
+            }, 9000);
         },
         dismiss() {
             this.visible = false;
-            localStorage.setItem("offerToastShown", "1");
         },
         openModal() {
             this.dismiss();
@@ -30,8 +29,6 @@ export default {
         },
     },
     mounted() {
-        if (localStorage.getItem("offerToastShown") === "1") return;
-
         this.$watch(
             () => cookieBannerDismissed.value,
             (dismissed) => {
