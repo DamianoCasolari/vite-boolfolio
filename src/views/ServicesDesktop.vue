@@ -165,8 +165,8 @@
                                 <span class="expanded_label">{{ languageState.eng_lan ? 'What will we build?' : 'Su cosa lavoreremo?' }}</span>
                                 <ul class="feature_list">
                                     <li>
-                                        <span v-if="languageState.eng_lan"><strong>E-commerce</strong> and custom <strong>management tools</strong></span>
-                                        <span v-else><strong>E-commerce</strong> e piccoli <strong>gestionali</strong> su misura</span>
+                                        <span v-if="languageState.eng_lan"><strong>Custom applications</strong> built around your business</span>
+                                        <span v-else><strong>Applicazioni su misura</strong> costruite attorno al tuo business</span>
                                     </li>
                                     <li>
                                         <span v-if="languageState.eng_lan"><strong>Custom admin dashboard</strong>, no third-party lock-in</span>
@@ -177,12 +177,12 @@
                                         <span v-else><strong>Automazioni</strong> che eliminano il lavoro manuale</span>
                                     </li>
                                     <li>
-                                        <span v-if="languageState.eng_lan"><strong>Scales</strong> from MVP to enterprise</span>
-                                        <span v-else><strong>Scalabile</strong> da MVP a grande azienda</span>
+                                        <span v-if="languageState.eng_lan"><strong>Scalable</strong>: handles growth without requiring a rewrite</span>
+                                        <span v-else><strong>Scalabile</strong>: regge la crescita senza dover riscrivere il progetto</span>
                                     </li>
                                     <li>
-                                        <span v-if="languageState.eng_lan"><strong>Production deploy</strong> included, live from day one</span>
-                                        <span v-else><strong>Deploy in produzione</strong> incluso, live dal primo giorno</span>
+                                        <span v-if="languageState.eng_lan"><strong>Deploy & hosting</strong> included — go live without touching a server</span>
+                                        <span v-else><strong>Deploy e hosting</strong> inclusi — online senza configurare nulla</span>
                                     </li>
                                 </ul>
                             </div>
