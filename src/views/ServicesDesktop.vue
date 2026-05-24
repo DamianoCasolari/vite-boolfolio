@@ -285,7 +285,7 @@
 </template>
 
 <style lang="scss" scoped>
-$header-h: 80px;
+$header-h: 40px;
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 // sfasamento tra i due rettangoli
 $stack-offset: 2.5rem;

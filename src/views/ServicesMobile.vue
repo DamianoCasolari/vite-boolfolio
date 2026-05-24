@@ -200,7 +200,7 @@
 </template>
 
 <style lang="scss" scoped>
-$header-h: 80px;
+$header-h: 40px;
 
 .mob_services {
     margin-top: $header-h;
