@@ -123,7 +123,7 @@ export default {
       >
         <div class="wrap">
           <div
-            class="project_title pt-4 pb-2 fw-semibold text_shadow d-flex align-items-center gap-3"
+            class="project_title pt-2 pb-2 fw-semibold text_shadow d-flex align-items-center gap-3"
           >
             <button
               type="button"
