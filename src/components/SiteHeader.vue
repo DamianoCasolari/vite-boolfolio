@@ -39,6 +39,9 @@
             $route() {
                 this.resetHeader();
                 this.closeMenu();
+            },
+            mobileMenuOpen(val) {
+                document.body.style.overflow = val ? 'hidden' : '';
             }
         },
         mounted() {
@@ -57,7 +60,7 @@
     <div class="shadow_line"></div>
     <header>
         <nav class="navbar navbar-expand-md shadow-sm position-fixed w-100 top-0 z_index header_shadow bg_color"
-            :class="headerScroll ? 'header_on' : 'header_off'">
+            :class="[headerScroll ? 'header_on' : 'header_off', { 'mob_menu_active': mobileMenuOpen }]">
             <div class="container d-flex justify-content-between align-items-center">
 
                 <!-- Links sinistra -->
@@ -104,11 +107,10 @@
 
                 <!-- Hamburger — solo mobile -->
                 <button class="hamburger_btn d-flex d-md-none" @click="toggleMenu" :aria-expanded="mobileMenuOpen" aria-label="Menu">
-                    <svg v-if="!mobileMenuOpen" width="22" height="22" viewBox="0 0 22 22" fill="none">
-                        <path d="M2 5h18M2 11h18M2 17h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    </svg>
-                    <svg v-else width="22" height="22" viewBox="0 0 22 22" fill="none">
-                        <path d="M4 4l14 14M18 4L4 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <svg class="ham-svg" :class="{ open: mobileMenuOpen }" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="overflow:visible">
+                        <path class="ham-top" d="M2 5H20"/>
+                        <path class="ham-mid" d="M2 11H20"/>
+                        <path class="ham-bot" d="M2 17H20"/>
                     </svg>
                 </button>
 
@@ -188,15 +190,22 @@
 
     .header_on {
         animation: on 0.3s linear forwards;
+        pointer-events: auto;
     }
 
     .header_off {
         animation: off 0.3s linear forwards;
+        pointer-events: none;
     }
 
     .header_shadow {
         filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.1));
-        border-radius: 0 0 15px 15px;
+        border-radius: 0 0 8px 8px;
+        transition: border-radius 0.2s ease;
+    }
+
+    .header_shadow.mob_menu_active {
+        border-radius: 0 0 0 8px;
     }
 
     .bg_color {
@@ -218,6 +227,23 @@
         justify-content: center;
         transition: opacity 0.2s ease;
         &:hover { opacity: 0.6; }
+    }
+
+    .ham-svg {
+        display: block;
+        overflow: visible;
+    }
+
+    .ham-top, .ham-mid, .ham-bot {
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    }
+
+    .ham-svg.open {
+        .ham-top { transform: translateY(6px) rotate(45deg); }
+        .ham-mid { transform: translateX(-18px); opacity: 0; }
+        .ham-bot { transform: translateY(-6px) rotate(-45deg); }
     }
 
     // ─── BACKDROP ────────────────────────────────────────────────────────────────
@@ -273,11 +299,11 @@
         display: flex;
         align-items: center;
         gap: 0.85rem;
-        padding: 0.62rem 1rem;
+        padding: 0.78rem 1rem;
         text-decoration: none;
         color: #1a1a1a;
         font-weight: 600;
-        font-size: 0.875rem;
+        font-size: 1.05rem;
         letter-spacing: 0.01em;
         border: none;
         background: none;

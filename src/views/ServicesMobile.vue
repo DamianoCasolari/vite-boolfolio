@@ -3,12 +3,19 @@
     export default {
         name: "ServicesMobile",
         data() {
-            return { languageState, entered: false, ready: false, selectedCard: null };
+            return { languageState, entered: false, ready: false, selectedCard: null, ctaVisible: false, _ctaTimer: null };
         },
         methods: {
             selectCard(i) {
                 if (!this.ready) return;
                 this.selectedCard = this.selectedCard === i ? null : i;
+                clearTimeout(this._ctaTimer);
+                if (this.selectedCard !== null) {
+                    this.ctaVisible = false;
+                    this._ctaTimer = setTimeout(() => { this.ctaVisible = true; }, 1500);
+                } else {
+                    this.ctaVisible = false;
+                }
             },
         },
         mounted() {
@@ -29,7 +36,7 @@
         <!-- CARD 1 — Sito Vetrina -->
         <div class="mob_card mob_card--light" @click="selectCard(0)" :class="{ 'is-selected': selectedCard === 0 }">
             <button v-if="selectedCard === 0" class="mob_close" @click.stop="selectedCard = null" aria-label="Chiudi">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
             <span class="mob_num" aria-hidden="true">01</span>
             <div class="mob_card__body">
@@ -80,7 +87,7 @@
         <!-- CARD 2 — Applicazione Web -->
         <div class="mob_card mob_card--dark" @click="selectCard(1)" :class="{ 'is-selected': selectedCard === 1 }">
             <button v-if="selectedCard === 1" class="mob_close" @click.stop="selectedCard = null" aria-label="Chiudi">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
             <span class="mob_num" aria-hidden="true">02</span>
             <div class="mob_card__body">
@@ -131,7 +138,7 @@
         <!-- CARD 3 — Progetto Custom -->
         <div class="mob_card mob_card--light" @click="selectCard(2)" :class="{ 'is-selected': selectedCard === 2 }">
             <button v-if="selectedCard === 2" class="mob_close" @click.stop="selectedCard = null" aria-label="Chiudi">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
             <span class="mob_num" aria-hidden="true">03</span>
             <div class="mob_card__body">
@@ -182,7 +189,7 @@
         <!-- WA CTA — fixed, visibile solo con card selezionata -->
         <Transition name="wa-btn">
         <a
-            v-if="selectedCard !== null"
+            v-if="ctaVisible"
             href="https://wa.me/3477952189?text=Ciao%20Damiano!%20Vorrei%20usufruire%20della%20call%20gratuita%20che%20offri.%0AHo%20visto%20i%20tuoi%20servizi%20e%20mi%20piacerebbe%20parlare%20di%20un%20progetto%20a%20cui%20sto%20pensando."
             target="_blank"
             rel="noopener noreferrer"
@@ -251,11 +258,9 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     padding: 1.25rem 1.75rem;
     border-radius: 24px;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
 
     transition:
         flex-grow 1.1s cubic-bezier(0.4, 0, 0.2, 1),
@@ -263,18 +268,24 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
         padding   0.9s cubic-bezier(0.4, 0, 0.2, 1);
     &:active { transform: scale(0.985); }
 
+    &::before, &::after {
+        content: '';
+        flex-grow: 1;
+        transition: flex-grow 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     &--light {
         background-color: #fafaf9;
         color: #1c1c1c;
         .mob_num  { color: rgba(0, 0, 0, 0.05); }
-        .mob_close { color: rgba(0, 0, 0, 0.35); &:hover { color: #1c1c1c; } }
+        .mob_close { color: rgba(0, 0, 0, 0.55); &:hover { color: #1c1c1c; } }
     }
 
     &--dark {
         background-color: #1c1c1c;
         color: #f5f4f2;
         .mob_num  { color: rgba(255, 255, 255, 0.04); }
-        .mob_close { color: rgba(255, 255, 255, 0.35); &:hover { color: #f5f4f2; } }
+        .mob_close { color: rgba(255, 255, 255, 0.6); &:hover { color: #f5f4f2; } }
     }
 }
 
@@ -282,14 +293,15 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 .mob_num {
     position: absolute;
-    top: 0.25rem;
-    left: 1.25rem;
-    font-size: clamp(4rem, 18vw, 7rem);
+    top: -0.5rem;
+    left: 0.75rem;
+    font-size: clamp(5rem, 22vw, 9rem);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.04em;
     user-select: none;
     pointer-events: none;
+    z-index: 0;
 }
 
 // ─── BODY ────────────────────────────────────────────────────────────────────
@@ -300,7 +312,6 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     gap: 0.5rem;
     position: relative;
     z-index: 1;
-    padding-top: clamp(2.5rem, 12vw, 5rem);
 }
 
 .mob_title {
@@ -411,7 +422,8 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .mob_services.ready.has-selection .mob_card.is-selected {
     flex-grow: 8;
     cursor: default;
-    justify-content: flex-start;
+
+    &::before, &::after { flex-grow: 0; }
 }
 
 // ─── BOTTONE CHIUDI ───────────────────────────────────────────────────────────
@@ -442,11 +454,12 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 // ─── CONTENUTO ESPANSO ───────────────────────────────────────────────────────
 
 .mob_expanded {
-    flex: 1;
-    min-height: 0;
-    position: relative;
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow: hidden;
-    margin-top: 0.85rem;
 }
 
 .mob_feat_card {
