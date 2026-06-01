@@ -9,26 +9,36 @@
                 ready: false,
                 selectedCard: null,
                 ctaVisible: false,
-                _ctaTimer: null,
+                panelLoading: false,
             };
         },
         methods: {
             selectCard(i) {
                 if (!this.ready) return;
                 this.selectedCard = i;
-                document.body.style.overflow = "hidden";
-                clearTimeout(this._ctaTimer);
+                this.panelLoading = true;
                 this.ctaVisible = false;
-                this._ctaTimer = setTimeout(() => { this.ctaVisible = true; }, 1500);
+                document.body.style.overflow = "hidden";
+                this._detachScroll?.();
                 this.$nextTick(() => {
                     const b = this.$refs.srvBody;
-                    if (b) b.scrollTop = 0;
+                    if (b) {
+                        b.scrollTop = 0;
+                        const onScroll = () => {
+                            this.ctaVisible = b.scrollTop + b.clientHeight >= b.scrollHeight - 80;
+                        };
+                        b.addEventListener('scroll', onScroll, { passive: true });
+                        this._detachScroll = () => b.removeEventListener('scroll', onScroll);
+                    }
+                    setTimeout(() => { this.panelLoading = false; }, 480);
                 });
             },
             closePanel() {
                 this.selectedCard = null;
                 this.ctaVisible = false;
-                clearTimeout(this._ctaTimer);
+                this.panelLoading = false;
+                this._detachScroll?.();
+                this._detachScroll = null;
                 document.body.style.overflow = "";
             },
         },
@@ -49,7 +59,7 @@
             document.body.style.overflow = "";
         },
         unmounted() {
-            if (this._ctaTimer) clearTimeout(this._ctaTimer);
+            this._detachScroll?.();
         },
     };
 </script>
@@ -108,6 +118,23 @@
                         <path d="M18 6L6 18M6 6l12 12"/>
                     </svg>
                 </button>
+
+                <!-- LOADER -->
+                <Transition name="panel-loader">
+                    <div v-if="panelLoading" class="srv_loader">
+                        <div class="dc-loader" role="status" aria-label="Loading">
+                            <div class="dc-loader__glow"></div>
+                            <div class="dc-loader__logo-wrap">
+                                <img src="/dc-loader2.png" alt="DC Logo" class="dc-loader__logo" />
+                            </div>
+                            <span class="dc-loader__pixel dc-loader__pixel--1"></span>
+                            <span class="dc-loader__pixel dc-loader__pixel--2"></span>
+                            <span class="dc-loader__pixel dc-loader__pixel--3"></span>
+                            <span class="dc-loader__pixel dc-loader__pixel--4"></span>
+                            <span class="dc-loader__pixel dc-loader__pixel--5"></span>
+                        </div>
+                    </div>
+                </Transition>
 
                 <div class="srv_body" ref="srvBody">
 
@@ -345,6 +372,7 @@ $gap: 10px;    // gap tra card
 
 .mob_card {
     flex: 1;
+       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24), 0 2px 8px rgba(0, 0, 0, 0.12);
     min-height: 0;
     position: relative;
     overflow: hidden;
@@ -482,6 +510,24 @@ $gap: 10px;    // gap tra card
     height: 100%; overflow-y: auto; overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 }
+
+// ─── LOADER PANEL ─────────────────────────────────────────────────────────────
+
+.srv_loader {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .srv_panel--light & { background: #f5f4f2; }
+    .srv_panel--dark  & { background: #141414; }
+}
+
+.panel-loader-enter-active { transition: opacity 0.18s ease; }
+.panel-loader-leave-active  { transition: opacity 0.3s ease; }
+.panel-loader-enter-from,
+.panel-loader-leave-to      { opacity: 0; }
 
 // ─── HEADER ──────────────────────────────────────────────────────────────────
 
