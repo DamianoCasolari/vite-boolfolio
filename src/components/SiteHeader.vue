@@ -69,7 +69,7 @@
                         <span class="fw-semibold text-dark mx-1 underline-on-hover"
                             :class="{ 'selected_link': $route.name === 'home' }">Home</span>
                     </router-link>
-                    <router-link :to="{ name: 'services' }" class="nav-link about_me_link d-none d-md-flex">
+                    <router-link :to="{ name: 'services' }" class="nav-link about_me_link d-flex">
                         <span class="fw-semibold text-dark mx-1 underline-on-hover"
                             :class="{ 'selected_link': $route.name === 'services' }">{{ languageState.eng_lan ? 'Services' : 'Servizi' }}</span>
                     </router-link>

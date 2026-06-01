@@ -263,6 +263,9 @@ export default {
   flex-wrap: wrap;
   gap: 4px 18px;
   margin-top: 10px;
+  @media (max-width: 767.98px) {
+    padding-left: 1rem;
+  }
 }
 
 .tag_item {
