@@ -313,8 +313,8 @@
                         <div class="sp_features">
                             <div class="sp_feat"><span class="sp_feat_n">01</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Free call</span><span v-else>Call gratuita</span></span></div>
                             <div class="sp_feat"><span class="sp_feat_n">02</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Dedicated stack</span><span v-else>Stack dedicato</span></span></div>
-                            <div class="sp_feat"><span class="sp_feat_n">03</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Iterative</span><span v-else>Iterativo</span></span></div>
-                            <div class="sp_feat"><span class="sp_feat_n">04</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Transparent</span><span v-else>Trasparente</span></span></div>
+                            <div class="sp_feat"><span class="sp_feat_n">03</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Custom features</span><span v-else>Funzionalità custom</span></span></div>
+                            <div class="sp_feat"><span class="sp_feat_n">04</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Modern design</span><span v-else>Design moderno</span></span></div>
                         </div>
                         <div class="sp_closing">
                             <p class="sp_closing_text">
@@ -429,8 +429,8 @@ $gap: 10px;    // gap tra card
     z-index: 0;
     overflow: hidden;
 
-
-    &::before, &::after {
+    &::before {
+        content: '\00D7';
         position: absolute;
         border-radius: 50%;
         display: flex;
@@ -445,7 +445,6 @@ $gap: 10px;    // gap tra card
         color: rgba(0,0,0,0.09);
         user-select: none;
     }
-
 }
 
 .mob_services.entered .mob_card {
@@ -460,7 +459,7 @@ $gap: 10px;    // gap tra card
     transition: opacity 0.65s ease, transform 0.15s ease;
 }
 
-.mob_num { position: absolute; top: -0.5rem; left: 0.75rem; font-size: clamp(5rem, 22vw, 9rem); font-weight: 700; line-height: 1; letter-spacing: -0.04em; user-select: none; pointer-events: none; z-index: 0; }
+.mob_num { position: absolute; top: 0.5rem; left: 0.75rem; font-size: clamp(5rem, 22vw, 9rem); font-weight: 700; line-height: 1; letter-spacing: -0.04em; user-select: none; pointer-events: none; z-index: 0; }
 .mob_card__body { display: flex; flex-direction: column; gap: 0.5rem; position: relative; z-index: 1; }
 .mob_title { font-size: clamp(1.3rem, 5.5vw, 1.9rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin: 0; }
 .mob_desc  { font-size: clamp(0.8rem, 3vw, 0.92rem); line-height: 1.6; opacity: 0.7; margin: 0; max-width: 50ch; }
@@ -477,13 +476,44 @@ $gap: 10px;    // gap tra card
     box-shadow: 0 10px 24px rgba(22,163,74,0.25), inset 0 1px 0 rgba(255,255,255,0.28);
     z-index: 200; isolation: isolate; overflow: hidden;
     transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+    animation: wa-attract 4.5s ease-in-out 1.2s infinite;
     &::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.65) 45%, transparent 70%); transform: translateX(-120%); transition: transform 0.75s ease; z-index: -1; }
     &:hover { color: #fff; background: #20c05e; border-color: rgba(34,197,94,0.75); box-shadow: 0 16px 36px rgba(22,163,74,0.34), 0 0 0 4px rgba(34,197,94,0.13), inset 0 1px 0 rgba(255,255,255,0.35); &::before { transform: translateX(120%); } }
-    &:active { transform: translateY(-1px) scale(0.99); }
+    &:active { animation: none; transform: translateY(-1px) scale(0.99); }
     svg { flex-shrink: 0; }
 }
-.wa-btn-enter-active, .wa-btn-leave-active { transition: opacity 0.35s $ease-out-expo, transform 0.35s $ease-out-expo; }
-.wa-btn-enter-from, .wa-btn-leave-to { opacity: 0; transform: translateY(18px) scale(0.94); }
+
+@keyframes wa-attract {
+    0%, 60%, 100% {
+        transform: scale(1) translateY(0);
+        box-shadow: 0 10px 24px rgba(22,163,74,0.25), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+    65% {
+        transform: scale(1.06) translateY(-3px);
+        box-shadow: 0 14px 28px rgba(22,163,74,0.35), 0 0 0 6px rgba(34,197,94,0.14), inset 0 1px 0 rgba(255,255,255,0.32);
+    }
+    70% {
+        transform: scale(0.98) translateY(0);
+        box-shadow: 0 10px 24px rgba(22,163,74,0.25), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+    75% {
+        transform: scale(1.04) translateY(-2px);
+        box-shadow: 0 12px 26px rgba(22,163,74,0.3), 0 0 0 4px rgba(34,197,94,0.1), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+    80% {
+        transform: scale(1) translateY(0);
+        box-shadow: 0 10px 24px rgba(22,163,74,0.25), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+}
+
+.wa-btn-enter-active { animation: wa-pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.wa-btn-leave-active { transition: opacity 0.22s ease, transform 0.22s ease; }
+.wa-btn-leave-to     { opacity: 0; transform: translateY(10px) scale(0.88); }
+
+@keyframes wa-pop-in {
+    0%   { opacity: 0; transform: translateY(28px) scale(0.72); }
+    100% { opacity: 1; transform: translateY(0)    scale(1);    }
+}
 
 // ─── PANEL ───────────────────────────────────────────────────────────────────
 
@@ -598,7 +628,7 @@ $gap: 10px;    // gap tra card
     top: 16px;
     z-index: 3;
     transform: rotate(-3deg);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.24), 0 2px 8px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
 }
 
 // Prima rect: alto-destra, ruotata CW, piano intermedio
@@ -610,7 +640,7 @@ $gap: 10px;    // gap tra card
     top: -10px;
     z-index: 2;
     transform: rotate(5deg);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.2), 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
 }
 
 // Seconda rect: basso-destra, lieve rotazione CCW, piano più in fondo
@@ -622,7 +652,7 @@ $gap: 10px;    // gap tra card
     bottom: -10%;
     z-index: 1;
     transform: rotate(-2.5deg);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.2), 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
 }
 
 // ─── DIVISORE ────────────────────────────────────────────────────────────────

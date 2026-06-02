@@ -244,7 +244,7 @@
                                     </li>
                                     <li>
                                         <span v-if="languageState.eng_lan"><strong>Iterative approach</strong> with ongoing feedback</span>
-                                        <span v-else><strong>Approccio iterativo</strong> con feedback continuo</span>
+                                        <span v-else><strong>Design</strong> moderno e <strong>funzionale</strong></span>
                                     </li>
                                     <li>
                                         <span v-if="languageState.eng_lan"><strong>Direct, transparent</strong> communication</span>
