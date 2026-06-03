@@ -217,7 +217,6 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     align-items: center;
     justify-content: flex-start;
     padding: 1rem 1rem 1rem 0;
-    aspect-ratio: 1/2;
 }
 
 .about_photo {
