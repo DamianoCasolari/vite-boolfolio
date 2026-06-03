@@ -272,7 +272,10 @@ export default {
       class="m_main main_container bg-snow"
       :class="{ 'opacity-0': ghost }"
     >
-      <div class="container p_bottom_30 pb-lg-5" style="position: sticky; top: 86px">
+      <div
+        class="container p_bottom_30 pb-lg-5"
+        style="position: sticky; top: 86px"
+      >
         <div
           class="position-sticky d-block d-lg-none"
           style="top: 40px; z-index: 10"
@@ -285,7 +288,10 @@ export default {
             Portfolio
           </h1>
 
-          <div v-if="false" class="d-flex justify-content-center mt-4 position-relative">
+          <div
+            v-if="false"
+            class="d-flex justify-content-center mt-4 position-relative"
+          >
             <div class="position-relative offer-wrap">
               <button
                 type="button"
@@ -355,18 +361,16 @@ export default {
           <div
             class="right_main_side col-7 d-none d-lg-flex flex-column justify-content-center align-items-center px-4 py-5"
             :class="{ 'd-none': ghost }"
-            style="position: sticky; top: 250px"
+            style="position: sticky; top: 200px"
           >
             <div
               class="right_main_side d-md-flex flex-column justify-content-center align-items-center text-center p-3"
-              style="position: sticky; top: 250px"
+              style="position: sticky; top: 200px"
             >
               <div
                 class="d-flex justify-content-between align-items-center w-100 mb-2"
               >
-                <h1 class="position-relative fw-semibold mb-0">
-                  Portfolio
-                </h1>
+                <h1 class="position-relative fw-semibold mb-0">Portfolio</h1>
                 <div
                   class="d-flex justify-content-center align-items-center pointer position-relative"
                 >
@@ -377,8 +381,8 @@ export default {
                       alt=""
                     />
                   </div>
-                  <button 
-                  v-if="false"
+                  <button
+                    v-if="false"
                     type="button"
                     class="badge rounded-pill offer-badge fs-6 special_offert_bg border-0 d-none d-md-block"
                     style="cursor: pointer"
@@ -393,35 +397,44 @@ export default {
                 </div>
               </div>
 
-     
-
               <p class="position-relative">
                 <span v-if="languageState.eng_lan">
-                  I help <strong>businesses and professionals</strong> build
-                  their online presence — custom websites and web applications,
-                  <strong>fast, modern and built to convert</strong>, not just
-                  to look good.
+                  I create
+                  <strong>custom websites and web applications</strong> for
+                  <strong>businesses and professionals</strong> who want to
+                  present themselves online in a modern, credible and
+                  distinctive way.
                 </span>
+
                 <span v-else>
-                  Aiuto <strong>aziende e professionisti</strong> a costruire la
-                  loro presenza online — siti web e applicazioni su misura,
-                  <strong>veloci, moderni e pensati per convertire</strong>, non
-                  solo per fare bella figura.
+                  Creo <strong>siti web e applicazioni su misura</strong> per
+                  <strong>aziende e professionisti</strong> che vogliono
+                  presentarsi online in modo moderno, credibile e distintivo.
                 </span>
               </p>
 
               <p class="position-relative">
                 <span v-if="languageState.eng_lan">
-                  I manage every project <strong>from brief to launch</strong>:
-                  design, code and performance — so you get a
-                  <strong>product that actually works</strong> and that you can
-                  run independently from day one.
+                  I do not start from generic solutions: I study your
+                  <strong>business</strong>, your style and your goals to build
+                  a
+                  <strong
+                    >fast, polished digital product built to convert</strong
+                  >. From brief to launch, I take care of
+                  <strong>design, code and performance</strong>
+                  to create something that truly speaks about you.
                 </span>
+
                 <span v-else>
-                  Seguo ogni progetto <strong>dal brief al lancio</strong>:
-                  design, codice e performance — così ottieni un
-                  <strong>prodotto che funziona davvero</strong> e che puoi
-                  gestire in autonomia dal primo giorno.
+                  Non parto da soluzioni generiche: studio il tuo
+                  <strong>business</strong>, il tuo stile e i tuoi obiettivi per
+                  costruire un
+                  <strong
+                    >prodotto digitale veloce, curato e pensato per
+                    convertire</strong
+                  >. Dal brief al lancio, seguo
+                  <strong>design, codice e performance</strong>
+                  per dare forma a qualcosa che parli davvero di te.
                 </span>
               </p>
 

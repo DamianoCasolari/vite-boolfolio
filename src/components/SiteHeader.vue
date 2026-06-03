@@ -73,18 +73,18 @@
                         <span class="fw-semibold text-dark mx-1 underline-on-hover"
                             :class="{ 'selected_link': $route.name === 'services' }">{{ languageState.eng_lan ? 'Services' : 'Servizi' }}</span>
                     </router-link>
-                    <router-link :to="{ name: 'about' }" class="nav-link d-none d-md-flex">
+                      <router-link :to="{ name: 'about' }" class="nav-link about_me_link d-flex">
                         <span class="fw-semibold text-dark mx-1 underline-on-hover"
                             :class="{ 'selected_link': $route.name === 'about' }">{{ languageState.eng_lan ? 'About' : 'Chi sono' }}</span>
                     </router-link>
-                    <router-link :to="{ name: 'contacts' }" class="nav-link d-none d-md-flex">
-                        <span class="fw-semibold text-dark mx-1 underline-on-hover"
-                            :class="{ 'selected_link': $route.name === 'contacts' }">{{ languageState.eng_lan ? 'Contact' : 'Contatti' }}</span>
-                    </router-link>
+                 
                 </nav>
 
                 <!-- Icone destra — solo desktop -->
                 <div class="logo_container d-none d-md-flex align-items-center">
+                    <router-link :to="{ name: 'contacts' }" class="navbar-brand d-flex align-items-center justify-content-start mx-1 logo_filter scale_hover nav-icon-link" :class="{ 'nav-icon-link--active': $route.name === 'contacts' }" :title="languageState.eng_lan ? 'Contact' : 'Contatti'">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="40" fill="none" stroke="#212529" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </router-link>
                     <a class="navbar-brand align-items-center justify-content-start mx-0 logo_filter lighter scale_hover"
                         href="https://wa.me/3477952189?text=Buongiorno%2C%0Asono%20%5BNome%5D%20e%20vi%20contatto%20per%20avere%20informazioni%20sulla%20realizzazione%20di%20un%20sito%20web%20per%20la%20mia%20attivit%C3%A0.%0AResto%20in%20attesa%20di%20un%20vostro%20riscontro%2C%20grazie."
                         target="_blank">
@@ -208,6 +208,13 @@
     }
 
     .nav-link:hover span { opacity: 1; }
+
+    .nav-icon-link {
+        opacity: 0.45;
+        transition: opacity 0.2s ease;
+        &:hover { opacity: 1; }
+        &--active { opacity: 1; }
+    }
 
     .header_on {
         animation: on 0.3s linear forwards;
@@ -348,15 +355,22 @@
     // ─── TRANSIZIONI ─────────────────────────────────────────────────────────────
 
     .mob-menu-enter-active {
-        transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+        transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, filter 0.3s ease;
     }
     .mob-menu-leave-active {
         transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s ease;
     }
-    .mob-menu-enter-from,
+    .mob-menu-enter-from {
+        transform: translateX(100%);
+        opacity: 0;
+        filter: blur(8px);
+    }
     .mob-menu-leave-to {
         transform: translateX(100%);
         opacity: 0;
+    }
+    .mob-menu-enter-to {
+        filter: none;
     }
 
     .mob-backdrop-enter-active {

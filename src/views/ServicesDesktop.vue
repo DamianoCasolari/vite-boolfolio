@@ -7,8 +7,10 @@
             return {
                 languageState,
                 selectedCard: null,
+                ctaVisible: false,
                 entered: false,
                 ready: false,
+                _ctaTimer: null,
             };
         },
         mounted() {
@@ -24,11 +26,19 @@
         },
         unmounted() {
             window.removeEventListener('resize', this.onResize);
+            clearTimeout(this._ctaTimer);
         },
         methods: {
             selectCard(i) {
                 if (!this.ready) return;
                 this.selectedCard = this.selectedCard === i ? null : i;
+                clearTimeout(this._ctaTimer);
+                if (this.selectedCard !== null) {
+                    this.ctaVisible = false;
+                    this._ctaTimer = setTimeout(() => { this.ctaVisible = true; }, 1500);
+                } else {
+                    this.ctaVisible = false;
+                }
             },
             freezeContentWidth() {
                 const card = this.$el?.querySelector('.service_card');
@@ -37,6 +47,11 @@
                               + parseFloat(getComputedStyle(card).paddingRight);
                 const w = card.clientWidth - padding;
                 this.$el.style.setProperty('--content-w', `${Math.round(w)}px`);
+            },
+            closeCard() {
+                clearTimeout(this._ctaTimer);
+                this.selectedCard = null;
+                this.ctaVisible = false;
             },
             onResize() {
                 if (this.selectedCard === null) this.freezeContentWidth();
@@ -59,7 +74,7 @@
                     }"
                     @click="selectCard(0)">
 
-                    <button v-if="selectedCard === 0" class="card_close" @click.stop="selectedCard = null" aria-label="Chiudi">
+                    <button v-if="selectedCard === 0" class="card_close" @click.stop="closeCard" aria-label="Chiudi">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -131,7 +146,7 @@
                     }"
                     @click="selectCard(1)">
 
-                    <button v-if="selectedCard === 1" class="card_close" @click.stop="selectedCard = null" aria-label="Chiudi">
+                    <button v-if="selectedCard === 1" class="card_close" @click.stop="closeCard" aria-label="Chiudi">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -201,7 +216,7 @@
                     }"
                     @click="selectCard(2)">
 
-                    <button v-if="selectedCard === 2" class="card_close" @click.stop="selectedCard = null" aria-label="Chiudi">
+                    <button v-if="selectedCard === 2" class="card_close" @click.stop="closeCard" aria-label="Chiudi">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -268,7 +283,7 @@
 
         <Transition name="wa-btn">
             <a
-                v-if="selectedCard !== null"
+                v-if="ctaVisible"
                 href="https://wa.me/3477952189?text=Ciao%20Damiano!%20Vorrei%20usufruire%20della%20call%20gratuita%20che%20offri.%0AHo%20visto%20i%20tuoi%20servizi%20e%20mi%20piacerebbe%20parlare%20di%20un%20progetto%20a%20cui%20sto%20pensando."
                 target="_blank"
                 rel="noopener noreferrer"
@@ -297,6 +312,7 @@ $content-top: calc(clamp(5rem, 10vw, 9rem) + 0.75rem);
     height: calc(100dvh - $header-h);
     position: relative;
     overflow: hidden;
+    background: #fafaf9;
 
     .container {
         height: 100%;
@@ -336,7 +352,8 @@ $content-top: calc(clamp(5rem, 10vw, 9rem) + 0.75rem);
     flex-direction: row;
     flex: 1;
     height: 100%;
-    overflow: hidden;
+    gap: 0.75rem;
+    padding: 0.75rem;
 }
 
 // ─── BASE CARD ────────────────────────────────────────────────────────────────
@@ -352,16 +369,15 @@ $content-top: calc(clamp(5rem, 10vw, 9rem) + 0.75rem);
     flex-direction: column;
     padding: 3rem 2.5rem;
     position: relative;
-    border-right: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 24px;
     opacity: 0;
     transform: translateY(22px);
     filter: blur(8px);
 
-    &:last-child { border-right: none; }
-
     &--light {
         background-color: #fafaf9;
         color: #1c1c1c;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
         .service_num  { color: rgba(0, 0, 0, 0.18); }
         .card_close   { color: rgba(0, 0, 0, 0.35); &:hover { color: #1c1c1c; } }
         .expanded_label { color: rgba(0, 0, 0, 0.38); }
@@ -377,6 +393,7 @@ $content-top: calc(clamp(5rem, 10vw, 9rem) + 0.75rem);
     &--dark {
         background-color: #1c1c1c;
         color: #f5f4f2;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.38), 0 2px 8px rgba(0, 0, 0, 0.22);
         .service_num  { color: rgba(255, 255, 255, 0.18); }
         .card_close   { color: rgba(255, 255, 255, 0.3); &:hover { color: #f5f4f2; } }
         .expanded_label { color: rgba(255, 255, 255, 0.32); }
@@ -462,12 +479,12 @@ $content-top: calc(clamp(5rem, 10vw, 9rem) + 0.75rem);
 
 .services_grid.ready:not(.has-selection) .service_card--light:hover {
     background-color: #f0f0ee;
-    box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22), 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .services_grid.ready:not(.has-selection) .service_card--dark:hover {
     background-color: #242424;
-    box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.48), 0 4px 12px rgba(0, 0, 0, 0.28);
 }
 
 // ─── CONTENUTO BASE ───────────────────────────────────────────────────────────

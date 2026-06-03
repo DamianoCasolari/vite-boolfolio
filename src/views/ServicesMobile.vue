@@ -70,6 +70,7 @@
         <!-- BG DECORATIVO: X sfocate in fixed -->
         <div class="mob_x_bg" aria-hidden="true"></div>
 
+        <div class="mob_services_inner">
         <!-- CARD 1 -->
         <div class="mob_card mob_card--light" @click="selectCard(0)">
             <span class="mob_num" aria-hidden="true">01</span>
@@ -105,6 +106,7 @@
                 </p>
             </div>
         </div>
+        </div><!-- /mob_services_inner -->
 
         <!-- ─── PANEL ───────────────────────────────────────────────────────── -->
         <Transition name="srv-panel">
@@ -136,7 +138,7 @@
                     </div>
                 </Transition>
 
-                <div class="srv_body" ref="srvBody">
+                <div class="srv_body" ref="srvBody" :class="{ 'panel-ready': !panelLoading }">
 
                     <!-- ════════════════════════════════════════
                          SERVICE 0 — SITO VETRINA
@@ -357,15 +359,21 @@ $gap: 10px;    // gap tra card
 
 .mob_services {
     margin-top: $header-h;
+    height: calc(100dvh - $header-h);
+    overflow: hidden;
+    box-sizing: border-box;
+    background: #fafaf9;
+    position: relative;
+}
+
+.mob_services_inner {
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
-    height: calc(100dvh - $header-h);
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
     padding: 0.75rem;
-    overflow: hidden;
-    box-sizing: border-box;
     @media (min-width: 576px) { max-width: 540px; }
     @media (min-width: 768px) { max-width: 720px; }
 }
@@ -534,6 +542,27 @@ $gap: 10px;    // gap tra card
 .panel-loader-leave-active  { transition: opacity 0.3s ease; }
 .panel-loader-enter-from,
 .panel-loader-leave-to      { opacity: 0; }
+
+// ─── ANIMAZIONI CONTENUTO PANEL ──────────────────────────────────────────────
+
+@keyframes panel-content-in {
+    from { opacity: 0; transform: translateY(18px); filter: blur(5px); }
+    to   { opacity: 1; transform: translateY(0);    filter: none; }
+}
+
+.srv_body .sp_header,
+.srv_body .sp_cards,
+.srv_body .sp_divider,
+.srv_body .sp_features,
+.srv_body .sp_closing {
+    opacity: 0;
+}
+
+.srv_body.panel-ready .sp_header   { animation: panel-content-in 0.7s $ease-out-expo 0.06s both; }
+.srv_body.panel-ready .sp_cards    { animation: panel-content-in 0.7s $ease-out-expo 0.16s both; }
+.srv_body.panel-ready .sp_divider  { animation: panel-content-in 0.7s $ease-out-expo 0.26s both; }
+.srv_body.panel-ready .sp_features { animation: panel-content-in 0.7s $ease-out-expo 0.34s both; }
+.srv_body.panel-ready .sp_closing  { animation: panel-content-in 0.7s $ease-out-expo 0.44s both; }
 
 // ─── HEADER ──────────────────────────────────────────────────────────────────
 

@@ -11,14 +11,14 @@
         },
         mounted() {
             const img = new Image();
-            const reveal = () => {
+            img.onload = img.onerror = () => {
                 this.loading = false;
                 this.$nextTick(() => {
-                    requestAnimationFrame(() => { this.entered = true; });
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => { this.entered = true; });
+                    });
                 });
             };
-            img.onload  = reveal;
-            img.onerror = reveal;
             img.src = "/immagini_about_me/foto1.jpeg";
         },
     };
@@ -46,63 +46,20 @@
 
         <!-- TESTO -->
         <div class="about_left">
-            <span class="about_eyebrow">
-                {{ languageState.eng_lan ? '— About me' : '— Chi sono' }}
-            </span>
-            <h1 class="about_name">Damiano<br>Casolari</h1>
-            <p class="about_bio" v-if="!languageState.eng_lan">
-                Sono Damiano, <strong>software developer</strong> e <strong>creativo digitale</strong>. Creo <strong>esperienze</strong> e <strong>prodotti digitali</strong> dal <strong>design curato</strong>, pensati per <strong>valorizzare brand</strong>, idee e progetti online. Unisco <strong>codice</strong>, estetica e <strong>attenzione al dettaglio</strong> per dare forma a soluzioni <strong>moderne</strong>, pulite e <strong>riconoscibili</strong>.
-            </p>
-            <p class="about_bio" v-else>
-                I'm Damiano, <strong>software developer</strong> and <strong>digital creative</strong>. I build <strong>digital experiences</strong> and <strong>products</strong> with <strong>refined design</strong>, crafted to <strong>elevate brands</strong>, ideas and projects online. I combine <strong>code</strong>, aesthetics and <strong>attention to detail</strong> to shape <strong>modern</strong>, clean and <strong>recognisable</strong> solutions.
-            </p>
-               <!-- <p class="position-relative">
-                <span v-if="languageState.eng_lan">
-                  I help <strong>businesses and professionals</strong> build
-                  their online presence — custom websites and web applications,
-                  <strong>fast, modern and built to convert</strong>, not just
-                  to look good.
-                </span>
-                <span v-else>
-                  Aiuto <strong>aziende e professionisti</strong> a costruire la
-                  loro presenza online — siti web e applicazioni su misura,
-                  <strong>veloci, moderni e pensati per convertire</strong>, non
-                  solo per fare bella figura.
-                </span>
-              </p>
+            <div class="about_left--dark">
+                <span class="about_eyebrow">{{ languageState.eng_lan ? '— About me' : '— Chi sono' }}</span>
+                <h1 class="about_name">Damiano<br>Casolari</h1>
+                <p class="about_bio" v-if="!languageState.eng_lan">Sono Damiano, <strong>software developer</strong> e <strong>creativo digitale</strong>. Creo <strong>esperienze</strong> e <strong>prodotti digitali</strong> dal <strong>design curato</strong>, pensati per <strong>valorizzare brand</strong>, idee e progetti online. Unisco <strong>codice</strong>, estetica e <strong>attenzione al dettaglio</strong> per dare forma a soluzioni <strong>moderne</strong>, pulite e <strong>riconoscibili</strong>.</p>
+                <p class="about_bio" v-else>I'm Damiano, <strong>software developer</strong> and <strong>digital creative</strong>. I build <strong>digital experiences</strong> and <strong>products</strong> with <strong>refined design</strong>, crafted to <strong>elevate brands</strong>, ideas and projects online. I combine <strong>code</strong>, aesthetics and <strong>attention to detail</strong> to shape <strong>modern</strong>, clean and <strong>recognisable</strong> solutions.</p>
+            </div>
 
-              <p class="position-relative">
-                <span v-if="languageState.eng_lan">
-                  I manage every project <strong>from brief to launch</strong>:
-                  design, code and performance — so you get a
-                  <strong>product that actually works</strong> and that you can
-                  run independently from day one.
-                </span>
-                <span v-else>
-                  Seguo ogni progetto <strong>dal brief al lancio</strong>:
-                  design, codice e performance — così ottieni un
-                  <strong>prodotto che funziona davvero</strong> e che puoi
-                  gestire in autonomia dal primo giorno.
-                </span>
-              </p>
-
-              <p class="position-relative">
-                <span v-if="languageState.eng_lan">
-                  I also build <strong>AI integrations</strong> and
-                  <strong>custom automations</strong> — chatbots, smart
-                  assistants and automated workflows — to put technology to work
-                  for you and <strong>multiply your results</strong> without
-                  multiplying your workload.
-                </span>
-                <span v-else>
-                  Realizzo anche <strong>integrazioni AI</strong> e
-                  <strong>automazioni su misura</strong> — chatbot, assistenti
-                  intelligenti e flussi automatici — per far lavorare la
-                  tecnologia al posto tuo e
-                  <strong>moltiplicare i risultati</strong> senza moltiplicare
-                  il carico di lavoro.
-                </span>
-              </p> -->
+            <!-- Layer bianco: dentro about_left → stesso contenitore, allineamento garantito -->
+            <!-- <div class="about_left--white" aria-hidden="true">
+                <span class="about_eyebrow">{{ languageState.eng_lan ? '— About me' : '— Chi sono' }}</span>
+                <h1 class="about_name">Damiano<br>Casolari</h1>
+                <p class="about_bio" v-if="!languageState.eng_lan">Sono Damiano, <strong>software developer</strong> e <strong>creativo digitale</strong>. Creo <strong>esperienze</strong> e <strong>prodotti digitali</strong> dal <strong>design curato</strong>, pensati per <strong>valorizzare brand</strong>, idee e progetti online. Unisco <strong>codice</strong>, estetica e <strong>attenzione al dettaglio</strong> per dare forma a soluzioni <strong>moderne</strong>, pulite e <strong>riconoscibili</strong>.</p>
+                <p class="about_bio" v-else>I'm Damiano, <strong>software developer</strong> and <strong>digital creative</strong>. I build <strong>digital experiences</strong> and <strong>products</strong> with <strong>refined design</strong>, crafted to <strong>elevate brands</strong>, ideas and projects online. I combine <strong>code</strong>, aesthetics and <strong>attention to detail</strong> to shape <strong>modern</strong>, clean and <strong>recognisable</strong> solutions.</p>
+            </div> -->
         </div>
 
         <!-- FOTO -->
@@ -146,11 +103,9 @@ $header-h: 40px;
 
 .about_mob {
     height: 100%;
-    display: grid;
-    grid-template-columns: 52fr 48fr;
+    display: block;
     box-sizing: border-box;
     position: relative;
-    z-index: 1;
 
     // Desktop: stessi margini del container Bootstrap dell'header
     @media (min-width: 768px)  { max-width: 720px;  margin-inline: auto; padding-inline: 0.75rem; }
@@ -163,15 +118,15 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 // ─── ANIMAZIONE ENTRATA ───────────────────────────────────────────────────────
 
-.about_left,
+.about_left--dark,
 .about_photo_wrap {
     opacity: 0;
     filter: blur(6px);
     transform: translateY(18px);
-    transition: opacity 0.5s ease, transform 0.15s ease;
+    transition: opacity 0.5s ease, transform 0.15s ease, filter 0.5s ease;
 }
 
-.about_mob.entered .about_left,
+.about_mob.entered .about_left--dark,
 .about_mob.entered .about_photo_wrap {
     opacity: 1;
     filter: none;
@@ -179,14 +134,19 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     transition: opacity 0.8s $ease-out-expo, transform 0.8s $ease-out-expo, filter 0.65s ease;
 }
 
-.about_mob.entered .about_left       { transition-delay: 0.05s; }
-.about_mob.entered .about_photo_wrap { transition-delay: 0.22s; }
+.about_mob.entered .about_left--dark  { transition-delay: 0.05s; }
+.about_mob.entered .about_photo_wrap  { transition-delay: 0.22s; }
 
-// ─── LAYOUT ───────────────────────────────────────────────────────────────────
+// ─── LAYOUT ──────────────────────────────────────────────────────────────────
+// Testo (65%) e foto (50% da destra) si sovrappongono del 15% al centro.
+// Il layer bianco ha STESSA larghezza del layer base → testo identico → clip preciso.
+// Foto parte al 50% di .about_mob → dentro il layer 65%: 50/65 = 76.9% ≈ 77%
 
 .about_left {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    width: 50%;
+    height: 100%;
     padding: 2.75rem 1.25rem 2rem 1.5rem;
     display: flex;
     flex-direction: column;
@@ -194,13 +154,37 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     overflow-y: auto;
 }
 
+// .about_left--dark {
+//     clip-path: inset(0 18% 0 0);
+// }
+
+// .about_left--white {
+//     position: absolute;
+//     left: -3.5px;
+//     top: 0;
+//     width: 100%;
+//     height: 100%;
+//     padding: 2.75rem 1.25rem 2rem 1.5rem;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     color: white;
+//     clip-path: inset(0 0 0 77%);
+//     pointer-events: none;
+//     z-index: 3;
+
+//     .about_name  { color: white; }
+//     .about_bio   { color: white; strong { color: white; font-weight: 700; } }
+//     .about_eyebrow { color: white; }
+// }
+
 .about_eyebrow {
     display: block;
     font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.36;
+    opacity: 0.5;
     margin-bottom: 1.1rem;
 }
 
@@ -219,38 +203,35 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     color: #555;
     margin: 0;
 
-    strong {
-        color: #1c1c1c;
-        font-weight: 600;
-    }
+    strong { font-weight: 600; color: #1c1c1c; }
 }
 
 .about_photo_wrap {
-    position: relative;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%;
     z-index: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius:16px;
-    padding: 0 1rem 0 0;
-   
+    justify-content: flex-start;
+    padding: 1rem 1rem 1rem 0;
+    aspect-ratio: 1/2;
 }
 
 .about_photo {
-    width: 120%;
-    aspect-ratio: 2 / 5;
-    border-radius: 20px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center ;
+    border-radius: 20px;
     display: block;
+}
 
-    @media (min-width: 768px) {
-        // Desktop: altezza guida, larghezza calcolata dal ratio → foto stretta e alta
-        width: auto;
-        height: min(72vh, calc(100dvh - 80px));
-         aspect-ratio: 1 / 1.8;
-          object-position: center;
-        max-width: 100%;
-    }
+@media screen and (min-width: 1025px) {
+    .about_photo_wrap { width:30%;
+    right: 10%; }
+    
 }
 </style>
