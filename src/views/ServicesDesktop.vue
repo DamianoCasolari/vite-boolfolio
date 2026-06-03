@@ -117,7 +117,7 @@
                             </div>
                             <!-- rettangolo back: immagine sfasata -->
                             <div class="card_preview">
-                                <img src="/immagini-progetti/gds-port.png" alt="Esempio sito vetrina" />
+                                <img src="/immagini_servizi/1-3.png" alt="Esempio sito vetrina" />
                             </div>
                         </div>
                     </div>

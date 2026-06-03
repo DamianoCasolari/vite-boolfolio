@@ -476,34 +476,10 @@ $gap: 10px;    // gap tra card
     box-shadow: 0 10px 24px rgba(22,163,74,0.25), inset 0 1px 0 rgba(255,255,255,0.28);
     z-index: 200; isolation: isolate; overflow: hidden;
     transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
-    animation: wa-attract 4.5s ease-in-out 1.2s infinite;
     &::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.65) 45%, transparent 70%); transform: translateX(-120%); transition: transform 0.75s ease; z-index: -1; }
     &:hover { color: #fff; background: #20c05e; border-color: rgba(34,197,94,0.75); box-shadow: 0 16px 36px rgba(22,163,74,0.34), 0 0 0 4px rgba(34,197,94,0.13), inset 0 1px 0 rgba(255,255,255,0.35); &::before { transform: translateX(120%); } }
-    &:active { animation: none; transform: translateY(-1px) scale(0.99); }
+    &:active { transform: translateY(-1px) scale(0.99); }
     svg { flex-shrink: 0; }
-}
-
-@keyframes wa-attract {
-    0%, 60%, 100% {
-        transform: scale(1) translateY(0);
-        box-shadow: 0 10px 24px rgba(22,163,74,0.25), inset 0 1px 0 rgba(255,255,255,0.28);
-    }
-    65% {
-        transform: scale(1.06) translateY(-3px);
-        box-shadow: 0 14px 28px rgba(22,163,74,0.35), 0 0 0 6px rgba(34,197,94,0.14), inset 0 1px 0 rgba(255,255,255,0.32);
-    }
-    70% {
-        transform: scale(0.98) translateY(0);
-        box-shadow: 0 10px 24px rgba(22,163,74,0.25), inset 0 1px 0 rgba(255,255,255,0.28);
-    }
-    75% {
-        transform: scale(1.04) translateY(-2px);
-        box-shadow: 0 12px 26px rgba(22,163,74,0.3), 0 0 0 4px rgba(34,197,94,0.1), inset 0 1px 0 rgba(255,255,255,0.3);
-    }
-    80% {
-        transform: scale(1) translateY(0);
-        box-shadow: 0 10px 24px rgba(22,163,74,0.25), inset 0 1px 0 rgba(255,255,255,0.28);
-    }
 }
 
 .wa-btn-enter-active { animation: wa-pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }

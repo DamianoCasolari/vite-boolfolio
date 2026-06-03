@@ -59,7 +59,7 @@
     <template v-else>
         <SiteHeader v-if="isReady" />
         <router-view></router-view>
-        <SiteFooter v-if="isReady && $route.name !== 'services' && $route.name !== 'contacts'" />
+        <SiteFooter v-if="isReady && $route.name !== 'services' && $route.name !== 'contacts' && $route.name !== 'about'" />
     </template>
     <CookieBanner />
     <OfferToast />

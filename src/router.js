@@ -32,6 +32,11 @@ const router = createRouter({
       name: "single-project",
       component: () => import("./views/SingleProject.vue"),
     },
+    {
+      path: "/about",
+      name: "about",
+      component: () => import("./views/AboutMobile.vue"),
+    },
     { path: "/:pathMatch(.*)*", name: "PageNotFound", component: () => import("./views/PageNotFound.vue"), },
   ],
   scrollBehavior(to, from, savedPosition) {

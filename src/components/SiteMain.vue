@@ -365,7 +365,7 @@ export default {
                 class="d-flex justify-content-between align-items-center w-100 mb-2"
               >
                 <h1 class="position-relative fw-semibold mb-0">
-                  {{ languageState.eng_lan ? `About me` : `Chi sono` }}
+                  Portfolio
                 </h1>
                 <div
                   class="d-flex justify-content-center align-items-center pointer position-relative"
@@ -392,6 +392,8 @@ export default {
                   </button>
                 </div>
               </div>
+
+     
 
               <p class="position-relative">
                 <span v-if="languageState.eng_lan">
@@ -423,7 +425,7 @@ export default {
                 </span>
               </p>
 
-              <p class="position-relative">
+              <!-- <p class="position-relative">
                 <span v-if="languageState.eng_lan">
                   I also build <strong>AI integrations</strong> and
                   <strong>custom automations</strong> — chatbots, smart
@@ -439,7 +441,7 @@ export default {
                   <strong>moltiplicare i risultati</strong> senza moltiplicare
                   il carico di lavoro.
                 </span>
-              </p>
+              </p> -->
 
               <div class="shape_container position-absolute position3">
                 <div class="shape"></div>
