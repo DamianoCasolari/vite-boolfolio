@@ -113,16 +113,12 @@
                                         <span v-else><strong>Design personalizzato</strong> sul tuo brand</span>
                                     </li>
                                     <li>
-                                        <span v-if="languageState.eng_lan"><strong>Performance</strong> optimised (Lighthouse 90+)</span>
-                                        <span v-else><strong>Performance</strong> ottimizzate (Lighthouse 90+)</span>
+                                        <span v-if="languageState.eng_lan"><strong>No templates</strong>, 100% custom code</span>
+                                        <span v-else><strong>Nessun template</strong>, codice 100% su misura</span>
                                     </li>
                                     <li>
-                                        <span v-if="languageState.eng_lan"><strong>Basic SEO</strong> & social meta tags</span>
-                                        <span v-else><strong>SEO di base</strong> e meta tag social</span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Mobile-first</strong>, cross-browser tested</span>
-                                        <span v-else><strong>Mobile-first</strong>, testato su tutti i browser</span>
+                                        <span v-if="languageState.eng_lan"><strong>SEO optimisation</strong></span>
+                                        <span v-else><strong>Ottimizzazione SEO</strong></span>
                                     </li>
                                     <li>
                                         <span v-if="languageState.eng_lan"><strong>Deployment</strong> & hosting setup</span>
@@ -184,16 +180,12 @@
                                         <span v-else><strong>Applicazioni su misura</strong> costruite attorno al tuo business</span>
                                     </li>
                                     <li>
-                                        <span v-if="languageState.eng_lan"><strong>Custom admin dashboard</strong>, no third-party lock-in</span>
-                                        <span v-else><strong>Dashboard admin</strong> su misura, zero dipendenze esterne</span>
+                                        <span v-if="languageState.eng_lan"><strong>Old software</strong> slowing you down? We rebuild it right</span>
+                                        <span v-else><strong>Applicativo vecchio</strong> che ti frena? Lo ricostruiamo da zero</span>
                                     </li>
                                     <li>
                                         <span v-if="languageState.eng_lan"><strong>Automations</strong> that cut repetitive manual work</span>
                                         <span v-else><strong>Automazioni</strong> che eliminano il lavoro manuale</span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Scalable</strong>: handles growth without requiring a rewrite</span>
-                                        <span v-else><strong>Scalabile</strong>: regge la crescita senza dover riscrivere il progetto</span>
                                     </li>
                                     <li>
                                         <span v-if="languageState.eng_lan"><strong>Deploy & hosting</strong> included — go live without touching a server</span>
@@ -202,7 +194,7 @@
                                 </ul>
                             </div>
                             <div class="card_preview">
-                                <img src="/immagini-progetti/image001.png" alt="Esempio web application" />
+                                <img src="/immagini_servizi/2-2.png" alt="Esempio web application" />
                             </div>
                         </div>
                     </div>
@@ -258,16 +250,12 @@
                                         <span v-else>Stack tecnologico scelto per <strong>la tua esigenza</strong></span>
                                     </li>
                                     <li>
-                                        <span v-if="languageState.eng_lan"><strong>Iterative approach</strong> with ongoing feedback</span>
-                                        <span v-else><strong>Design</strong> moderno e <strong>funzionale</strong></span>
+                                        <span v-if="languageState.eng_lan"><strong>Custom features</strong> built around your idea</span>
+                                        <span v-else><strong>Funzionalità custom</strong> costruite attorno alla tua idea</span>
                                     </li>
                                     <li>
-                                        <span v-if="languageState.eng_lan"><strong>Direct, transparent</strong> communication</span>
-                                        <span v-else>Comunicazione <strong>diretta e trasparente</strong></span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Flexible timeline</strong>, no agency overhead</span>
-                                        <span v-else><strong>Tempi flessibili</strong>, senza overhead da agenzia</span>
+                                        <span v-if="languageState.eng_lan"><strong>Modern design</strong>, clean and recognisable</span>
+                                        <span v-else><strong>Design moderno</strong>, pulito e riconoscibile</span>
                                     </li>
                                 </ul>
                             </div>

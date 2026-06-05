@@ -151,17 +151,17 @@
                                 {{ languageState.eng_lan ? '01 — Service' : '01 — Servizio' }}
                             </span>
                             <h2 class="sp_title">
-                                <span v-if="languageState.eng_lan">A site that<br>works for you.</span>
-                                <span v-else>Un sito che<br>lavora per te.</span>
+                                <span v-if="languageState.eng_lan">Showcase Website </span>
+                                <span v-else> Sito vetrina</span>
                             </h2>
                             <p class="sp_desc">
                                 <span v-if="languageState.eng_lan">
-                                    Custom design, fast loading, SEO-ready and
-                                    deployed — everything from brief to launch.
+                                    <strong>Custom design</strong>, <strong>fast loading</strong>, <strong>SEO-ready</strong> and
+                                    deployed — everything from <strong>brief to launch</strong>.
                                 </span>
                                 <span v-else>
-                                    Design su misura, caricamento rapido, ottimizzato
-                                    per i motori di ricerca e online in tempi brevi.
+                                    <strong>Design su misura</strong>, <strong>caricamento rapido</strong>, ottimizzato
+                                    per i <strong>motori di ricerca</strong> e online in <strong>tempi brevi</strong>.
                                 </span>
                             </p>
                         </header>
@@ -240,12 +240,12 @@
                         <header class="sp_header">
                             <span class="sp_eyebrow">{{ languageState.eng_lan ? '02 — Service' : '02 — Servizio' }}</span>
                             <h2 class="sp_title">
-                                <span v-if="languageState.eng_lan">Built around<br>your business.</span>
-                                <span v-else>Costruita attorno<br>al tuo business.</span>
+                                <span v-if="languageState.eng_lan">Web Application</span>
+                                <span v-else>Applicazione web </span>
                             </h2>
                             <p class="sp_desc">
-                                <span v-if="languageState.eng_lan">E-commerce, dashboards, automations — built for the way you actually work.</span>
-                                <span v-else>E-commerce, gestionali, automazioni — costruiti attorno a come lavori davvero.</span>
+                                <span v-if="languageState.eng_lan"><strong>E-commerce</strong>, <strong>dashboards</strong>, <strong>automations</strong> — built for the way you <strong>actually work</strong>.</span>
+                                <span v-else><strong>E-commerce</strong>, <strong>gestionali</strong>, <strong>automazioni</strong> — costruiti attorno a come <strong>lavori davvero</strong>.</span>
                             </p>
                         </header>
                         <div class="sp_cards">
@@ -273,8 +273,8 @@
                         </div>
                         <div class="sp_closing">
                             <p class="sp_closing_text">
-                                <span v-if="languageState.eng_lan">Your business<br>evolve.</span>
-                                <span v-else>Il tuo business<br>evolve.</span>
+                             <span v-if="languageState.eng_lan">Built around<br>your business.</span>
+                                <span v-else>Costruita attorno<br>al tuo business.</span>
 
                             </p>
                         </div>
@@ -287,12 +287,12 @@
                         <header class="sp_header">
                             <span class="sp_eyebrow">{{ languageState.eng_lan ? '03 — Service' : '03 — Servizio' }}</span>
                             <h2 class="sp_title">
-                                <span v-if="languageState.eng_lan">Your idea,<br>our code.</span>
-                                <span v-else>La tua idea,<br>diventa codice.</span>
+                                <span v-if="languageState.eng_lan">Custom Project</span>
+                                <span v-else>Progetto custom </span>
                             </h2>
                             <p class="sp_desc">
-                                <span v-if="languageState.eng_lan">Something specific or unconventional? We'll find the right approach together.</span>
-                                <span v-else>Qualcosa di specifico o fuori dagli standard? Troviamo insieme l'approccio giusto.</span>
+                                <span v-if="languageState.eng_lan">Something <strong>specific</strong> or <strong>unconventional</strong>? We'll find the <strong>right approach</strong> together.</span>
+                                <span v-else>Qualcosa di <strong>specifico</strong> o <strong>fuori dagli standard</strong>? Troviamo insieme l'<strong>approccio giusto</strong>.</span>
                             </p>
                         </header>
                         <div class="sp_cards">
@@ -320,8 +320,8 @@
                         </div>
                         <div class="sp_closing">
                             <p class="sp_closing_text">
-                                <span v-if="languageState.eng_lan">Your idea,<br>our code.</span>
-                                <span v-else>La <i>tua</i> idea,<br>diventa codice.</span>
+                             <span v-if="languageState.eng_lan">A site that<br>works for you.</span>
+                                <span v-else>Un sito che<br>lavora per <i>te</i>.</span>
                             </p>
                         </div>
                     </template>

@@ -39,7 +39,7 @@
             "name_it": "App Bulgari",
             "description": "Bulgari’s in-store application is a global point-of-sale system used across boutiques worldwide to manage sales. It handles customer profiles and product catalogs, automatically applies each country’s tax rules, and provides advanced tools like transaction suspension, discount application, and more. In my role, I worked exclusively in support—modifying the existing application to fix bugs and integrate new feature requests. Collab netrising",
             "description_it": "Applicazione in-store utilizzata nelle boutique Bulgari a livello globale per la gestione delle vendite. Consente la gestione dei clienti e dei cataloghi prodotto, applica automaticamente le regole fiscali locali e mette a disposizione funzionalità avanzate come sospensione delle transazioni e scontistiche. Il mio contributo è stato orientato al supporto tecnico e alla risoluzione di bug. Collab netrising",
-            "image": "/immagini-progetti/bulgari.jpg",
+            "image": "/immagini-progetti/bulgari.png",
             "logo": "/loghi-progetti/bvlgari.png",
             "link": null,
             "type": {
@@ -105,8 +105,8 @@
             "name_it": "App Loro Piana",
             "description": "Loro Piana’s in-store application is a global point-of-sale system used across boutiques worldwide to manage sales. It handles customer profiles and product catalogs, automatically applies each country’s tax rules, and provides advanced tools like transaction suspension, discount application, and more. In my role, I worked exclusively in support—modifying the existing application to fix bugs and integrate new feature requests. Collab netrising",
             "description_it": "Applicazione in-store utilizzata nelle boutique Loro Piana di tutto il mondo per la gestione delle vendite. Il sistema gestisce profili cliente e cataloghi prodotto, applica automaticamente le regole fiscali di ogni paese e offre strumenti avanzati come la sospensione delle transazioni e l’applicazione di sconti. Il mio ruolo è stato focalizzato sul supporto, con interventi di bug fixing e integrazione di nuove funzionalità. Collab netrising",
-            "image": "/immagini-progetti/loropiana1.jpg",
-            "logo": "/loghi-progetti/loropiana.jpg",
+            "image": "/immagini-progetti/loropiana1.png",
+            "logo": "/loghi-progetti/loropiana1.png",
             "link": null,
             "type": {
                 "id": 1,

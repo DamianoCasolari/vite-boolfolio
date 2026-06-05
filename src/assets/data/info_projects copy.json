@@ -6,7 +6,7 @@
             "slug": "loro-piana-app",
             "name": "Loro Piana App",
             "description": "Loro Piana’s in-store application is a global point-of-sale system used across boutiques worldwide to manage sales. It handles customer profiles and product catalogs, automatically applies each country’s tax rules, and provides advanced tools like transaction suspension, discount application, and more. In my role, I worked exclusively in support—modifying the existing application to fix bugs and integrate new feature requests.",
-            "image": "/immagini-progetti/loropiana.jpg",
+            "image": "/immagini-progetti/loropiana1.png",
             "link": null,
             "type": {
                 "id": 1,
@@ -25,7 +25,7 @@
             "slug": "bulgari-app",
             "name": "Bulgari App",
             "description": "Bulgari’s in-store application is a global point-of-sale system used across boutiques worldwide to manage sales. It handles customer profiles and product catalogs, automatically applies each country’s tax rules, and provides advanced tools like transaction suspension, discount application, and more. In my role, I worked exclusively in support—modifying the existing application to fix bugs and integrate new feature requests.",
-            "image": "/immagini-progetti/bulgari.jpg",
+            "image": "/immagini-progetti/bulgari.png",
             "link": null,
             "type": {
                 "id": 1,
