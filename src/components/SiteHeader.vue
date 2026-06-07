@@ -57,7 +57,7 @@
 </script>
 
 <template>
-    <div class="shadow_line"></div>
+    <div class="shadow_line" v-if="$route.name !== 'privacyPolicy' && $route.name !== 'cookiePolicy' && $route.name !== 'PageNotFound'"></div>
     <header>
         <nav class="navbar navbar-expand-md shadow-sm position-fixed w-100 top-0 z_index header_shadow bg_color"
             :class="[headerScroll ? 'header_on' : 'header_off', { 'mob_menu_active': mobileMenuOpen }]">
@@ -153,17 +153,18 @@
                         </span>
                         <span>{{ languageState.eng_lan ? 'About' : 'Chi sono' }}</span>
                     </router-link>
-                    <router-link :to="{ name: 'contacts' }" class="mob_menu__item" @click="closeMenu"
+                   
+                </div>
+
+                <!-- Social & utility -->
+                <div class="mob_menu__section mob_menu__section--divided">
+                     <router-link :to="{ name: 'contacts' }" class="mob_menu__item" @click="closeMenu"
                         :class="{ 'mob_menu__item--active': $route.name === 'contacts' }">
                         <span class="mob_menu__icon" style="background: rgba(0,0,0,0.07); color: #555;">
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         </span>
                         <span>{{ languageState.eng_lan ? 'Contact' : 'Contatti' }}</span>
                     </router-link>
-                </div>
-
-                <!-- Social & utility -->
-                <div class="mob_menu__section mob_menu__section--divided">
                     <a href="https://wa.me/3477952189?text=Buongiorno%2C%0Asono%20%5BNome%5D%20e%20vi%20contatto%20per%20avere%20informazioni%20sulla%20realizzazione%20di%20un%20sito%20web%20per%20la%20mia%20attivit%C3%A0.%0AResto%20in%20attesa%20di%20un%20vostro%20riscontro%2C%20grazie."
                         target="_blank" rel="noopener noreferrer" class="mob_menu__item" @click="closeMenu">
                         <span class="mob_menu__icon" style="background: rgba(0,0,0,0.06); color: #333;">
@@ -210,7 +211,7 @@
     .nav-link:hover span { opacity: 1; }
 
     .nav-icon-link {
-        opacity: 0.45;
+        opacity: 0.7;
         transition: opacity 0.2s ease;
         &:hover { opacity: 1; }
         &--active { opacity: 1; }

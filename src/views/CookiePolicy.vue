@@ -16,14 +16,22 @@
 </script>
 
 <template>
-   <div class="privacy_policy_container vh100_100px d-flex justify-content-center align-items-center flex-column ">
-        <div class="h-100 w-100 position-absolute bg-dark" style="opacity: 0.5;"></div>
+   <div class="policy-page position-relative overflow-hidden" style="min-height: 100vh; background: #1a1a1a;">
 
-        <h2 class="text-white z-3 postion-relative text-center h2">
+        <div class="shape_container position-absolute policy-blob-pos1">
+            <div class="policy-blob policy-blob--1"></div>
+        </div>
+        <div class="shape_container position-absolute policy-blob-pos2">
+            <div class="policy-blob policy-blob--2"></div>
+        </div>
+
+        <div class="privacy_policy_container vh100_100px d-flex justify-content-center align-items-center flex-column">
+
+        <h2 class="text-white z-3 position-relative text-center h2">
             {{ languageState.eng_lan ? `Cookie Policy` : `Cookie Policy` }}
         </h2>
 
-        <div class="text-white z-3 position-relative text-center privacy-policy h-25- ">
+        <div class="text-white z-3 position-relative text-center privacy-policy h-25-">
 
             <div>
                 {{
@@ -159,36 +167,7 @@
 
         </div>
 
-        <div>
-            <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
         </div>
-
-        <div>
-            <ul class="circles2">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-
     </div>
 </template>
 
@@ -234,5 +213,41 @@
             font-size: 0.85rem;
             opacity: 0.8;
         }
+    }
+
+    .policy-blob-pos1 {
+        left: -60px;
+        bottom: -200px;
+    }
+
+    .policy-blob-pos2 {
+        right: -80px;
+        top: -150px;
+    }
+
+    .policy-blob {
+        animation: morph 8s ease-in-out infinite;
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transition: all 1s ease-in-out;
+    }
+
+    .policy-blob--1 {
+        background: linear-gradient(#3a3a3a 25%, #505050 55%);
+        height: 300px;
+        width: 300px;
+        opacity: 0.7;
+    }
+
+    .policy-blob--2 {
+        background: linear-gradient(#2e2e2e 25%, #424242 55%);
+        height: 500px;
+        width: 500px;
+        opacity: 0.5;
+    }
+
+    @keyframes morph {
+        0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        50%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
     }
 </style>

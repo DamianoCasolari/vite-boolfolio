@@ -63,7 +63,7 @@
 
     .cookie-banner {
         position: fixed;
-        bottom: 20px;
+        top: 50px;
         left: 0;
         right: 0;
         display: flex;
@@ -142,7 +142,7 @@
 
     .cookie-slide-enter-from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(-40px);
     }
 
 </style>

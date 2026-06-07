@@ -59,9 +59,9 @@
     <template v-else>
         <SiteHeader v-if="isReady" />
         <router-view></router-view>
-        <SiteFooter v-if="isReady && $route.name !== 'services' && $route.name !== 'contacts' && $route.name !== 'about'" />
+        <SiteFooter v-if="isReady && $route.name !== 'services' && $route.name !== 'contacts' && $route.name !== 'about' && $route.name !== 'privacyPolicy' && $route.name !== 'cookiePolicy' && $route.name !== 'PageNotFound'" />
     </template>
-    <CookieBanner />
+    <CookieBanner v-if="isReady" />
     <OfferToast />
     <SiteWelcomeModal />
 </template>
