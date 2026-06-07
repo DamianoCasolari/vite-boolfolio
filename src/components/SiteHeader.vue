@@ -357,17 +357,6 @@
                 background: rgba(0, 0, 0, 0.13) !important;
             }
 
-            &::after {
-                content: '';
-                width: 6px;
-                height: 6px;
-                border-radius: 50%;
-                background: #1a1a1a;
-                opacity: 0.35;
-                margin-left: auto;
-                flex-shrink: 0;
-                align-self: center;
-            }
         }
     }
 
