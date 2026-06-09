@@ -10,51 +10,45 @@
                 ctaVisible: false,
                 entered: false,
                 ready: false,
-                _ctaTimer: null,
+                _detachScroll: null,
             };
         },
         mounted() {
             requestAnimationFrame(() => {
-                this.freezeContentWidth();
                 this.entered = true;
                 setTimeout(() => {
                     this.entered = false;
                     this.ready = true;
                 }, 950);
             });
-            window.addEventListener('resize', this.onResize, { passive: true });
         },
         unmounted() {
-            window.removeEventListener('resize', this.onResize);
-            clearTimeout(this._ctaTimer);
+            this._detachScroll?.();
         },
         methods: {
             selectCard(i) {
-                if (!this.ready) return;
-                this.selectedCard = this.selectedCard === i ? null : i;
-                clearTimeout(this._ctaTimer);
-                if (this.selectedCard !== null) {
-                    this.ctaVisible = false;
-                    this._ctaTimer = setTimeout(() => { this.ctaVisible = true; }, 1500);
-                } else {
-                    this.ctaVisible = false;
-                }
-            },
-            freezeContentWidth() {
-                const card = this.$el?.querySelector('.service_card');
-                if (!card) return;
-                const padding = parseFloat(getComputedStyle(card).paddingLeft)
-                              + parseFloat(getComputedStyle(card).paddingRight);
-                const w = card.clientWidth - padding;
-                this.$el.style.setProperty('--content-w', `${Math.round(w)}px`);
+                if (!this.ready || this.selectedCard === i) return;
+                this._detachScroll?.();
+                this.selectedCard = i;
+                this.ctaVisible = false;
+                this.$nextTick(() => {
+                    const body = this.$refs.cardBody;
+                    if (!body) return;
+                    body.scrollTop = 0;
+                    const onScroll = () => {
+                        this.ctaVisible = body.scrollTop + body.clientHeight >= body.scrollHeight - 140;
+                    };
+                    body.addEventListener('scroll', onScroll, { passive: true });
+                    this._detachScroll = () => body.removeEventListener('scroll', onScroll);
+                });
             },
             closeCard() {
-                clearTimeout(this._ctaTimer);
+                const body = this.$refs.cardBody;
+                if (body) body.scrollTop = 0;
+                this._detachScroll?.();
+                this._detachScroll = null;
                 this.selectedCard = null;
                 this.ctaVisible = false;
-            },
-            onResize() {
-                if (this.selectedCard === null) this.freezeContentWidth();
             },
         },
     };
@@ -66,7 +60,7 @@
         <div class="container h-100">
             <div class="services_grid" :class="{ entered, ready, 'has-selection': selectedCard !== null }">
 
-                <!-- CARD 1 — Sito Vetrina -->
+                <!-- ─── CARD 0 — Sito Vetrina ──────────────────────────────── -->
                 <div class="service_card service_card--light"
                     :class="{
                         'is-expanded': selectedCard === 0,
@@ -74,67 +68,80 @@
                     }"
                     @click="selectCard(0)">
 
-                    <button v-if="selectedCard === 0" class="card_close" @click.stop="closeCard" aria-label="Chiudi">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 6L6 18M6 6l12 12" />
-                        </svg>
-                    </button>
-
-                    <span class="service_num">1</span>
-
-                    <div class="card_main_row">
-                        <div class="service_body">
-                            <h2 class="service_title">
-                                {{ languageState.eng_lan ? 'Showcase Website' : 'Sito Vetrina' }}
-                            </h2>
+                    <template v-if="selectedCard !== 0">
+                        <div class="card_idle_bg" aria-hidden="true">
+                            <img src="/immagini_servizi/vetrina3.png" alt="" loading="lazy" />
+                        </div>
+                        <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
+                            <h2 class="service_title">{{ languageState.eng_lan ? 'Showcase Website' : 'Sito Vetrina' }}</h2>
                             <p class="service_desc">
-                                <span v-if="languageState.eng_lan">
-                                    For businesses that need a <strong>polished online presence</strong>,
-                                    fast and built to <strong>turn visitors into clients</strong>.
-                                    <strong>Custom design</strong>, performance-first and <strong>basic SEO</strong> included.
-                                </span>
-                                <span v-else>
-                                    Per chi vuole una <strong>presenza online curata</strong>, veloce
-                                    e costruita per <strong>convertire visitatori in clienti</strong>.
-                                    <strong>Design su misura</strong>, performance e <strong>SEO di base</strong> inclusi.
-                                </span>
+                                <span v-if="languageState.eng_lan">A <strong>polished online presence</strong>, fast and built to <strong>turn visitors into clients</strong>.</span>
+                                <span v-else>Una <strong>presenza online curata</strong>, veloce e costruita per <strong>convertire visitatori in clienti</strong>.</span>
                             </p>
                         </div>
+                    </template>
 
-                        <div class="card_right_col">
-                            <!-- rettangolo front: features -->
-                            <div class="card_features">
-                                <span class="expanded_label">{{ languageState.eng_lan ? "What's included" : 'Cosa include' }}</span>
-                                <ul class="feature_list">
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Custom design</strong> tailored to your brand</span>
-                                        <span v-else><strong>Design personalizzato</strong> sul tuo brand</span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>No templates</strong>, 100% custom code</span>
-                                        <span v-else><strong>Nessun template</strong>, codice 100% su misura</span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>SEO optimisation</strong></span>
-                                        <span v-else><strong>Ottimizzazione SEO</strong></span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Deployment</strong> & hosting setup</span>
-                                        <span v-else><strong>Deploy</strong> e configurazione hosting</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- rettangolo back: immagine sfasata -->
-                            <div class="card_preview">
-                                <img src="/immagini_servizi/1-3.png" alt="Esempio sito vetrina" />
+                    <template v-else>
+                        <button class="card_close" @click.stop="closeCard" aria-label="Chiudi">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        </button>
+                        <div class="card_expanded_body" ref="cardBody">
+                            <div class="exp_inner">
+
+                                <!-- S1: testo sinistra · img1 destra -->
+                                <div class="exp_section exp_section--top">
+                                    <div class="exp_col">
+                                        <span class="exp_eyebrow">{{ languageState.eng_lan ? '01 — Service' : '01 — Servizio' }}</span>
+                                        <h2 class="exp_title">{{ languageState.eng_lan ? 'Showcase Website' : 'Sito Vetrina' }}</h2>
+                                        <p class="exp_desc"><span v-if="languageState.eng_lan">Custom design, fast loading, SEO-ready — everything from brief to launch.</span><span v-else>Design su misura, caricamento rapido, ottimizzato — dal brief al lancio.</span></p>
+                                        <div class="exp_call_block">
+                                            <span class="exp_call_badge">{{ languageState.eng_lan ? 'Start here' : 'Inizia da qui' }}</span>
+                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong class="green_text_light">Free call, no commitment.</strong><br>Speak to me about your project.</span><span v-else><strong class="green_text_light">Call gratuita, senza impegno.</strong><br>Parlami del tuo progetto.</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="exp_col">
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/coach.png" alt="" loading="eager"/></div>
+                                    </div>
+                                </div>
+
+                                <!-- S2: img2 sinistra · steps destra -->
+                                <div class="exp_section exp_section--mid">
+                                    <div class="exp_col">
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/aem.png" alt="" loading="eager"/></div>
+                                    </div>
+                                    <div class="exp_col">
+                                        <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>
+                                        <div class="exp_steps">
+                                            <div class="exp_step"><span class="exp_step_n">01</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Free call, no commitment' : 'Call gratuita, senza impegno' }}</strong><span>{{ languageState.eng_lan ? '30 minutes, no pressure.' : '30 minuti senza pressioni.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">02</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We identify your business' : 'Identifichiamo il tuo business' }}</strong><span>{{ languageState.eng_lan ? 'We find together the design and features that represent you.' : 'Troviamo insieme il design e le funzionalità che ti rappresentano.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">03</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We present the proposal' : 'Ti presento la proposta' }}</strong><span>{{ languageState.eng_lan ? 'Clear timeline and costs, no surprises.' : 'Tempi e costi chiari, senza sorprese.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">04</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We build it together' : 'Costruiamo insieme' }}</strong><span>{{ languageState.eng_lan ? 'Revisions included, continuous feedback.' : 'Revisioni incluse, feedback continuo.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">05</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'You go live' : 'Vai online' }}</strong><span>{{ languageState.eng_lan ? 'Deploy and hosting configured.' : 'Deploy e hosting configurati.' }}</span></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- S3: pills + closing sinistra -->
+                                <div class="exp_bottom">
+                                    <div class="exp_extras">
+                                        <span class="exp_extras_label">{{ languageState.eng_lan ? 'Extra options' : 'Opzioni aggiuntive' }}</span>
+                                        <div class="exp_pills">
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Blog / News section' : 'Sezione blog / news' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Multi-language' : 'Multi-lingua' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Automations' : 'Automazioni' }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="exp_closing">
+                                        <p class="exp_closing_text"><span v-if="languageState.eng_lan">From concept<br>to launch.</span><span v-else>Dal concept<br>al lancio.</span></p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                    </div>
+                    </template>
                 </div>
 
-                <!-- CARD 2 — Applicazione Web -->
+                <!-- ─── CARD 1 — Applicazione Web ──────────────────────────── -->
                 <div class="service_card service_card--dark"
                     :class="{
                         'is-expanded': selectedCard === 1,
@@ -142,65 +149,74 @@
                     }"
                     @click="selectCard(1)">
 
-                    <button v-if="selectedCard === 1" class="card_close" @click.stop="closeCard" aria-label="Chiudi">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 6L6 18M6 6l12 12" />
-                        </svg>
-                    </button>
-
-                    <span class="service_num">2</span>
-
-                    <div class="card_main_row">
-                        <div class="service_body">
-                            <h2 class="service_title">
-                                {{ languageState.eng_lan ? 'Web Application' : 'Applicazione Web' }}
-                            </h2>
+                    <template v-if="selectedCard !== 1">
+                        <div class="card_idle_bg" aria-hidden="true">
+                            <img src="/immagini_servizi/dashboard.png" alt="" loading="lazy" />
+                        </div>
+                        <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
+                            <h2 class="service_title">{{ languageState.eng_lan ? 'Web Application' : 'Applicazione Web' }}</h2>
                             <p class="service_desc">
-                                <span v-if="languageState.eng_lan">
-                                    <strong>Management platforms</strong>, <strong>e-commerce</strong>, portals and internal tools
-                                    with <strong>custom automations</strong> that cut manual work.
-                                    <strong>API integrations</strong> and seamless connection to your existing systems.
-                                </span>
-                                <span v-else>
-                                    <strong>Gestionali</strong>, <strong>e-commerce</strong>, portali e strumenti interni
-                                    con <strong>automazioni su misura</strong> che eliminano il lavoro manuale.
-                                    <strong>Integrazione con API</strong> e connessione ai tuoi sistemi esistenti.
-                                </span>
+                                <span v-if="languageState.eng_lan"><strong>E-commerce</strong>, management platforms and internal tools with <strong>custom automations</strong>.</span>
+                                <span v-else><strong>E-commerce</strong>, gestionali e strumenti interni con <strong>automazioni su misura</strong>.</span>
                             </p>
                         </div>
+                    </template>
 
-                        <div class="card_right_col">
-                            <div class="card_features">
-                                <span class="expanded_label">{{ languageState.eng_lan ? 'What will we build?' : 'Su cosa lavoreremo?' }}</span>
-                                <ul class="feature_list">
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Custom applications</strong> built around your business</span>
-                                        <span v-else><strong>Applicazioni su misura</strong> costruite attorno al tuo business</span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Old software</strong> slowing you down? We rebuild it right</span>
-                                        <span v-else><strong>Applicativo vecchio</strong> che ti frena? Lo ricostruiamo da zero</span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Automations</strong> that cut repetitive manual work</span>
-                                        <span v-else><strong>Automazioni</strong> che eliminano il lavoro manuale</span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Deploy & hosting</strong> included — go live without touching a server</span>
-                                        <span v-else><strong>Deploy e hosting</strong> inclusi — online senza configurare nulla</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card_preview">
-                                <img src="/immagini_servizi/2-2.png" alt="Esempio web application" />
+                    <template v-else>
+                        <button class="card_close" @click.stop="closeCard" aria-label="Chiudi">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        </button>
+                        <div class="card_expanded_body" ref="cardBody">
+                            <div class="exp_inner">
+                                <div class="exp_section exp_section--top">
+                                    <div class="exp_col">
+                                        <span class="exp_eyebrow">{{ languageState.eng_lan ? '02 — Service' : '02 — Servizio' }}</span>
+                                        <h2 class="exp_title">{{ languageState.eng_lan ? 'Web Application' : 'Applicazione Web' }}</h2>
+                                        <p class="exp_desc"><span v-if="languageState.eng_lan">E-commerce, dashboards, automations — built for the way you actually work.</span><span v-else>E-commerce, gestionali, automazioni — costruiti attorno a come lavori davvero.</span></p>
+                                        <div class="exp_call_block">
+                                            <span class="exp_call_badge">{{ languageState.eng_lan ? 'Start here' : 'Inizia da qui' }}</span>
+                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong>Free call, no commitment.</strong><br>We analyse your workflow and build exactly what you need, nothing more.</span><span v-else><strong class="green_text">Call gratuita, senza impegno.</strong><br>Analizziamo il tuo flusso di lavoro e costruiamo esattamente quello che ti serve, niente di più.</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="exp_col">
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-2.png" alt="" loading="eager"/></div>
+                                    </div>
+                                </div>
+                                <div class="exp_section exp_section--mid">
+                                    <div class="exp_col">
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-3.png" alt="" loading="eager"/></div>
+                                    </div>
+                                    <div class="exp_col">
+                                        <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>
+                                        <div class="exp_steps">
+                                            <div class="exp_step"><span class="exp_step_n">01</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Free call, no commitment' : 'Call gratuita, senza impegno' }}</strong><span>{{ languageState.eng_lan ? '30 minutes to map out your needs.' : '30 minuti per mappare le tue esigenze.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">02</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We identify your business' : 'Identifichiamo il tuo business' }}</strong><span>{{ languageState.eng_lan ? 'We find together the features and logic that fit your workflow.' : 'Troviamo insieme le funzionalità e la logica che si adattano al tuo flusso.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">03</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Custom app, built around you' : 'App su misura, attorno al tuo business' }}</strong><span>{{ languageState.eng_lan ? 'No off-the-shelf software — everything tailored.' : 'Nessun software generico — tutto pensato per te.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">04</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Automations that cut manual work' : 'Automazioni che eliminano il lavoro manuale' }}</strong><span>{{ languageState.eng_lan ? 'Repetitive tasks automated.' : 'I task ripetitivi vengono automatizzati.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">05</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'You go live' : 'Vai online' }}</strong><span>{{ languageState.eng_lan ? 'Deploy and hosting configured.' : 'Deploy e hosting configurati.' }}</span></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="exp_bottom">
+                                    <div class="exp_extras">
+                                        <span class="exp_extras_label">{{ languageState.eng_lan ? 'Extra options' : 'Opzioni aggiuntive' }}</span>
+                                        <div class="exp_pills">
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'AI / chatbot integration' : 'Integrazione AI / chatbot' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Advanced analytics' : 'Analytics avanzato' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Old app reconstruction' : 'Ricostruzione vecchia app' }}</span>
+                                            <span class="exp_pill">E-commerce</span>
+                                        </div>
+                                    </div>
+                                    <div class="exp_closing">
+                                        <p class="exp_closing_text"><span v-if="languageState.eng_lan">Built around<br>your business.</span><span v-else>Costruita attorno<br>al tuo business.</span></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </template>
                 </div>
 
-                <!-- CARD 3 — Progetto Custom -->
+                <!-- ─── CARD 2 — Progetto Custom ───────────────────────────── -->
                 <div class="service_card service_card--light"
                     :class="{
                         'is-expanded': selectedCard === 2,
@@ -208,62 +224,70 @@
                     }"
                     @click="selectCard(2)">
 
-                    <button v-if="selectedCard === 2" class="card_close" @click.stop="closeCard" aria-label="Chiudi">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 6L6 18M6 6l12 12" />
-                        </svg>
-                    </button>
-
-                    <span class="service_num">3</span>
-
-                    <div class="card_main_row">
-                        <div class="service_body">
-                            <h2 class="service_title">
-                                {{ languageState.eng_lan ? 'Custom Project' : 'Progetto Custom' }}
-                            </h2>
+                    <template v-if="selectedCard !== 2">
+                        <div class="card_idle_bg" aria-hidden="true">
+                            <img src="/immagini_servizi/cantiere.png" alt="" loading="lazy" />
+                        </div>
+                        <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
+                            <h2 class="service_title">{{ languageState.eng_lan ? 'Custom Project' : 'Progetto Custom' }}</h2>
                             <p class="service_desc">
-                                <span v-if="languageState.eng_lan">
-                                    Got a <strong>specific need</strong>, an unconventional idea, or tried
-                                    standard solutions without results?
-                                    <strong>Let's talk</strong> — we'll find the <strong>right approach</strong> together.
-                                </span>
-                                <span v-else>
-                                    Hai un'<strong>esigenza specifica</strong>, un'idea fuori dagli standard o
-                                    hai già provato soluzioni pronte senza risultati?
-                                    <strong>Parliamone</strong> — troviamo insieme l'<strong>approccio giusto</strong>.
-                                </span>
+                                <span v-if="languageState.eng_lan">A <strong>specific need</strong> or unconventional idea? <strong>Let's talk</strong> — we'll find the <strong>right approach</strong> together.</span>
+                                <span v-else>Un'<strong>esigenza specifica</strong> o un'idea fuori dagli standard? <strong>Parliamone</strong> — troviamo insieme l'<strong>approccio giusto</strong>.</span>
                             </p>
                         </div>
+                    </template>
 
-                        <div class="card_right_col">
-                            <div class="card_features">
-                                <span class="expanded_label">{{ languageState.eng_lan ? 'How it works' : 'Come funziona' }}</span>
-                                <ul class="feature_list">
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Free initial call</strong> to explore the idea</span>
-                                        <span v-else><strong>Call gratuita</strong> per esplorare l'idea</span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan">Tech stack chosen for your <strong>specific need</strong></span>
-                                        <span v-else>Stack tecnologico scelto per <strong>la tua esigenza</strong></span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Custom features</strong> built around your idea</span>
-                                        <span v-else><strong>Funzionalità custom</strong> costruite attorno alla tua idea</span>
-                                    </li>
-                                    <li>
-                                        <span v-if="languageState.eng_lan"><strong>Modern design</strong>, clean and recognisable</span>
-                                        <span v-else><strong>Design moderno</strong>, pulito e riconoscibile</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card_preview">
-                                <img src="/immagini-progetti/silos.png" alt="Esempio progetto custom" />
+                    <template v-else>
+                        <button class="card_close" @click.stop="closeCard" aria-label="Chiudi">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        </button>
+                        <div class="card_expanded_body" ref="cardBody">
+                            <div class="exp_inner">
+                                <div class="exp_section exp_section--top">
+                                    <div class="exp_col">
+                                        <span class="exp_eyebrow">{{ languageState.eng_lan ? '03 — Service' : '03 — Servizio' }}</span>
+                                        <h2 class="exp_title">{{ languageState.eng_lan ? 'Custom Project' : 'Progetto Custom' }}</h2>
+                                        <p class="exp_desc"><span v-if="languageState.eng_lan">Something specific or unconventional? We'll find the right approach together.</span><span v-else>Qualcosa di specifico o fuori dagli standard? Troviamo insieme l'approccio giusto.</span></p>
+                                        <div class="exp_call_block">
+                                            <span class="exp_call_badge">{{ languageState.eng_lan ? 'Start here' : 'Inizia da qui' }}</span>
+                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong class="green_text_light">Free call, no commitment.</strong><br>Tell me your idea: in 30 minutes we map it out and find the right direction.</span><span v-else><strong class="green_text_light">Call gratuita, senza impegno.</strong><br>Raccontami la tua idea: in 30 minuti la mappiamo e troviamo la direzione giusta.</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="exp_col">
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/silos.png" alt="" loading="eager"/></div>
+                                    </div>
+                                </div>
+                                <div class="exp_section exp_section--mid">
+                                    <div class="exp_col">
+                                        <div class="exp_img_inline"><img src="/immagini-progetti/bnb.png" alt="" loading="eager"/></div>
+                                    </div>
+                                    <div class="exp_col">
+                                        <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>
+                                        <div class="exp_steps">
+                                            <div class="exp_step"><span class="exp_step_n">01</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Free call, no commitment' : 'Call gratuita, senza impegno' }}</strong><span>{{ languageState.eng_lan ? 'We explore your idea together, without any obligation.' : 'Esploriamo insieme la tua idea, senza nessun obbligo.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">02</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We identify your business' : 'Identifichiamo il tuo business' }}</strong><span>{{ languageState.eng_lan ? 'We find together the features and design that represent you.' : 'Troviamo insieme le funzionalità e il design che ti rappresentano.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">03</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Stack chosen for your specific need' : 'Stack scelto per la tua esigenza' }}</strong><span>{{ languageState.eng_lan ? 'We choose the right technology for your use case.' : 'Scegliamo la tecnologia giusta per il tuo caso.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">04</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Modern, clean, recognisable design' : 'Design moderno, pulito e riconoscibile' }}</strong><span>{{ languageState.eng_lan ? 'Whatever the project, it will look and feel like you.' : 'Qualunque sia il progetto, sarà riconoscibile come tuo.' }}</span></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="exp_bottom">
+                                    <div class="exp_extras">
+                                        <span class="exp_extras_label">{{ languageState.eng_lan ? 'Extra options' : 'Opzioni aggiuntive' }}</span>
+                                        <div class="exp_pills">
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Integration with existing systems' : 'Integrazione con sistemi esistenti' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Strategic consulting' : 'Consulenza strategica' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Maintenance & updates' : 'Manutenzione & aggiornamenti' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Anything is possible' : 'Tutto è possibile' }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="exp_closing">
+                                        <p class="exp_closing_text"><span v-if="languageState.eng_lan">A project that<br>speaks for you.</span><span v-else>Un progetto che<br>parla di <i>te</i>.</span></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </template>
                 </div>
 
             </div>
@@ -273,8 +297,7 @@
             <a
                 v-if="ctaVisible"
                 href="https://wa.me/3477952189?text=Ciao%20Damiano!%20Vorrei%20usufruire%20della%20call%20gratuita%20che%20offri.%0AHo%20visto%20i%20tuoi%20servizi%20e%20mi%20piacerebbe%20parlare%20di%20un%20progetto%20a%20cui%20sto%20pensando."
-                target="_blank"
-                rel="noopener noreferrer"
+                target="_blank" rel="noopener noreferrer"
                 class="whatsapp_cta"
                 :aria-label="languageState.eng_lan ? 'Book a free call on WhatsApp' : 'Fissa una call gratuita su WhatsApp'"
             >
@@ -290,10 +313,8 @@
 <style lang="scss" scoped>
 $header-h: 40px;
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-// sfasamento tra i due rettangoli
-$stack-offset: 2.5rem;
-// dove inizia il contenuto (sotto il numero decorativo)
-$content-top: calc(clamp(5rem, 10vw, 9rem) + 0.75rem);
+
+// ─── PAGE ─────────────────────────────────────────────────────────────────────
 
 .services_page {
     margin-top: $header-h;
@@ -302,396 +323,342 @@ $content-top: calc(clamp(5rem, 10vw, 9rem) + 0.75rem);
     overflow: hidden;
     background: #fafaf9;
 
-    .container {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        padding-left: 0;
-        padding-right: 0;
-    }
+    .container { height: 100%; padding-left: 0; padding-right: 0; }
 }
-
-// ─── BLOB DECORATIVO ──────────────────────────────────────────────────────────
 
 .services_blob {
     position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 380px;
-    height: 380px;
+    top: -60px; right: -60px;
+    width: 360px; height: 360px;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    background: radial-gradient(circle at 40% 40%, rgba(130, 130, 135, 0.45) 0%, rgba(160, 160, 165, 0.18) 50%, transparent 72%);
-    filter: blur(32px);
-    pointer-events: none;
-    z-index: 2;
-    animation: services-blob-morph 12s ease-in-out infinite;
+    background: radial-gradient(circle at 40% 40%, rgba(120,120,125,0.4) 0%, rgba(150,150,155,0.15) 50%, transparent 72%);
+    filter: blur(36px);
+    pointer-events: none; z-index: 0;
+    animation: blob-morph 12s ease-in-out infinite;
 }
-
-@keyframes services-blob-morph {
+@keyframes blob-morph {
     0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    33%       { border-radius: 40% 60% 55% 45% / 45% 55% 40% 60%; }
-    66%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    50%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
+// ─── GRID ─────────────────────────────────────────────────────────────────────
 
 .services_grid {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    height: 100%;
-    gap: 0.75rem;
-    padding: 0.75rem;
+    display: flex; flex-direction: row;
+    height: 100%; gap: 0.75rem; padding: 0.75rem;
 }
 
 // ─── BASE CARD ────────────────────────────────────────────────────────────────
 
 .service_card {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0;
-    min-width: 0;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    flex: 1 1 0; min-width: 0; height: 100%;
+    display: flex; flex-direction: column;
     padding: 3rem 2.5rem;
-    position: relative;
-    border-radius: 24px;
-    opacity: 0;
-    transform: translateY(22px);
-    filter: blur(8px);
+    position: relative; border-radius: 24px; overflow: hidden;
+    opacity: 0; transform: translateY(22px); filter: blur(8px);
 
     &--light {
-        background-color: #fafaf9;
-        color: #1c1c1c;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
-        .service_num  { color: rgba(0, 0, 0, 0.18); }
-        .card_close   { color: rgba(0, 0, 0, 0.35); &:hover { color: #1c1c1c; } }
-        .expanded_label { color: rgba(0, 0, 0, 0.38); }
-        .feature_list li { color: rgba(0, 0, 0, 0.68); }
-        .feature_list li::before { color: rgba(0, 0, 0, 0.3); }
-        .card_features {
-            background: rgba(10, 10, 10, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.13);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
+        background: #fafaf9; color: #1c1c1c;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+        .card_close { color: rgba(0,0,0,0.4); &:hover { color: #1c1c1c; background: rgba(0,0,0,0.1); } }
     }
-
     &--dark {
-        background-color: #1c1c1c;
-        color: #f5f4f2;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.38), 0 2px 8px rgba(0, 0, 0, 0.22);
-        .service_num  { color: rgba(255, 255, 255, 0.18); }
-        .card_close   { color: rgba(255, 255, 255, 0.3); &:hover { color: #f5f4f2; } }
-        .expanded_label { color: rgba(255, 255, 255, 0.32); }
-        .feature_list li { color: rgba(255, 255, 255, 0.62); }
-        .feature_list li::before { color: rgba(255, 255, 255, 0.25); }
-        .card_features {
-            background: rgba(4, 4, 4, 0.72);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-        }
+        background: #1c1c1c; color: #f5f4f2;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.38), 0 2px 8px rgba(0,0,0,0.22);
+        .card_close { color: rgba(255,255,255,0.35); &:hover { color: #f5f4f2; background: rgba(255,255,255,0.1); } }
     }
 }
 
-// ─── FASE 1 — entrata ─────────────────────────────────────────────────────────
+// ─── CHEVRON ──────────────────────────────────────────────────────────────────
+
+.services_grid.ready .service_card:not(.is-expanded):not(.is-collapsed)::after {
+    content: '';
+    position: absolute; bottom: 1.5rem; right: 1.6rem;
+    width: 14px; height: 14px;
+    border-right: 2px solid currentColor; border-top: 2px solid currentColor;
+    transform: rotate(45deg); border-radius: 1px; opacity: 0.2;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.services_grid.ready:not(.has-selection) .service_card:hover::after {
+    opacity: 0.5; transform: rotate(45deg) translate(2px, -2px);
+}
+
+// ─── ENTRY ANIMATION ──────────────────────────────────────────────────────────
 
 .services_grid.entered .service_card {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0px);
-    transition:
-        opacity   0.85s $ease-out-expo,
-        transform 0.85s $ease-out-expo,
-        filter    0.7s  ease;
-
+    opacity: 1; transform: translateY(0); filter: blur(0);
+    transition: opacity 0.85s $ease-out-expo, transform 0.85s $ease-out-expo, filter 0.7s ease;
     &:nth-child(1) { transition-delay: 0.08s; }
     &:nth-child(2) { transition-delay: 0.22s; }
     &:nth-child(3) { transition-delay: 0.36s; }
 }
 
-// ─── FASE 2 — pronto per l'interazione ────────────────────────────────────────
+// ─── READY ────────────────────────────────────────────────────────────────────
 
 .services_grid.ready .service_card {
-    opacity: 1;
-    transform: translateY(0);
-    filter: none;
-    cursor: pointer;
+    opacity: 1; transform: translateY(0); filter: none; cursor: pointer;
     transition:
-        flex-grow        0.72s $ease-out-expo,
-        flex-basis       0.72s $ease-out-expo,
-        padding          0.65s $ease-out-expo,
-        background-color 0.3s ease,
-        box-shadow       0.3s ease;
+        flex-grow  0.72s $ease-out-expo,
+        flex-basis 0.72s $ease-out-expo,
+        padding    0.65s $ease-out-expo,
+        box-shadow 0.28s ease;
     transition-delay: 0s;
-
-    .service_body,
-    .card_close {
-        transition: opacity 0.25s ease;
-    }
-
-    .service_num {
-        transition: opacity 0.25s ease, left 0.72s $ease-out-expo, top 0.72s $ease-out-expo, transform 0.72s $ease-out-expo;
-    }
 }
-
-.services_grid.ready .service_card.is-expanded {
-    flex-grow: 10;
-    flex-basis: 0;
-    cursor: default;
-}
-
+.services_grid.ready .service_card.is-expanded  { flex-grow: 10; flex-basis: 0; cursor: default; padding: 0; }
 .services_grid.ready .service_card.is-collapsed {
-    flex-grow: 0;
-    flex-basis: 52px;
-    padding-left: 0;
-    padding-right: 0;
-
-    .service_body,
-    .card_close {
-        opacity: 0;
-    }
-
-    .service_num {
-        opacity: 0.55;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    &:hover { flex-basis: 72px; }
+    flex-grow: 0; flex-basis: 52px; padding: 0;
+    &:hover { flex-basis: 70px; }
+    .card_idle   { opacity: 0; }
+    .service_num { left: 50%; top: 50%; transform: translate(-50%,-50%); opacity: 0.4; }
 }
 
-// ─── HOVER — layout a 3 colonne ───────────────────────────────────────────────
+// ─── HOVER ────────────────────────────────────────────────────────────────────
 
 .services_grid.ready:not(.has-selection) .service_card--light:hover {
-    background-color: #f0f0ee;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22), 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.22), 0 4px 12px rgba(0,0,0,0.1);
 }
-
 .services_grid.ready:not(.has-selection) .service_card--dark:hover {
-    background-color: #242424;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.48), 0 4px 12px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.28);
 }
 
-// ─── CONTENUTO BASE ───────────────────────────────────────────────────────────
-
-.card_close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: transparent;
-    border: none;
-    padding: 0.3rem;
-    cursor: pointer;
-    transition: color 0.2s ease, transform 0.2s ease;
-    &:hover { transform: rotate(90deg); }
-}
+// ─── NUMBER ───────────────────────────────────────────────────────────────────
 
 .service_num {
+    position: absolute; top: 3rem; left: 2.5rem;
+    pointer-events: none; z-index: 0;
+    font-size: clamp(5rem, 10vw, 9rem); font-weight: 700; line-height: 1;
+    letter-spacing: -0.04em; user-select: none;
+    transition: left 0.72s $ease-out-expo, top 0.72s $ease-out-expo, transform 0.72s $ease-out-expo, opacity 0.25s ease;
+    .service_card--light & { color: rgba(0,0,0,0.07); }
+    .service_card--dark  & { color: rgba(255,255,255,0.07); }
+}
+
+// ─── IDLE CONTENT ─────────────────────────────────────────────────────────────
+
+.card_idle_bg {
     position: absolute;
-    top: 3rem;
-    left: 2.5rem;
-    pointer-events: none;
+    inset: 0;
     z-index: 0;
-    font-size: clamp(5rem, 10vw, 9rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    user-select: none;
-}
-
-// ─── RIGA PRINCIPALE ──────────────────────────────────────────────────────────
-
-.card_main_row {
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
-    gap: 3rem;
     overflow: hidden;
-    min-width: 0;
-    position: relative;
-    z-index: 1;
-}
+    border-radius: inherit;
+    pointer-events: none;
 
-.service_body {
-    flex: 0 0 var(--content-w, 300px);
-    flex-shrink: 0;
-    width: var(--content-w, 300px);
-    display: flex;
-    flex-direction: column;
-    padding-top: $content-top;
-}
+    img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 
-.service_title {
-    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.2rem;
-    line-height: 1.15;
-}
-
-.service_desc {
-    font-size: clamp(0.9rem, 1.1vw, 1rem);
-    line-height: 1.75;
-    opacity: 0.75;
-    max-width: 36ch;
-}
-
-// ─── COLONNA DESTRA: due rettangoli sovrapposti sfasati ───────────────────────
-
-.card_right_col {
-    flex: 1;
-    min-width: 0;
-    align-self: stretch;
-    position: relative;
-    overflow: hidden;
-}
-
-// rettangolo FRONT: features, compatto in alto a sinistra (altezza = contenuto)
-.card_features {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: $stack-offset;
-    border-radius: 20px;
-    padding: 1.4rem 1.6rem 1.6rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    z-index: 2;
-    overflow: hidden;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-
-    .expanded_label { color: rgba(255, 255, 255, 0.5); }
-    .feature_list li { color: rgba(255, 255, 255, 0.85); }
-    .feature_list li::before { color: rgba(255, 255, 255, 0.45); }
-}
-
-// rettangolo BACK: immagine, sfasata in basso a destra
-.card_preview {
-    position: absolute;
-    top: calc(#{$content-top} + #{$stack-offset});
-    left: $stack-offset;
-    right: 0;
-    bottom: 0;
-    border-radius: 14px;
-    overflow: hidden;
-    z-index: 1;
-
-    img {
+    // gradient in alto per non coprire testo e numero
+    &::after {
+        content: '';
         position: absolute;
         inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top center;
-        display: block;
-    }
-}
-
-// ─── FEATURES ─────────────────────────────────────────────────────────────────
-
-.expanded_label {
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-    display: block;
-    padding-bottom: 0.85rem;
-    margin-bottom: 0.1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.feature_list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    overflow: hidden;
-
-    li {
-        font-size: 0.85rem;
-        line-height: 1.5;
-        padding: 0.52rem 0 0.52rem 1.4rem;
-        position: relative;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-
-        & + li { border-top: 1px solid rgba(255, 255, 255, 0.07); }
-
-        &::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 0.52rem;
-            font-size: 0.68rem;
-            font-weight: 700;
-            line-height: 1.5;
+        .service_card--light & {
+            background: linear-gradient(to bottom, #fafaf9 30%, rgba(250,250,249,0.5) 65%, rgba(250,250,249,0) 100%);
+        }
+        .service_card--dark & {
+            background: linear-gradient(to bottom, #1c1c1c 30%, rgba(28,28,28,0.5) 65%, rgba(28,28,28,0) 100%);
         }
     }
+}
+
+.card_idle {
+    position: relative; z-index: 1;
+    padding-top: 0;
+    transition: opacity 0.25s ease;
+    &--out { opacity: 0; pointer-events: none; }
+}
+.service_title {
+    font-size: clamp(1.5rem, 2.4vw, 2.4rem); font-weight: 600;
+    letter-spacing: -0.02em; margin-bottom: 1.1rem; line-height: 1.15;
+}
+.service_desc {
+    font-size: clamp(0.85rem, 1.05vw, 0.98rem);
+    line-height: 1.75; opacity: 0.7; max-width: 30ch;
+}
+
+// ─── CLOSE BUTTON ─────────────────────────────────────────────────────────────
+
+.card_close {
+    position: absolute; top: 1.25rem; right: 1.25rem; z-index: 10;
+    width: 2.25rem; height: 2.25rem; border-radius: 50%;
+    background: rgba(128,128,128,0.12); backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(128,128,128,0.18);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex-shrink: 0;
+    transition: transform 0.22s ease, background 0.18s ease;
+   
+}
+
+// ─── EXPANDED BODY (scroll) ───────────────────────────────────────────────────
+
+.card_expanded_body {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(128,128,128,0.2) transparent;
+    position: relative;
+    z-index: 2;
+}
+
+// ─── EXPANDED INNER ───────────────────────────────────────────────────────────
+
+.exp_inner {
+    padding: 3rem 3rem 5rem;
+}
+
+// ─── SEZIONI A GRIGLIA ────────────────────────────────────────────────────────
+
+.exp_section {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    overflow: visible;
+
+    &--top { grid-template-columns: 3fr 2fr; }
+    &--mid  { grid-template-columns: 2fr 3fr; }
+}
+
+.exp_col { display: flex; flex-direction: column; overflow: visible; }
+
+// ─── IMMAGINI IN-FLOW con carattere ──────────────────────────────────────────
+
+.exp_img_inline {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+}
+
+// img1 — colonna destra nella sezione top: inclinata, esce verso destra e in alto
+.exp_section--top > .exp_col:last-child .exp_img_inline {
+    transform: rotate(-9deg) translate(10%, -8%);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+    transform-origin: bottom left;
+}
+
+// img2 — colonna sinistra nella sezione mid: più grande, inclinata, esce verso sinistra
+.exp_section--mid > .exp_col:first-child .exp_img_inline {
+    width: 130%;
+    transform: rotate(7deg) translate(-18%, 6%);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+    transform-origin: top right;
+}
+
+// ─── BOTTOM (pills + closing, sinistra) ──────────────────────────────────────
+
+.exp_bottom {
+    max-width: 55%;
+}
+
+.exp_eyebrow {
+    display: block; font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.38; margin-bottom: 0.85rem;
+}
+.exp_title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700;
+    letter-spacing: -0.04em; line-height: 1.06; margin: 0 0 0.85rem;
+}
+.exp_desc {
+    font-size: 0.88rem; line-height: 1.7; opacity: 0.55; margin: 0 0 1.6rem; max-width: 38ch;
+}
+
+.green_text { color: #25D366; font-weight: 700; }
+.green_text_light { color: #1cb254; font-weight: 700; }
+
+// ─── CALL BLOCK ───────────────────────────────────────────────────────────────
+
+.exp_call_block {
+    padding: 1rem 1.25rem; border-radius: 14px; border-left: 3px solid currentColor;
+    margin-bottom: 2.5rem;
+    .service_card--light & { background: rgba(0,0,0,0.05); }
+    .service_card--dark  & { background: rgba(255,255,255,0.06); }
+}
+.exp_call_badge {
+    display: block; font-size: 0.55rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.38; margin-bottom: 0.45rem;
+}
+.exp_call_text { font-size: 1rem; line-height: 1.65; opacity: 0.78; margin: 0; }
+
+// ─── DIVIDER ──────────────────────────────────────────────────────────────────
+
+.exp_divider { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.5rem; }
+.exp_divider_label {
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; opacity: 0.38; white-space: nowrap; flex-shrink: 0;
+}
+.exp_divider_line { flex: 1; height: 1px; background: currentColor; opacity: 0.12; }
+
+// ─── STEPS ────────────────────────────────────────────────────────────────────
+
+.exp_steps { display: flex; flex-direction: column; margin-bottom: 3rem; }
+.exp_step {
+    display: flex; align-items: flex-start; gap: 1.25rem; padding: 1rem 0;
+    & + .exp_step { border-top: 1px solid rgba(128,128,128,0.12); }
+}
+.exp_step_n {
+    font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em;
+    opacity: 0.28; flex-shrink: 0; padding-top: 0.2rem; min-width: 1.6rem;
+}
+.exp_step_body {
+    display: flex; flex-direction: column; gap: 0.18rem;
+    strong { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
+    span   { font-size: 0.8rem; line-height: 1.55; opacity: 0.56; }
+}
+
+// ─── EXTRAS ───────────────────────────────────────────────────────────────────
+
+.exp_extras { margin-bottom: 3rem; }
+.exp_extras_label {
+    display: block; font-size: 0.55rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.35; margin-bottom: 0.8rem;
+}
+.exp_pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.exp_pill {
+    font-size: 0.76rem; font-weight: 500; padding: 0.32rem 0.85rem;
+    border-radius: 999px; letter-spacing: 0.01em;
+    .service_card--light & { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.62); border: 1px solid rgba(0,0,0,0.08); }
+    .service_card--dark  & { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.58); border: 1px solid rgba(255,255,255,0.1); }
+}
+
+// ─── CLOSING ──────────────────────────────────────────────────────────────────
+
+.exp_closing_text {
+    font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 700;
+    letter-spacing: -0.045em; line-height: 1.04; margin: 0; opacity: 0.88;
 }
 
 // ─── WHATSAPP CTA ─────────────────────────────────────────────────────────────
 
 .whatsapp_cta {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.42rem 1.15rem;
-    background: #25D366;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 999px;
-    border: 1px solid rgba(34, 197, 94, 0.45);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    box-shadow: 0 10px 24px rgba(22, 163, 74, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.28);
-    z-index: 200;
-    isolation: isolate;
-    overflow: hidden;
+    position: fixed; bottom: 2rem; right: 2rem;
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.42rem 1.15rem; background: #25D366; color: #fff; text-decoration: none;
+    border-radius: 999px; border: 1px solid rgba(34,197,94,0.45);
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.01em;
+    box-shadow: 0 10px 24px rgba(22,163,74,0.25), inset 0 1px 0 rgba(255,255,255,0.28);
+    z-index: 200; isolation: isolate; overflow: hidden;
     transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease, border-color 0.28s ease;
-
     &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.65) 45%, transparent 70%);
-        transform: translateX(-120%);
-        transition: transform 0.75s ease;
-        z-index: -1;
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.65) 45%, transparent 70%);
+        transform: translateX(-120%); transition: transform 0.75s ease; z-index: -1;
     }
-
     &:hover {
-        color: #fff;
-        background: #20c05e;
-        border-color: rgba(34, 197, 94, 0.75);
-        box-shadow: 0 16px 36px rgba(22, 163, 74, 0.34), 0 0 0 4px rgba(34, 197, 94, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        color: #fff; background: #20c05e; border-color: rgba(34,197,94,0.75);
+        box-shadow: 0 16px 36px rgba(22,163,74,0.34), 0 0 0 4px rgba(34,197,94,0.13), inset 0 1px 0 rgba(255,255,255,0.35);
         &::before { transform: translateX(120%); }
     }
-
     &:active { transform: translateY(-1px) scale(0.99); }
-
     svg { flex-shrink: 0; }
 }
 
 .wa-btn-enter-active,
-.wa-btn-leave-active {
-    transition: opacity 0.35s $ease-out-expo, transform 0.35s $ease-out-expo;
-}
+.wa-btn-leave-active { transition: opacity 0.35s $ease-out-expo, transform 0.35s $ease-out-expo; }
 .wa-btn-enter-from,
-.wa-btn-leave-to {
-    opacity: 0;
-    transform: translateY(18px) scale(0.94);
-}
+.wa-btn-leave-to     { opacity: 0; transform: translateY(18px) scale(0.94); }
 </style>
