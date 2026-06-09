@@ -14,12 +14,36 @@
             };
         },
         mounted() {
-            requestAnimationFrame(() => {
-                this.entered = true;
-                setTimeout(() => {
-                    this.entered = false;
-                    this.ready = true;
-                }, 950);
+            // precarica le immagini delle card espanse (fire and forget)
+            [
+                '/immagini_servizi/coach.png',
+                '/immagini_servizi/aem.png',
+                '/immagini_servizi/2-2.png',
+                '/immagini_servizi/2-3.png',
+                '/immagini_servizi/silos.png',
+                '/immagini-progetti/bnb.png',
+            ].forEach(src => { new Image().src = src; });
+
+            // aspetta che le 3 immagini idle siano caricate prima di animare le card
+            const loadImg = src => new Promise(resolve => {
+                const img = new Image();
+                img.onload = resolve;
+                img.onerror = resolve; // non blocca in caso di errore
+                img.src = src;
+            });
+
+            Promise.all([
+                '/immagini_servizi/vetrina3.png',
+                '/immagini_servizi/dashboard.png',
+                '/immagini_servizi/cantiere.png',
+            ].map(loadImg)).then(() => {
+                requestAnimationFrame(() => {
+                    this.entered = true;
+                    setTimeout(() => {
+                        this.entered = false;
+                        this.ready = true;
+                    }, 950);
+                });
             });
         },
         unmounted() {
@@ -202,7 +226,6 @@
                                         <span class="exp_extras_label">{{ languageState.eng_lan ? 'Extra options' : 'Opzioni aggiuntive' }}</span>
                                         <div class="exp_pills">
                                             <span class="exp_pill">{{ languageState.eng_lan ? 'AI / chatbot integration' : 'Integrazione AI / chatbot' }}</span>
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Advanced analytics' : 'Analytics avanzato' }}</span>
                                             <span class="exp_pill">{{ languageState.eng_lan ? 'Old app reconstruction' : 'Ricostruzione vecchia app' }}</span>
                                             <span class="exp_pill">E-commerce</span>
                                         </div>
@@ -278,7 +301,6 @@
                                             <span class="exp_pill">{{ languageState.eng_lan ? 'Integration with existing systems' : 'Integrazione con sistemi esistenti' }}</span>
                                             <span class="exp_pill">{{ languageState.eng_lan ? 'Strategic consulting' : 'Consulenza strategica' }}</span>
                                             <span class="exp_pill">{{ languageState.eng_lan ? 'Maintenance & updates' : 'Manutenzione & aggiornamenti' }}</span>
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Anything is possible' : 'Tutto è possibile' }}</span>
                                         </div>
                                     </div>
                                     <div class="exp_closing">
@@ -513,7 +535,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     display: grid;
     gap: 2rem;
     align-items: center;
-    margin-bottom: 3rem;
+  
     overflow: visible;
 
     &--top { grid-template-columns: 3fr 2fr; }
@@ -552,7 +574,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 // ─── BOTTOM (pills + closing, sinistra) ──────────────────────────────────────
 
 .exp_bottom {
-    max-width: 55%;
+    max-width: 85%;
 }
 
 .exp_eyebrow {
