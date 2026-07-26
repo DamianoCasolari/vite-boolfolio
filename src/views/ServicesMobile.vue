@@ -43,6 +43,20 @@
             },
         },
         mounted() {
+            // precarica le immagini dei pannelli (fire and forget) cosi non si vedono
+            // caricare a scatti quando si apre una card
+            [
+                '/immagini_servizi/1-1.png',
+                '/immagini_servizi/1-2.png',
+                '/immagini_servizi/1-3.png',
+                '/immagini_servizi/2-1.png',
+                '/immagini_servizi/2-2.png',
+                '/immagini_servizi/2-3.png',
+                '/immagini_servizi/oikos.png',
+                '/immagini_servizi/silos.png',
+                '/immagini_servizi/ceramica.png',
+            ].forEach(src => { new Image().src = src; });
+
             const sl = document.querySelector('.shadow_line');
             if (sl) sl.style.display = 'none';
             requestAnimationFrame(() => {
