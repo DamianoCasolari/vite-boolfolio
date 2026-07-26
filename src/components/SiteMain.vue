@@ -133,11 +133,11 @@ export default {
         const word2 = document.querySelector(".word" + ((this.index % 3) + 1));
         if (!word1 || !word2) return;
 
-        word1.classList.add("d-none");
+        word1.classList.remove("is-visible");
         word1.classList.remove("drop_animation");
 
+        word2.classList.add("is-visible");
         word2.classList.add("drop_animation");
-        word2.classList.remove("d-none");
 
         this.index = (this.index % 3) + 1;
       }, 3000);
@@ -233,12 +233,12 @@ export default {
             <div class="text-bottom t_duration">
               <div class="title_size d-flex no-wrap justify-content-center">
                 <div
-                  class="wordContainer d-flex roll_container fw-semibold text"
+                  class="wordContainer roll_container fw-semibold text"
                   style="white-space: nowrap; height: 2em"
                 >
                  <!-- ex Siti web -->
                   <span
-                    class="word1 wisteria position-relative"
+                    class="word1 wisteria position-relative is-visible"
                     style="color: #acacac"
                     ><b class="fw-normal">{{ languageState.eng_lan
                       ? "I build"
@@ -246,13 +246,13 @@ export default {
                   >
                   <!-- ex Software -->
                   <span
-                    class="word2 d-none wisteria position-relative"
+                    class="word2 wisteria position-relative"
                     style="color: #959595"
                     ><b class="fw-normal">{{ languageState.eng_lan ? "I create" : "Creo" }}</b> {{ languageState.eng_lan ? " websites" : "siti web " }}</span
                   >
                     <!-- ex web app -->
                   <span
-                    class="word3 d-none wisteria position-relative"
+                    class="word3 wisteria position-relative"
                     style="color: #959595"
                     >Restyling <b class="fw-normal">{{ languageState.eng_lan ? "old site" : "vecchio sito" }}</b> </span
                   >
