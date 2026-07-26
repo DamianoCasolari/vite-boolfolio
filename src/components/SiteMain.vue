@@ -240,19 +240,21 @@ export default {
                   <span
                     class="word1 wisteria position-relative"
                     style="color: #acacac"
-                    ><b class="fw-normal">Realizzo</b> Landing  page</span
+                    ><b class="fw-normal">{{ languageState.eng_lan
+                      ? "I build"
+                      : "Realizzo" }}</b> Landing  page</span
                   >
                   <!-- ex Software -->
                   <span
                     class="word2 d-none wisteria position-relative"
                     style="color: #959595"
-                    ><b class="fw-normal">Creo</b> siti web</span
+                    ><b class="fw-normal">{{ languageState.eng_lan ? "I create" : "Creo" }}</b> {{ languageState.eng_lan ? " websites" : "siti web " }}</span
                   >
                     <!-- ex web app -->
                   <span
                     class="word3 d-none wisteria position-relative"
                     style="color: #959595"
-                    >Restyling <b class="fw-normal">vecchio sito</b> </span
+                    >Restyling <b class="fw-normal">{{ languageState.eng_lan ? "old site" : "vecchio sito" }}</b> </span
                   >
                 </div>
                 <!-- &nbsp;
