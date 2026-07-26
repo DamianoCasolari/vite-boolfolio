@@ -252,7 +252,7 @@
                             <img src="/immagini_servizi/cantiere.png" alt="" loading="lazy" />
                         </div>
                         <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
-                            <h2 class="service_title">{{ languageState.eng_lan ? 'Custom Project' : 'Progetto Custom' }}</h2>
+                            <h2 class="service_title">{{ languageState.eng_lan ? 'Custom Project' : 'Progetto Personalizzato' }}</h2>
                             <p class="service_desc">
                                 <span v-if="languageState.eng_lan">A <strong>specific need</strong> or unconventional idea? <strong>Let's talk</strong> — we'll find the <strong>right approach</strong> together.</span>
                                 <span v-else>Un'<strong>esigenza specifica</strong> o un'idea fuori dagli standard? <strong>Parliamone</strong> — troviamo insieme l'<strong>approccio giusto</strong>.</span>
@@ -442,6 +442,15 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .services_grid.ready:not(.has-selection) .service_card--dark:hover {
     box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.28);
 }
+.services_grid.ready:not(.has-selection) .service_card:hover .card_idle_bg img {
+    animation: img_spring_bg 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    filter: contrast(1.16) saturate(1.1);
+}
+@keyframes img_spring_bg {
+    0%   { transform: scale(1); animation-timing-function: ease-out; }
+    45%  { transform: scale(1.16); animation-timing-function: ease-in-out; }
+    100% { transform: scale(1.1); }
+}
 
 // ─── NUMBER ───────────────────────────────────────────────────────────────────
 
@@ -465,7 +474,11 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     border-radius: inherit;
     pointer-events: none;
 
-    img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    img {
+        width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;
+        filter: contrast(1.08) saturate(1.05);
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+    }
 
     // gradient in alto per non coprire testo e numero
     &::after {
@@ -553,7 +566,21 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
     flex-shrink: 0;
 
-    img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    img {
+        width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;
+        filter: contrast(1.08) saturate(1.05);
+        transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+    }
+
+    &:hover img {
+        animation: img_spring_inline 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        filter: contrast(1.16) saturate(1.1);
+    }
+}
+@keyframes img_spring_inline {
+    0%   { transform: scale(1); animation-timing-function: ease-out; }
+    45%  { transform: scale(1.16); animation-timing-function: ease-in-out; }
+    100% { transform: scale(1.1); }
 }
 
 // img1 — colonna destra nella sezione top: inclinata, esce verso destra e in alto

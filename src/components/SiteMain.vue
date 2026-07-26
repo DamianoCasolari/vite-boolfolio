@@ -231,34 +231,41 @@ export default {
               </div>
             </div>
             <div class="text-bottom t_duration">
-              <div class="title_size d-flex no-wrap">
+              <div class="title_size d-flex no-wrap justify-content-center">
                 <div
                   class="wordContainer d-flex roll_container fw-semibold text"
                   style="white-space: nowrap; height: 2em"
                 >
+                 <!-- ex Siti web -->
                   <span
                     class="word1 wisteria position-relative"
                     style="color: #acacac"
-                    >Fullstack</span
+                    ><b class="fw-normal">Realizzo</b> Landing  page</span
                   >
+                  <!-- ex Software -->
                   <span
                     class="word2 d-none wisteria position-relative"
                     style="color: #959595"
-                    >Software</span
+                    ><b class="fw-normal">Creo</b> siti web</span
                   >
+                    <!-- ex web app -->
                   <span
                     class="word3 d-none wisteria position-relative"
                     style="color: #959595"
-                    >Web app</span
+                    >Restyling <b class="fw-normal">vecchio sito</b> </span
                   >
                 </div>
-                &nbsp;
+                <!-- &nbsp;
                 <div
                   class="fw-normal shrink-1"
                   style="color: #acacac; white-space: nowrap"
                 >
-                  developer
-                </div>
+                    {{
+                  languageState.eng_lan
+                    ? "and much more"
+                    : "e molto altro"
+                }}
+                </div> -->
               </div>
             </div>
           </div>
@@ -285,7 +292,11 @@ export default {
             style="color: #393939"
             id="projects"
           >
-            Portfolio
+               {{
+                  languageState.eng_lan
+                    ? "What I do?"
+                    : "Cosa faccio?"
+                }}
           </h1>
 
           <div
@@ -370,7 +381,11 @@ export default {
               <div
                 class="d-flex justify-content-between align-items-center w-100 mb-2"
               >
-                <h1 class="position-relative fw-semibold mb-0">Portfolio</h1>
+                <h1 class="position-relative fw-semibold mb-0">  {{
+                  languageState.eng_lan
+                    ? "What I do?"
+                    : "Cosa faccio?"
+                }}</h1>
                 <div
                   class="d-flex justify-content-center align-items-center pointer position-relative"
                 >
