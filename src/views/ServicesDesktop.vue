@@ -566,21 +566,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
     flex-shrink: 0;
 
-    img {
-        width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;
-        filter: contrast(1.08) saturate(1.05);
-        transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
-    }
-
-    &:hover img {
-        animation: img_spring_inline 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        filter: contrast(1.16) saturate(1.1);
-    }
-}
-@keyframes img_spring_inline {
-    0%   { transform: scale(1); animation-timing-function: ease-out; }
-    45%  { transform: scale(1.16); animation-timing-function: ease-in-out; }
-    100% { transform: scale(1.1); }
+    img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 }
 
 // img1 — colonna destra nella sezione top: inclinata, esce verso destra e in alto

@@ -296,8 +296,8 @@ export default {
           >
                {{
                   languageState.eng_lan
-                    ? "What I do?"
-                    : "Cosa faccio?"
+                    ? "Who I worked with?"
+                    : "Con chi ho lavorato?"
                 }}
           </h1>
 

@@ -268,8 +268,8 @@
             "id": 123,
             "slug": "bnb-website",
             "name": "BnB Website",
-            "description": "A fully functional platform designed for businesses operating in the short-term rental and accommodation industry. It provides guests with a simple way to search for properties throughout Italy, while allowing property owners to independently manage their listings and customer enquiries. The platform includes location-based searches within a 20 km radius, property publishing and management, visit tracking, direct messaging between guests and owners, paid listing promotions and an interactive map powered by TomTom. This project demonstrates how a custom digital platform can help accommodation businesses increase their online visibility, simplify property management and receive direct booking enquiries without relying exclusively on external portals.",
-            "description_it": "Una piattaforma completamente funzionante pensata per attività che operano nel settore degli affitti brevi e delle strutture ricettive. Permette agli ospiti di cercare facilmente alloggi in tutta Italia e ai proprietari di gestire autonomamente annunci e richieste dei clienti. Le funzionalità includono la ricerca geografica entro un raggio di 20 km, la pubblicazione e la gestione delle strutture, il monitoraggio delle visite ricevute, la messaggistica diretta tra ospiti e proprietari, la sponsorizzazione a pagamento degli annunci e la visualizzazione delle strutture su una mappa interattiva tramite TomTom. Il progetto mostra come una piattaforma digitale personalizzata possa aiutare un’attività ricettiva ad aumentare la propria visibilità online, semplificare la gestione degli immobili e ricevere richieste dirette senza dipendere esclusivamente dai portali esterni.",
+            "description": "Simulation project of a site that offers the possibility to search for apartments throughout Italy, the whole back-end part allows users to register to upload their own structures, check visits for each apartment, be contacted by guests directly on the site via a message section, possibility to modify and delete each ad, sponsor ads so that they appear first in searches (paid service) and have a clear view of the location of the structure on the map, using the tomtom app , only cities or addresses suggested by the system will be accepted for search in order to obtain the results in a precise arc of 20 km from the indicated point.",
+            "description_it": "Progetto di simulazione di un sito che offre la possibilità di cercare appartamenti in tutta Italia. La parte back-end consente agli utenti di registrarsi per caricare le proprie strutture, controllare le visite per ogni appartamento, essere contattati direttamente sul sito tramite una sezione messaggi, modificare e cancellare ogni annuncio, sponsorizzare gli annunci per farli apparire primi nelle ricerche (servizio a pagamento) e avere una chiara visualizzazione della posizione della struttura sulla mappa, utilizzando l’app TomTom. Solo città o indirizzi suggeriti dal sistema saranno accettati per la ricerca al fine di ottenere risultati in un raggio preciso di 20 km dal punto indicato.",
             "image": "/immagini-progetti/bnb.png",
             "logo": null,
             "link": "https://github.com/DamianoCasolari/bnb",
@@ -309,10 +309,72 @@
             ]
         },
         {
+            "id": 118,
+            "slug": "netflix-facsimile",
+            "name": "Netflix facsimile",
+            "name_it": "Clone Netflix",
+            "description": "***Try searching for any movie or tv series in the search bar***...",
+            "description_it": "Replica dell’interfaccia Netflix basata sulle API di themoviedb.org. Il progetto permette la ricerca di film e serie TV, mostra i contenuti di tendenza della settimana e presenta poster interattivi con dettagli e cast. Realizzato con Vue 3, Vite e Sass, completamente responsive.",
+            "image": "/immagini-progetti/netflix.png",
+            "link": "https://damianocasolari.github.io/vite-boolflix/",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 4,
+                    "name": "vue.js"
+                }
+            ]
+        },
+        {
+            "id": 119,
+            "slug": "whatsapp-facsimile",
+            "name": "Whatsapp facsimile",
+            "description": "WhatsApp copy\r\nHTML, CSS and JavaScript in combination with Bootstrap and Vue.js frameworks. Finally we use a npmjs library to create the emoji selector\r\n\r\nFeatures included\r\nLogical features\r\n\r\nclicking on the message a drop-down menu appears allows you to delete the selected message\r\n\r\nwriting something to the input on the left, only the i are displayed contacts whose name contains the entered letters\r\n\r\nprevent the user from sending a message that is empty or composed only of spaces\r\n\r\nchange the icon in the lower right while the user is typing: by default the microphone icon is displayed, when the input is not empty the airplane icon is displayed. When the message has been sent and the input clears, the microphone returns to view. 2) Then send the message also by clicking on the airplane icon prepare a list of random phrases as the text of the reply message from the pc\r\nview the last sent/received message from each contact in the contact list\r\n\r\nput the correct time in your messages under the name of the contact in the upper right part, change the indication of the status: display the text \"is typing ...\" in the timeout in which the PC responds, then keep the writing \"online\" for a couple of seconds and finally display \"last accessed at xx:yy\" with the correct time\r\n\r\ngive the user the option of deleting all the messages of a contact or deleting the entire chat with all its data: by clicking on the icon with the three dots at the top right, a dropdown menu opens which contains the items \"Delete messages\" and \"Delete chat\";\r\n\r\ngive the user the possibility to add a new conversation, by entering the name and the link to the icon of the new contact in a popup\r\n\r\nauto scroll down to the most recent message when a new message is added\r\n\r\nadd emoticons\r\n\r\nIf you change chat without sending the message, you will find the draft of that message in the input text field once you return to that chat\r\n\r\nGraphic features\r\n\r\ndisplay a welcome message inviting the user to select a contact from the list to view their messages,\r\n\r\nsplash page visible for 1s when opening the app\r\n\r\nmake the app responsive and usable on mobile too\r\n\r\nan icon to make the font bigger or smaller:\r\n\r\nan icon to switch light/dark mode",
+            "description_it": "Replica di WhatsApp\r\nHTML, CSS e JavaScript in combinazione con i framework Bootstrap e Vue.js. Infine utilizziamo una libreria npmjs per creare il selettore di emoji\r\n\r\nFunzionalità incluse\r\nFunzionalità logiche\r\n\r\ncliccando sul messaggio appare un menu a tendina permette di eliminare il messaggio selezionato\r\n\r\nscrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite\r\n\r\nimpedire all’utente di inviare un messaggio che sia vuoto o composto solo da spazi\r\n\r\ncambiare l’icona in basso a destra mentre l’utente sta scrivendo: di default viene visualizzata l’icona del microfono, quando l’input non è vuoto viene visualizzata l’icona dell’aeroplanino. Quando il messaggio è stato inviato e l’input si svuota, torna in vista il microfono. 2) Invia poi il messaggio anche cliccando sull’icona dell’aeroplanino preparare una lista di frasi casuali come testo del messaggio di risposta da parte del pc\r\nvisualizzare l’ultimo messaggio inviato/ricevuto da ogni contatto nella lista dei contatti\r\n\r\nmettere l’orario corretto nei propri messaggi sotto al nome del contatto nella parte superiore destra, cambiare l’indicazione dello stato: visualizzare il testo \"sta scrivendo...\" nel timeout in cui il PC risponde, poi tenere la scritta \"online\" per un paio di secondi e infine visualizzare \"ultimo accesso alle xx:yy\" con l’orario corretto\r\n\r\ndare all’utente la possibilità di eliminare tutti i messaggi di un contatto o eliminare tutta la chat con tutti i suoi dati: cliccando sull’icona con i tre puntini in alto a destra, si apre un menu a tendina che contiene le voci \"Elimina messaggi\" ed \"Elimina chat\";\r\n\r\ndare all’utente la possibilità di aggiungere una nuova conversazione, inserendo il nome e il link all’icona del nuovo contatto in un popup\r\n\r\nauto scroll down alla conversazione più recente quando viene aggiunto un nuovo messaggio\r\n\r\naggiungere emoticon\r\n\r\nSe cambi chat senza inviare il messaggio, troverai la bozza di quel messaggio nel campo di testo dell’input una volta che torni a quella chat\r\n\r\nFunzionalità grafiche\r\n\r\nvisualizzare un messaggio di benvenuto invitando l’utente a selezionare un contatto dalla lista per visualizzare i suoi messaggi,\r\n\r\nsplash page visibile per 1s all’apertura dell’app\r\n\r\nrendere l’app responsive e utilizzabile anche su mobile\r\n\r\nun’icona per ingrandire o rimpicciolire il font:\r\n\r\nun’icona per switchare light/dark mode",
+            "image": "/immagini-progetti/whatsapp.png",
+            "link": "https://damianocasolari.github.io/vue-boolzapp/",
+            "type": {
+                "id": 1,
+                "name": "FrontEnd"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 3,
+                    "name": "js"
+                },
+                {
+                    "id": 4,
+                    "name": "vue.js"
+                }
+            ]
+        },
+        {
             "id": 121,
             "slug": "presentation-site-of-an-artist-coach",
-            "name": "Showcase site of an Artist Coach",
-            "name_it": "Sito vetrina di un Artist Coach",
+            "name": "Presentation site of an Artist Coach",
             "description": "Creation of a showcase site at the request of an artist coach, above we have a timer linked to an specific event (so now you will see it passed without putting any stops), custom built slider (not downloaded from any library), fully responsive and all elements are interactive to make the user experience more immersive",
             "description_it": "Realizzazione di un sito vetrina su richiesta di un artist coach, sopra abbiamo un timer legato ad un evento specifico (quindi ora lo vedrete passato senza mettere alcun stop), slider custom built (non scaricato da nessuna libreria), completamente responsive e tutti gli elementi sono interattivi per rendere più immersiva l’esperienza utente",
             "image": "/immagini-progetti/artistcoach.png",
@@ -368,6 +430,37 @@
                 {
                     "id": 4,
                     "name": "vue.js"
+                },
+                {
+                    "id": 6,
+                    "name": "laravel"
+                }
+            ]
+        },
+        {
+            "id": 120,
+            "slug": "dc-comics-facsimile-site",
+            "name": "Dc comics facsimile site",
+            "description": "Fullstack site with the admin section where you will be able to delete, add, modify and view the site's comics. While on the front side you will be able to see the individual comics by clicking on them and thus obtaining all the specifications and the possibility of buying it. All created with laravel from scratch",
+            "description_it": "Sito fullstack con sezione admin dove sarà possibile eliminare, aggiungere, modificare e visualizzare i fumetti del sito. Mentre nella parte front-end sarà possibile vedere i singoli fumetti cliccandoci sopra e ottenendo così tutte le specifiche e la possibilità di acquistarli. Tutto creato con Laravel da zero.",
+            "image": "/immagini-progetti/dc.png",
+            "link": "https://github.com/DamianoCasolari/laravel-dc-comics",
+            "type": {
+                "id": 3,
+                "name": "fullStack"
+            },
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "html5"
+                },
+                {
+                    "id": 2,
+                    "name": "scss"
+                },
+                {
+                    "id": 5,
+                    "name": "php"
                 },
                 {
                     "id": 6,
