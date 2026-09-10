@@ -1,5 +1,6 @@
 <script>
 import * as bootstrap from "bootstrap";
+import IcosahedronShowcase from "./IcosahedronShowcase.vue";
 import projectsJson from "../assets/data/info_projects.json";
 import { appearWithScroll } from "../assets/js/utility_functions.js";
 import {
@@ -35,6 +36,10 @@ const techIcons = {
 };
 
 export default {
+  components: {
+    IcosahedronShowcase,
+  },
+
   data() {
     return {
       loading: false,
@@ -329,47 +334,7 @@ export default {
           style="position: sticky; top: 86px"
         >
           <div class="col">
-            <div
-              class="d-flex justify-content-center mt-3 mt-lg-4"
-              style="position: sticky"
-              v-for="(project, index) in projects"
-              :style="{ top: `calc(82px + ${index + 1}rem)` }"
-            >
-              <!-- Define a single project in its own specific route-link  -->
-
-              <router-link
-                :to="{ name: 'single-project', params: { slug: project.slug } }"
-                class="w-100 d-flex move_up"
-              >
-                <div
-                  class="card col-md-5 rounded-5 border-0 my_card open_img bg-transparent w-100"
-                >
-                  <div
-                    class="scroll_effect_image text-center bg-transparent position-relative h-100"
-                  >
-                    <!-- <div
-                                            class="d-flex justify-content-center align-items-center bg_dark_trnsp rounded-5 opacity_hover pointer p-2 h-100">
-                                            <h4
-                                                class="card-title position-absolute z-4 text-white p-2 fw-semibold text_shadow2">
-                                                {{ project.name }}</h4>
-
-                                        </div> -->
-                    <img
-                      :src="project.logo ?? project.image"
-                      class="card-img-top moving_image pointer card_shadow h-100"
-                      :alt="project.name + ' image'"
-                      loading="lazy"
-                    />
-                    <!-- <div
-                                            class="p-3 fw-semibold text_shadow2 text-white position-absolute top-0 end-0">
-                                            {{
-                                                project.type.name
-                                            }}
-                                        </div> -->
-                  </div>
-                </div>
-              </router-link>
-            </div>
+            <IcosahedronShowcase :projects="projects" />
           </div>
           <div
             class="right_main_side col-7 d-none d-lg-flex flex-column justify-content-center align-items-center px-4 py-5"

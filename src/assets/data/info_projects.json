@@ -173,7 +173,7 @@
             "description": "Il nostro software SCADA è stato sviluppato con Node.js...",
             "description_it": "Software SCADA per impianti industriali sviluppato con Node.js e protocollo MQTT per la comunicazione con PLC. Il sistema consente il monitoraggio e il controllo in tempo reale dei macchinari, la gestione degli allarmi e l’analisi storica dei dati tramite database PostgreSQL. Include anche funzionalità di controllo remoto tramite interfaccia web.",
             "image": "/immagini-progetti/silos.png",
-            "link": "https://gitea.pzetatouch.it/Itelyum",
+            "link": null,
             "logo": "/loghi-progetti/itelyum.jpg",
             "type": {
                 "id": 3,
@@ -207,7 +207,7 @@
             "description_it": "Sistema Industria 4.0 sviluppato con Electron che integra il controllo PLC con un database PostgreSQL. Consente la gestione degli ordini, delle ricette e l’analisi storica dei dati di produzione, offrendo un’interfaccia desktop intuitiva e affidabile per ambienti industriali.",
             "image": "/immagini-progetti/ceramica.png",
             "logo": "/loghi-progetti/maxtech.jpg",
-            "link": "https://gitea.pzetatouch.it/Max_Tech/db_service",
+            "link": null,
             "type": {
                 "id": 9,
                 "name": "Native"
@@ -261,117 +261,6 @@
                 {
                     "id": 18,
                     "name": "Angular"
-                }
-            ]
-        },
-        {
-            "id": 123,
-            "slug": "bnb-website",
-            "name": "BnB Website",
-            "description": "A fully functional platform designed for businesses operating in the short-term rental and accommodation industry. It provides guests with a simple way to search for properties throughout Italy, while allowing property owners to independently manage their listings and customer enquiries. The platform includes location-based searches within a 20 km radius, property publishing and management, visit tracking, direct messaging between guests and owners, paid listing promotions and an interactive map powered by TomTom. This project demonstrates how a custom digital platform can help accommodation businesses increase their online visibility, simplify property management and receive direct booking enquiries without relying exclusively on external portals.",
-            "description_it": "Una piattaforma completamente funzionante pensata per attività che operano nel settore degli affitti brevi e delle strutture ricettive. Permette agli ospiti di cercare facilmente alloggi in tutta Italia e ai proprietari di gestire autonomamente annunci e richieste dei clienti. Le funzionalità includono la ricerca geografica entro un raggio di 20 km, la pubblicazione e la gestione delle strutture, il monitoraggio delle visite ricevute, la messaggistica diretta tra ospiti e proprietari, la sponsorizzazione a pagamento degli annunci e la visualizzazione delle strutture su una mappa interattiva tramite TomTom. Il progetto mostra come una piattaforma digitale personalizzata possa aiutare un’attività ricettiva ad aumentare la propria visibilità online, semplificare la gestione degli immobili e ricevere richieste dirette senza dipendere esclusivamente dai portali esterni.",
-            "image": "/immagini-progetti/bnb.png",
-            "logo": null,
-            "link": "https://github.com/DamianoCasolari/bnb",
-            "type": {
-                "id": 3,
-                "name": "fullStack"
-            },
-            "tags": [
-                {
-                    "id": 1,
-                    "name": "html5"
-                },
-                {
-                    "id": 2,
-                    "name": "scss"
-                },
-                {
-                    "id": 3,
-                    "name": "js"
-                },
-                {
-                    "id": 4,
-                    "name": "vue.js"
-                },
-                {
-                    "id": 5,
-                    "name": "php"
-                },
-                {
-                    "id": 6,
-                    "name": "laravel"
-                },
-                {
-                    "id": 7,
-                    "name": "css"
-                }
-            ]
-        },
-        {
-            "id": 121,
-            "slug": "presentation-site-of-an-artist-coach",
-            "name": "Showcase site of an Artist Coach",
-            "name_it": "Sito vetrina di un Artist Coach",
-            "description": "Creation of a showcase site at the request of an artist coach, above we have a timer linked to an specific event (so now you will see it passed without putting any stops), custom built slider (not downloaded from any library), fully responsive and all elements are interactive to make the user experience more immersive",
-            "description_it": "Realizzazione di un sito vetrina su richiesta di un artist coach, sopra abbiamo un timer legato ad un evento specifico (quindi ora lo vedrete passato senza mettere alcun stop), slider custom built (non scaricato da nessuna libreria), completamente responsive e tutti gli elementi sono interattivi per rendere più immersiva l’esperienza utente",
-            "image": "/immagini-progetti/artistcoach.png",
-            "link": "https://damianocasolari.github.io/proj-html-vuejs/",
-            "type": {
-                "id": 1,
-                "name": "FrontEnd"
-            },
-            "tags": [
-                {
-                    "id": 1,
-                    "name": "html5"
-                },
-                {
-                    "id": 2,
-                    "name": "scss"
-                },
-                {
-                    "id": 3,
-                    "name": "js"
-                },
-                {
-                    "id": 4,
-                    "name": "vue.js"
-                }
-            ]
-        },
-        {
-            "id": 125,
-            "slug": "used-car-dealers-website",
-            "name": "Used Car Dealer's Website",
-            "description": "A website for a future car resale company, featuring a back-end section for car management and a front-end section for the public to view available vehicles with all related information and to contact the company directly through a form or by phone. Modern design, horizontal scrolling of listings, ideal for tablets and smartphones.",
-            "description_it": "Sito web per una futura azienda di rivendita auto, con una sezione back-end per la gestione delle auto e una sezione front-end per il pubblico per visualizzare i veicoli disponibili con tutte le informazioni correlate e contattare direttamente l'azienda tramite un modulo o per telefono. Design moderno, scorrimento orizzontale degli elenchi, ideale per tablet e smartphone.",
-            "image": "/immagini-progetti/car.png",
-            "link": "https://github.com/DamianoCasolari/front-automotive-site",
-            "type": {
-                "id": 3,
-                "name": "fullStack"
-            },
-            "tags": [
-                {
-                    "id": 1,
-                    "name": "html5"
-                },
-                {
-                    "id": 2,
-                    "name": "scss"
-                },
-                {
-                    "id": 3,
-                    "name": "js"
-                },
-                {
-                    "id": 4,
-                    "name": "vue.js"
-                },
-                {
-                    "id": 6,
-                    "name": "laravel"
                 }
             ]
         }

@@ -105,10 +105,10 @@
         <div class="mob_card mob_card--dark" @click="selectCard(1)">
             <span class="mob_num" aria-hidden="true">02</span>
             <div class="mob_card__body">
-                <h2 class="mob_title">Landing Page</h2>
+                <h2 class="mob_title">{{ languageState.eng_lan ? 'Web Application' : 'Applicazione Web' }}</h2>
                 <p class="mob_desc">
-                    <span v-if="languageState.eng_lan">One page, <strong>one clear goal</strong>: present an offer and turn it into <strong>real contacts</strong>.</span>
-                    <span v-else>Una pagina, <strong>un obiettivo chiaro</strong>: presentare un'offerta e trasformarla in <strong>contatti reali</strong>.</span>
+                    <span v-if="languageState.eng_lan"><strong>E-commerce</strong>, management platforms and internal tools with <strong>custom automations</strong>.</span>
+                    <span v-else><strong>E-commerce</strong>, <strong>portali</strong> e gestionali con <strong>automazioni su misura</strong>.</span>
                 </p>
             </div>
         </div>
@@ -117,10 +117,10 @@
         <div class="mob_card mob_card--light" @click="selectCard(2)">
             <span class="mob_num" aria-hidden="true">03</span>
             <div class="mob_card__body">
-                <h2 class="mob_title">{{ languageState.eng_lan ? 'Website Restyling' : 'Restyling del Sito' }}</h2>
+                <h2 class="mob_title">{{ languageState.eng_lan ? 'Custom Project' : 'Progetto Custom' }}</h2>
                 <p class="mob_desc">
-                    <span v-if="languageState.eng_lan">Is your site <strong>old or unclear</strong>? We <strong>refresh it</strong>, keeping what <strong>already works</strong>.</span>
-                    <span v-else>Il tuo sito è <strong>vecchio o poco chiaro</strong>? Lo <strong>rinnoviamo</strong> mantenendo ciò che <strong>già funziona</strong>.</span>
+                    <span v-if="languageState.eng_lan">A <strong>specific need</strong> or unconventional idea? <strong>Let's talk</strong>.</span>
+                    <span v-else>Un'<strong>esigenza specifica</strong> o un'idea fuori dagli standard? <strong>Parliamone</strong>.</span>
                 </p>
             </div>
         </div>
@@ -252,17 +252,18 @@
                     </template>
 
                     <!-- ════════════════════════════════════════
-                         SERVICE 1 — LANDING PAGE
+                         SERVICE 1 — WEB APP  (da raffinare)
                          ════════════════════════════════════════ -->
                     <template v-else-if="selectedCard === 1">
                         <header class="sp_header">
                             <span class="sp_eyebrow">{{ languageState.eng_lan ? '02 — Service' : '02 — Servizio' }}</span>
                             <h2 class="sp_title">
-                                <span>Landing Page</span>
+                                <span v-if="languageState.eng_lan">Web Application</span>
+                                <span v-else>Applicazione web </span>
                             </h2>
                             <p class="sp_desc">
-                                <span v-if="languageState.eng_lan">A <strong>single page</strong>, built to move whoever reads it to the <strong>next step</strong>: call, message, book.</span>
-                                <span v-else>Una <strong>singola pagina</strong>, pensata per portare chi la legge alla <strong>prossima mossa</strong>: chiamare, scrivere, prenotare.</span>
+                                <span v-if="languageState.eng_lan"><strong>E-commerce</strong>, <strong>dashboards</strong>, <strong>automations</strong> — built for the way you <strong>actually work</strong>.</span>
+                                <span v-else><strong>E-commerce</strong>, <strong>gestionali</strong>, <strong>automazioni</strong> — costruiti attorno a come <strong>lavori davvero</strong>.</span>
                             </p>
                         </header>
                         <div class="sp_cards">
@@ -279,37 +280,37 @@
                             </div>
                         </div>
                         <div class="sp_divider">
-                            <span class="sp_divider_label">{{ languageState.eng_lan ? "What's included" : 'Cosa include' }}</span>
+                            <span class="sp_divider_label">{{ languageState.eng_lan ? 'What will we build?' : 'Su cosa lavoreremo?' }}</span>
                             <div class="sp_divider_line"></div>
                         </div>
                         <div class="sp_features">
-                            <div class="sp_feat"><span class="sp_feat_n">01</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">One clear goal</span><span v-else>Un solo obiettivo</span></span></div>
-                            <div class="sp_feat"><span class="sp_feat_n">02</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Mobile-first</span><span v-else>Mobile-first</span></span></div>
-                            <div class="sp_feat"><span class="sp_feat_n">03</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Contact form</span><span v-else>Form di contatto</span></span></div>
-                            <div class="sp_feat"><span class="sp_feat_n">04</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Live in days</span><span v-else>Online in tempi brevi</span></span></div>
+                            <div class="sp_feat"><span class="sp_feat_n">01</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Custom app</span><span v-else>App su misura</span></span></div>
+                            <div class="sp_feat"><span class="sp_feat_n">02</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Admin panel</span><span v-else>Dashboard admin</span></span></div>
+                            <div class="sp_feat"><span class="sp_feat_n">03</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Automations</span><span v-else>Automazioni</span></span></div>
+                            <div class="sp_feat"><span class="sp_feat_n">04</span><span class="sp_feat_t">Deploy & hosting</span></div>
                         </div>
                         <div class="sp_closing">
                             <p class="sp_closing_text">
-                             <span v-if="languageState.eng_lan">One page.<br>One clear goal.</span>
-                                <span v-else>Una pagina.<br>Un obiettivo chiaro.</span>
+                             <span v-if="languageState.eng_lan">Built around<br>your business.</span>
+                                <span v-else>Costruita attorno<br>al tuo business.</span>
 
                             </p>
                         </div>
                     </template>
 
                     <!-- ════════════════════════════════════════
-                         SERVICE 2 — RESTYLING SITO
+                         SERVICE 2 — CUSTOM  (da raffinare)
                          ════════════════════════════════════════ -->
                     <template v-else>
                         <header class="sp_header">
                             <span class="sp_eyebrow">{{ languageState.eng_lan ? '03 — Service' : '03 — Servizio' }}</span>
                             <h2 class="sp_title">
-                                <span v-if="languageState.eng_lan">Website Restyling</span>
-                                <span v-else>Restyling del sito</span>
+                                <span v-if="languageState.eng_lan">Custom Project</span>
+                                <span v-else>Progetto custom </span>
                             </h2>
                             <p class="sp_desc">
-                                <span v-if="languageState.eng_lan">No need to <strong>start over</strong>: we build on what's already there, making it more <strong>modern, clear and fast</strong>.</span>
-                                <span v-else>Non si riparte da <strong>zero</strong>: si valorizza quello che c'è già, rendendolo più <strong>moderno, chiaro e veloce</strong>.</span>
+                                <span v-if="languageState.eng_lan">Something <strong>specific</strong> or <strong>unconventional</strong>? We'll find the <strong>right approach</strong> together.</span>
+                                <span v-else>Qualcosa di <strong>specifico</strong> o <strong>fuori dagli standard</strong>? Troviamo insieme l'<strong>approccio giusto</strong>.</span>
                             </p>
                         </header>
                         <div class="sp_cards">
@@ -326,19 +327,19 @@
                             </div>
                         </div>
                         <div class="sp_divider">
-                            <span class="sp_divider_label">{{ languageState.eng_lan ? "What's included" : 'Cosa include' }}</span>
+                            <span class="sp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Come funziona' }}</span>
                             <div class="sp_divider_line"></div>
                         </div>
                         <div class="sp_features">
-                            <div class="sp_feat"><span class="sp_feat_n">01</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Refreshed design</span><span v-else>Design rinnovato</span></span></div>
-                            <div class="sp_feat"><span class="sp_feat_n">02</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Faster</span><span v-else>Più veloce</span></span></div>
-                            <div class="sp_feat"><span class="sp_feat_n">03</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Updated content</span><span v-else>Contenuti aggiornati</span></span></div>
-                            <div class="sp_feat"><span class="sp_feat_n">04</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">No downtime</span><span v-else>Nessuna interruzione</span></span></div>
+                            <div class="sp_feat"><span class="sp_feat_n">01</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Free call</span><span v-else>Call gratuita</span></span></div>
+                            <div class="sp_feat"><span class="sp_feat_n">02</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Dedicated stack</span><span v-else>Stack dedicato</span></span></div>
+                            <div class="sp_feat"><span class="sp_feat_n">03</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Custom features</span><span v-else>Funzionalità custom</span></span></div>
+                            <div class="sp_feat"><span class="sp_feat_n">04</span><span class="sp_feat_t"><span v-if="languageState.eng_lan">Modern design</span><span v-else>Design moderno</span></span></div>
                         </div>
                         <div class="sp_closing">
                             <p class="sp_closing_text">
-                             <span v-if="languageState.eng_lan">Same site.<br>Much more effective.</span>
-                                <span v-else>Lo stesso sito.<br>Molto più efficace.</span>
+                             <span v-if="languageState.eng_lan">A site that<br>works for you.</span>
+                                <span v-else>Un sito che<br>lavora per <i>te</i>.</span>
                             </p>
                         </div>
                     </template>

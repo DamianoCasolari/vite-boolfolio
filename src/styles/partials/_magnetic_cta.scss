@@ -1,0 +1,97 @@
+// Mixin condivisa dalle CTA principali del sito (WhatsApp, email, invio
+// form...): riflesso "liquid glass" che insegue il cursore + leggero pull
+// magnetico verso il puntatore, al posto del riflesso diagonale animato in
+// loop fisso (stile "bottone di qualche anno fa"). Le proprietà
+// --mx/--my/--tx/--ty sono aggiornate via JS
+// (src/assets/js/magnetic_cta.js) sugli eventi mousemove/mouseleave
+// dell'elemento che include questo mixin.
+@mixin magnetic-cta {
+  --mx: 50%;
+  --my: 50%;
+  --tx: 0px;
+  --ty: 0px;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transform: translate(var(--tx), var(--ty));
+  transition:
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    background 0.28s ease,
+    border-color 0.28s ease,
+    color 0.28s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(
+      90px circle at var(--mx) var(--my),
+      rgba(255, 255, 255, 0.65),
+      transparent 70%
+    );
+    mix-blend-mode: overlay;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translate(var(--tx), var(--ty)) translateY(-3px) scale(1.04);
+
+    &::after {
+      opacity: 1;
+    }
+
+    svg {
+      transform: rotate(-14deg) scale(1.15);
+    }
+  }
+
+  &:active {
+    transform: translate(var(--tx), var(--ty)) translateY(-1px) scale(0.98);
+  }
+
+  svg {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0.01ms;
+  }
+}
+
+// Alone verde che "respira" da fermo (solo per le CTA WhatsApp — dà l'idea di
+// "online, pronto a rispondere"). Si ferma in pausa durante l'hover, dove
+// prende il sopravvento il riflesso liquid glass.
+@keyframes magnetic_cta_breathe {
+  0%,
+  100% {
+    box-shadow:
+      0 10px 24px rgba(22, 163, 74, 0.25),
+      0 0 0 0 rgba(37, 211, 102, 0.35);
+  }
+  50% {
+    box-shadow:
+      0 10px 24px rgba(22, 163, 74, 0.25),
+      0 0 0 9px rgba(37, 211, 102, 0);
+  }
+}
+
+@mixin whatsapp-breathe {
+  animation: magnetic_cta_breathe 2.6s ease-in-out infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}

@@ -169,7 +169,7 @@
                     </template>
                 </div>
 
-                <!-- ─── CARD 1 — Landing Page ──────────────────────────────── -->
+                <!-- ─── CARD 1 — Applicazione Web ──────────────────────────── -->
                 <div class="service_card service_card--dark"
                     :class="{
                         'is-expanded': selectedCard === 1,
@@ -182,10 +182,10 @@
                             <img src="/immagini_servizi/dashboard.png" alt="" loading="lazy" />
                         </div>
                         <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
-                            <h2 class="service_title">{{ languageState.eng_lan ? 'Landing Page' : 'Landing Page' }}</h2>
+                            <h2 class="service_title">{{ languageState.eng_lan ? 'Web Application' : 'Applicazione Web' }}</h2>
                             <p class="service_desc">
-                                <span v-if="languageState.eng_lan">One page, <strong>one clear goal</strong>: present an offer and turn it into <strong>real contacts</strong>.</span>
-                                <span v-else>Una pagina, <strong>un obiettivo chiaro</strong>: presentare un'offerta e trasformarla in <strong>contatti reali</strong>.</span>
+                                <span v-if="languageState.eng_lan"><strong>E-commerce</strong>, management platforms and internal tools with <strong>custom automations</strong>.</span>
+                                <span v-else><strong>E-commerce</strong>, gestionali e strumenti interni con <strong>automazioni su misura</strong>.</span>
                             </p>
                         </div>
                     </template>
@@ -199,29 +199,29 @@
                                 <div class="exp_section exp_section--top">
                                     <div class="exp_col">
                                         <span class="exp_eyebrow">{{ languageState.eng_lan ? '02 — Service' : '02 — Servizio' }}</span>
-                                        <h2 class="exp_title">Landing Page</h2>
-                                        <p class="exp_desc"><span v-if="languageState.eng_lan">A single page, built to move whoever reads it to the next step: call, message, book.</span><span v-else>Una singola pagina, pensata per portare chi la legge alla prossima mossa: chiamare, scrivere, prenotare.</span></p>
+                                        <h2 class="exp_title">{{ languageState.eng_lan ? 'Web Application' : 'Applicazione Web' }}</h2>
+                                        <p class="exp_desc"><span v-if="languageState.eng_lan">E-commerce, dashboards, automations — built for the way you actually work.</span><span v-else>E-commerce, gestionali, automazioni — costruiti attorno a come lavori davvero.</span></p>
                                         <div class="exp_call_block">
                                             <span class="exp_call_badge">{{ languageState.eng_lan ? 'Start here' : 'Inizia da qui' }}</span>
-                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong class="green_text_light">Free call, no commitment.</strong><br>Let's talk about what you want to promote, and to whom.</span><span v-else><strong class="green_text_light">Call gratuita, senza impegno.</strong><br>Parliamo di cosa vuoi promuovere e a chi.</span></p>
+                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong>Free call, no commitment.</strong><br>We analyse your workflow and build exactly what you need, nothing more.</span><span v-else><strong class="green_text">Call gratuita, senza impegno.</strong><br>Analizziamo il tuo flusso di lavoro e costruiamo esattamente quello che ti serve, niente di più.</span></p>
                                         </div>
                                     </div>
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-2-1.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-2.png" alt="" loading="eager"/></div>
                                     </div>
                                 </div>
                                 <div class="exp_section exp_section--mid">
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-3-1.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-3.png" alt="" loading="eager"/></div>
                                     </div>
                                     <div class="exp_col">
                                         <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>
                                         <div class="exp_steps">
-                                            <div class="exp_step"><span class="exp_step_n">01</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Free call, no commitment' : 'Call gratuita, senza impegno' }}</strong><span>{{ languageState.eng_lan ? '30 minutes to define the goal of the page.' : '30 minuti per definire l\'obiettivo della pagina.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">02</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We define the message' : 'Definiamo il messaggio' }}</strong><span>{{ languageState.eng_lan ? 'What to communicate, to whom, in a few effective words.' : 'Cosa comunicare, a chi, in poche parole efficaci.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">03</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We present the proposal' : 'Ti presento la proposta' }}</strong><span>{{ languageState.eng_lan ? 'Clear structure and content, before we start.' : 'Struttura e contenuti chiari, prima di iniziare.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">04</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We build it together' : 'Costruiamo insieme' }}</strong><span>{{ languageState.eng_lan ? 'A fast, mobile-first page, built to convert.' : 'Una pagina veloce, mobile-first, pensata per convertire.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">05</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'You go live' : 'Vai online' }}</strong><span>{{ languageState.eng_lan ? 'Published and connected to your channels.' : 'Pubblicazione e collegamento ai tuoi canali.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">01</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Free call, no commitment' : 'Call gratuita, senza impegno' }}</strong><span>{{ languageState.eng_lan ? '30 minutes to map out your needs.' : '30 minuti per mappare le tue esigenze.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">02</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We identify your business' : 'Identifichiamo il tuo business' }}</strong><span>{{ languageState.eng_lan ? 'We find together the features and logic that fit your workflow.' : 'Troviamo insieme le funzionalità e la logica che si adattano al tuo flusso.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">03</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Custom app, built around you' : 'App su misura, attorno al tuo business' }}</strong><span>{{ languageState.eng_lan ? 'No off-the-shelf software — everything tailored.' : 'Nessun software generico — tutto pensato per te.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">04</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Automations that cut manual work' : 'Automazioni che eliminano il lavoro manuale' }}</strong><span>{{ languageState.eng_lan ? 'Repetitive tasks automated.' : 'I task ripetitivi vengono automatizzati.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">05</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'You go live' : 'Vai online' }}</strong><span>{{ languageState.eng_lan ? 'Deploy and hosting configured.' : 'Deploy e hosting configurati.' }}</span></div></div>
                                         </div>
                                     </div>
                                 </div>
@@ -229,13 +229,13 @@
                                     <div class="exp_extras">
                                         <span class="exp_extras_label">{{ languageState.eng_lan ? 'Extra options' : 'Opzioni aggiuntive' }}</span>
                                         <div class="exp_pills">
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Google / Meta Ads connection' : 'Collegamento a Google/Meta Ads' }}</span>
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Contact form' : 'Form di contatto' }}</span>
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Multi-language version' : 'Versione multilingua' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'AI / chatbot integration' : 'Integrazione AI / chatbot' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Old app reconstruction' : 'Ricostruzione vecchia app' }}</span>
+                                            <span class="exp_pill">E-commerce</span>
                                         </div>
                                     </div>
                                     <div class="exp_closing">
-                                        <p class="exp_closing_text"><span v-if="languageState.eng_lan">One page.<br>One clear goal.</span><span v-else>Una pagina.<br>Un obiettivo chiaro.</span></p>
+                                        <p class="exp_closing_text"><span v-if="languageState.eng_lan">Built around<br>your business.</span><span v-else>Costruita attorno<br>al tuo business.</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +243,7 @@
                     </template>
                 </div>
 
-                <!-- ─── CARD 2 — Restyling del Sito ────────────────────────── -->
+                <!-- ─── CARD 2 — Progetto Custom ───────────────────────────── -->
                 <div class="service_card service_card--light"
                     :class="{
                         'is-expanded': selectedCard === 2,
@@ -256,10 +256,10 @@
                             <img src="/immagini_servizi/cantiere.png" alt="" loading="lazy" />
                         </div>
                         <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
-                            <h2 class="service_title">{{ languageState.eng_lan ? 'Website Restyling' : 'Restyling del Sito' }}</h2>
+                            <h2 class="service_title">{{ languageState.eng_lan ? 'Custom Project' : 'Progetto Personalizzato' }}</h2>
                             <p class="service_desc">
-                                <span v-if="languageState.eng_lan">Is your site <strong>old or unclear</strong>? We <strong>refresh it</strong>, keeping everything that <strong>already works</strong>.</span>
-                                <span v-else>Il tuo sito è <strong>vecchio o poco chiaro</strong>? Lo <strong>rinnoviamo</strong> mantenendo tutto ciò che <strong>già funziona</strong>.</span>
+                                <span v-if="languageState.eng_lan">A <strong>specific need</strong> or unconventional idea? <strong>Let's talk</strong> — we'll find the <strong>right approach</strong> together.</span>
+                                <span v-else>Un'<strong>esigenza specifica</strong> o un'idea fuori dagli standard? <strong>Parliamone</strong> — troviamo insieme l'<strong>approccio giusto</strong>.</span>
                             </p>
                         </div>
                     </template>
@@ -273,11 +273,11 @@
                                 <div class="exp_section exp_section--top">
                                     <div class="exp_col">
                                         <span class="exp_eyebrow">{{ languageState.eng_lan ? '03 — Service' : '03 — Servizio' }}</span>
-                                        <h2 class="exp_title">{{ languageState.eng_lan ? 'Website Restyling' : 'Restyling del Sito' }}</h2>
-                                        <p class="exp_desc"><span v-if="languageState.eng_lan">No need to start over: we build on what's already there, making it more modern, clear and fast.</span><span v-else>Non si riparte da zero: si valorizza quello che c'è già, rendendolo più moderno, chiaro e veloce.</span></p>
+                                        <h2 class="exp_title">{{ languageState.eng_lan ? 'Custom Project' : 'Progetto Custom' }}</h2>
+                                        <p class="exp_desc"><span v-if="languageState.eng_lan">Something specific or unconventional? We'll find the right approach together.</span><span v-else>Qualcosa di specifico o fuori dagli standard? Troviamo insieme l'approccio giusto.</span></p>
                                         <div class="exp_call_block">
                                             <span class="exp_call_badge">{{ languageState.eng_lan ? 'Start here' : 'Inizia da qui' }}</span>
-                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong class="green_text_light">Free call, no commitment.</strong><br>We'll look at your current site together and what to improve.</span><span v-else><strong class="green_text_light">Call gratuita, senza impegno.</strong><br>Guardiamo insieme il tuo sito attuale e cosa migliorare.</span></p>
+                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong class="green_text_light">Free call, no commitment.</strong><br>Tell me your idea: in 30 minutes we map it out and find the right direction.</span><span v-else><strong class="green_text_light">Call gratuita, senza impegno.</strong><br>Raccontami la tua idea: in 30 minuti la mappiamo e troviamo la direzione giusta.</span></p>
                                         </div>
                                     </div>
                                     <div class="exp_col">
@@ -291,11 +291,10 @@
                                     <div class="exp_col">
                                         <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>
                                         <div class="exp_steps">
-                                            <div class="exp_step"><span class="exp_step_n">01</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Free call, no commitment' : 'Call gratuita, senza impegno' }}</strong><span>{{ languageState.eng_lan ? 'We review the site as it is today.' : 'Analizziamo insieme il sito così com\'è oggi.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">02</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We spot the weak points' : 'Individuiamo i punti deboli' }}</strong><span>{{ languageState.eng_lan ? 'What slows it down, confuses visitors, or feels outdated.' : 'Cosa rallenta, confonde o è superato.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">03</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We present the proposal' : 'Ti presento la proposta' }}</strong><span>{{ languageState.eng_lan ? 'What changes, what stays: clear timeline and cost.' : 'Cosa cambia, cosa resta: tempi e costi chiari.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">04</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We refresh design and structure' : 'Rinnoviamo design e struttura' }}</strong><span>{{ languageState.eng_lan ? 'Same content, presented better.' : 'Stessi contenuti, presentati meglio.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">05</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'You go live' : 'Vai online' }}</strong><span>{{ languageState.eng_lan ? 'The updated site replaces the old one, with no downtime.' : 'Il sito aggiornato sostituisce quello vecchio, senza interruzioni.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">01</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Free call, no commitment' : 'Call gratuita, senza impegno' }}</strong><span>{{ languageState.eng_lan ? 'We explore your idea together, without any obligation.' : 'Esploriamo insieme la tua idea, senza nessun obbligo.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">02</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We identify your business' : 'Identifichiamo il tuo business' }}</strong><span>{{ languageState.eng_lan ? 'We find together the features and design that represent you.' : 'Troviamo insieme le funzionalità e il design che ti rappresentano.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">03</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Stack chosen for your specific need' : 'Stack scelto per la tua esigenza' }}</strong><span>{{ languageState.eng_lan ? 'We choose the right technology for your use case.' : 'Scegliamo la tecnologia giusta per il tuo caso.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">04</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Modern, clean, recognisable design' : 'Design moderno, pulito e riconoscibile' }}</strong><span>{{ languageState.eng_lan ? 'Whatever the project, it will look and feel like you.' : 'Qualunque sia il progetto, sarà riconoscibile come tuo.' }}</span></div></div>
                                         </div>
                                     </div>
                                 </div>
@@ -303,13 +302,13 @@
                                     <div class="exp_extras">
                                         <span class="exp_extras_label">{{ languageState.eng_lan ? 'Extra options' : 'Opzioni aggiuntive' }}</span>
                                         <div class="exp_pills">
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Speed optimization' : 'Ottimizzazione velocità' }}</span>
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Mobile version' : 'Versione mobile' }}</span>
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Content update' : 'Aggiornamento contenuti' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Integration with existing systems' : 'Integrazione con sistemi esistenti' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Strategic consulting' : 'Consulenza strategica' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Maintenance & updates' : 'Manutenzione & aggiornamenti' }}</span>
                                         </div>
                                     </div>
                                     <div class="exp_closing">
-                                        <p class="exp_closing_text"><span v-if="languageState.eng_lan">Same site.<br>Much more effective.</span><span v-else>Lo stesso sito.<br>Molto più efficace.</span></p>
+                                        <p class="exp_closing_text"><span v-if="languageState.eng_lan">A project that<br>speaks for you.</span><span v-else>Un progetto che<br>parla di <i>te</i>.</span></p>
                                     </div>
                                 </div>
                             </div>

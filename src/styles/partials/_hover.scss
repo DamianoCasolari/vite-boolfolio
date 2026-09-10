@@ -13,11 +13,6 @@
 }
 
 
-.open_img:hover {
-
-    border: 1 solid black;
-}
-
 .underline_hover:hover {
     text-decoration: underline;
 }
@@ -27,9 +22,9 @@
     // border-radius: 15px;
 }
 
-// .opacity_hover:hover {
-//     opacity: 1 !important;
-// }
+.opacity_hover:hover {
+    opacity: 1 !important;
+}
 
 
 
