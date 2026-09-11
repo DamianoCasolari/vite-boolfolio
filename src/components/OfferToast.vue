@@ -17,6 +17,7 @@ export default {
             cookieDismissed: false,
             heroRevealed: false, // scrollato oltre metà hero (rilevante solo in modalità "offer")
             manuallyDismissed: false,
+            modalOpen: false,
             docked: false,
             dockTop: 0,
             waLink: WA_LINK,
@@ -49,6 +50,7 @@ export default {
         },
         visible() {
             if (this.mode === "none") return false;
+            if (this.modalOpen) return false; // sparisce del tutto, non solo coperta, mentre la modale è aperta
             if (!this.cookieDismissed) return false;
             if (this.mode === "wa") return true; // sempre visibile, nessun trigger
             if (this.manuallyDismissed) return false;
@@ -109,7 +111,6 @@ export default {
             this.manuallyDismissed = true;
         },
         openModal() {
-            this.dismiss();
             const el = document.getElementById("welcomeModal");
             if (!el) return;
             const instance = bootstrap.Modal.getInstance(el) || new bootstrap.Modal(el);
@@ -142,10 +143,24 @@ export default {
         this.handleScrollOrResize();
         window.addEventListener("scroll", this.handleScrollOrResize, { passive: true });
         window.addEventListener("resize", this.handleScrollOrResize, { passive: true });
+
+        // la card deve sparire del tutto mentre la modale offerta è aperta, non
+        // solo restarci coperta sotto
+        this._onModalShow = () => { this.modalOpen = true; };
+        this._onModalHidden = () => { this.modalOpen = false; };
+        this._modalEl = document.getElementById("welcomeModal");
+        if (this._modalEl) {
+            this._modalEl.addEventListener("show.bs.modal", this._onModalShow);
+            this._modalEl.addEventListener("hidden.bs.modal", this._onModalHidden);
+        }
     },
     unmounted() {
         window.removeEventListener("scroll", this.handleScrollOrResize);
         window.removeEventListener("resize", this.handleScrollOrResize);
+        if (this._modalEl) {
+            this._modalEl.removeEventListener("show.bs.modal", this._onModalShow);
+            this._modalEl.removeEventListener("hidden.bs.modal", this._onModalHidden);
+        }
     },
 };
 </script>

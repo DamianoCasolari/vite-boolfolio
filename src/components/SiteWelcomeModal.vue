@@ -579,9 +579,6 @@ export default {
 }
 
 .modal-body > .d-flex.d-lg-none .btn {
-  position: relative;
-  isolation: isolate;
-
   min-width: 104px;
   padding: 0.48rem 0.9rem;
 
@@ -594,8 +591,6 @@ export default {
   font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-
-  overflow: hidden;
 
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.08),
@@ -610,30 +605,9 @@ export default {
     opacity 0.25s ease;
 }
 
-.modal-body > .d-flex.d-lg-none .btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.7) 45%,
-    transparent 70%
-  );
-
-  transform: translateX(-120%);
-  transition: transform 0.7s ease;
-  z-index: -1;
-}
-
 .modal-body > .d-flex.d-lg-none .btn:hover:not(:disabled) {
   background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 45%, #d1d5db 100%);
   border-color: rgba(17, 24, 39, 0.26);
-}
-
-.modal-body > .d-flex.d-lg-none .btn:hover:not(:disabled)::before {
-  transform: translateX(120%);
 }
 
 .modal-body > .d-flex.d-lg-none .btn:active:not(:disabled) {
