@@ -698,6 +698,28 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+// Su desktop la riga "icosaedro + testo" deve leggersi come un blocco unico
+// centrato nella finestra. Due cose lo impedivano:
+//
+// - le due colonne hanno altezze diverse (60vh il canvas 3D, 50vh imposta da
+//   .right_main_side in _main.scss) e con l'align-items: stretch di default
+//   partivano entrambe dal bordo alto della riga: i loro centri restavano
+//   sfalsati di ~54px su un viewport da 1080;
+// - la riga e' sticky a top: 86px ma alta solo 60vh, quindi si incollava in
+//   alto lasciando ~346px di vuoto sotto, con il blocco tutto spostato in su.
+//
+// Le diamo tutta l'altezza utile sotto l'header e centriamo i contenuti su
+// quell'asse: min-height, non height, cosi' se un giorno il testo a destra
+// cresce la riga si allunga invece di far debordare la colonna.
+@media (min-width: 992px) {
+  .scroll_element {
+    align-items: center;
+    // 86px = lo stesso offset dello sticky sulla riga, cosi' il blocco riempie
+    // esattamente la fascia di viewport che resta sotto l'header
+    min-height: calc(100vh - 186px);
+  }
+}
+
 // Su mobile l'icosaedro 3js va full-bleed: esce dal padding del container/col
 // e tocca i bordi dello schermo, invece di avere aria bianca ai lati.
 @media (max-width: 991.98px) {

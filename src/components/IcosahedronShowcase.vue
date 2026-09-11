@@ -9,6 +9,13 @@ const WHEEL_SENSITIVITY_X = 0.005; // scroll orizzontale (trackpad sinistra-dest
 const POINTER_TILT_MAX = 0.35; // radianti di tilt massimo seguendo il mouse
 const AUTOPLAY_SPEED = 0.006;
 const LERP_FACTOR = 0.08;
+const CAMERA_FOV = 45;
+const BASE_CAMERA_Z = 6.2;
+// Raggio della sfera che contiene tutto il gruppo: le badge sono piani tangenti
+// alle facce, quindi i loro angoli sporgono di mezza diagonale rispetto al
+// centro faccia. Il *1.06 è un margine di respiro sui bordi del container.
+const FIT_RADIUS =
+  Math.hypot(RADIUS * 1.03, BADGE_SIZE * Math.SQRT1_2) * 1.06;
 
 export default {
   name: "IcosahedronShowcase",
@@ -56,8 +63,8 @@ export default {
 
       this.scene = new THREE.Scene();
 
-      this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-      this.camera.position.z = 6.2;
+      this.camera = new THREE.PerspectiveCamera(CAMERA_FOV, 1, 0.1, 100);
+      this.camera.position.z = BASE_CAMERA_Z;
 
       this.renderer = new THREE.WebGLRenderer({
         canvas,
@@ -246,11 +253,35 @@ export default {
       const height = container.clientHeight;
       if (!width || !height) return;
 
-      this.camera.aspect = width / height;
+      this.isMobile = window.innerWidth < MOBILE_BREAKPOINT;
+
+      const aspect = width / height;
+      this.camera.aspect = aspect;
+
+      // Il fov della PerspectiveCamera è verticale: più il container è alto e
+      // stretto, più il campo visivo orizzontale si restringe e l'icosaedro
+      // esce dai lati. Le due modalità vogliono l'opposto:
+      //
+      // - mobile: il container è full-bleed (100vw x 100svh, vedi .ico_col in
+      //   SiteMain) e il taglio ai bordi è l'effetto voluto, quindi la camera
+      //   resta alla distanza base come da sempre;
+      // - desktop: il container è la colonna stretta accanto a "Cosa faccio?",
+      //   che su schermi grandi diventa molto più alta che larga; lì il taglio
+      //   è un difetto, quindi allontaniamo la camera quel tanto che basta
+      //   perché la sfera che contiene l'oggetto entri nella larghezza
+      //   disponibile. Mai più vicina della distanza base, così dove già ci
+      //   stava la resa non cambia.
+      if (this.isMobile) {
+        this.camera.position.z = BASE_CAMERA_Z;
+      } else {
+        const halfFov = THREE.MathUtils.degToRad(this.camera.fov) / 2;
+        const fitDistance =
+          FIT_RADIUS / (Math.tan(halfFov) * Math.min(1, aspect));
+        this.camera.position.z = Math.max(BASE_CAMERA_Z, fitDistance);
+      }
+
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(width, height, false);
-
-      this.isMobile = window.innerWidth < MOBILE_BREAKPOINT;
     },
 
     // Rotazione "libera": accumula i delta wheel invece di leggere window.scrollY,

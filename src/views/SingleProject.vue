@@ -153,7 +153,7 @@ export default {
   <div v-else-if="project" class="single_project">
     <div class="container position-relative py-3 py-md-4">
       <!-- HERO -->
-      <div class="project_hero rounded-5 position-relative overflow-hidden">
+      <div class="project_hero sp_reveal rounded-5 position-relative overflow-hidden">
         <component
           :is="project.link ? 'a' : 'div'"
           :href="project.link || undefined"
@@ -198,7 +198,7 @@ export default {
 
         <div class="project_hero__scrim" aria-hidden="true"></div>
 
-        <div class="project_hero__topbar">
+        <div class="project_hero__topbar sp_reveal">
           <button
             type="button"
             class="hero_back_btn"
@@ -225,13 +225,13 @@ export default {
           </div>
         </div>
 
-        <div class="project_hero__title">
+        <div class="project_hero__title sp_reveal">
           <h1>{{ title }}</h1>
         </div>
       </div>
 
       <!-- GALLERIA (compare solo se il progetto ha più di uno screenshot) -->
-      <div v-if="galleryImages.length > 1" class="project_gallery">
+      <div v-if="galleryImages.length > 1" class="project_gallery sp_reveal">
         <button
           v-for="(img, i) in galleryImages"
           :key="img"
@@ -260,14 +260,14 @@ export default {
       -->
 
       <!-- DESCRIZIONE -->
-      <div class="project_body">
+      <div class="project_body sp_reveal">
         <p class="project_description text_carbon">
           {{ descriptionText }}
         </p>
       </div>
 
       <!-- CTA -->
-      <div class="project_cta">
+      <div class="project_cta sp_reveal">
         <p class="project_cta__text">
           {{
             languageState.eng_lan
@@ -314,6 +314,35 @@ export default {
 <style lang="scss">
 @use "../styles/partials/magnetic_cta" as *;
 
+// Entrata scaglionata della pagina progetto: il contenuto viene montato tutto
+// insieme nel momento in cui il loader finisce (v-if="loading"), quindi senza
+// questo stagger comparirebbe "di blocco". Ogni elemento legge il proprio
+// ritardo da --sp-delay, impostato sotto sulla sua classe: niente attributi
+// style nel template e niente JS, l'animazione parte da sola al mount e si
+// ripete cambiando progetto (il watch sullo slug rimonta il blocco).
+.sp_reveal {
+  animation: sp_reveal 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: var(--sp-delay, 0s);
+}
+
+@keyframes sp_reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp_reveal {
+    animation: none;
+  }
+}
+
 .hero_back_btn {
   display: inline-flex;
   align-items: center;
@@ -348,6 +377,8 @@ export default {
 }
 
 .project_hero {
+  --sp-delay: 0.05s;
+
   aspect-ratio: 16 / 8;
   min-height: 320px;
 
@@ -402,6 +433,8 @@ export default {
 }
 
 .project_hero__topbar {
+  --sp-delay: 0.3s;
+
   position: absolute;
   top: 0;
   left: 0;
@@ -414,6 +447,8 @@ export default {
 }
 
 .project_hero__title {
+  --sp-delay: 0.38s;
+
   position: absolute;
   left: 0;
   right: 0;
@@ -431,6 +466,8 @@ export default {
 }
 
 .project_gallery {
+  --sp-delay: 0.2s;
+
   display: flex;
   gap: 0.75rem;
   overflow-x: auto;
@@ -470,6 +507,8 @@ export default {
 }
 
 .project_body {
+  --sp-delay: 0.28s;
+
   max-width: 68ch;
   margin: 1.25rem auto 3rem;
   padding: 0 0.25rem;
@@ -482,6 +521,8 @@ export default {
 }
 
 .project_cta {
+  --sp-delay: 0.36s;
+
   display: flex;
   flex-direction: column;
   align-items: center;

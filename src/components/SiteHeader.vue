@@ -1,6 +1,17 @@
 <script>
     import { languageState } from "../assets/js/language.js";
 
+    // L'header ha il suo split desktop/mobile su "md" (navbar-expand-md, icone
+    // d-none d-md-flex, hamburger d-md-none): l'auto-hide segue lo stesso
+    // confine invece del 992 usato altrove nel sito.
+    const DESKTOP_QUERY = "(min-width: 768px)";
+    // Scroll minimo prima di cambiare stato: senza soglia bastava 1px verso
+    // l'alto (inerzia del trackpad, rubber-banding del touch) per riaprire
+    // l'header, ed era la causa del suo sfarfallio.
+    const SCROLL_DELTA = 10;
+    // Sotto questa quota siamo "in cima": header sempre visibile.
+    const TOP_ZONE = 66;
+
     export default {
         name: "SiteHeader",
         data() {
@@ -9,18 +20,55 @@
                 lastPosition: 0,
                 languageState,
                 mobileMenuOpen: false,
+                isDesktop: true,
+                shadowLineOpacity: 0.8,
             }
         },
         methods: {
-            scrollFunction() {
+            // Un solo listener di scroll, throttlato su requestAnimationFrame.
+            // Prima ce n'erano due (di cui uno anonimo, quindi mai rimosso) che
+            // interrogavano e scrivevano il DOM ad ogni singolo evento.
+            onScroll() {
+                if (this.scrollTicking) return;
+                this.scrollTicking = true;
+                requestAnimationFrame(this.updateOnScroll);
+            },
+
+            updateOnScroll() {
+                this.scrollTicking = false;
                 const currentPosition = window.scrollY;
-                if (currentPosition <= 66) {
+
+                // Sfumatura in cima alla pagina: prima veniva scritta a mano con
+                // un querySelector('.shadow_line'), che però su privacyPolicy /
+                // cookiePolicy / PageNotFound non esiste (v-if nel template) e
+                // faceva esplodere una TypeError ad ogni evento di scroll.
+                this.shadowLineOpacity = Math.max(0, 0.8 - currentPosition / 1000);
+
+                this.updateHeaderVisibility(currentPosition);
+            },
+
+            updateHeaderVisibility(currentPosition) {
+                // Su desktop l'header non si nasconde più: libererebbe ~7% di
+                // viewport e comunque .scroll_element (SiteMain) è sticky a
+                // top: 86px, quindi quello spazio resta prenotato — si
+                // guadagnerebbe un buco bianco, non contenuto. In più i link
+                // Servizi/Contatti sono il percorso di conversione del sito.
+                if (this.isDesktop || this.mobileMenuOpen || currentPosition <= TOP_ZONE) {
                     this.headerScroll = true;
                     this.lastPosition = currentPosition;
                     return;
                 }
-                this.headerScroll = currentPosition <= this.lastPosition;
+
+                const delta = currentPosition - this.lastPosition;
+                if (Math.abs(delta) < SCROLL_DELTA) return;
+
+                this.headerScroll = delta < 0;
                 this.lastPosition = currentPosition;
+            },
+
+            onBreakpointChange(event) {
+                this.isDesktop = event.matches;
+                if (this.isDesktop) this.resetHeader();
             },
             resetHeader() {
                 this.headerScroll = true;
@@ -39,25 +87,38 @@
             $route() {
                 this.resetHeader();
                 this.closeMenu();
+                // Il router riporta in cima (scrollBehavior), ma con un hash o
+                // una posizione ripristinata dal back del browser no: allineiamo
+                // il riferimento a dove siamo davvero, altrimenti il primo delta
+                // risulta enorme e nasconde subito l'header.
+                this.$nextTick(() => {
+                    this.lastPosition = window.scrollY;
+                });
             },
             mobileMenuOpen(val) {
                 document.body.style.overflow = val ? 'hidden' : '';
             }
         },
         mounted() {
-            window.addEventListener('scroll', this.scrollFunction);
-            window.addEventListener('scroll', function () {
-                var scrollTop = window.scrollY || document.documentElement.scrollTop;
-                var opacity = 0.8 - (scrollTop / 1000);
-                var shadowLine = document.querySelector('.shadow_line');
-                shadowLine.style.opacity = opacity;
-            });
+            this.desktopQuery = window.matchMedia(DESKTOP_QUERY);
+            this.isDesktop = this.desktopQuery.matches;
+            this.desktopQuery.addEventListener('change', this.onBreakpointChange);
+
+            this.lastPosition = window.scrollY;
+            window.addEventListener('scroll', this.onScroll, { passive: true });
+            this.updateOnScroll();
+        },
+        unmounted() {
+            window.removeEventListener('scroll', this.onScroll);
+            if (this.desktopQuery) {
+                this.desktopQuery.removeEventListener('change', this.onBreakpointChange);
+            }
         }
     }
 </script>
 
 <template>
-    <div class="shadow_line" v-if="$route.name !== 'privacyPolicy' && $route.name !== 'cookiePolicy' && $route.name !== 'PageNotFound'"></div>
+    <div class="shadow_line" :style="{ opacity: shadowLineOpacity }" v-if="$route.name !== 'privacyPolicy' && $route.name !== 'cookiePolicy' && $route.name !== 'PageNotFound'"></div>
     <header>
         <nav class="navbar navbar-expand-md shadow-sm position-fixed w-100 top-0 z_index header_shadow bg_color"
             :class="[headerScroll ? 'header_on' : 'header_off', { 'mob_menu_active': mobileMenuOpen }]">
@@ -217,20 +278,50 @@
         &--active { opacity: 1; }
     }
 
+    // Nascondere l'header in sola opacity lo lasciava nel flusso di
+    // tabulazione: col Tab il focus finiva su link invisibili (WCAG 2.4.11).
+    // Con translateY + visibility esce davvero di scena, e lo slide si legge
+    // meglio del dissolvi su una barra semitrasparente con blur.
+    // La transizione sta tutta su nav.navbar (incluso il border-radius, che
+    // prima aveva una sua `transition` in .header_shadow): due shorthand
+    // `transition` sullo stesso elemento si sovrascrivono a vicenda, e quella
+    // piu' in basso nel file avrebbe vinto cancellando lo slide.
+    nav.navbar {
+        transition:
+            transform 0.3s ease,
+            opacity 0.3s ease,
+            visibility 0.3s,
+            border-radius 0.2s ease;
+    }
+
     .header_on {
-        animation: on 0.3s linear forwards;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
         pointer-events: auto;
     }
 
-    .header_off {
-        animation: off 0.3s linear forwards;
+    // specificita' piu' alta di nav.navbar, altrimenti il transition-delay
+    // qui sotto verrebbe azzerato dallo shorthand del blocco base
+    nav.navbar.header_off {
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
         pointer-events: none;
+        // la visibility scatta a fine slide, non subito: l'ordine dei delay
+        // segue quello delle proprieta' elencate sopra
+        transition-delay: 0s, 0s, 0.3s, 0s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        nav.navbar {
+            transition: none;
+        }
     }
 
     .header_shadow {
         filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.1));
         border-radius: 0 0 8px 8px;
-        transition: border-radius 0.2s ease;
     }
 
     .header_shadow.mob_menu_active {
@@ -391,15 +482,5 @@
     .mob-backdrop-enter-from,
     .mob-backdrop-leave-to {
         opacity: 0;
-    }
-
-    @keyframes on {
-        from { opacity: 0; }
-        to   { opacity: 1; }
-    }
-
-    @keyframes off {
-        from { opacity: 1; }
-        to   { opacity: 0; }
     }
 </style>
