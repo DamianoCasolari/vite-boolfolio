@@ -1,9 +1,22 @@
 .privacy_policy_container {
     height: calc(100vh - 100px);
     min-height: 562px;
-    padding-top: 150px;
     padding-bottom: 50px;
     margin-inline: 20%;
+
+    // Il banner cookie e' fisso sopra al contenuto e ne coprirebbe l'inizio.
+    // `--cookie-banner-bottom` e' il suo bordo inferiore reale, pubblicato da
+    // CookieBanner.vue: diventa lo spazio da lasciargli sotto l'header.
+    // Quando l'utente accetta o rifiuta, la variabile torna a 0, si ricade sul
+    // valore di base e lo spazio si richiude da solo; la transizione evita
+    // che accada di scatto.
+    padding-top: max(150px, calc(var(--cookie-banner-bottom, 0px) + 20px));
+    transition: padding-top 0.4s ease;
+
+    @media (max-width: 991.98px) {
+        margin-inline: 16px;
+        padding-top: max(100px, calc(var(--cookie-banner-bottom, 0px) + 20px));
+    }
 
     ::-webkit-scrollbar {
         display: none;

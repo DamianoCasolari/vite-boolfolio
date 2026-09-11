@@ -34,6 +34,8 @@ export default {
             if (this.$route.name === "services") return "none";
             if (this.$route.name === "about") return "none"; // troppo invasiva su questa pagina
             if (this.$route.name === "single-project") return "none"; // ha già la sua CTA WA sotto la descrizione
+            if (this.$route.name === "privacyPolicy") return "none"; // non ha senso contattare via WA da qui
+            if (this.$route.name === "cookiePolicy") return "none"; // idem
             return "wa";
         },
         // Su Contatti c'è già il form: la CTA WA si presenta come alternativa,

@@ -124,6 +124,31 @@
             </div>
 
             <div class="section-title">
+                {{ languageState.eng_lan ? "Analytics cookies" : "Cookie di analytics" }}
+            </div>
+
+            <div>
+                {{ languageState.eng_lan
+                    ? "The website uses Google Analytics, a statistical analysis service provided by Google Ireland Limited, to collect aggregated and anonymous information about website usage. This processing is activated only after the user gives explicit consent through the cookie banner and is described in detail in the Cookie Policy."
+                    : "Il sito utilizza Google Analytics, un servizio di analisi statistica fornito da Google Ireland Limited, per raccogliere informazioni aggregate e anonime sull’utilizzo del sito. Questo trattamento viene attivato solo previo consenso esplicito dell’utente tramite il banner cookie ed è descritto in dettaglio nella Cookie Policy."
+                }}
+            </div>
+
+            <div>
+                {{ languageState.eng_lan
+                    ? "The legal basis for this processing is the user's consent (Art. 6(1)(a) GDPR). Consent can be withdrawn or changed at any time through the \"Manage cookies\" option available on the website."
+                    : "La base giuridica di questo trattamento è il consenso dell’utente (art. 6, par. 1, lett. a, GDPR). Il consenso può essere revocato o modificato in qualsiasi momento tramite l’opzione “Gestisci cookie” disponibile sul sito."
+                }}
+            </div>
+
+            <div>
+                {{ languageState.eng_lan
+                    ? "Data collected through Google Analytics may be transferred to the United States. Google adheres to the EU-U.S. Data Privacy Framework, which provides an adequate level of protection for such transfers."
+                    : "I dati raccolti tramite Google Analytics possono essere trasferiti negli Stati Uniti. Google aderisce al Data Privacy Framework UE-USA, che garantisce un livello di protezione adeguato per tali trasferimenti."
+                }}
+            </div>
+
+            <div class="section-title">
                 {{ languageState.eng_lan ? "User rights" : "Diritti dell’utente" }}
             </div>
 
@@ -172,7 +197,7 @@
         display: flex;
         flex-direction: column;
         gap: 14px;
-        margin-inline: 10px;
+        margin-inline: 0px;
         overflow-y: scroll;
 
         .section-title {

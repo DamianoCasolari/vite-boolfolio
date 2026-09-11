@@ -17,9 +17,132 @@
     href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;500;800&family=Comforter&family=Fasthand&family=Poppins:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
+  <!--
+    Loader dello shell: vive nell'HTML, non in Vue, quindi e' a schermo dal
+    primissimo paint e ci resta finche' main.js non lo rimuove a pagina
+    pronta. Gli stili sono inline perche' in dev il CSS del bundle arriva
+    solo dopo il JS. Copre tutto: sotto, l'app monta indisturbata.
+  -->
+  <style>
+    #app_shell_loader {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483000;
+      background: rgb(244, 244, 244);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.35s ease;
+    }
+
+    /*
+      Non sparisce di colpo: sfuma mentre sotto partono le animazioni di
+      ingresso (header e foto entrano in dissolvenza, la foto con 0.2s di
+      ritardo). Cosi' i due movimenti si sovrappongono e non resta mai
+      scoperto un frame di pagina ancora vuota.
+    */
+    #app_shell_loader.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #app_shell_loader .dc-loader {
+      position: relative;
+      width: 128px;
+      height: 128px;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      transform: translateX(-2px);
+    }
+
+    #app_shell_loader .dc-loader__glow {
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(101, 101, 101, 0.18) 0%, transparent 68%),
+        radial-gradient(circle, rgba(255, 255, 255, 0.38) 0%, transparent 55%);
+      filter: blur(10px);
+      animation: dcGlow 1.8s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    #app_shell_loader .dc-loader__logo-wrap {
+      width: 74px;
+      height: 74px;
+      display: grid;
+      place-items: center;
+      animation: dcFloat 1.8s ease-in-out infinite;
+    }
+
+    #app_shell_loader .dc-loader__logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0.88;
+      filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.14));
+      animation: dcLogoPulse 1.8s ease-in-out infinite;
+    }
+
+    #app_shell_loader .dc-loader__pixel {
+      position: absolute;
+      display: block;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+      animation: dcPixelPulse 1.4s ease-in-out infinite;
+    }
+
+    #app_shell_loader .dc-loader__pixel--1 { top: 26px; left: 30px; width: 14px; height: 14px; background: #575757; animation-delay: 0s; }
+    #app_shell_loader .dc-loader__pixel--2 { top: 49px; left: 20px; width: 9px; height: 9px; background: #9a9a9a; animation-delay: 0.18s; }
+    #app_shell_loader .dc-loader__pixel--3 { top: 67px; left: 48px; width: 8px; height: 8px; background: #727272; animation-delay: 0.36s; }
+    #app_shell_loader .dc-loader__pixel--4 { top: 60px; right: 30px; width: 10px; height: 10px; background: #a6a6a6; animation-delay: 0.54s; }
+    #app_shell_loader .dc-loader__pixel--5 { top: 32px; right: 45px; width: 8px; height: 8px; background: #242424; animation-delay: 0.72s; }
+
+    @keyframes dcFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-5px) scale(1.03); }
+    }
+
+    @keyframes dcLogoPulse {
+      0%, 100% { opacity: 0.72; filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.12)); }
+      50% { opacity: 1; filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.18)); }
+    }
+
+    @keyframes dcGlow {
+      0%, 100% { opacity: 0.5; transform: scale(0.92); }
+      50% { opacity: 1; transform: scale(1.08); }
+    }
+
+    @keyframes dcPixelPulse {
+      0%, 100% { transform: translateY(0) scale(0.85); opacity: 0.35; }
+      50% { transform: translateY(-7px) scale(1.1); opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #app_shell_loader .dc-loader__glow,
+      #app_shell_loader .dc-loader__logo-wrap,
+      #app_shell_loader .dc-loader__logo,
+      #app_shell_loader .dc-loader__pixel {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div id="app_shell_loader" role="status" aria-label="Caricamento">
+    <div class="dc-loader">
+      <div class="dc-loader__glow"></div>
+      <div class="dc-loader__logo-wrap">
+        <img src="/dc-loader2.png" alt="" class="dc-loader__logo" />
+      </div>
+      <span class="dc-loader__pixel dc-loader__pixel--1"></span>
+      <span class="dc-loader__pixel dc-loader__pixel--2"></span>
+      <span class="dc-loader__pixel dc-loader__pixel--3"></span>
+      <span class="dc-loader__pixel dc-loader__pixel--4"></span>
+      <span class="dc-loader__pixel dc-loader__pixel--5"></span>
+    </div>
+  </div>
   <div id="app"></div>
   <script type="module" src="/src/main.js"></script>
 </body>

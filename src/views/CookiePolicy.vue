@@ -1,10 +1,15 @@
 <script>
-    import { languageState } from "../assets/js/language";
+    import { languageState, reopenCookieBanner } from "../assets/js/language";
     export default {
         name: 'privacyPolicy',
         data() {
             return {
                 languageState
+            }
+        },
+        methods: {
+            openCookieSettings() {
+                reopenCookieBanner.value = true;
             }
         },
         setup() {
@@ -165,6 +170,10 @@
                 }}
             </div>
 
+            <button type="button" class="cookie_settings_btn align-self-center" @click="openCookieSettings">
+                {{ languageState.eng_lan ? 'Manage cookie preferences' : 'Gestisci le preferenze sui cookie' }}
+            </button>
+
         </div>
 
         </div>
@@ -173,6 +182,23 @@
 
 
 <style lang="scss" scoped>
+    .cookie_settings_btn {
+        margin-top: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: white;
+        padding: 10px 22px;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .cookie_settings_btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: white;
+    }
+
     .back_button {
         background-color: rgba(255, 255, 255, 0.671);
         color: rgba(51, 48, 48, 0.715);
@@ -203,7 +229,7 @@
         display: flex;
         flex-direction: column;
         gap: 14px;
-        margin-inline: 10px;
+        margin-inline: 0px;
         overflow-y: scroll;
 
         .section-title {

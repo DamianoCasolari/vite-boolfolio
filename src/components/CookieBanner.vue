@@ -1,6 +1,6 @@
 <template>
     <transition name="cookie-slide">
-        <div v-if="showBanner" class="cookie-banner">
+        <div v-if="showBanner" ref="bannerEl" class="cookie-banner">
 
             <div class="cookie-content  ">
 
@@ -32,17 +32,63 @@
 </template>
 
 <script setup>
-    import { ref, onMounted } from "vue";
-    import { languageState, cookieBannerDismissed } from "../assets/js/language";
+    import { ref, watch, nextTick, onMounted, onUnmounted } from "vue";
+    import { languageState, cookieBannerDismissed, reopenCookieBanner } from "../assets/js/language";
     import { acceptCookies, rejectCookies, getCookieChoice } from '../assets/js/analytics';
 
     const showBanner = ref(false);
+    const bannerEl = ref(null);
+    let bannerResizeObserver = null;
+
+    // Il banner è fisso sopra al contenuto: pubblica il proprio bordo inferiore
+    // come variabile CSS globale, così le pagine che altrimenti gli finirebbero
+    // sotto (es. le policy su mobile) possono lasciargli lo spazio esatto e
+    // richiuderlo da sole quando sparisce. Vale 0px quando non è a schermo.
+    function publishBannerBottom(px) {
+        document.documentElement.style.setProperty('--cookie-banner-bottom', `${px}px`);
+    }
+
+    function measureBanner() {
+        const el = bannerEl.value;
+        if (!el) return;
+        // offsetTop/offsetHeight e non getBoundingClientRect(): il primo ignora
+        // la transform dell'animazione di entrata, che altrimenti farebbe
+        // misurare il banner 40px piu' in alto della sua posizione finale.
+        publishBannerBottom(el.offsetTop + el.offsetHeight);
+    }
+
+    watch(showBanner, async (visible) => {
+        if (!visible) {
+            bannerResizeObserver?.disconnect();
+            bannerResizeObserver = null;
+            publishBannerBottom(0);
+            return;
+        }
+
+        await nextTick();
+        measureBanner();
+        // l'altezza cambia con la larghezza dello schermo e con la lingua
+        bannerResizeObserver = new ResizeObserver(measureBanner);
+        bannerResizeObserver.observe(bannerEl.value);
+    });
 
     onMounted(() => {
         if (!getCookieChoice()) {
             showBanner.value = true;
         } else {
             cookieBannerDismissed.value = true;
+        }
+    });
+
+    onUnmounted(() => {
+        bannerResizeObserver?.disconnect();
+        publishBannerBottom(0);
+    });
+
+    watch(reopenCookieBanner, (val) => {
+        if (val) {
+            showBanner.value = true;
+            reopenCookieBanner.value = false;
         }
     });
 
@@ -105,23 +151,11 @@
         width: 100%;
     }
 
-    .btn-reject {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        color: white;
-        padding: 8px 16px;
-        border-radius: 8px;
-        transition: 0.2s;
-        font-size: 13px;
-    }
-
-    .btn-reject:hover {
-        border-color: white;
-    }
-
+    .btn-reject,
     .btn-accept {
-        background: white;
-        color: black;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: white;
         padding: 8px 18px;
         border-radius: 8px;
         font-weight: 500;
@@ -129,9 +163,10 @@
         font-size: 13px;
     }
 
+    .btn-reject:hover,
     .btn-accept:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.2);
+        border-color: white;
     }
 
     /* animazione */

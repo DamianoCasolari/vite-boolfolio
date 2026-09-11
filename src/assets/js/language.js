@@ -13,4 +13,6 @@ export const heroSeen = ref(false);
 
 export const cookieBannerDismissed = ref(false);
 
+export const reopenCookieBanner = ref(false);
+
 export const appReady = ref(false);

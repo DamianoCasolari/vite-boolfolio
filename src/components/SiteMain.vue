@@ -42,7 +42,6 @@ export default {
 
   data() {
     return {
-      loading: false,
       projects: [],
       error: null,
 
@@ -61,6 +60,17 @@ export default {
     };
   },
 
+  computed: {
+    // Il contenuto monta subito, ma resta coperto dallo shell loader finché
+    // `appReady` non scatta: le classi che avviano le animazioni d'ingresso
+    // (firma disegnata, titolo che scende) vanno quindi applicate solo a
+    // quel punto, altrimenti l'animazione si consuma mentre è ancora
+    // nascosta e l'utente la vede già a metà.
+    revealFirstLoad() {
+      return this.isFirstLoad && appReady.value;
+    },
+  },
+
   methods: {
     openWelcomeModal() {
       nextTick(() => {
@@ -72,17 +82,30 @@ export default {
       });
     },
 
-    getProjects() {
-      this.loading = true;
+    waitForHeroPhoto() {
+      return new Promise((resolve) => {
+        const img = this.$refs.heroPhoto;
+        if (!img || (img.complete && img.naturalWidth > 0)) {
+          resolve();
+          return;
+        }
+        img.addEventListener("load", resolve, { once: true });
+        img.addEventListener("error", resolve, { once: true });
+      });
+    },
 
+    getProjects() {
       const run = () => {
         try {
           this.projects = projectsJson.projects ?? [];
         } catch (e) {
           this.error = e?.message ?? "Errore caricamento progetti";
         } finally {
-          this.loading = false;
-          appReady.value = true;
+          // `appReady` è il segnale che scopre la pagina (vedi main.js):
+          // non va dato prima che la foto hero sia davvero pronta a comparire.
+          this.waitForHeroPhoto().then(() => {
+            appReady.value = true;
+          });
         }
       };
 
@@ -154,25 +177,7 @@ export default {
 </script>
 
 <template>
-  <div
-    v-if="loading"
-    class="bg_snow vh100 d-flex flex-column align-items-center justify-content-center"
-  >
-    <div class="dc-loader" role="status" aria-label="Loading">
-      <div class="dc-loader__glow"></div>
-
-      <div class="dc-loader__logo-wrap">
-        <img src="/dc-loader2.png" alt="DC Logo" class="dc-loader__logo" />
-      </div>
-
-      <span class="dc-loader__pixel dc-loader__pixel--1"></span>
-      <span class="dc-loader__pixel dc-loader__pixel--2"></span>
-      <span class="dc-loader__pixel dc-loader__pixel--3"></span>
-      <span class="dc-loader__pixel dc-loader__pixel--4"></span>
-      <span class="dc-loader__pixel dc-loader__pixel--5"></span>
-    </div>
-  </div>
-  <div class="bg_snow" v-else>
+  <div class="bg_snow">
     <div
       id="top"
       class="jumbotron container rounded-3 d-flex flex-column align-items-center justify-content-center position-relative"
@@ -186,8 +191,9 @@ export default {
       <div
         class="container py-4 mt-0 mt-md-4 mb-2 d-flex flex-wrap flex-column flex-md-row align-items-center justify-content-center"
       >
-        <div :class="['col-lg-6', 'z_inde49', { ghost3: isFirstLoad }]">
+        <div :class="['col-lg-6', 'z_inde49', { ghost3: revealFirstLoad }]">
           <img
+            ref="heroPhoto"
             src="../assets/img/photo.webp"
             alt="DC Logo"
             class="rounded-4 z_inde49 main_photo shadow"
@@ -206,13 +212,13 @@ export default {
                 src="/public/f2dc.svg"
                 alt="sign of dc"
                 style="height: 7.8em"
-                :class="{ sign_draw_anim: isFirstLoad }"
+                :class="{ sign_draw_anim: revealFirstLoad }"
               />
             </span>
           </div>
           <!-- NEW TITLE -->
-          <div :class="['animated-title', { animate: isFirstLoad }]">
-            <div :class="['text-top', { ghost3: isFirstLoad }]">
+          <div :class="['animated-title', { animate: revealFirstLoad }]">
+            <div :class="['text-top', { ghost3: revealFirstLoad }]">
               <div v-if="languageState.eng_lan">
                 <!-- <span class="title_size fw-semibold" style="color: #393939;">Hi,</span> -->
                 <!-- <span class="title_size fw-semibold" style="color: #656565;">I'm Damiano</span> -->
