@@ -314,7 +314,7 @@
                         </header>
                         <div class="sp_cards">
                             <div class="sp_card sp_card--phone">
-                                <img src="/immagini_servizi/3-3-1.webp" alt="" loading="eager" />
+                                <img src="/immagini_servizi/3-1-1.webp" alt="" loading="eager" />
                             </div>
                             <div class="sp_cards_col">
                                 <div class="sp_card sp_card--rect">
