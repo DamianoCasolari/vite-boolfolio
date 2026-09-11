@@ -52,8 +52,8 @@ export default {
             if (this.mode === "none") return false;
             if (this.modalOpen) return false; // sparisce del tutto, non solo coperta, mentre la modale è aperta
             if (!this.cookieDismissed) return false;
-            if (this.mode === "wa") return true; // sempre visibile, nessun trigger
             if (this.manuallyDismissed) return false;
+            if (this.mode === "wa") return true; // sempre visibile finché non la si chiude a mano
             return this.heroRevealed;
         },
     },
@@ -199,7 +199,7 @@ export default {
                     </div>
                 </div>
             </component>
-            <button v-if="mode === 'offer'" class="offer_toast_close" @click.stop="dismiss" aria-label="Chiudi">×</button>
+            <button v-if="mode === 'offer' || mode === 'wa'" class="offer_toast_close" @click.stop="dismiss" aria-label="Chiudi">×</button>
         </div>
     </Transition>
 </template>
@@ -233,8 +233,10 @@ export default {
         border-radius: 16px;
     }
 
-    /* niente chiusura manuale su mobile: la comparsa/aggancio al footer sono automatici */
-    .offer_toast_close {
+    /* niente chiusura manuale per l'offerta su mobile: la comparsa è automatica.
+       La variante WhatsApp invece resta chiudibile — può capitare copra un
+       bottone della pagina (es. l'invio del form in Contatti). */
+    .offer_toast:not(.offer_toast__wa) .offer_toast_close {
         display: none;
     }
 }
