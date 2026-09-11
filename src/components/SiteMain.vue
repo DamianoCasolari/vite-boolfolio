@@ -188,7 +188,7 @@ export default {
       >
         <div :class="['col-lg-6', 'z_inde49', { ghost3: isFirstLoad }]">
           <img
-            src="../assets/img/photo.jpg"
+            src="../assets/img/photo.webp"
             alt="DC Logo"
             class="rounded-4 z_inde49 main_photo shadow"
             loading="eager"

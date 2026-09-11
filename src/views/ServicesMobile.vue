@@ -50,15 +50,15 @@
             // precarica le immagini dei pannelli (fire and forget) cosi non si vedono
             // caricare a scatti quando si apre una card
             [
-                '/immagini_servizi/1-1.png',
-                '/immagini_servizi/1-2.png',
-                '/immagini_servizi/1-3.png',
-                '/immagini_servizi/2-1-1.png',
-                '/immagini_servizi/2-2-1.png',
-                '/immagini_servizi/2-3-1.png',
-                '/immagini_servizi/oikos.png',
-                '/immagini_servizi/silos.png',
-                '/immagini_servizi/ceramica.png',
+                '/immagini_servizi/1-1.webp',
+                '/immagini_servizi/1-2.webp',
+                '/immagini_servizi/1-3.webp',
+                '/immagini_servizi/2-1-1.webp',
+                '/immagini_servizi/2-2-1.webp',
+                '/immagini_servizi/2-3-1.webp',
+                '/immagini_servizi/oikos.webp',
+                '/immagini_servizi/silos.webp',
+                '/immagini_servizi/ceramica.webp',
             ].forEach(src => { new Image().src = src; });
 
             const sl = document.querySelector('.shadow_line');
@@ -188,15 +188,15 @@
                         <div class="sp_cards">
                             <!-- Card a forma di telefono (sinistra, alta) -->
                             <div class="sp_card sp_card--phone">
-                                <img src="/immagini_servizi/1-1.png" alt="" loading="eager" />
+                                <img src="/immagini_servizi/1-1.webp" alt="" loading="eager" />
                             </div>
                             <!-- Colonna destra: 2 card rettangolari -->
                             <div class="sp_cards_col">
                                 <div class="sp_card sp_card--rect">
-                                    <img src="/immagini_servizi/1-2.png" alt="" loading="eager" />
+                                    <img src="/immagini_servizi/1-2.webp" alt="" loading="eager" />
                                 </div>
                                 <div class="sp_card sp_card--rect">
-                                    <img src="/immagini_servizi/1-3.png" alt="" loading="eager" />
+                                    <img src="/immagini_servizi/1-3.webp" alt="" loading="eager" />
                                 </div>
                             </div>
                         </div>
@@ -267,14 +267,14 @@
                         </header>
                         <div class="sp_cards">
                             <div class="sp_card sp_card--phone">
-                                <img src="/immagini_servizi/2-1-1.png" alt="" loading="eager" />
+                                <img src="/immagini_servizi/2-1-1.webp" alt="" loading="eager" />
                             </div>
                             <div class="sp_cards_col">
                                 <div class="sp_card sp_card--rect">
-                                    <img src="/immagini_servizi/2-2-1.png" alt="" loading="eager" />
+                                    <img src="/immagini_servizi/2-2-1.webp" alt="" loading="eager" />
                                 </div>
                                 <div class="sp_card sp_card--rect">
-                                    <img src="/immagini_servizi/2-3-1.png" alt="" loading="eager" />
+                                    <img src="/immagini_servizi/2-3-1.webp" alt="" loading="eager" />
                                 </div>
                             </div>
                         </div>
@@ -314,14 +314,14 @@
                         </header>
                         <div class="sp_cards">
                             <div class="sp_card sp_card--phone">
-                                <img src="/immagini_servizi/3-3-1.png" alt="" loading="eager" />
+                                <img src="/immagini_servizi/3-3-1.webp" alt="" loading="eager" />
                             </div>
                             <div class="sp_cards_col">
                                 <div class="sp_card sp_card--rect">
-                                    <img src="/immagini_servizi/3-3-1.png" alt="" loading="eager" />
+                                    <img src="/immagini_servizi/3-3-1.webp" alt="" loading="eager" />
                                 </div>
                                 <div class="sp_card sp_card--rect">
-                                    <img src="/immagini_servizi/3-2-1.png" alt="" loading="eager" />
+                                    <img src="/immagini_servizi/3-2-1.webp" alt="" loading="eager" />
                                 </div>
                             </div>
                         </div>

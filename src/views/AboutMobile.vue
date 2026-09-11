@@ -19,7 +19,7 @@
                     });
                 });
             };
-            img.src = "/immagini_about_me/foto1.jpeg";
+            img.src = "/immagini_about_me/foto1.webp";
         },
     };
 </script>
@@ -65,7 +65,7 @@
         <!-- FOTO -->
         <div class="about_photo_wrap">
             <img
-                src="/immagini_about_me/foto1.jpeg"
+                src="/immagini_about_me/foto1.webp"
                 alt="Damiano Casolari"
                 class="about_photo"
             />

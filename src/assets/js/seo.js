@@ -5,7 +5,7 @@ const SITE_NAME = "Damiano Casolari";
 const DEFAULT_TITLE = "Damiano Casolari | Siti Web, AI e Automazioni | Cervia · Rimini";
 const DEFAULT_DESCRIPTION =
     "Sviluppatore web a Cervia, specializzato nella realizzazione di siti internet moderni e applicazioni web su misura. Progetto soluzioni veloci, sicure e ottimizzate per la user experience, con attenzione al design, alle prestazioni e alla visibilità online.";
-const DEFAULT_IMAGE_PATH = "/photo.jpg";
+const DEFAULT_IMAGE_PATH = "/photo.webp";
 
 function setMetaTag(attr, key, content) {
     let el = document.querySelector(`meta[${attr}="${key}"]`);

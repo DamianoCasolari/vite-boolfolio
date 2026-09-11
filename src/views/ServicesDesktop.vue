@@ -17,12 +17,12 @@
         mounted() {
             // precarica le immagini delle card espanse (fire and forget)
             [
-                '/immagini_servizi/1-2.png',
-                '/immagini_servizi/aem.png',
-                '/immagini_servizi/2-2-1.png',
-                '/immagini_servizi/2-3-1.png',
-                '/immagini_servizi/3-3-1.png',
-                '/immagini_servizi/3-2-1.png',
+                '/immagini_servizi/1-2.webp',
+                '/immagini_servizi/aem.webp',
+                '/immagini_servizi/2-2-1.webp',
+                '/immagini_servizi/2-3-1.webp',
+                '/immagini_servizi/3-3-1.webp',
+                '/immagini_servizi/3-2-1.webp',
             ].forEach(src => { new Image().src = src; });
 
             // aspetta che le 3 immagini idle siano caricate prima di animare le card
@@ -34,9 +34,9 @@
             });
 
             Promise.all([
-                '/immagini_servizi/vetrina3.png',
-                '/immagini_servizi/dashboard.png',
-                '/immagini_servizi/cantiere.png',
+                '/immagini_servizi/vetrina3.webp',
+                '/immagini_servizi/dashboard.webp',
+                '/immagini_servizi/cantiere.webp',
             ].map(loadImg)).then(() => {
                 requestAnimationFrame(() => {
                     this.entered = true;
@@ -98,7 +98,7 @@
 
                     <template v-if="selectedCard !== 0">
                         <div class="card_idle_bg" aria-hidden="true">
-                            <img src="/immagini_servizi/vetrina3.png" alt="" loading="lazy" />
+                            <img src="/immagini_servizi/vetrina3.webp" alt="" loading="lazy" />
                         </div>
                         <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
                             <h2 class="service_title">{{ languageState.eng_lan ? 'Showcase Website' : 'Sito Vetrina' }}</h2>
@@ -128,14 +128,14 @@
                                         </div>
                                     </div>
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/1-2.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/1-2.webp" alt="" loading="eager"/></div>
                                     </div>
                                 </div>
 
                                 <!-- S2: img2 sinistra · steps destra -->
                                 <div class="exp_section exp_section--mid">
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/aem.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/aem.webp" alt="" loading="eager"/></div>
                                     </div>
                                     <div class="exp_col">
                                         <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>
@@ -179,7 +179,7 @@
 
                     <template v-if="selectedCard !== 1">
                         <div class="card_idle_bg" aria-hidden="true">
-                            <img src="/immagini_servizi/dashboard.png" alt="" loading="lazy" />
+                            <img src="/immagini_servizi/dashboard.webp" alt="" loading="lazy" />
                         </div>
                         <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
                             <h2 class="service_title">{{ languageState.eng_lan ? 'Landing Page' : 'Landing Page' }}</h2>
@@ -207,12 +207,12 @@
                                         </div>
                                     </div>
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-2-1.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-2-1.webp" alt="" loading="eager"/></div>
                                     </div>
                                 </div>
                                 <div class="exp_section exp_section--mid">
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-3-1.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-3-1.webp" alt="" loading="eager"/></div>
                                     </div>
                                     <div class="exp_col">
                                         <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>
@@ -253,7 +253,7 @@
 
                     <template v-if="selectedCard !== 2">
                         <div class="card_idle_bg" aria-hidden="true">
-                            <img src="/immagini_servizi/cantiere.png" alt="" loading="lazy" />
+                            <img src="/immagini_servizi/cantiere.webp" alt="" loading="lazy" />
                         </div>
                         <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
                             <h2 class="service_title">{{ languageState.eng_lan ? 'Website Restyling' : 'Restyling del Sito' }}</h2>
@@ -277,16 +277,16 @@
                                         <p class="exp_desc"><span v-if="languageState.eng_lan">No need to start over: we build on what's already there, making it more modern, clear and fast.</span><span v-else>Non si riparte da zero: si valorizza quello che c'è già, rendendolo più moderno, chiaro e veloce.</span></p>
                                         <div class="exp_call_block">
                                             <span class="exp_call_badge">{{ languageState.eng_lan ? 'Start here' : 'Inizia da qui' }}</span>
-                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong class="green_text_light">Free call, no commitment.</strong><br>We'll look at your current site together and what to improve.</span><span v-else><strong class="green_text_light">Call gratuita, senza impegno.</strong><br>Guardiamo insieme il tuo sito attuale e cosa migliorare.</span></p>
+                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong class="green_text_light">Free call, no commitment.</strong><br>We'll look at your current site together and what to improve.</span><span v-else><strong class="green_text_light">Call gratuita, senza impegno.</strong><br>Guardiamo insieme cosa migliorare.</span></p>
                                         </div>
                                     </div>
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/3-3-1.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/3-3-1.webp" alt="" loading="eager"/></div>
                                     </div>
                                 </div>
                                 <div class="exp_section exp_section--mid">
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/3-2-1.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/3-2-1.webp" alt="" loading="eager"/></div>
                                     </div>
                                     <div class="exp_col">
                                         <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>

@@ -7,8 +7,8 @@
             "name_it": "Intrum - Piattaforma di recupero crediti",
             "description": "OPI Web is a web platform developed for the Italian branch of Intrum, designed for advanced monitoring of practices, lawyers, and law firms involved in credit management processes. The project allows real-time analysis of KPIs, rankings, operational timelines, lawyer performance, practice trends, and monitoring data, offering modern tools to consult, modify, simulate, and track activities related to legal management. In the project, I was responsible for the complete development of the frontend from scratch, defining a modern, scalable, and maintainable architecture over time. I developed responsive interfaces, analytical dashboards, reusable components, advanced data visualizations, and user flows designed to make the interaction between Intrum, external lawyers, and managed law firms clearer, more efficient, and controllable.",
             "description_it": "OPI Web è una piattaforma web sviluppata per la sede italiana di Intrum, pensata per il monitoraggio avanzato delle pratiche, dei legali e degli studi legali coinvolti nei processi di gestione del credito.Il progetto consente di analizzare in tempo reale KPI, ranking, timeline operative, performance dei legali, andamento delle pratiche e dati di monitoraggio, offrendo strumenti moderni per consultare, modificare, simulare e tracciare le attività legate alla gestione legale.Nel progetto mi sono occupato della realizzazione completa del frontend da zero, definendo un’architettura moderna, scalabile e manutenibile nel tempo. Ho sviluppato interfacce responsive, dashboard analitiche, componenti riutilizzabili, visualizzazioni dati avanzate e flussi utente pensati per rendere più chiara, efficiente e controllabile l’interazione tra Intrum, legali esterni e studi legali gestiti.",
-            "image": "/immagini_servizi/2-2.png",
-            "logo": "/loghi-progetti/intrum.jpg",
+            "image": "/immagini_servizi/2-2.webp",
+            "logo": "/loghi-progetti/intrum.webp",
             "link": null,
             "type": {
                 "id": 1,
@@ -40,8 +40,8 @@
             "name_it": "App Bulgari",
             "description": "Bulgari’s in-store application is a global point-of-sale system used across boutiques worldwide to manage sales. It handles customer profiles and product catalogs, automatically applies each country’s tax rules, and provides advanced tools like transaction suspension, discount application, and more. In my role, I worked exclusively in support—modifying the existing application to fix bugs and integrate new feature requests. Collab netrising",
             "description_it": "Applicazione in-store utilizzata nelle boutique Bulgari a livello globale per la gestione delle vendite. Consente la gestione dei clienti e dei cataloghi prodotto, applica automaticamente le regole fiscali locali e mette a disposizione funzionalità avanzate come sospensione delle transazioni e scontistiche. Il mio contributo è stato orientato al supporto tecnico e alla risoluzione di bug. Collab netrising",
-            "image": "/immagini-progetti/bulgari.png",
-            "logo": "/loghi-progetti/bvlgari.png",
+            "image": "/immagini-progetti/bulgari.webp",
+            "logo": "/loghi-progetti/bvlgari.webp",
             "link": null,
             "type": {
                 "id": 1,
@@ -73,8 +73,8 @@
             "name_it": "I-law – Piattaforma Legal Tech",
             "description": "i-law is an enterprise web platform for the structured management of legal and procedural data. The project has been developed using a modular architecture and strict internal standards, following scalable patterns on both frontend and backend. Responsibilities: - Design and development of complex CRUD modules (Judicial Authorities, Correspondent Lawyers, Guarantors, Types, etc.) - Implementation of structured Redux patterns (slices, thunks, pagination, filters) - Management of relationships between entities (addresses, emails, phones, many-to-many associations) - Standardization of frontend architecture (hook order, slice structure, modal state, pagination pattern) - Alignment between backend/frontend contracts and handling of typed payloads",
             "description_it": "i-law è una piattaforma web aziendale per la gestione strutturata di dati legali e procedurali. Il progetto è stato sviluppato con un’architettura modulare e standard interni rigorosi, seguendo pattern scalabili sia sul frontend che sul backend. Responsabilità: - Progettazione e sviluppo di moduli CRUD complessi (Autorità Giudiziarie, Avvocati Corrispondenti, Garanti, Tipologie, ecc.) - Implementazione di pattern Redux strutturati (slices, thunks, paginazione, filtri) - Gestione delle relazioni tra entità (indirizzi, email, telefoni, associazioni molti-a-molti) - Standardizzazione dell’architettura frontend (ordine dei hook, struttura delle slice, stato delle modali, pattern di paginazione) - Allineamento tra contratti backend/frontend e gestione dei payload tipizzati",
-            "image": "/immagini-progetti/ilaw.jpg",
-            "logo": "/loghi-progetti/ilaw.jpg",
+            "image": "/immagini-progetti/ilaw.webp",
+            "logo": "/loghi-progetti/ilaw.webp",
             "link": null,
             "type": {
                 "id": 3,
@@ -106,8 +106,8 @@
             "name_it": "App Loro Piana",
             "description": "Loro Piana’s in-store application is a global point-of-sale system used across boutiques worldwide to manage sales. It handles customer profiles and product catalogs, automatically applies each country’s tax rules, and provides advanced tools like transaction suspension, discount application, and more. In my role, I worked exclusively in support—modifying the existing application to fix bugs and integrate new feature requests. Collab netrising",
             "description_it": "Applicazione in-store utilizzata nelle boutique Loro Piana di tutto il mondo per la gestione delle vendite. Il sistema gestisce profili cliente e cataloghi prodotto, applica automaticamente le regole fiscali di ogni paese e offre strumenti avanzati come la sospensione delle transazioni e l’applicazione di sconti. Il mio ruolo è stato focalizzato sul supporto, con interventi di bug fixing e integrazione di nuove funzionalità. Collab netrising",
-            "image": "/immagini-progetti/loropiana1.png",
-            "logo": "/loghi-progetti/loropiana.jpg",
+            "image": "/immagini-progetti/loropiana1.webp",
+            "logo": "/loghi-progetti/loropiana.webp",
             "link": null,
             "type": {
                 "id": 1,
@@ -139,8 +139,8 @@
             "name_it": "App Oikos - vendita vernici",
             "description": "Oikos’ in-store application is a global point-of-sale system used across boutiques worldwide to manage sales operations. It handles customer profiles and product catalogs, automatically applies each country’s tax rules, and provides advanced tools like transaction suspension, discount application, and more. In my role, I worked exclusively in support—modifying the existing application to fix bugs and integrate new feature requests. Collab netrising",
             "description_it": "Applicazione digitale innovativa dedicata ai professionisti del settore vernici e ai clienti Oikos. Permette di esplorare combinazioni di colori e finiture in tempo reale, migliorando l’esperienza di consulenza e valorizzando l’attenzione del brand verso l’innovazione e la qualità.Collab netrising",
-            "image": "/immagini-progetti/oikos.png",
-            "logo": "/loghi-progetti/oikos2.png",
+            "image": "/immagini-progetti/oikos.webp",
+            "logo": "/loghi-progetti/oikos2.webp",
             "link": null,
             "type": {
                 "id": 9,
@@ -172,9 +172,9 @@
             "name_it": "SCADA Industria 4.0",
             "description": "Il nostro software SCADA è stato sviluppato con Node.js...",
             "description_it": "Software SCADA per impianti industriali sviluppato con Node.js e protocollo MQTT per la comunicazione con PLC. Il sistema consente il monitoraggio e il controllo in tempo reale dei macchinari, la gestione degli allarmi e l’analisi storica dei dati tramite database PostgreSQL. Include anche funzionalità di controllo remoto tramite interfaccia web.",
-            "image": "/immagini-progetti/silos.png",
+            "image": "/immagini-progetti/silos.webp",
             "link": null,
-            "logo": "/loghi-progetti/itelyum.jpg",
+            "logo": "/loghi-progetti/itelyum.webp",
             "type": {
                 "id": 3,
                 "name": "fullStack"
@@ -205,8 +205,8 @@
             "name_it": "Sistema Industria 4.0 - Electron",
             "description": "Il software sviluppato da Pzeta Touch per DB Service Srl integra il controllo PLC...",
             "description_it": "Sistema Industria 4.0 sviluppato con Electron che integra il controllo PLC con un database PostgreSQL. Consente la gestione degli ordini, delle ricette e l’analisi storica dei dati di produzione, offrendo un’interfaccia desktop intuitiva e affidabile per ambienti industriali.",
-            "image": "/immagini-progetti/ceramica.png",
-            "logo": "/loghi-progetti/maxtech.jpg",
+            "image": "/immagini-progetti/ceramica.webp",
+            "logo": "/loghi-progetti/maxtech.webp",
             "link": null,
             "type": {
                 "id": 9,
@@ -238,8 +238,8 @@
             "name_it": "Gestione Inventario Andy Cards",
             "description": "A centralized web platform for managing collectible card inventory, synchronized in real time across Amazon, eBay, Cardmarket, and the Andy Cards store. The system automatically updates stock levels based on sales, returns, and new listings. I contributed through bug fixing activities and improving overall stability. Collab netrising",
             "description_it": "Piattaforma web centralizzata per la gestione dell’inventario di carte collezionabili, sincronizzata in tempo reale tra Amazon, eBay, Cardmarket e lo store Andy Cards. Il sistema aggiorna automaticamente le giacenze in base a vendite, resi e nuove inserzioni. Ho contribuito attraverso attività di bug fixing e miglioramento della stabilità generale. Collab netrising",
-            "image": "/immagini-progetti/andy.png",
-            "logo": "/loghi-progetti/ac.jpg",
+            "image": "/immagini-progetti/andy.webp",
+            "logo": "/loghi-progetti/ac.webp",
             "link": null,
             "type": {
                 "id": 3,
