@@ -2,6 +2,7 @@
 import projectsJson from "../assets/data/info_projects.json";
 import { languageState } from "../assets/js/language.js";
 import { onMagneticMove, onMagneticLeave } from "../assets/js/magnetic_cta.js";
+import { setPageMeta } from "../assets/js/seo.js";
 
 export default {
   name: "SingleProject",
@@ -110,6 +111,16 @@ export default {
         this.activeImageIndex = 0;
         this.loadProjectBySlug();
       },
+    },
+    // titolo/description più specifici del fallback generico impostato dal
+    // router — si aggiornano anche cambiando lingua, non solo al primo load
+    title(newTitle) {
+      if (!newTitle) return;
+      setPageMeta({
+        title: `${newTitle} | Portfolio – Damiano Casolari`,
+        description: this.descriptionText ? this.descriptionText.slice(0, 160) : undefined,
+        path: this.$route.fullPath,
+      });
     },
   },
 };

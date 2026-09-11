@@ -410,9 +410,13 @@ export default {
   min-height: 420px;
 
   @media (max-width: 991.98px) {
+    // "svh" (small viewport height) invece di "dvh": è statica, non cambia
+    // mentre la barra degli indirizzi si nasconde/mostra in scroll — con dvh
+    // ogni variazione faceva ridimensionare il renderer WebGL (vedi onResize
+    // via ResizeObserver più sotto), causando il flickering del globo 3D.
     height: 100vh;
-    height: 100dvh;
-    min-height: 100dvh;
+    height: 100svh;
+    min-height: 100svh;
   }
 }
 
