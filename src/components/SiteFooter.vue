@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <div class="d-flex justify-content-center bg_carbon position-relative" style="height: 80px;">
+    <div class="site_footer d-flex justify-content-center bg_carbon position-relative" style="height: 80px;">
         <nav class="example d-flex flex-column justify-content-center align-items-center text-light font_s11">
            <div> 
                Copyright &copy; Damiano Casolari

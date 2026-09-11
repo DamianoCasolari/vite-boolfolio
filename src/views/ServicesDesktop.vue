@@ -17,12 +17,12 @@
         mounted() {
             // precarica le immagini delle card espanse (fire and forget)
             [
-                '/immagini_servizi/coach.png',
+                '/immagini_servizi/1-2.png',
                 '/immagini_servizi/aem.png',
-                '/immagini_servizi/2-2.png',
-                '/immagini_servizi/2-3.png',
-                '/immagini_servizi/silos.png',
-                '/immagini-progetti/bnb.png',
+                '/immagini_servizi/2-2-1.png',
+                '/immagini_servizi/2-3-1.png',
+                '/immagini_servizi/3-3-1.png',
+                '/immagini_servizi/3-2-1.png',
             ].forEach(src => { new Image().src = src; });
 
             // aspetta che le 3 immagini idle siano caricate prima di animare le card
@@ -128,7 +128,7 @@
                                         </div>
                                     </div>
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/coach.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/1-2.png" alt="" loading="eager"/></div>
                                     </div>
                                 </div>
 
@@ -281,12 +281,12 @@
                                         </div>
                                     </div>
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/silos.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/3-3-1.png" alt="" loading="eager"/></div>
                                     </div>
                                 </div>
                                 <div class="exp_section exp_section--mid">
                                     <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini-progetti/bnb.png" alt="" loading="eager"/></div>
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/3-2-1.png" alt="" loading="eager"/></div>
                                     </div>
                                     <div class="exp_col">
                                         <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>

@@ -53,8 +53,6 @@ export default {
       intervalId: null,
 
       onScrollHandler: null,
-      arrowScrollHandler: null,
-      showArrow: false,
 
       languageState,
       techIcons,
@@ -100,15 +98,6 @@ export default {
     setupScrollEffects() {
       const section = document.querySelector(".main_container");
       if (section) appearWithScroll(section);
-
-      this.arrowScrollHandler = () => {
-        this.showArrow =
-          window.scrollY + window.innerHeight >=
-          document.documentElement.scrollHeight - 120;
-      };
-      window.addEventListener("scroll", this.arrowScrollHandler, {
-        passive: true,
-      });
 
       this.onScrollHandler = () => {
         const container = document.querySelector(".main_container");
@@ -160,8 +149,6 @@ export default {
     if (this.intervalId) clearInterval(this.intervalId);
     if (this.onScrollHandler)
       window.removeEventListener("scroll", this.onScrollHandler);
-    if (this.arrowScrollHandler)
-      window.removeEventListener("scroll", this.arrowScrollHandler);
   },
 };
 </script>
@@ -333,7 +320,7 @@ export default {
           class="scroll_element mb-4 d-flex"
           style="position: sticky; top: 86px"
         >
-          <div class="col">
+          <div class="col ico_col">
             <IcosahedronShowcase :projects="projects" />
           </div>
           <div
@@ -501,33 +488,6 @@ export default {
                 </div>
             </div>
         </div> -->
-
-    <!-- ARROW TO GO BACK  -->
-
-    <div
-      class="arrow position-fixed bottom-0 light_shadow mx-3 scale_hover_less z-3"
-      :style="{
-        right: showArrow ? '0' : '-100px',
-        opacity: showArrow ? '1' : '0',
-      }"
-      style="margin-bottom: 31px"
-    >
-      <a href="#top" class="cl_light_street">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="38"
-          height="38"
-          fill="gray"
-          class="bi bi-arrow-up-short"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"
-          />
-        </svg>
-      </a>
-    </div>
   </div>
 </template>
 
@@ -727,6 +687,21 @@ export default {
   .tech_track {
     animation: none;
     transform: none;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+// Su mobile l'icosaedro 3js va full-bleed: esce dal padding del container/col
+// e tocca i bordi dello schermo, invece di avere aria bianca ai lati.
+@media (max-width: 991.98px) {
+  .ico_col {
+    width: 100vw;
+    max-width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
   }
 }
 </style>

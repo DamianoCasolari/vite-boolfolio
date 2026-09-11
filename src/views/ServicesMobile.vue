@@ -314,14 +314,14 @@
                         </header>
                         <div class="sp_cards">
                             <div class="sp_card sp_card--phone">
-                                <img src="/immagini_servizi/oikos.png" alt="" loading="eager" />
+                                <img src="/immagini_servizi/3-3-1.png" alt="" loading="eager" />
                             </div>
                             <div class="sp_cards_col">
                                 <div class="sp_card sp_card--rect">
-                                    <img src="/immagini_servizi/silos.png" alt="" loading="eager" />
+                                    <img src="/immagini_servizi/3-3-1.png" alt="" loading="eager" />
                                 </div>
                                 <div class="sp_card sp_card--rect">
-                                    <img src="/immagini_servizi/ceramica.png" alt="" loading="eager" />
+                                    <img src="/immagini_servizi/3-2-1.png" alt="" loading="eager" />
                                 </div>
                             </div>
                         </div>

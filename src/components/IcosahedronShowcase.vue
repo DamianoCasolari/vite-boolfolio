@@ -410,8 +410,9 @@ export default {
   min-height: 420px;
 
   @media (max-width: 991.98px) {
-    height: 50vh;
-    min-height: 320px;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100dvh;
   }
 }
 
