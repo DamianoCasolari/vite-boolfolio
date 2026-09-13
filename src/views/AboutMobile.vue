@@ -7,6 +7,12 @@
                 languageState,
                 loading: true,
                 entered: false,
+                // Onda SVG (displacement + maschere SVG) solo su desktop con mouse e fuori da Safari:
+                // su iPhone il filtro viene ricalcolato in CPU a ogni frame e blocca perfino il caricamento
+                // della foto, e WebKit ignora mask-image: url(#…) sugli elementi HTML (il colore non comparirebbe).
+                heavyFx: window.innerWidth >= 992
+                    && window.matchMedia("(hover: hover) and (pointer: fine)").matches
+                    && !/^((?!chrome|chromium|android).)*safari/i.test(navigator.userAgent),
             };
         },
         mounted() {
@@ -64,7 +70,7 @@
 
         <!-- FOTO -->
         <div class="about_photo_wrap">
-            <div class="about_photo_clip">
+            <div class="about_photo_clip" :class="heavyFx ? 'is-fx' : 'is-lite'">
                 <div class="about_photo_fx">
                     <img
                         src="/immagini_about_me/foto1-3.webp"
@@ -82,7 +88,7 @@
         </div>
 
         <!-- SVG: una cresta attraversa la foto sollevandone i pixel, e scopre il colore solo su quella riga -->
-        <svg aria-hidden="true" class="about_svg_defs">
+        <svg v-if="heavyFx" aria-hidden="true" class="about_svg_defs">
             <defs>
                 <!--
                     Displacement map: grigio neutro (128 = nessuno spostamento) ovunque, con due bande
@@ -311,10 +317,14 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
 }
 
-// Leggermente più grande della cornice: dà "materiale" extra da cui pescare
-// quando la cresta sposta i pixel, così ai bordi non si aprono fessure trasparenti.
 .about_photo_fx {
     position: absolute;
+    inset: 0;
+}
+
+// Leggermente più grande della cornice: dà "materiale" extra da cui pescare
+// quando la cresta sposta i pixel, così ai bordi non si aprono fessure trasparenti.
+.is-fx .about_photo_fx {
     inset: -20px;
     filter: url(#about_crest_filter);
 }
@@ -332,16 +342,41 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 // Il layer b/n sta sopra quello a colori: la maschera decide dove scoprire il colore sotto.
 .about_photo--bw {
     filter: grayscale(1) contrast(1.05) brightness(1.02);
+}
+
+.is-fx .about_photo--bw {
     -webkit-mask-image: url(#about_wipe_mask);
     mask-image: url(#about_wipe_mask);
 }
 
+// Versione leggera (mobile/touch): stesso ritmo dell'onda ma solo CSS.
+// La maschera è una striscia alta 3.4× la foto — [b/n][bordo sfumato][colore][bordo sfumato][b/n] —
+// che scorre: il bordo risale dal basso stendendo il colore, poi un secondo bordo riporta il b/n.
+.is-lite .about_photo--bw {
+    -webkit-mask-image: linear-gradient(to bottom, #000 32.35%, transparent 35.29%, transparent 64.71%, #000 67.65%);
+    mask-image: linear-gradient(to bottom, #000 32.35%, transparent 35.29%, transparent 64.71%, #000 67.65%);
+    -webkit-mask-size: 100% 340%;
+    mask-size: 100% 340%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    animation: about_lite_wipe 12s ease-in-out 0.7s infinite both;
+}
+
+@keyframes about_lite_wipe {
+    0%, 3%    { -webkit-mask-position: 0 0%;   mask-position: 0 0%; }
+    23%, 53%  { -webkit-mask-position: 0 50%;  mask-position: 0 50%; }
+    73%, 100% { -webkit-mask-position: 0 100%; mask-position: 0 100%; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .about_photo_fx {
+    .is-fx .about_photo_fx {
         filter: none;
     }
 
-    .about_photo--bw {
+    .about_photo--bw,
+    .is-fx .about_photo--bw,
+    .is-lite .about_photo--bw {
+        animation: none;
         -webkit-mask-image: none;
         mask-image: none;
     }
