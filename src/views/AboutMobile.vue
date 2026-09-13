@@ -64,12 +64,89 @@
 
         <!-- FOTO -->
         <div class="about_photo_wrap">
-            <img
-                src="/immagini_about_me/foto1-3.webp"
-                alt="Damiano Casolari"
-                class="about_photo"
-            />
+            <div class="about_photo_clip">
+                <div class="about_photo_fx">
+                    <img
+                        src="/immagini_about_me/foto1-3.webp"
+                        alt="Damiano Casolari"
+                        class="about_photo about_photo--color"
+                    />
+                    <img
+                        src="/immagini_about_me/foto1-3.webp"
+                        alt=""
+                        aria-hidden="true"
+                        class="about_photo about_photo--bw"
+                    />
+                </div>
+            </div>
         </div>
+
+        <!-- SVG: una cresta attraversa la foto sollevandone i pixel, e scopre il colore solo su quella riga -->
+        <svg aria-hidden="true" class="about_svg_defs">
+            <defs>
+                <!--
+                    Displacement map: grigio neutro (128 = nessuno spostamento) ovunque, con due bande
+                    sfumate che scorrono dal basso verso l'alto — G alto solleva i pixel (cresta),
+                    G basso li abbassa (cavo dell'onda). Il canale R resta 128: nessuno spostamento orizzontale.
+                -->
+                <filter id="about_crest_filter" x="-10%" y="-10%" width="120%" height="120%"
+                        primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+                    <feFlood flood-color="rgb(128,128,128)" x="-0.1" y="-0.1" width="1.2" height="1.2" result="neutral" />
+
+                    <feFlood flood-color="rgb(128,235,128)" x="-0.1" y="1.08" width="1.2" height="0.06" result="crest">
+                        <animate attributeName="y" values="1.08;1.08;-0.14;-0.14" keyTimes="0;0.06;0.46;1" dur="6s" begin="0.7s" calcMode="linear" repeatCount="indefinite" />
+                    </feFlood>
+
+                    <feFlood flood-color="rgb(128,30,128)" x="-0.1" y="1.15" width="1.2" height="0.06" result="trough">
+                        <animate attributeName="y" values="1.15;1.15;-0.07;-0.07" keyTimes="0;0.06;0.46;1" dur="6s" begin="0.7s" calcMode="linear" repeatCount="indefinite" />
+                    </feFlood>
+
+                    <feMerge x="-0.1" y="-0.1" width="1.2" height="1.2" result="bandsRaw">
+                        <feMergeNode in="crest" />
+                        <feMergeNode in="trough" />
+                    </feMerge>
+
+                    <feGaussianBlur in="bandsRaw" stdDeviation="0 0.014" x="-0.1" y="-0.1" width="1.2" height="1.2" result="bands" />
+
+                    <feMerge x="-0.1" y="-0.1" width="1.2" height="1.2" result="dmap">
+                        <feMergeNode in="neutral" />
+                        <feMergeNode in="bands" />
+                    </feMerge>
+
+                    <feDisplacementMap in="SourceGraphic" in2="dmap" xChannelSelector="R" yChannelSelector="G" scale="0.065" />
+                </filter>
+
+                <!-- Bordo sfumato dei due wipe: la transizione non è netta ma si dissolve sulla cresta -->
+                <linearGradient id="about_wipe_color" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#fff" />
+                    <stop offset="0.045" stop-color="#000" />
+                    <stop offset="1" stop-color="#000" />
+                </linearGradient>
+
+                <linearGradient id="about_wipe_bw" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#000" />
+                    <stop offset="0.045" stop-color="#fff" />
+                    <stop offset="1" stop-color="#fff" />
+                </linearGradient>
+
+                <!--
+                    Maschera del layer b/n (bianco = b/n, nero = colore). Ogni onda si lascia dietro
+                    il proprio stato: la prima stende il colore risalendo, la seconda ripassa e
+                    riporta il bianco e nero. Ciclo di 12s = due passaggi della cresta (6s l'uno).
+                -->
+                <mask id="about_wipe_mask" maskContentUnits="objectBoundingBox">
+                    <rect x="-0.2" y="-0.2" width="1.4" height="1.4" fill="#fff" />
+
+                    <rect x="-0.2" y="1.06" width="1.4" height="1.4" fill="url(#about_wipe_color)">
+                        <animate attributeName="y" values="1.06;1.06;-0.16;-0.16" keyTimes="0;0.03;0.23;1" dur="12s" begin="0.7s" calcMode="linear" repeatCount="indefinite" />
+                    </rect>
+
+                    <rect x="-0.2" y="1.06" width="1.4" height="1.4" fill="url(#about_wipe_bw)">
+                        <animate attributeName="y" values="1.06;1.06;-0.16;-0.16" keyTimes="0;0.53;0.73;1" dur="12s" begin="0.7s" calcMode="linear" repeatCount="indefinite" />
+                    </rect>
+                </mask>
+            </defs>
+        </svg>
 
     </div>
     </div>
@@ -219,13 +296,55 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     padding: 1rem 1rem 1rem 0;
 }
 
+.about_svg_defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.about_photo_clip {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+// Leggermente più grande della cornice: dà "materiale" extra da cui pescare
+// quando la cresta sposta i pixel, così ai bordi non si aprono fessure trasparenti.
+.about_photo_fx {
+    position: absolute;
+    inset: -20px;
+    filter: url(#about_crest_filter);
+}
+
 .about_photo {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center ;
-    border-radius: 20px;
+    object-position: center;
     display: block;
+}
+
+// Il layer b/n sta sopra quello a colori: la maschera decide dove scoprire il colore sotto.
+.about_photo--bw {
+    filter: grayscale(1) contrast(1.05) brightness(1.02);
+    -webkit-mask-image: url(#about_wipe_mask);
+    mask-image: url(#about_wipe_mask);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about_photo_fx {
+        filter: none;
+    }
+
+    .about_photo--bw {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
 }
 
 @media screen and (min-width: 1025px) {
