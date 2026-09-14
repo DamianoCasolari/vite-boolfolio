@@ -172,7 +172,8 @@
                             <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
                         </svg>
                     </a>
-                    <button type="button" @click="toggleLang" title="Language" :aria-label="languageState.eng_lan ? 'Passa all’italiano' : 'Switch to English'"
+                    <span class="lang_wrap">
+                    <button type="button" @click="toggleLang" data-lang-toggle :aria-label="languageState.eng_lan ? 'Passa all’italiano' : 'Switch to English'"
                         class="navbar-brand border-0 bg-transparent d-flex align-items-center justify-content-start mx-0 p-0 logo_filter lighter scale_hover">
                         <svg v-if="!languageState.eng_lan" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="40" fill="#212529" viewBox="0 -960 960 960">
                             <path d="M160-120v-66.67h640V-120H160Zm154-146.67q-64 0-109-44.66Q160-356 160-420v-420h653.33q27.5 0 47.09 19.58Q880-800.83 880-773.33v146.66q0 27.5-19.58 47.09Q840.83-560 813.33-560h-90.66v140q0 64-45 108.67-45 44.66-109 44.66H314Zm0-506.66h342-429.33H314Zm408.67 146.66h90.66v-146.66h-90.66v146.66ZM568.65-333.33q35.02 0 61.18-26.17Q656-385.67 656-420v-353.33H398V-746l71.33 58q1.34 1.33 8.67 17.33V-514q0 9.07-6.67 15.87-6.66 6.8-16.66 6.8h-154q-10 0-16.67-6.8-6.67-6.8-6.67-15.87v-156.67q0-3.33 8.67-17.33l72-58v-27.33H226.67V-420q0 34.33 26.5 60.5T314-333.33h254.65ZM358-773.33h40-40Z" />
@@ -181,6 +182,9 @@
                             <path d="M480-80 80-683.33q85.67-72 187.5-114.34Q369.33-840 480-840t212.5 42.17q101.83 42.16 187.5 114.5L480-80Zm0-119.33L791.33-668q-69.66-46.33-148.44-75.83-78.79-29.5-162.89-29.5-84.36 0-162.85 29.5-78.48 29.5-148.48 75.83L480-199.33Zm-106.63-364q23.63 0 40.13-16.54 16.5-16.54 16.5-40.17 0-23.63-16.54-40.13-16.54-16.5-40.17-16.5-23.62 0-40.12 16.54-16.5 16.54-16.5 40.17 0 23.63 16.54 40.13 16.53 16.5 40.16 16.5Zm106.67 210q23.63 0 40.13-16.54 16.5-16.54 16.5-40.17 0-23.63-16.54-40.13-16.54-16.5-40.17-16.5-23.63 0-40.13 16.54-16.5 16.54-16.5 40.17 0 23.63 16.54 40.13 16.54 16.5 40.17 16.5Zm1.96 154Z" />
                         </svg>
                     </button>
+                        <!-- tooltip su hover e su focus da tastiera; per i lettori di schermo vale già aria-label -->
+                        <span class="lang_tip" aria-hidden="true">{{ languageState.eng_lan ? 'Passa all’italiano' : 'Switch to English' }}</span>
+                    </span>
                     <button type="button" @click="openCookieSettings"
                         :title="languageState.eng_lan ? 'Manage cookies' : 'Gestisci cookie'"
                         :aria-label="languageState.eng_lan ? 'Manage cookies' : 'Gestisci cookie'"
@@ -295,6 +299,57 @@
     }
 
     .nav-link:hover span { opacity: 1; }
+
+    // Tooltip del cambio lingua: sta accanto al pulsante (non dentro) così non eredita
+    // l'opacità ridotta né l'ingrandimento al passaggio del mouse delle icone.
+    .lang_wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .lang_tip {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 50%;
+        transform: translate(-50%, -4px);
+        background: #1c1c1c;
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        padding: 6px 12px;
+        border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+        z-index: 10;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: #1c1c1c;
+            border-radius: 1px;
+            transform: translateX(-50%) rotate(45deg);
+        }
+    }
+
+    // :focus-visible solo da tastiera: dopo un clic col mouse il tooltip non resta acceso
+    .lang_wrap:hover .lang_tip,
+    .lang_wrap:has(:focus-visible) .lang_tip {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .lang_tip { transition: none; }
+    }
 
     // policy e 404 hanno fondo scuro: l'header traslucido diventa grigio e serve più contrasto
     .header_on_dark_page .nav-link span:not(.selected_link) { opacity: 0.75; }
