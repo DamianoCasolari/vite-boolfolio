@@ -37,6 +37,10 @@ export default {
                     <span class="text-white font_s9"> Privacy Policy</span>
                 </router-link>
                 <span class="font_s9"> · </span>
+                <router-link :to="{ name: 'accessibility' }" class="text-decoration-none">
+                    <span class="text-white font_s9">{{ languageState.eng_lan ? 'Accessibility' : 'Accessibilità' }}</span>
+                </router-link>
+                <span class="font_s9"> · </span>
                 <button type="button" class="footer_cookie_settings_btn text-white font_s9" @click="openCookieSettings">
                     {{ languageState.eng_lan ? 'Manage cookies' : 'Gestisci cookie' }}
                 </button>

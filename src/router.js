@@ -54,6 +54,15 @@ const router = createRouter({
       },
     },
     {
+      path: "/accessibility",
+      name: "accessibility",
+      component: () => import("./views/AccessibilityStatement.vue"),
+      meta: {
+        title: "Dichiarazione di accessibilità | Damiano Casolari",
+        description: "Come è stato progettato il sito di Damiano Casolari per essere accessibile: linee guida WCAG 2.1, verifiche effettuate, limiti noti e contatto per segnalare problemi.",
+      },
+    },
+    {
       path: "/projects/:slug",
       name: "single-project",
       component: () => import("./views/SingleProject.vue"),

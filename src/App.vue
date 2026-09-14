@@ -45,7 +45,7 @@
     <main id="main-content" tabindex="-1">
         <router-view></router-view>
     </main>
-    <SiteFooter v-if="isReady && $route.name !== 'services' && $route.name !== 'contacts' && $route.name !== 'about' && $route.name !== 'privacyPolicy' && $route.name !== 'cookiePolicy' && $route.name !== 'PageNotFound'" />
+    <SiteFooter v-if="isReady && $route.name !== 'services' && $route.name !== 'contacts' && $route.name !== 'about' && $route.name !== 'privacyPolicy' && $route.name !== 'cookiePolicy' && $route.name !== 'accessibility' && $route.name !== 'PageNotFound'" />
     <CookieBanner v-if="isReady" />
     <OfferToast />
     <SiteWelcomeModal />

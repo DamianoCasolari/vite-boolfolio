@@ -5,6 +5,7 @@ import { languageState, cookieBannerDismissed } from "../assets/js/language.js";
 const MOBILE_BREAKPOINT = 767;
 const MOBILE_BOTTOM_OFFSET = 20; // deve combaciare col "bottom" di .offer_toast su mobile (CSS)
 const DOCK_GAP = 12; // spazio tra la card e il footer quando è "agganciata"
+const HIGHLIGHT_DELAY = 3000; // dopo quanto dalla comparsa l'offerta fa il suo unico "richiamo"
 const WA_LINK =
     "https://wa.me/393477952189?text=Buongiorno%2C%0Asono%20%5BNome%5D%20e%20vi%20contatto%20per%20avere%20informazioni%20sulla%20realizzazione%20di%20un%20sito%20web%20per%20la%20mia%20attivit%C3%A0.%0AResto%20in%20attesa%20di%20un%20vostro%20riscontro%2C%20grazie.";
 
@@ -21,6 +22,7 @@ export default {
             docked: false,
             dockTop: 0,
             waLink: WA_LINK,
+            highlight: false,
         };
     },
     computed: {
@@ -36,6 +38,7 @@ export default {
             if (this.$route.name === "single-project") return "none"; // ha già la sua CTA WA sotto la descrizione
             if (this.$route.name === "privacyPolicy") return "none"; // non ha senso contattare via WA da qui
             if (this.$route.name === "cookiePolicy") return "none"; // idem
+            if (this.$route.name === "accessibility") return "none"; // idem
             return "wa";
         },
         // Su Contatti c'è già il form: la CTA WA si presenta come alternativa,
@@ -138,6 +141,13 @@ export default {
         },
         visible(isVisible) {
             if (isVisible) this.$nextTick(this.updateDock);
+            // un solo richiamo qualche secondo dopo la comparsa, solo per l'offerta:
+            // si riarma soltanto se la card sparisce e ricompare
+            clearTimeout(this._highlightTimer);
+            this.highlight = false;
+            if (isVisible && this.mode === "offer") {
+                this._highlightTimer = setTimeout(() => { this.highlight = true; }, HIGHLIGHT_DELAY);
+            }
         },
     },
     mounted() {
@@ -163,6 +173,7 @@ export default {
         }
     },
     unmounted() {
+        clearTimeout(this._highlightTimer);
         window.removeEventListener("scroll", this.handleScrollOrResize);
         window.removeEventListener("resize", this.handleScrollOrResize);
         if (this._modalEl) {
@@ -179,7 +190,7 @@ export default {
             v-if="visible"
             ref="toastEl"
             class="offer_toast"
-            :class="{ offer_toast__wa: mode === 'wa' }"
+            :class="{ offer_toast__wa: mode === 'wa', offer_toast__highlight: highlight }"
             :style="docked ? { position: 'absolute', top: dockTop + 'px', bottom: 'auto' } : null"
             role="status"
             aria-live="polite"
@@ -305,6 +316,57 @@ export default {
 
 .offer_toast_close:hover {
     color: #fff;
+}
+
+/* Richiamo una tantum qualche secondo dopo la comparsa: un riflesso di luce attraversa
+   la card e il badge fa un piccolo rimbalzo. Non si ripete: niente movimento continuo. */
+.offer_toast__highlight {
+    animation: offer_nudge 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.offer_toast__highlight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.18) 50%, transparent 65%);
+    background-size: 250% 100%;
+    background-position: 130% 0;
+    animation: offer_sheen 1.3s ease-out 0.1s forwards;
+}
+
+.offer_toast__highlight .offer_toast_badge {
+    animation: offer_badge_pop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
+}
+
+@keyframes offer_nudge {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.035); }
+    100% { transform: scale(1); }
+}
+
+@keyframes offer_sheen {
+    from { background-position: 130% 0; }
+    to   { background-position: -30% 0; }
+}
+
+@keyframes offer_badge_pop {
+    0%   { transform: scale(1) rotate(0); }
+    35%  { transform: scale(1.18) rotate(-8deg); }
+    70%  { transform: scale(0.96) rotate(3deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .offer_toast__highlight,
+    .offer_toast__highlight .offer_toast_badge {
+        animation: none;
+    }
+
+    .offer_toast__highlight::after {
+        display: none;
+    }
 }
 
 .toast_slide-enter-active {

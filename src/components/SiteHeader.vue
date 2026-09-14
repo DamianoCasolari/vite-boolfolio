@@ -130,11 +130,11 @@
 </script>
 
 <template>
-    <div class="shadow_line" :style="{ opacity: shadowLineOpacity }" v-if="$route.name !== 'privacyPolicy' && $route.name !== 'cookiePolicy' && $route.name !== 'PageNotFound'"></div>
+    <div class="shadow_line" :style="{ opacity: shadowLineOpacity }" v-if="$route.name !== 'privacyPolicy' && $route.name !== 'cookiePolicy' && $route.name !== 'accessibility' && $route.name !== 'PageNotFound'"></div>
     <header>
         <nav class="navbar navbar-expand-md shadow-sm position-fixed w-100 top-0 z_index header_shadow bg_color"
             :aria-label="languageState.eng_lan ? 'Site bar' : 'Barra del sito'"
-            :class="[headerScroll ? 'header_on' : 'header_off', { 'mob_menu_active': mobileMenuOpen, 'header_on_dark_page': ['privacyPolicy', 'cookiePolicy', 'PageNotFound'].includes($route.name) }]">
+            :class="[headerScroll ? 'header_on' : 'header_off', { 'mob_menu_active': mobileMenuOpen, 'header_on_dark_page': ['privacyPolicy', 'cookiePolicy', 'accessibility', 'PageNotFound'].includes($route.name) }]">
             <div class="container d-flex justify-content-between align-items-center">
 
                 <!-- Links sinistra -->
