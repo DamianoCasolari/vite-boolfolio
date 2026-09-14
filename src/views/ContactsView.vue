@@ -148,13 +148,14 @@
 
 <template>
     <div class="bg_snow contacts d-flex flex-wrap align-items-center justify-content-center position-relative">
+        <h1 class="visually-hidden">{{ languageState.eng_lan ? 'Contact – Damiano Casolari, web developer in Ravenna' : 'Contatti – Damiano Casolari, web developer a Ravenna' }}</h1>
 
         <!-- LOADER -->
         <div v-if="loading" class="contacts_loader">
             <div class="dc-loader" role="status" :aria-label="languageState.eng_lan ? 'Sending...' : 'Invio in corso...'">
                 <div class="dc-loader__glow"></div>
                 <div class="dc-loader__logo-wrap">
-                    <img src="/dc-loader2.png" alt="DC Logo" class="dc-loader__logo" />
+                    <img src="/dc-loader2.png" alt="" class="dc-loader__logo" />
                 </div>
                 <span class="dc-loader__pixel dc-loader__pixel--1"></span>
                 <span class="dc-loader__pixel dc-loader__pixel--2"></span>
@@ -170,9 +171,9 @@
 
                 <!-- LEFT — form -->
                 <div class="contact_form_col">
-                    <h4 class="fw-semibold mb-3" v-if="!success && !loading">
+                    <h2 class="h4 fw-semibold mb-3" v-if="!success && !loading">
                         {{ languageState.eng_lan ? "Contact me" : "Contattami" }}
-                    </h4>
+                    </h2>
 
                     <form @submit.prevent="submitForm()" class="d-flex flex-column"
                         v-if="!success && !loading">
@@ -319,11 +320,14 @@
 
         &__sub {
             font-size: clamp(0.9rem, 1.5vw, 1.05rem);
-            color: rgba(28, 28, 28, 0.55);
+            color: rgba(28, 28, 28, 0.66);
             line-height: 1.6;
             margin-bottom: 0;
         }
     }
+
+    // blu standard di Bootstrap un filo più scuro: sul fondo grigio chiaro arriva al contrasto minimo
+    .form-check-label a { color: #0a58ca; }
 
     .contact_form_col {
         flex: 0 0 420px;

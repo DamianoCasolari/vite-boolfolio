@@ -27,8 +27,8 @@
 
         <div class="privacy_policy_container vh100_100px d-flex justify-content-center align-items-center flex-column">
 
-        <h2 class="text-white z-3 position-relative text-center h2">{{ languageState.eng_lan ? 'Privacy Policy' : 'Politica sulla privacy' }}</h2>
-       <div class="text-white z-3 position-relative text-center privacy-policy h-25-">
+        <h1 class="text-white z-3 position-relative text-center h2">{{ languageState.eng_lan ? 'Privacy Policy' : 'Politica sulla privacy' }}</h1>
+       <div class="text-white z-3 position-relative text-center privacy-policy h-25-" tabindex="0" role="region" :aria-label="languageState.eng_lan ? 'Privacy policy text' : 'Testo della privacy policy'">
 
             <div>
                 {{ languageState.eng_lan

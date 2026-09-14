@@ -57,6 +57,8 @@
                     };
                     body.addEventListener('scroll', onScroll, { passive: true });
                     this._detachScroll = () => body.removeEventListener('scroll', onScroll);
+                    // il focus passa al pulsante di chiusura: da tastiera si entra subito nella card aperta
+                    this.$el.querySelector('.service_card.is-expanded .card_close')?.focus();
                 });
             },
             closeCard() {
@@ -64,7 +66,10 @@
                 if (body) body.scrollTop = 0;
                 this._detachScroll?.();
                 this._detachScroll = null;
+                const closed = this.selectedCard;
                 this.selectedCard = null;
+                // il focus torna sulla card appena chiusa invece di perdersi in cima alla pagina
+                this.$nextTick(() => { if (closed !== null) this.$el.querySelectorAll('.service_card')[closed]?.focus(); });
                 this.ctaVisible = false;
             },
         },
@@ -75,7 +80,7 @@
     <div class="services_page">
         <div class="services_blob" aria-hidden="true"></div>
         <div class="container h-100">
-            <div class="services_grid" :class="{ entered, ready, 'has-selection': selectedCard !== null }">
+            <div class="services_grid" :class="{ entered, ready, 'has-selection': selectedCard !== null }" @keydown.esc="selectedCard !== null && closeCard()">
 
                 <!-- ─── CARD 0 — Landing Page ──────────────────────────────── -->
                 <div class="service_card service_card--light"
@@ -83,7 +88,12 @@
                         'is-expanded': selectedCard === 0,
                         'is-collapsed': selectedCard !== null && selectedCard !== 0,
                     }"
-                    @click="selectCard(0)">
+                    @click="selectCard(0)"
+                    :role="selectedCard !== 0 ? 'button' : null"
+                    :tabindex="selectedCard !== 0 ? 0 : null"
+                    :aria-expanded="selectedCard !== 0 ? 'false' : null"
+                    @keydown.enter.self.prevent="selectCard(0)"
+                    @keydown.space.self.prevent="selectCard(0)">
 
                     <template v-if="selectedCard !== 0">
                         <div class="card_idle_bg" aria-hidden="true">
@@ -99,10 +109,10 @@
                     </template>
 
                     <template v-else>
-                        <button class="card_close" @click.stop="closeCard" aria-label="Chiudi">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        <button class="card_close" @click.stop="closeCard" :aria-label="languageState.eng_lan ? 'Close' : 'Chiudi'">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
                         </button>
-                        <div class="card_expanded_body" ref="cardBody">
+                        <div class="card_expanded_body" ref="cardBody" tabindex="0" role="region" :aria-label="languageState.eng_lan ? 'Service details' : 'Dettagli del servizio'">
                             <div class="exp_inner">
                                 <div class="exp_section exp_section--top">
                                     <div class="exp_col">
@@ -157,7 +167,12 @@
                         'is-expanded': selectedCard === 1,
                         'is-collapsed': selectedCard !== null && selectedCard !== 1,
                     }"
-                    @click="selectCard(1)">
+                    @click="selectCard(1)"
+                    :role="selectedCard !== 1 ? 'button' : null"
+                    :tabindex="selectedCard !== 1 ? 0 : null"
+                    :aria-expanded="selectedCard !== 1 ? 'false' : null"
+                    @keydown.enter.self.prevent="selectCard(1)"
+                    @keydown.space.self.prevent="selectCard(1)">
 
                     <template v-if="selectedCard !== 1">
                         <div class="card_idle_bg" aria-hidden="true">
@@ -173,10 +188,10 @@
                     </template>
 
                     <template v-else>
-                        <button class="card_close" @click.stop="closeCard" aria-label="Chiudi">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        <button class="card_close" @click.stop="closeCard" :aria-label="languageState.eng_lan ? 'Close' : 'Chiudi'">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
                         </button>
-                        <div class="card_expanded_body" ref="cardBody">
+                        <div class="card_expanded_body" ref="cardBody" tabindex="0" role="region" :aria-label="languageState.eng_lan ? 'Service details' : 'Dettagli del servizio'">
                             <div class="exp_inner">
 
                                 <!-- S1: testo sinistra · img1 destra -->
@@ -238,7 +253,12 @@
                         'is-expanded': selectedCard === 2,
                         'is-collapsed': selectedCard !== null && selectedCard !== 2,
                     }"
-                    @click="selectCard(2)">
+                    @click="selectCard(2)"
+                    :role="selectedCard !== 2 ? 'button' : null"
+                    :tabindex="selectedCard !== 2 ? 0 : null"
+                    :aria-expanded="selectedCard !== 2 ? 'false' : null"
+                    @keydown.enter.self.prevent="selectCard(2)"
+                    @keydown.space.self.prevent="selectCard(2)">
 
                     <template v-if="selectedCard !== 2">
                         <div class="card_idle_bg" aria-hidden="true">
@@ -254,10 +274,10 @@
                     </template>
 
                     <template v-else>
-                        <button class="card_close" @click.stop="closeCard" aria-label="Chiudi">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        <button class="card_close" @click.stop="closeCard" :aria-label="languageState.eng_lan ? 'Close' : 'Chiudi'">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
                         </button>
-                        <div class="card_expanded_body" ref="cardBody">
+                        <div class="card_expanded_body" ref="cardBody" tabindex="0" role="region" :aria-label="languageState.eng_lan ? 'Service details' : 'Dettagli del servizio'">
                             <div class="exp_inner">
                                 <div class="exp_section exp_section--top">
                                     <div class="exp_col">
@@ -575,18 +595,19 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 .exp_eyebrow {
     display: block; font-size: 0.6rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.38; margin-bottom: 0.85rem;
+    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.64; margin-bottom: 0.85rem;
 }
 .exp_title {
     font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700;
     letter-spacing: -0.04em; line-height: 1.06; margin: 0 0 0.85rem;
 }
 .exp_desc {
-    font-size: 0.88rem; line-height: 1.7; opacity: 0.55; margin: 0 0 1.6rem; max-width: 38ch;
+    font-size: 0.88rem; line-height: 1.7; opacity: 0.64; margin: 0 0 1.6rem; max-width: 38ch;
 }
 
 .green_text { color: #25D366; font-weight: 700; }
 .green_text_light { color: #1cb254; font-weight: 700; }
+.service_card--light .green_text_light { color: #137a3a; }
 
 // ─── CALL BLOCK ───────────────────────────────────────────────────────────────
 
@@ -598,16 +619,21 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 .exp_call_badge {
     display: block; font-size: 0.55rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.38; margin-bottom: 0.45rem;
+    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.66; margin-bottom: 0.45rem;
 }
-.exp_call_text { font-size: 1rem; line-height: 1.65; opacity: 0.78; margin: 0; }
+.exp_call_text {
+    font-size: 1rem; line-height: 1.65; margin: 0;
+    // trasparenza sul colore invece che sul blocco: il verde "Call gratuita" resta pieno e leggibile
+    .service_card--light & { color: rgba(28, 28, 28, 0.78); }
+    .service_card--dark  & { color: rgba(245, 244, 242, 0.78); }
+}
 
 // ─── DIVIDER ──────────────────────────────────────────────────────────────────
 
 .exp_divider { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.5rem; }
 .exp_divider_label {
     font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em;
-    text-transform: uppercase; opacity: 0.38; white-space: nowrap; flex-shrink: 0;
+    text-transform: uppercase; opacity: 0.64; white-space: nowrap; flex-shrink: 0;
 }
 .exp_divider_line { flex: 1; height: 1px; background: currentColor; opacity: 0.12; }
 
@@ -625,7 +651,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .exp_step_body {
     display: flex; flex-direction: column; gap: 0.18rem;
     strong { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
-    span   { font-size: 0.8rem; line-height: 1.55; opacity: 0.56; }
+    span   { font-size: 0.8rem; line-height: 1.55; opacity: 0.64; }
 }
 
 // ─── EXTRAS ───────────────────────────────────────────────────────────────────
@@ -633,7 +659,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .exp_extras { margin-bottom: 3rem; }
 .exp_extras_label {
     display: block; font-size: 0.55rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.35; margin-bottom: 0.8rem;
+    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.64; margin-bottom: 0.8rem;
 }
 .exp_pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
 .exp_pill {

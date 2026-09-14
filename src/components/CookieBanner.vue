@@ -1,12 +1,12 @@
 <template>
     <transition name="cookie-slide">
-        <div v-if="showBanner" ref="bannerEl" class="cookie-banner">
+        <div v-if="showBanner" ref="bannerEl" class="cookie-banner" role="dialog" aria-modal="false" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-text">
 
             <div class="cookie-content  ">
 
                 <div class="cookie-text ">
-                    <h4 class="text-white">Cookie</h4>
-                    <p class="text-white">
+                    <h2 id="cookie-banner-title" class="text-white cookie-title">Cookie</h2>
+                    <p id="cookie-banner-text" class="text-white">
                        {{!languageState.eng_lan ?  `Questo sito utilizza cookie analytics per migliorare l’esperienza utente.
                         Per maggiori informazioni, consulta la nostra` : `This website uses analytics cookies to enhance the user experience. For more information, please refer to our`}}
                         <router-link :to="{ name: 'cookiePolicy' }" class="text-decoration-none">
@@ -16,12 +16,12 @@
                 </div>
 
                 <div class="cookie-actions">
-                    <button class="btn-reject" @click="onReject">
-                        Rifiuta
+                    <button ref="rejectBtn" class="btn-reject" @click="onReject">
+                        {{ languageState.eng_lan ? 'Reject' : 'Rifiuta' }}
                     </button>
 
                     <button class="btn-accept" @click="onAccept">
-                        Accetta
+                        {{ languageState.eng_lan ? 'Accept' : 'Accetta' }}
                     </button>
                 </div>
 
@@ -38,6 +38,7 @@
 
     const showBanner = ref(false);
     const bannerEl = ref(null);
+    const rejectBtn = ref(null);
     let bannerResizeObserver = null;
 
     // Il banner è fisso sopra al contenuto: pubblica il proprio bordo inferiore
@@ -89,6 +90,8 @@
         if (val) {
             showBanner.value = true;
             reopenCookieBanner.value = false;
+            // riaperto su richiesta: il focus va sulle scelte, così da tastiera si decide subito
+            nextTick(() => rejectBtn.value?.focus());
         }
     });
 
@@ -133,7 +136,7 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     }
 
-    .cookie-text h4 {
+    .cookie-text .cookie-title {
         font-size: 15px;
         margin-bottom: 6px;
         font-weight: 600;

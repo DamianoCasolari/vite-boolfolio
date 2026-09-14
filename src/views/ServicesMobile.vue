@@ -13,6 +13,11 @@
                 panelLoading: false,
             };
         },
+        computed: {
+            panelTitle() {
+                return ['Landing Page', this.languageState.eng_lan ? 'Showcase Website' : 'Sito Vetrina', this.languageState.eng_lan ? 'Website Restyling' : 'Restyling del Sito'][this.selectedCard] || '';
+            },
+        },
         methods: {
             onMagneticMove,
             onMagneticLeave,
@@ -20,6 +25,7 @@
             selectCard(i) {
                 if (!this.ready) return;
                 this.selectedCard = i;
+                this._lastCard = i;
                 this.panelLoading = true;
                 this.ctaVisible = false;
                 document.body.style.overflow = "hidden";
@@ -34,6 +40,8 @@
                         b.addEventListener('scroll', onScroll, { passive: true });
                         this._detachScroll = () => b.removeEventListener('scroll', onScroll);
                     }
+                    // il focus entra nel pannello (pulsante chiudi), come in una finestra di dialogo
+                    this.$refs.srvClose?.focus();
                     setTimeout(() => { this.panelLoading = false; }, 480);
                 });
             },
@@ -44,6 +52,8 @@
                 this._detachScroll?.();
                 this._detachScroll = null;
                 document.body.style.overflow = "";
+                // il focus torna sulla card da cui si era aperto il pannello
+                this.$nextTick(() => this.$el.querySelectorAll('.mob_card')[this._lastCard]?.focus());
             },
         },
         mounted() {
@@ -90,7 +100,7 @@
 
         <div class="mob_services_inner">
         <!-- CARD 1 -->
-        <div class="mob_card mob_card--light" @click="selectCard(0)">
+        <div class="mob_card mob_card--light" role="button" tabindex="0" @click="selectCard(0)" @keydown.enter.prevent="selectCard(0)" @keydown.space.prevent="selectCard(0)">
             <span class="mob_num" aria-hidden="true">01</span>
             <div class="mob_card__body">
                 <h2 class="mob_title">Landing Page</h2>
@@ -102,7 +112,7 @@
         </div>
 
         <!-- CARD 2 -->
-        <div class="mob_card mob_card--dark" @click="selectCard(1)">
+        <div class="mob_card mob_card--dark" role="button" tabindex="0" @click="selectCard(1)" @keydown.enter.prevent="selectCard(1)" @keydown.space.prevent="selectCard(1)">
             <span class="mob_num" aria-hidden="true">02</span>
             <div class="mob_card__body">
                 <h2 class="mob_title">{{ languageState.eng_lan ? 'Showcase Website' : 'Sito Vetrina' }}</h2>
@@ -114,7 +124,7 @@
         </div>
 
         <!-- CARD 3 -->
-        <div class="mob_card mob_card--light" @click="selectCard(2)">
+        <div class="mob_card mob_card--light" role="button" tabindex="0" @click="selectCard(2)" @keydown.enter.prevent="selectCard(2)" @keydown.space.prevent="selectCard(2)">
             <span class="mob_num" aria-hidden="true">03</span>
             <div class="mob_card__body">
                 <h2 class="mob_title">{{ languageState.eng_lan ? 'Website Restyling' : 'Restyling del Sito' }}</h2>
@@ -131,10 +141,14 @@
             <div
                 v-if="selectedCard !== null"
                 class="srv_panel"
+                role="dialog"
+                aria-modal="true"
+                :aria-label="panelTitle"
+                @keydown.esc="closePanel"
                 :class="selectedCard === 1 ? 'srv_panel--dark' : 'srv_panel--light'"
             >
-                <button class="srv_close" @click.stop="closePanel" aria-label="Chiudi">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <button ref="srvClose" class="srv_close" @click.stop="closePanel" :aria-label="languageState.eng_lan ? 'Close' : 'Chiudi'">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M18 6L6 18M6 6l12 12"/>
                     </svg>
                 </button>
@@ -145,7 +159,7 @@
                         <div class="dc-loader" role="status" aria-label="Loading">
                             <div class="dc-loader__glow"></div>
                             <div class="dc-loader__logo-wrap">
-                                <img src="/dc-loader2.png" alt="DC Logo" class="dc-loader__logo" />
+                                <img src="/dc-loader2.png" alt="" class="dc-loader__logo" />
                             </div>
                             <span class="dc-loader__pixel dc-loader__pixel--1"></span>
                             <span class="dc-loader__pixel dc-loader__pixel--2"></span>
@@ -156,7 +170,7 @@
                     </div>
                 </Transition>
 
-                <div class="srv_body" ref="srvBody" :class="{ 'panel-ready': !panelLoading }">
+                <div class="srv_body" ref="srvBody" tabindex="0" :class="{ 'panel-ready': !panelLoading }">
 
                     <!-- ════════════════════════════════════════
                          SERVICE 1 — SITO VETRINA
@@ -596,7 +610,7 @@ $gap: 10px;    // gap tra card
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.38;
+    opacity: 0.64;
     margin-bottom: 1rem;
 }
 
@@ -611,7 +625,7 @@ $gap: 10px;    // gap tra card
 .sp_desc {
     font-size: clamp(0.85rem, 3.4vw, 0.95rem);
     line-height: 1.7;
-    opacity: 0.54;
+    opacity: 0.64;
     max-width: 36ch;
     margin: 0;
 }
@@ -694,7 +708,7 @@ $gap: 10px;    // gap tra card
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.38;
+    opacity: 0.64;
     white-space: nowrap;
     flex-shrink: 0;
 }

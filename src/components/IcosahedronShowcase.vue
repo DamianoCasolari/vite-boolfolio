@@ -1,5 +1,6 @@
 <script>
 import * as THREE from "three";
+import { languageState } from "../assets/js/language.js";
 
 const MOBILE_BREAKPOINT = 992; // stesso breakpoint bootstrap "lg" usato nel resto del sito
 const RADIUS = 2.1;
@@ -31,6 +32,7 @@ export default {
     return {
       isMobile: false,
       hovering: false,
+      languageState,
     };
   },
 
@@ -427,13 +429,48 @@ export default {
     <canvas
       ref="icoCanvas"
       class="ico-showcase__canvas"
+      aria-hidden="true"
       @pointermove="onPointerMove"
       @click="onClick"
     ></canvas>
+    <!-- Il 3D non è leggibile da tastiera né da lettore di schermo: stessi progetti come elenco di link.
+         Invisibile a schermo, ogni link compare come etichetta in alto a sinistra quando riceve il focus. -->
+    <nav class="ico-a11y" :aria-label="languageState.eng_lan ? 'Projects' : 'Progetti'">
+      <ul>
+        <li v-for="p in projects" :key="p.slug">
+          <router-link
+            class="visually-hidden-focusable ico-a11y__link"
+            :to="{ name: 'single-project', params: { slug: p.slug } }"
+          >
+            {{ languageState.eng_lan ? p.name : (p.name_it || p.name) }}
+          </router-link>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.ico-a11y ul {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 2;
+}
+
+.ico-a11y__link:focus {
+  display: inline-block;
+  background: #1c1c1c;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
 .ico-showcase {
   position: relative;
   width: 100%;

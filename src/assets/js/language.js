@@ -4,6 +4,8 @@ export const languageState = reactive({
     eng_lan: false,
     toggle() {
         this.eng_lan = !this.eng_lan;
+        // i lettori di schermo scelgono lingua e pronuncia da <html lang>
+        document.documentElement.lang = this.eng_lan ? 'en' : 'it';
     }
 });
 

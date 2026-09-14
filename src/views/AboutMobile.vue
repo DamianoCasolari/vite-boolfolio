@@ -36,7 +36,7 @@
         <div class="dc-loader" role="status" aria-label="Loading">
             <div class="dc-loader__glow"></div>
             <div class="dc-loader__logo-wrap">
-                <img src="/dc-loader2.png" alt="DC Logo" class="dc-loader__logo" />
+                <img src="/dc-loader2.png" alt="" class="dc-loader__logo" />
             </div>
             <span class="dc-loader__pixel dc-loader__pixel--1"></span>
             <span class="dc-loader__pixel dc-loader__pixel--2"></span>
@@ -267,7 +267,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: 0.66;
     margin-bottom: 1.1rem;
 }
 

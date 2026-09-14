@@ -23,8 +23,8 @@ export default {
 </script>
 
 <template>
-    <div class="site_footer d-flex justify-content-center bg_carbon position-relative" style="height: 80px;">
-        <nav class="example d-flex flex-column justify-content-center align-items-center text-light font_s11">
+    <footer class="site_footer d-flex justify-content-center bg_carbon position-relative" style="height: 80px;">
+        <nav class="example d-flex flex-column justify-content-center align-items-center text-light font_s11" :aria-label="languageState.eng_lan ? 'Legal information' : 'Informazioni legali'">
            <div>
                Copyright &copy; Damiano Casolari
            </div>
@@ -42,7 +42,7 @@ export default {
                 </button>
             </div>
         </nav>
-    </div>
+    </footer>
 </template>
 
 <style lang="scss" scoped>

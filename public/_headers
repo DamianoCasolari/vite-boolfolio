@@ -1,0 +1,16 @@
+# Header di sicurezza applicati da Netlify a tutte le pagine.
+# La CSP elenca le sole fonti esterne usate dal sito: Google Analytics (dopo il consenso),
+# Cloudflare Web Analytics (script iniettato da Cloudflare), Google Fonts e Formspree
+# (invio del modulo contatti). Se aggiungi un servizio esterno (mappe, video, chat…)
+# va aggiunto qui, altrimenti il browser lo blocca.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://*.googletagmanager.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://cloudflareinsights.com https://formspree.io; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+
+# Solo per la home: il browser inizia a scaricare la foto principale mentre legge ancora l'HTML,
+# invece di scoprirla dopo aver scaricato ed eseguito il JavaScript della home.
+/
+  Link: </photo.webp>; rel=preload; as=image; fetchpriority=high

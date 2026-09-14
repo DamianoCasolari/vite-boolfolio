@@ -200,8 +200,8 @@ export default {
         <div :class="['col-lg-6', 'z_inde49', { ghost3: revealFirstLoad }]">
           <img
             ref="heroPhoto"
-            src="../assets/img/photo.webp"
-            alt="DC Logo"
+            src="/photo.webp"
+            :alt="languageState.eng_lan ? 'Damiano Casolari, web developer in Ravenna' : 'Damiano Casolari, web developer a Ravenna'"
             class="rounded-4 z_inde49 main_photo shadow"
             loading="eager"
             decoding="sync"
@@ -216,7 +216,7 @@ export default {
             <span class="title_size fw-semibold dc_sign" style="color: #393939">
               <img
                 src="/public/f2dc.svg"
-                alt="sign of dc"
+                alt=""
                 style="height: 7.8em"
                 :class="{ sign_draw_anim: revealFirstLoad }"
               />
@@ -243,7 +243,7 @@ export default {
                  <!-- ex Siti web -->
                   <span
                     class="word1 wisteria position-relative is-visible"
-                    style="color: #acacac"
+                    style="color: #8a8a8a"
                     ><b class="fw-normal">{{ languageState.eng_lan
                       ? "I build"
                       : "Realizzo" }}</b> Landing  page</span
@@ -251,13 +251,13 @@ export default {
                   <!-- ex Software -->
                   <span
                     class="word2 wisteria position-relative"
-                    style="color: #959595"
+                    style="color: #8a8a8a"
                     ><b class="fw-normal">{{ languageState.eng_lan ? "I create" : "Creo" }}</b> {{ languageState.eng_lan ? " websites" : "siti web " }}</span
                   >
                     <!-- ex web app -->
                   <span
                     class="word3 wisteria position-relative"
-                    style="color: #959595"
+                    style="color: #8a8a8a"
                     >Restyling <b class="fw-normal">{{ languageState.eng_lan ? "old site" : "vecchio sito" }}</b> </span
                   >
                 </div>
@@ -704,6 +704,12 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+// Sotto lg le parole del titolo passano sopra la forma grigia chiara (#ccc):
+// serve un grigio più scuro per restare sopra 3:1 (testo grande). Il desktop resta #8a8a8a.
+@media (max-width: 991.98px) {
+  .wordContainer > span { color: #6e6e6e !important; }
+}
+
 // Su desktop la riga "icosaedro + testo" deve leggersi come un blocco unico
 // centrato nella finestra. Due cose lo impedivano:
 //

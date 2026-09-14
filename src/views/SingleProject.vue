@@ -140,7 +140,7 @@ export default {
       <div class="dc-loader__glow"></div>
 
       <div class="dc-loader__logo-wrap">
-        <img src="/dc-loader2.png" alt="DC Logo" class="dc-loader__logo" />
+        <img src="/dc-loader2.png" alt="" class="dc-loader__logo" />
       </div>
 
       <span class="dc-loader__pixel dc-loader__pixel--1"></span>
