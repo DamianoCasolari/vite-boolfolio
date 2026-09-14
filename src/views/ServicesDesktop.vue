@@ -1,9 +1,11 @@
 <script>
     import { languageState } from "../assets/js/language.js";
     import { onMagneticMove, onMagneticLeave } from "../assets/js/magnetic_cta.js";
+    import ServiceShape from "../components/ServiceShape.vue";
 
     export default {
         name: "ServicesDesktop",
+        components: { ServiceShape },
         data() {
             return {
                 languageState,
@@ -25,26 +27,13 @@
                 '/immagini_servizi/3-2-1.webp',
             ].forEach(src => { new Image().src = src; });
 
-            // aspetta che le 3 immagini idle siano caricate prima di animare le card
-            const loadImg = src => new Promise(resolve => {
-                const img = new Image();
-                img.onload = resolve;
-                img.onerror = resolve; // non blocca in caso di errore
-                img.src = src;
-            });
-
-            Promise.all([
-                '/immagini_servizi/vetrina3.webp',
-                '/immagini_servizi/dashboard.webp',
-                '/immagini_servizi/cantiere.webp',
-            ].map(loadImg)).then(() => {
-                requestAnimationFrame(() => {
-                    this.entered = true;
-                    setTimeout(() => {
-                        this.entered = false;
-                        this.ready = true;
-                    }, 950);
-                });
+            // le figure idle sono SVG: niente da precaricare, le card entrano subito
+            requestAnimationFrame(() => {
+                this.entered = true;
+                setTimeout(() => {
+                    this.entered = false;
+                    this.ready = true;
+                }, 950);
             });
         },
         unmounted() {
@@ -98,7 +87,7 @@
 
                     <template v-if="selectedCard !== 0">
                         <div class="card_idle_bg" aria-hidden="true">
-                            <img src="/immagini_servizi/dashboard.webp" alt="" loading="lazy" />
+                            <ServiceShape variant="flat" />
                         </div>
                         <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
                             <h2 class="service_title">{{ languageState.eng_lan ? 'Landing Page' : 'Landing Page' }}</h2>
@@ -172,7 +161,7 @@
 
                     <template v-if="selectedCard !== 1">
                         <div class="card_idle_bg" aria-hidden="true">
-                            <img src="/immagini_servizi/vetrina3.webp" alt="" loading="lazy" />
+                            <ServiceShape variant="solid" />
                         </div>
                         <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
                             <h2 class="service_title">{{ languageState.eng_lan ? 'Showcase Website' : 'Sito Vetrina' }}</h2>
@@ -253,7 +242,7 @@
 
                     <template v-if="selectedCard !== 2">
                         <div class="card_idle_bg" aria-hidden="true">
-                            <img src="/immagini_servizi/cantiere.webp" alt="" loading="lazy" />
+                            <ServiceShape variant="rebuild" />
                         </div>
                         <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
                             <h2 class="service_title">{{ languageState.eng_lan ? 'Website Restyling' : 'Restyling del Sito' }}</h2>
@@ -451,15 +440,6 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .services_grid.ready:not(.has-selection) .service_card--dark:hover {
     box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.28);
 }
-.services_grid.ready:not(.has-selection) .service_card:hover .card_idle_bg img {
-    animation: img_spring_bg 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    filter: contrast(1.16) saturate(1.1);
-}
-@keyframes img_spring_bg {
-    0%   { transform: scale(1); animation-timing-function: ease-out; }
-    45%  { transform: scale(1.16); animation-timing-function: ease-in-out; }
-    100% { transform: scale(1.1); }
-}
 
 // ─── NUMBER ───────────────────────────────────────────────────────────────────
 
@@ -483,24 +463,18 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     border-radius: inherit;
     pointer-events: none;
 
-    img {
-        width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;
-        filter: contrast(1.08) saturate(1.05);
-        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
-    }
+    // figura wireframe centrata nello spazio sotto titolo e descrizione
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 38%;
+    transition: opacity 0.3s ease;
 
-    // gradient in alto per non coprire testo e numero
-    &::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        .service_card--light & {
-            background: linear-gradient(to bottom, #fafaf9 30%, rgba(250,250,249,0.5) 65%, rgba(250,250,249,0) 100%);
-        }
-        .service_card--dark & {
-            background: linear-gradient(to bottom, #1c1c1c 30%, rgba(28,28,28,0.5) 65%, rgba(28,28,28,0) 100%);
-        }
-    }
+    .service_card--light & { color: #1c1c1c; }
+    .service_card--dark  & { color: #f5f4f2; }
+
+    // nelle card collassate (52px) la figura verrebbe tagliata: la nascondo
+    .is-collapsed & { opacity: 0; }
 }
 
 .card_idle {
