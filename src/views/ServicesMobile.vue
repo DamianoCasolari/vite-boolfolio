@@ -93,10 +93,10 @@
         <div class="mob_card mob_card--light" @click="selectCard(0)">
             <span class="mob_num" aria-hidden="true">01</span>
             <div class="mob_card__body">
-                <h2 class="mob_title">{{ languageState.eng_lan ? 'Showcase Website' : 'Sito Vetrina' }}</h2>
+                <h2 class="mob_title">Landing Page</h2>
                 <p class="mob_desc">
-                    <span v-if="languageState.eng_lan">A <strong>polished online presence</strong>, fast and built to <strong>turn visitors into clients</strong>.</span>
-                    <span v-else>Una <strong>presenza online curata</strong>, veloce e costruita per <strong>convertire visitatori in clienti</strong>.</span>
+                    <span v-if="languageState.eng_lan">One page, <strong>one clear goal</strong>: present an offer and turn it into <strong>real contacts</strong>.</span>
+                    <span v-else>Una pagina, <strong>un obiettivo chiaro</strong>: presentare un'offerta e trasformarla in <strong>contatti reali</strong>.</span>
                 </p>
             </div>
         </div>
@@ -105,10 +105,10 @@
         <div class="mob_card mob_card--dark" @click="selectCard(1)">
             <span class="mob_num" aria-hidden="true">02</span>
             <div class="mob_card__body">
-                <h2 class="mob_title">Landing Page</h2>
+                <h2 class="mob_title">{{ languageState.eng_lan ? 'Showcase Website' : 'Sito Vetrina' }}</h2>
                 <p class="mob_desc">
-                    <span v-if="languageState.eng_lan">One page, <strong>one clear goal</strong>: present an offer and turn it into <strong>real contacts</strong>.</span>
-                    <span v-else>Una pagina, <strong>un obiettivo chiaro</strong>: presentare un'offerta e trasformarla in <strong>contatti reali</strong>.</span>
+                    <span v-if="languageState.eng_lan">A <strong>polished online presence</strong>, fast and built to <strong>turn visitors into clients</strong>.</span>
+                    <span v-else>Una <strong>presenza online curata</strong>, veloce e costruita per <strong>convertire visitatori in clienti</strong>.</span>
                 </p>
             </div>
         </div>
@@ -159,14 +159,14 @@
                 <div class="srv_body" ref="srvBody" :class="{ 'panel-ready': !panelLoading }">
 
                     <!-- ════════════════════════════════════════
-                         SERVICE 0 — SITO VETRINA
+                         SERVICE 1 — SITO VETRINA
                          ════════════════════════════════════════ -->
-                    <template v-if="selectedCard === 0">
+                    <template v-if="selectedCard === 1">
 
                         <!-- HEADER: gerarchia tipografica pulita -->
                         <header class="sp_header">
                             <span class="sp_eyebrow">
-                                {{ languageState.eng_lan ? '01 — Service' : '01 — Servizio' }}
+                                {{ languageState.eng_lan ? '02 — Service' : '02 — Servizio' }}
                             </span>
                             <h2 class="sp_title">
                                 <span v-if="languageState.eng_lan">Showcase Website </span>
@@ -252,11 +252,11 @@
                     </template>
 
                     <!-- ════════════════════════════════════════
-                         SERVICE 1 — LANDING PAGE
+                         SERVICE 0 — LANDING PAGE
                          ════════════════════════════════════════ -->
-                    <template v-else-if="selectedCard === 1">
+                    <template v-else-if="selectedCard === 0">
                         <header class="sp_header">
-                            <span class="sp_eyebrow">{{ languageState.eng_lan ? '02 — Service' : '02 — Servizio' }}</span>
+                            <span class="sp_eyebrow">{{ languageState.eng_lan ? '01 — Service' : '01 — Servizio' }}</span>
                             <h2 class="sp_title">
                                 <span>Landing Page</span>
                             </h2>

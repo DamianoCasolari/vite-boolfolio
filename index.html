@@ -3,13 +3,154 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Damiano Casolari | Siti Web, AI e Automazioni | Cervia · Rimini </title>
+  <meta name="theme-color" content="#fafaf9" />
+
+  <!--
+    SEO statico: e' l'unica cosa che vedono i crawler che non eseguono JS (bot delle AI,
+    anteprime di WhatsApp/LinkedIn/Facebook). A navigazione avviata src/assets/js/seo.js
+    aggiorna title, description, canonical e og:* pagina per pagina.
+  -->
+  <title>Siti Vetrina, Landing Page e Restyling a Ravenna | Damiano Casolari</title>
   <meta
     name="description"
-    content="Sviluppatore web a Cervia, specializzato nella realizzazione di siti internet moderni e applicazioni web su misura. Progetto soluzioni veloci, sicure e ottimizzate per la user experience, con attenzione al design, alle prestazioni e alla visibilità online. Sempre aggiornato sulle nuove tecnologie per aiutare aziende e professionisti a crescere sul web."
+    content="Web developer a Ravenna: realizzo landing page, siti vetrina e restyling di siti web veloci, curati e pensati per portarti clienti. Call gratuita, senza impegno."
   />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="Damiano Casolari" />
+  <link rel="canonical" href="https://damianocasolari.com/" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <meta name="geo.region" content="IT-RA" />
+  <meta name="geo.placename" content="Ravenna" />
+  <meta name="geo.position" content="44.4173;12.2003" />
+  <meta name="ICBM" content="44.4173, 12.2003" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Damiano Casolari" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:url" content="https://damianocasolari.com/" />
+  <meta property="og:title" content="Siti Vetrina, Landing Page e Restyling a Ravenna | Damiano Casolari" />
+  <meta property="og:description" content="Web developer a Ravenna: realizzo landing page, siti vetrina e restyling di siti web veloci, curati e pensati per portarti clienti. Call gratuita, senza impegno." />
+  <meta property="og:image" content="https://damianocasolari.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Damiano Casolari, web developer a Ravenna" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Siti Vetrina, Landing Page e Restyling a Ravenna | Damiano Casolari" />
+  <meta name="twitter:description" content="Web developer a Ravenna: realizzo landing page, siti vetrina e restyling di siti web veloci, curati e pensati per portarti clienti. Call gratuita, senza impegno." />
+  <meta name="twitter:image" content="https://damianocasolari.com/og-image.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://damianocasolari.com/#business",
+        "name": "Damiano Casolari – Web Developer",
+        "description": "Web developer freelance a Ravenna: landing page, siti vetrina e restyling di siti web per aziende, professionisti e attività locali. Si parte sempre da una call gratuita e senza impegno.",
+        "url": "https://damianocasolari.com/",
+        "image": "https://damianocasolari.com/og-image.jpg",
+        "logo": "https://damianocasolari.com/favicon.png",
+        "telephone": "+39 347 795 2189",
+        "email": "info@damianocasolari.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ravenna",
+          "addressRegion": "RA",
+          "addressCountry": "IT"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 44.4173, "longitude": 12.2003 },
+        "areaServed": [
+          { "@type": "City", "name": "Ravenna" },
+          { "@type": "City", "name": "Cervia" },
+          { "@type": "City", "name": "Faenza" },
+          { "@type": "City", "name": "Lugo" },
+          { "@type": "City", "name": "Rimini" },
+          { "@type": "City", "name": "Forlì" },
+          { "@type": "City", "name": "Cesena" },
+          { "@type": "AdministrativeArea", "name": "Emilia-Romagna" },
+          { "@type": "Country", "name": "Italia" }
+        ],
+        "knowsLanguage": ["it", "en"],
+        "founder": { "@id": "https://damianocasolari.com/#person" },
+        "sameAs": [
+          "https://www.linkedin.com/in/damiano-casolari/",
+          "https://github.com/DamianoCasolari"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servizi di sviluppo web",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Landing Page",
+                "serviceType": "Realizzazione landing page",
+                "description": "Una singola pagina con un obiettivo chiaro: presentare un'offerta e trasformarla in contatti reali. Mobile-first, veloce, pensata per convertire.",
+                "url": "https://damianocasolari.com/services",
+                "provider": { "@id": "https://damianocasolari.com/#business" }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sito Vetrina",
+                "serviceType": "Realizzazione sito vetrina",
+                "description": "Presenza online curata: design su misura senza template, caricamento rapido, SEO di base, deploy e hosting configurati.",
+                "url": "https://damianocasolari.com/services",
+                "provider": { "@id": "https://damianocasolari.com/#business" }
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Restyling del Sito",
+                "serviceType": "Restyling sito web",
+                "description": "Rinnovo di un sito vecchio o poco chiaro mantenendo ciò che già funziona: design e struttura rinnovati, più velocità, contenuti aggiornati, nessuna interruzione.",
+                "url": "https://damianocasolari.com/services",
+                "provider": { "@id": "https://damianocasolari.com/#business" }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://damianocasolari.com/#person",
+        "name": "Damiano Casolari",
+        "jobTitle": "Web Developer",
+        "description": "Software developer e creativo digitale a Ravenna: crea landing page, siti vetrina e restyling dal design curato.",
+        "url": "https://damianocasolari.com/about",
+        "image": "https://damianocasolari.com/immagini_about_me/foto1-3.webp",
+        "worksFor": { "@id": "https://damianocasolari.com/#business" },
+        "homeLocation": { "@type": "City", "name": "Ravenna" },
+        "knowsAbout": ["Landing page", "Siti vetrina", "Restyling siti web", "Web design", "Sviluppo web", "SEO tecnica", "Vue.js"],
+        "sameAs": [
+          "https://www.linkedin.com/in/damiano-casolari/",
+          "https://github.com/DamianoCasolari"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://damianocasolari.com/#website",
+        "url": "https://damianocasolari.com/",
+        "name": "Damiano Casolari",
+        "inLanguage": "it-IT",
+        "publisher": { "@id": "https://damianocasolari.com/#person" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Senza JS il loader non verrebbe mai rimosso e coprirebbe il contenuto <noscript> -->
+  <noscript><style>#app_shell_loader { display: none !important; }</style></noscript>
   <link rel="preload" href="/dc-loader2.png" as="image" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -144,6 +285,34 @@
     </div>
   </div>
   <div id="app"></div>
+
+  <!-- Contenuto testuale per chi non esegue JS (bot delle AI, crawler semplici) -->
+  <noscript>
+    <main style="max-width: 720px; margin: 0 auto; padding: 2rem 1rem; font-family: sans-serif; color: #1c1c1c;">
+      <h1>Siti vetrina, landing page e restyling a Ravenna</h1>
+      <p>
+        Sono Damiano Casolari, web developer freelance a Ravenna. Realizzo landing page, siti vetrina
+        e restyling di siti web per aziende, professionisti e attività locali di Ravenna, Cervia, Rimini
+        e della Romagna. Si parte sempre da una call gratuita e senza impegno.
+      </p>
+      <h2>Servizi</h2>
+      <ul>
+        <li><strong>Landing Page</strong>: una pagina, un obiettivo chiaro — presentare un'offerta e trasformarla in contatti reali.</li>
+        <li><strong>Sito Vetrina</strong>: una presenza online curata, veloce e costruita per convertire visitatori in clienti.</li>
+        <li><strong>Restyling del Sito</strong>: il tuo sito è vecchio o poco chiaro? Lo rinnoviamo mantenendo tutto ciò che già funziona.</li>
+      </ul>
+      <h2>Contatti</h2>
+      <p>
+        WhatsApp e telefono: <a href="tel:+393477952189">+39 347 795 2189</a> ·
+        Email: <a href="mailto:info@damianocasolari.com">info@damianocasolari.com</a> ·
+        <a href="https://www.linkedin.com/in/damiano-casolari/">LinkedIn</a>
+      </p>
+      <nav>
+        <a href="/services">Servizi</a> · <a href="/about">Chi sono</a> · <a href="/contacts">Contatti</a>
+      </nav>
+    </main>
+  </noscript>
+
   <script type="module" src="/src/main.js"></script>
 </body>
 

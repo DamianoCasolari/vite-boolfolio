@@ -113,14 +113,19 @@ export default {
       },
     },
     // titolo/description più specifici del fallback generico impostato dal
-    // router — si aggiornano anche cambiando lingua, non solo al primo load
-    title(newTitle) {
-      if (!newTitle) return;
-      setPageMeta({
-        title: `${newTitle} | Portfolio – Damiano Casolari`,
-        description: this.descriptionText ? this.descriptionText.slice(0, 160) : undefined,
-        path: this.$route.fullPath,
-      });
+    // router — si aggiornano anche cambiando lingua, non solo al primo load.
+    // `immediate`: il watcher dello slug sopra ha già caricato il progetto quando
+    // questo viene registrato, quindi senza immediate non scatterebbe mai all'apertura diretta.
+    title: {
+      immediate: true,
+      handler(newTitle) {
+        if (!newTitle) return;
+        setPageMeta({
+          title: `${newTitle} | Portfolio – Damiano Casolari`,
+          description: this.descriptionText ? this.descriptionText.slice(0, 160) : undefined,
+          path: this.$route.path,
+        });
+      },
     },
   },
 };

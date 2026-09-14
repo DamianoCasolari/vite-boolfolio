@@ -178,6 +178,12 @@ export default {
 
 <template>
   <div class="bg_snow">
+    <!-- H1 per SEO e screen reader: .visually-hidden lo toglie dal layout, il design resta identico -->
+    <h1 class="visually-hidden">
+      {{ languageState.eng_lan
+        ? "Showcase websites, landing pages and website restyling in Ravenna – Damiano Casolari, web developer"
+        : "Siti vetrina, landing page e restyling a Ravenna – Damiano Casolari, web developer" }}
+    </h1>
     <div
       id="top"
       class="jumbotron container rounded-3 d-flex flex-column align-items-center justify-content-center position-relative"

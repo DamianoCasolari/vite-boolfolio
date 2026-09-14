@@ -88,7 +88,7 @@
         <div class="container h-100">
             <div class="services_grid" :class="{ entered, ready, 'has-selection': selectedCard !== null }">
 
-                <!-- ─── CARD 0 — Sito Vetrina ──────────────────────────────── -->
+                <!-- ─── CARD 0 — Landing Page ──────────────────────────────── -->
                 <div class="service_card service_card--light"
                     :class="{
                         'is-expanded': selectedCard === 0,
@@ -97,6 +97,80 @@
                     @click="selectCard(0)">
 
                     <template v-if="selectedCard !== 0">
+                        <div class="card_idle_bg" aria-hidden="true">
+                            <img src="/immagini_servizi/dashboard.webp" alt="" loading="lazy" />
+                        </div>
+                        <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
+                            <h2 class="service_title">{{ languageState.eng_lan ? 'Landing Page' : 'Landing Page' }}</h2>
+                            <p class="service_desc">
+                                <span v-if="languageState.eng_lan">One page, <strong>one clear goal</strong>: present an offer and turn it into <strong>real contacts</strong>.</span>
+                                <span v-else>Una pagina, <strong>un obiettivo chiaro</strong>: presentare un'offerta e trasformarla in <strong>contatti reali</strong>.</span>
+                            </p>
+                        </div>
+                    </template>
+
+                    <template v-else>
+                        <button class="card_close" @click.stop="closeCard" aria-label="Chiudi">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        </button>
+                        <div class="card_expanded_body" ref="cardBody">
+                            <div class="exp_inner">
+                                <div class="exp_section exp_section--top">
+                                    <div class="exp_col">
+                                        <span class="exp_eyebrow">{{ languageState.eng_lan ? '01 — Service' : '01 — Servizio' }}</span>
+                                        <h2 class="exp_title">Landing Page</h2>
+                                        <p class="exp_desc"><span v-if="languageState.eng_lan">A single page, built to move whoever reads it to the next step: call, message, book.</span><span v-else>Una singola pagina, pensata per portare chi la legge alla prossima mossa: chiamare, scrivere, prenotare.</span></p>
+                                        <div class="exp_call_block">
+                                            <span class="exp_call_badge">{{ languageState.eng_lan ? 'Start here' : 'Inizia da qui' }}</span>
+                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong class="green_text_light">Free call, no commitment.</strong><br>Let's talk about what you want to promote, and to whom.</span><span v-else><strong class="green_text_light">Call gratuita, senza impegno.</strong><br>Parliamo di cosa vuoi promuovere e a chi.</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="exp_col">
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-2-1.webp" alt="" loading="eager"/></div>
+                                    </div>
+                                </div>
+                                <div class="exp_section exp_section--mid">
+                                    <div class="exp_col">
+                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-3-1.webp" alt="" loading="eager"/></div>
+                                    </div>
+                                    <div class="exp_col">
+                                        <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>
+                                        <div class="exp_steps">
+                                            <div class="exp_step"><span class="exp_step_n">01</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Free call, no commitment' : 'Call gratuita, senza impegno' }}</strong><span>{{ languageState.eng_lan ? '30 minutes to define the goal of the page.' : '30 minuti per definire l\'obiettivo della pagina.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">02</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We define the message' : 'Definiamo il messaggio' }}</strong><span>{{ languageState.eng_lan ? 'What to communicate, to whom, in a few effective words.' : 'Cosa comunicare, a chi, in poche parole efficaci.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">03</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We present the proposal' : 'Ti presento la proposta' }}</strong><span>{{ languageState.eng_lan ? 'Clear structure and content, before we start.' : 'Struttura e contenuti chiari, prima di iniziare.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">04</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We build it together' : 'Costruiamo insieme' }}</strong><span>{{ languageState.eng_lan ? 'A fast, mobile-first page, built to convert.' : 'Una pagina veloce, mobile-first, pensata per convertire.' }}</span></div></div>
+                                            <div class="exp_step"><span class="exp_step_n">05</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'You go live' : 'Vai online' }}</strong><span>{{ languageState.eng_lan ? 'Published and connected to your channels.' : 'Pubblicazione e collegamento ai tuoi canali.' }}</span></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="exp_bottom">
+                                    <div class="exp_extras">
+                                        <span class="exp_extras_label">{{ languageState.eng_lan ? 'Extra options' : 'Opzioni aggiuntive' }}</span>
+                                        <div class="exp_pills">
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Google / Meta Ads connection' : 'Collegamento a Google/Meta Ads' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Contact form' : 'Form di contatto' }}</span>
+                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Multi-language version' : 'Versione multilingua' }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="exp_closing">
+                                        <p class="exp_closing_text"><span v-if="languageState.eng_lan">One page.<br>One clear goal.</span><span v-else>Una pagina.<br>Un obiettivo chiaro.</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- ─── CARD 1 — Sito Vetrina ──────────────────────────────── -->
+                <div class="service_card service_card--dark"
+                    :class="{
+                        'is-expanded': selectedCard === 1,
+                        'is-collapsed': selectedCard !== null && selectedCard !== 1,
+                    }"
+                    @click="selectCard(1)">
+
+                    <template v-if="selectedCard !== 1">
                         <div class="card_idle_bg" aria-hidden="true">
                             <img src="/immagini_servizi/vetrina3.webp" alt="" loading="lazy" />
                         </div>
@@ -119,7 +193,7 @@
                                 <!-- S1: testo sinistra · img1 destra -->
                                 <div class="exp_section exp_section--top">
                                     <div class="exp_col">
-                                        <span class="exp_eyebrow">{{ languageState.eng_lan ? '01 — Service' : '01 — Servizio' }}</span>
+                                        <span class="exp_eyebrow">{{ languageState.eng_lan ? '02 — Service' : '02 — Servizio' }}</span>
                                         <h2 class="exp_title">{{ languageState.eng_lan ? 'Showcase Website' : 'Sito Vetrina' }}</h2>
                                         <p class="exp_desc"><span v-if="languageState.eng_lan">Custom design, fast loading, SEO-ready — everything from brief to launch.</span><span v-else>Design su misura, caricamento rapido, ottimizzato — dal brief al lancio.</span></p>
                                         <div class="exp_call_block">
@@ -164,80 +238,6 @@
                                     </div>
                                 </div>
 
-                            </div>
-                        </div>
-                    </template>
-                </div>
-
-                <!-- ─── CARD 1 — Landing Page ──────────────────────────────── -->
-                <div class="service_card service_card--dark"
-                    :class="{
-                        'is-expanded': selectedCard === 1,
-                        'is-collapsed': selectedCard !== null && selectedCard !== 1,
-                    }"
-                    @click="selectCard(1)">
-
-                    <template v-if="selectedCard !== 1">
-                        <div class="card_idle_bg" aria-hidden="true">
-                            <img src="/immagini_servizi/dashboard.webp" alt="" loading="lazy" />
-                        </div>
-                        <div class="card_idle" :class="{ 'card_idle--out': selectedCard !== null }">
-                            <h2 class="service_title">{{ languageState.eng_lan ? 'Landing Page' : 'Landing Page' }}</h2>
-                            <p class="service_desc">
-                                <span v-if="languageState.eng_lan">One page, <strong>one clear goal</strong>: present an offer and turn it into <strong>real contacts</strong>.</span>
-                                <span v-else>Una pagina, <strong>un obiettivo chiaro</strong>: presentare un'offerta e trasformarla in <strong>contatti reali</strong>.</span>
-                            </p>
-                        </div>
-                    </template>
-
-                    <template v-else>
-                        <button class="card_close" @click.stop="closeCard" aria-label="Chiudi">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                        </button>
-                        <div class="card_expanded_body" ref="cardBody">
-                            <div class="exp_inner">
-                                <div class="exp_section exp_section--top">
-                                    <div class="exp_col">
-                                        <span class="exp_eyebrow">{{ languageState.eng_lan ? '02 — Service' : '02 — Servizio' }}</span>
-                                        <h2 class="exp_title">Landing Page</h2>
-                                        <p class="exp_desc"><span v-if="languageState.eng_lan">A single page, built to move whoever reads it to the next step: call, message, book.</span><span v-else>Una singola pagina, pensata per portare chi la legge alla prossima mossa: chiamare, scrivere, prenotare.</span></p>
-                                        <div class="exp_call_block">
-                                            <span class="exp_call_badge">{{ languageState.eng_lan ? 'Start here' : 'Inizia da qui' }}</span>
-                                            <p class="exp_call_text"><span v-if="languageState.eng_lan"><strong class="green_text_light">Free call, no commitment.</strong><br>Let's talk about what you want to promote, and to whom.</span><span v-else><strong class="green_text_light">Call gratuita, senza impegno.</strong><br>Parliamo di cosa vuoi promuovere e a chi.</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-2-1.webp" alt="" loading="eager"/></div>
-                                    </div>
-                                </div>
-                                <div class="exp_section exp_section--mid">
-                                    <div class="exp_col">
-                                        <div class="exp_img_inline"><img src="/immagini_servizi/2-3-1.webp" alt="" loading="eager"/></div>
-                                    </div>
-                                    <div class="exp_col">
-                                        <div class="exp_divider"><span class="exp_divider_label">{{ languageState.eng_lan ? 'How it works' : 'Andiamo per ordine' }}</span><div class="exp_divider_line"></div></div>
-                                        <div class="exp_steps">
-                                            <div class="exp_step"><span class="exp_step_n">01</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'Free call, no commitment' : 'Call gratuita, senza impegno' }}</strong><span>{{ languageState.eng_lan ? '30 minutes to define the goal of the page.' : '30 minuti per definire l\'obiettivo della pagina.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">02</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We define the message' : 'Definiamo il messaggio' }}</strong><span>{{ languageState.eng_lan ? 'What to communicate, to whom, in a few effective words.' : 'Cosa comunicare, a chi, in poche parole efficaci.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">03</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We present the proposal' : 'Ti presento la proposta' }}</strong><span>{{ languageState.eng_lan ? 'Clear structure and content, before we start.' : 'Struttura e contenuti chiari, prima di iniziare.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">04</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'We build it together' : 'Costruiamo insieme' }}</strong><span>{{ languageState.eng_lan ? 'A fast, mobile-first page, built to convert.' : 'Una pagina veloce, mobile-first, pensata per convertire.' }}</span></div></div>
-                                            <div class="exp_step"><span class="exp_step_n">05</span><div class="exp_step_body"><strong>{{ languageState.eng_lan ? 'You go live' : 'Vai online' }}</strong><span>{{ languageState.eng_lan ? 'Published and connected to your channels.' : 'Pubblicazione e collegamento ai tuoi canali.' }}</span></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="exp_bottom">
-                                    <div class="exp_extras">
-                                        <span class="exp_extras_label">{{ languageState.eng_lan ? 'Extra options' : 'Opzioni aggiuntive' }}</span>
-                                        <div class="exp_pills">
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Google / Meta Ads connection' : 'Collegamento a Google/Meta Ads' }}</span>
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Contact form' : 'Form di contatto' }}</span>
-                                            <span class="exp_pill">{{ languageState.eng_lan ? 'Multi-language version' : 'Versione multilingua' }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="exp_closing">
-                                        <p class="exp_closing_text"><span v-if="languageState.eng_lan">One page.<br>One clear goal.</span><span v-else>Una pagina.<br>Un obiettivo chiaro.</span></p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </template>

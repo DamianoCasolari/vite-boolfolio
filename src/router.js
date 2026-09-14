@@ -10,9 +10,9 @@ const router = createRouter({
       name: "home",
       component: () => import("./views/HomeView.vue"),
       meta: {
-        title: "Damiano Casolari | Siti Web, AI e Automazioni | Cervia · Rimini",
+        title: "Siti Vetrina, Landing Page e Restyling a Ravenna | Damiano Casolari",
         description:
-          "Sviluppatore web a Cervia, specializzato nella realizzazione di siti internet moderni e applicazioni web su misura. Progetto soluzioni veloci, sicure e ottimizzate per la user experience, con attenzione al design, alle prestazioni e alla visibilità online.",
+          "Web developer a Ravenna: realizzo landing page, siti vetrina e restyling di siti web veloci, curati e pensati per portarti clienti. Call gratuita, senza impegno.",
       },
     },
     {
@@ -20,9 +20,9 @@ const router = createRouter({
       name: "services",
       component: () => import("./views/ServicesView.vue"),
       meta: {
-        title: "Servizi | Siti Vetrina, Landing Page e Restyling – Damiano Casolari",
+        title: "Servizi | Landing Page, Siti Vetrina e Restyling a Ravenna",
         description:
-          "Sito vetrina, landing page o restyling del sito esistente: scopri i servizi di sviluppo web di Damiano Casolari, con una call gratuita per parlare del tuo progetto.",
+          "Landing page, siti vetrina e restyling a Ravenna e in Romagna: cosa include ogni servizio e come lavoro. Si parte da una call gratuita, senza impegno.",
       },
     },
     {
@@ -30,9 +30,9 @@ const router = createRouter({
       name: "contacts",
       component: () => import("./views/ContactsView.vue"),
       meta: {
-        title: "Contatti | Damiano Casolari – Sviluppatore Web a Cervia",
+        title: "Contatti | Damiano Casolari – Web Developer a Ravenna",
         description:
-          "Hai un progetto in mente o vuoi migliorare la tua presenza online? Scrivimi un messaggio o contattami su WhatsApp, ti rispondo il prima possibile.",
+          "Hai un progetto a Ravenna o in Romagna? Scrivimi su WhatsApp o via email: la prima call è gratuita e senza impegno, per parlare del tuo sito o della tua landing page.",
       },
     },
     {
@@ -60,7 +60,7 @@ const router = createRouter({
       meta: {
         title: "Progetto | Portfolio – Damiano Casolari",
         description:
-          "Scopri i dettagli di questo progetto realizzato da Damiano Casolari, sviluppatore web a Cervia.",
+          "Scopri i dettagli di questo progetto realizzato da Damiano Casolari, web developer a Ravenna.",
       },
     },
     {
@@ -68,9 +68,9 @@ const router = createRouter({
       name: "about",
       component: () => import("./views/AboutMobile.vue"),
       meta: {
-        title: "Chi sono | Damiano Casolari – Software Developer e Creativo Digitale",
+        title: "Chi sono | Damiano Casolari – Web Developer a Ravenna",
         description:
-          "Damiano Casolari, software developer e creativo digitale: esperienze e prodotti digitali dal design curato, per valorizzare brand, idee e progetti online.",
+          "Damiano Casolari, software developer e creativo digitale a Ravenna: landing page, siti vetrina e restyling dal design curato, per valorizzare brand e attività online.",
       },
     },
     {
@@ -80,6 +80,8 @@ const router = createRouter({
       meta: {
         title: "Pagina non trovata | Damiano Casolari",
         description: "La pagina che cerchi non esiste o è stata spostata.",
+        // La SPA risponde 200 anche agli URL inesistenti: senza noindex Google li indicizzerebbe
+        robots: "noindex, follow",
       },
     },
   ],
