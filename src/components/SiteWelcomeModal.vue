@@ -16,7 +16,7 @@ export default {
       const msg = this.languageState.eng_lan
         ? "Hi! I'm interested in the 290€ website offer. Can you tell me what's included?"
         : "Ciao! Mi interessa l’offerta sito a 290€. Mi dici cosa include?";
-      return "https://wa.me/3477952189?text=" + encodeURIComponent(msg);
+      return "https://wa.me/393477952189?text=" + encodeURIComponent(msg);
     },
     t() {
       if (this.languageState.eng_lan) {
@@ -403,7 +403,7 @@ export default {
           <div class="d-flex justify-content-center align-item-center">
             <a
               class="btn btn-success d-inline-flex align-items-center gap-2"
-              href="https://wa.me/3477952189?text=Buongiorno%2C%0Asono%20%5BNome%5D%20e%20vi%20contatto%20per%20avere%20informazioni%20sulla%20realizzazione%20di%20un%20sito%20web%20per%20la%20mia%20attivit%C3%A0.%0AResto%20in%20attesa%20di%20un%20vostro%20riscontro%2C%20grazie."
+              href="https://wa.me/393477952189?text=Buongiorno%2C%0Asono%20%5BNome%5D%20e%20vi%20contatto%20per%20avere%20informazioni%20sulla%20realizzazione%20di%20un%20sito%20web%20per%20la%20mia%20attivit%C3%A0.%0AResto%20in%20attesa%20di%20un%20vostro%20riscontro%2C%20grazie."
               target="_blank"
               rel="noopener"
               @mousemove="onMagneticMove"

@@ -53,7 +53,7 @@ export default {
       const msg = this.languageState.eng_lan
         ? `Hi Damiano! I saw the "${this.title}" project on your portfolio and I'd like to build something similar.`
         : `Ciao Damiano! Ho visto il progetto "${this.title}" sul tuo portfolio e mi piacerebbe realizzare qualcosa di simile.`;
-      return "https://wa.me/3477952189?text=" + encodeURIComponent(msg);
+      return "https://wa.me/393477952189?text=" + encodeURIComponent(msg);
     },
   },
 

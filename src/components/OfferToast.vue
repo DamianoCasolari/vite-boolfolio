@@ -6,7 +6,7 @@ const MOBILE_BREAKPOINT = 767;
 const MOBILE_BOTTOM_OFFSET = 20; // deve combaciare col "bottom" di .offer_toast su mobile (CSS)
 const DOCK_GAP = 12; // spazio tra la card e il footer quando è "agganciata"
 const WA_LINK =
-    "https://wa.me/3477952189?text=Buongiorno%2C%0Asono%20%5BNome%5D%20e%20vi%20contatto%20per%20avere%20informazioni%20sulla%20realizzazione%20di%20un%20sito%20web%20per%20la%20mia%20attivit%C3%A0.%0AResto%20in%20attesa%20di%20un%20vostro%20riscontro%2C%20grazie.";
+    "https://wa.me/393477952189?text=Buongiorno%2C%0Asono%20%5BNome%5D%20e%20vi%20contatto%20per%20avere%20informazioni%20sulla%20realizzazione%20di%20un%20sito%20web%20per%20la%20mia%20attivit%C3%A0.%0AResto%20in%20attesa%20di%20un%20vostro%20riscontro%2C%20grazie.";
 
 export default {
     name: "OfferToast",
